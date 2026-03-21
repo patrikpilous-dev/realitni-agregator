@@ -1,6 +1,6 @@
 """
 Sreality.cz scraper — Agregátor realitních nabídek
-Stahuje inzeráty z Sreality API, počítá score výhodnosti, ukládá feed.json
+Stahuje inzeráty z Sreality API, počítá score výhodnosti, ukládá feed.json + archived.json
 """
 
 import json
@@ -15,16 +15,16 @@ import urllib.parse
 # ── Konfigurace ────────────────────────────────────────────────────────────────
 
 API_BASE = "https://www.sreality.cz/api/cs/v2/estates"
-OUTPUT_FILE = "feed.json"
+OUTPUT_FILE  = "feed.json"
+ARCHIVE_FILE = "archived.json"
 
 # Kolik stránek stáhnout na kategorii (60 inzerátů/stránka)
-# 5 stránek = 300 inzerátů na kategorii
 MAX_PAGES = 5
 
 # Výstup: top N inzerátů dle score výhodnosti
 TOP_N = 200
 
-# Minimální plocha v m² (filtrujeme nesmyslné záznamy)
+# Minimální plocha v m²
 MIN_AREA = 15
 
 HEADERS = {
@@ -37,29 +37,61 @@ HEADERS = {
     "Referer": "https://www.sreality.cz/",
 }
 
-# Kategorie ke stažení: (category_main_cb, category_type_cb, popis)
-# 1=byty, 2=domy | 1=prodej, 2=pronájem
+# Kategorie: (category_main_cb, category_type_cb, popis)
 CATEGORIES = [
     (1, 1, "byty-prodej"),
     (2, 1, "domy-prodej"),
 ]
 
+# ── URL mappingy (pro správnou sestavu odkazu na Sreality) ─────────────────────
+
+TYPE_URL = {1: "prodej", 2: "pronajem", 3: "drazby"}
+MAIN_URL = {1: "byt", 2: "dum", 3: "pozemek", 4: "komercni", 5: "ostatni"}
+
+# Subkategorie → URL slug (chybějící subcategory způsobuje 404!)
+SUB_URL = {
+    # Byty
+    2:  "1%2Bkk",   # 1+kk
+    3:  "1%2B1",    # 1+1
+    4:  "2%2Bkk",   # 2+kk
+    5:  "2%2B1",    # 2+1
+    6:  "3%2Bkk",   # 3+kk
+    7:  "3%2B1",    # 3+1
+    8:  "4%2Bkk",   # 4+kk
+    9:  "4%2B1",    # 4+1
+    10: "5-a-vice",
+    11: "atypicky",
+    16: "pokoj",
+    # Domy
+    37: "rodinny-dum",
+    38: "vila",
+    39: "chalupa-chata",
+    40: "bytovy-dum",
+    41: "zemedelska-usedlost",
+    43: "ostatni",
+    # Pozemky
+    52: "bydleni",
+    53: "komercni",
+    54: "smiseny",
+    55: "les",
+    56: "rybnik",
+    57: "ostatni",
+}
+
 # ── Pomocné funkce ─────────────────────────────────────────────────────────────
 
 def api_get(params: dict) -> dict | None:
-    """Zavolá Sreality API a vrátí JSON nebo None při chybě."""
     url = API_BASE + "?" + urllib.parse.urlencode(params)
     req = urllib.request.Request(url, headers=HEADERS)
     try:
         with urllib.request.urlopen(req, timeout=15) as resp:
             return json.loads(resp.read().decode("utf-8"))
     except Exception as e:
-        print(f"  [CHYBA] {e} — {url}")
+        print(f"  [CHYBA] {e}")
         return None
 
 
 def parse_area(name: str) -> float | None:
-    """Extrahuje plochu z názvu inzerátu (např. '65 m²' nebo '65 m2')."""
     match = re.search(r"(\d+(?:[.,]\d+)?)\s*m[²2]", name, re.IGNORECASE)
     if match:
         return float(match.group(1).replace(",", "."))
@@ -67,39 +99,125 @@ def parse_area(name: str) -> float | None:
 
 
 def parse_disposition(name: str) -> str:
-    """Extrahuje dispozici z názvu (2+1, 3+kk, atd.)."""
     match = re.search(r"(\d+\+(?:kk|\d+))", name, re.IGNORECASE)
     if match:
         return match.group(1).lower()
     return "ostatní"
 
 
+def locality_to_city(locality: str) -> str:
+    """
+    Extrahuje město z lokality.
+    Formáty Sreality:
+      "Ulice, Praha 5 - Stodůlky"       → "Praha 5"
+      "Kralupy nad Vltavou - Minice, okres Mělník" → "Kralupy nad Vltavou"
+      "Město, Část - Podčást"            → "Město"
+    """
+    if not locality:
+        return ""
+    parts = [p.strip() for p in locality.split(",")]
+    last = parts[-1]
+    if re.match(r"^okres\s+", last, re.IGNORECASE) and len(parts) > 1:
+        # "Město - Část, okres X" → bereme část před čárkou
+        city = parts[-2]
+    else:
+        # "Ulice, Město - Část" → bereme část po čárce
+        city = last
+    # Odstraň podčást za " - "
+    city = city.split(" - ")[0].strip()
+    return city
+
+
+# labelsAll obsahuje kódy (ne česky) — mapujeme na srozumitelné hodnoty
+LABEL_OWNERSHIP = {
+    "personal":    "Osobní",
+    "cooperative": "Družstevní",
+    "state":       "Státní/obecní",
+}
+LABEL_BUILDING = {
+    "brick":   "Cihlová",
+    "panel":   "Panelová",
+    "wooden":  "Dřevostavba",
+    "prefab":  "Montovaná",
+}
+LABEL_EXTRAS = {
+    "elevator":      "Výtah",
+    "balcony":       "Balkón",
+    "loggia":        "Lodžie",
+    "terrace":       "Terasa",
+    "garage":        "Garáž",
+    "parking_lots":  "Parkování",
+    "cellar":        "Sklep",
+    "garden":        "Zahrada",
+    "pool":          "Bazén",
+    "new_building":  "Novostavba",
+    "furnished":     "Zařízeno",
+    "partly_furnished": "Částečně zařízeno",
+    "air_conditioning": "Klimatizace",
+}
+
+
+def extract_labels(estate: dict) -> dict:
+    """Extrahuje doplňkové informace z labelsAll (kódové hodnoty Sreality API)."""
+    info = {
+        "ownership":     "",
+        "building_type": "",
+        "extras":        [],
+    }
+
+    # labelsAll je pole polí: první pole = vlastnosti nemovitosti, druhé = POI okolí
+    labels_raw = estate.get("labelsAll", [])
+    flat_codes: list[str] = []
+    for group in labels_raw:
+        if isinstance(group, list):
+            for item in group:
+                if isinstance(item, str):
+                    flat_codes.append(item)
+                elif isinstance(item, dict):
+                    flat_codes.append(item.get("name", ""))
+        elif isinstance(group, str):
+            flat_codes.append(group)
+
+    extras_found = []
+    for code in flat_codes:
+        if code in LABEL_OWNERSHIP and not info["ownership"]:
+            info["ownership"] = LABEL_OWNERSHIP[code]
+        if code in LABEL_BUILDING and not info["building_type"]:
+            info["building_type"] = LABEL_BUILDING[code]
+        if code in LABEL_EXTRAS:
+            val = LABEL_EXTRAS[code]
+            if val not in extras_found:
+                extras_found.append(val)
+
+    info["extras"] = extras_found
+    return info
+
+
 def build_sreality_url(estate: dict) -> str:
-    """Sestaví URL na detail inzerátu na sreality.cz."""
-    seo = estate.get("seo", {})
-    hash_id = estate.get("hash_id", "")
+    """Sestaví správnou URL na detail inzerátu včetně subkategorie."""
+    seo      = estate.get("seo", {})
+    hash_id  = estate.get("hash_id", "")
     locality = seo.get("locality", "")
     cat_main = seo.get("category_main_cb", 1)
     cat_type = seo.get("category_type_cb", 1)
-    cat_sub = seo.get("category_sub_cb", 2)
+    cat_sub  = seo.get("category_sub_cb", 0)
 
-    type_map = {1: "prodej", 2: "pronajem"}
-    main_map = {1: "byt", 2: "dum"}
-    sale_type = type_map.get(cat_type, "prodej")
-    main_type = main_map.get(cat_main, "byt")
+    sale_type = TYPE_URL.get(cat_type, "prodej")
+    main_type = MAIN_URL.get(cat_main, "byt")
+    sub_type  = SUB_URL.get(cat_sub, "")
 
-    return (
-        f"https://www.sreality.cz/detail/{sale_type}/{main_type}/"
-        f"{locality}/{hash_id}"
-    )
+    if sub_type:
+        return f"https://www.sreality.cz/detail/{sale_type}/{main_type}/{sub_type}/{locality}/{hash_id}"
+    else:
+        return f"https://www.sreality.cz/detail/{sale_type}/{main_type}/{locality}/{hash_id}"
 
 
 # ── Scraping ───────────────────────────────────────────────────────────────────
 
 def fetch_category(cat_main: int, cat_type: int, label: str) -> list[dict]:
-    """Stáhne všechny stránky dané kategorie a vrátí surová data."""
+    """Stáhne stránky dané kategorie, nejnovější inzeráty jako první."""
     raw_estates = []
-    print(f"\n[{label}] Stahování...")
+    print(f"\n[{label}] Stahuji...")
 
     for page in range(1, MAX_PAGES + 1):
         params = {
@@ -118,24 +236,22 @@ def fetch_category(cat_main: int, cat_type: int, label: str) -> list[dict]:
 
         raw_estates.extend(estates)
         total = data.get("result_size", "?")
-        print(f"  Stránka {page}: +{len(estates)} inzerátů (celkem dostupných: {total})")
+        print(f"  Strana {page}: +{len(estates)} (dostupnych: {total})")
 
         if len(estates) < 60:
-            break  # poslední stránka
+            break
 
-        time.sleep(0.5)  # slušné čekání mezi požadavky
+        time.sleep(0.5)
 
-    print(f"  >> Stazeno celkem: {len(raw_estates)} zaznamu")
+    print(f"  >> Celkem: {len(raw_estates)}")
     return raw_estates
 
 
 def process_estate(estate: dict, cat_main: int, cat_type: int) -> dict | None:
-    """Zpracuje jeden inzerát, vrátí strukturovaný dict nebo None."""
-    name = estate.get("name", "")
-    price = estate.get("price_czk", {}).get("value_raw") or estate.get("price")
+    name     = estate.get("name", "")
+    price    = estate.get("price_czk", {}).get("value_raw") or estate.get("price")
     locality = estate.get("locality", "")
 
-    # Filtrujeme inzeráty bez ceny nebo lokality
     if not price or price <= 0 or not locality:
         return None
 
@@ -144,70 +260,99 @@ def process_estate(estate: dict, cat_main: int, cat_type: int) -> dict | None:
         return None
 
     price_per_m2 = round(price / area)
-    disposition = parse_disposition(name)
+    disposition  = parse_disposition(name)
+    labels       = extract_labels(estate)
 
-    type_label = "byt" if cat_main == 1 else "dům"
+    type_label  = "byt" if cat_main == 1 else "dům"
     transaction = "prodej" if cat_type == 1 else "pronájem"
+    city        = locality_to_city(locality)
 
     return {
-        "id": str(estate.get("hash_id", "")),
-        "title": name,
-        "price": int(price),
-        "area": round(area, 1),
-        "price_per_m2": price_per_m2,
-        "score": 0,  # bude doplněno po výpočtu mediánů
-        "disposition": disposition,
-        "locality": locality,
-        "type": type_label,
-        "transaction": transaction,
-        "url": build_sreality_url(estate),
+        "id":            str(estate.get("hash_id", "")),
+        "title":         name,
+        "price":         int(price),
+        "area":          round(area, 1),
+        "price_per_m2":  price_per_m2,
+        "score":         0,
+        "disposition":   disposition,
+        "locality":      locality,
+        "locality_city": city,
+        "type":          type_label,
+        "transaction":   transaction,
+        "ownership":     labels["ownership"],
+        "building_type": labels["building_type"],
+        "extras":        labels["extras"],
+        "url":           build_sreality_url(estate),
+        "scraped_at":    datetime.now(timezone.utc).isoformat(),
     }
 
 
-# ── Výpočet score výhodnosti ───────────────────────────────────────────────────
+# ── Score výhodnosti ───────────────────────────────────────────────────────────
 
 def compute_scores(listings: list[dict]) -> list[dict]:
-    """
-    Vypočítá score výhodnosti pro každý inzerát.
-    Score = % pod mediánem ceny/m² pro stejnou (dispozice + lokalita).
-    Kladné score = výhodné, záporné = předražené.
-    """
-    # Seskupíme ceny/m² podle (dispozice, lokalita)
     groups: dict[tuple, list[float]] = defaultdict(list)
-    for listing in listings:
-        key = (listing["disposition"], listing["locality"])
-        groups[key].append(listing["price_per_m2"])
+    for l in listings:
+        key = (l["disposition"], l["locality_city"])
+        groups[key].append(l["price_per_m2"])
 
-    # Mediány
     medians: dict[tuple, float] = {}
     for key, prices in groups.items():
-        if len(prices) >= 3:  # potřebujeme alespoň 3 záznamy pro smysluplný medián
+        if len(prices) >= 3:
             medians[key] = statistics.median(prices)
 
-    # Přiřadíme score
-    for listing in listings:
-        key = (listing["disposition"], listing["locality"])
+    for l in listings:
+        key    = (l["disposition"], l["locality_city"])
         median = medians.get(key)
         if median and median > 0:
-            # Kladné score = inzerát je X % pod mediánem (výhodný)
-            score = round((1 - listing["price_per_m2"] / median) * 100, 1)
-            listing["score"] = score
+            l["score"] = round((1 - l["price_per_m2"] / median) * 100, 1)
         else:
-            listing["score"] = 0  # nedostatek dat pro porovnání
+            l["score"] = 0
 
     return listings
+
+
+# ── Archiv prodaných ───────────────────────────────────────────────────────────
+
+def load_json_file(path: str) -> dict:
+    try:
+        with open(path, encoding="utf-8") as f:
+            return json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        return {}
+
+
+def update_archive(new_ids: set, previous_listings: list[dict]) -> list[dict]:
+    """
+    Inzeráty z předchozího feedu, které už nejsou v novém scrapování,
+    jsou považovány za prodané → přejdou do archivu.
+    """
+    now = datetime.now(timezone.utc).isoformat()
+    archived = []
+    for listing in previous_listings:
+        if listing["id"] not in new_ids:
+            listing = dict(listing)
+            if "sold_at" not in listing:
+                listing["sold_at"] = now
+            archived.append(listing)
+    return archived
 
 
 # ── Hlavní funkce ──────────────────────────────────────────────────────────────
 
 def main():
     print("=" * 60)
-    print("Sreality.cz scraper — spuštění")
-    print(f"Čas: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    print("Sreality scraper")
+    print(f"Cas: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print("=" * 60)
 
-    all_listings = []
+    # Načteme předchozí feed (pro archiv)
+    prev_feed     = load_json_file(OUTPUT_FILE)
+    prev_listings = prev_feed.get("listings", [])
+    prev_archived = load_json_file(ARCHIVE_FILE).get("listings", [])
+    prev_arch_ids = {l["id"] for l in prev_archived}
 
+    # Scraping
+    all_listings = []
     for cat_main, cat_type, label in CATEGORIES:
         raw = fetch_category(cat_main, cat_type, label)
         for estate in raw:
@@ -215,32 +360,56 @@ def main():
             if processed:
                 all_listings.append(processed)
 
-    print(f"\nZpracováno inzerátů: {len(all_listings)}")
+    print(f"\nZpracovano: {len(all_listings)} inzeratu")
 
-    # Výpočet score
+    # Score
     all_listings = compute_scores(all_listings)
 
-    # Seřadit dle score sestupně, vzít top N
+    # Deduplikace (stejné ID z různých stránek)
+    seen = set()
+    unique = []
+    for l in all_listings:
+        if l["id"] not in seen:
+            seen.add(l["id"])
+            unique.append(l)
+    all_listings = unique
+
+    # Archiv — co zmizelo z feedu
+    newly_archived = update_archive(seen, prev_listings)
+    # Přidáme do archivu, ale nevkládáme duplicity
+    for l in newly_archived:
+        if l["id"] not in prev_arch_ids:
+            prev_archived.append(l)
+            prev_arch_ids.add(l["id"])
+
+    print(f"Nove archivovano (prodano): {len(newly_archived)}")
+    print(f"Celkem v archivu: {len(prev_archived)}")
+
+    # Top N dle score
     all_listings.sort(key=lambda x: x["score"], reverse=True)
     top_listings = all_listings[:TOP_N]
 
-    výhodných = sum(1 for l in top_listings if l["score"] > 5)
-    print(f"Výhodných inzerátů (score > 5 %): {výhodných}")
-
     # Uložit feed.json
     feed = {
-        "updated": datetime.now(timezone.utc).isoformat(),
+        "updated":       datetime.now(timezone.utc).isoformat(),
         "total_scraped": len(all_listings),
         "total_in_feed": len(top_listings),
-        "listings": top_listings,
+        "listings":      top_listings,
     }
-
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         json.dump(feed, f, ensure_ascii=False, indent=2)
 
-    print(f"\nUloženo do: {OUTPUT_FILE}")
-    top_title = top_listings[0]['title'] if top_listings else "zadny"
-    print(f"Top inzerat: {top_title.encode('ascii', errors='replace').decode()}")
+    # Uložit archived.json
+    archive = {
+        "updated":  datetime.now(timezone.utc).isoformat(),
+        "total":    len(prev_archived),
+        "listings": prev_archived,
+    }
+    with open(ARCHIVE_FILE, "w", encoding="utf-8") as f:
+        json.dump(archive, f, ensure_ascii=False, indent=2)
+
+    print(f"\nUlozeno: {OUTPUT_FILE} ({len(top_listings)} inzeratu)")
+    print(f"Ulozeno: {ARCHIVE_FILE} ({len(prev_archived)} prodanych)")
     print("=" * 60)
 
 
