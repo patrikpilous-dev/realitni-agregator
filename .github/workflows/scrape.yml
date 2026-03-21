@@ -23,6 +23,9 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Debug - seznam souboru
+        run: ls -la
+
       - name: Spuštění scraperu
         run: python scraper.py
 
