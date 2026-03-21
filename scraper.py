@@ -233,6 +233,7 @@ def fetch_category(cat_main: int, cat_type: int, label: str) -> list[dict]:
             "category_type_cb": cat_type,
             "per_page": 60,
             "page": page,
+            "sort": 0,          # 0 = nejnovější první
         }
         data = api_get(params)
         if not data:
@@ -377,9 +378,6 @@ def main():
 
     print(f"\nZpracovano: {len(all_listings)} inzeratu")
 
-    # Score
-    all_listings = compute_scores(all_listings)
-
     # Deduplikace (stejné ID z různých stránek)
     seen = set()
     unique = []
@@ -405,6 +403,11 @@ def main():
 
     print(f"Nove archivovano (prodano): {len(newly_archived)}")
     print(f"Celkem v archivu: {len(prev_archived)}")
+
+    # ── Score: přepočítá se z CELÉHO merged feedu ──────────────────
+    # Tím se medián průběžně zpřesňuje s každým dalším dnem scrapingu
+    all_merged = compute_scores(list(merged.values()))
+    merged = {l["id"]: l for l in all_merged}
 
     # Výsledný feed — seřadit dle score, zachovat vše
     top_listings = sorted(merged.values(), key=lambda x: x["score"], reverse=True)
