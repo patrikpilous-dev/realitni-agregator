@@ -105,6 +105,14 @@ def parse_disposition(name: str) -> str:
     return "ostatní"
 
 
+def parse_disposition_group(name: str) -> str:
+    """Vrátí skupinu dispozice podle prvního čísla (2+kk i 2+1 → '2')."""
+    match = re.search(r"(\d+)\+", name, re.IGNORECASE)
+    if match:
+        return match.group(1)
+    return "ostatní"
+
+
 def locality_to_city(locality: str) -> str:
     """
     Extrahuje město z lokality.
@@ -252,47 +260,52 @@ def process_estate(estate: dict, cat_main: int, cat_type: int) -> dict | None:
     price    = estate.get("price_czk", {}).get("value_raw") or estate.get("price")
     locality = estate.get("locality", "")
 
-    if not price or price <= 0 or not locality:
+    # Filtruj bez ceny, nulové, nebo "na vyžádání" (Sreality vrací 1 Kč)
+    if not price or price <= 1 or not locality:
         return None
 
     area = parse_area(name)
     if area is None or area < MIN_AREA:
         return None
 
-    price_per_m2 = round(price / area)
-    disposition  = parse_disposition(name)
-    labels       = extract_labels(estate)
+    price_per_m2      = round(price / area)
+    disposition       = parse_disposition(name)
+    disposition_group = parse_disposition_group(name)
+    labels            = extract_labels(estate)
 
     type_label  = "byt" if cat_main == 1 else "dům"
     transaction = "prodej" if cat_type == 1 else "pronájem"
     city        = locality_to_city(locality)
 
     return {
-        "id":            str(estate.get("hash_id", "")),
-        "title":         name,
-        "price":         int(price),
-        "area":          round(area, 1),
-        "price_per_m2":  price_per_m2,
-        "score":         0,
-        "disposition":   disposition,
-        "locality":      locality,
-        "locality_city": city,
-        "type":          type_label,
-        "transaction":   transaction,
-        "ownership":     labels["ownership"],
-        "building_type": labels["building_type"],
-        "extras":        labels["extras"],
-        "url":           build_sreality_url(estate),
-        "scraped_at":    datetime.now(timezone.utc).isoformat(),
+        "id":                 str(estate.get("hash_id", "")),
+        "title":              name,
+        "price":              int(price),
+        "area":               round(area, 1),
+        "price_per_m2":       price_per_m2,
+        "score":              0,
+        "median_price_per_m2": None,
+        "disposition":        disposition,
+        "disposition_group":  disposition_group,
+        "locality":           locality,
+        "locality_city":      city,
+        "type":               type_label,
+        "transaction":        transaction,
+        "ownership":          labels["ownership"],
+        "building_type":      labels["building_type"],
+        "extras":             labels["extras"],
+        "url":                build_sreality_url(estate),
+        "scraped_at":         datetime.now(timezone.utc).isoformat(),
     }
 
 
 # ── Score výhodnosti ───────────────────────────────────────────────────────────
 
 def compute_scores(listings: list[dict]) -> list[dict]:
+    # Skupinujeme podle PRVNÍHO ČÍSLA dispozice (2+kk i 2+1 → skupina "2")
     groups: dict[tuple, list[float]] = defaultdict(list)
     for l in listings:
-        key = (l["disposition"], l["locality_city"])
+        key = (l["disposition_group"], l["locality_city"])
         groups[key].append(l["price_per_m2"])
 
     medians: dict[tuple, float] = {}
@@ -301,12 +314,14 @@ def compute_scores(listings: list[dict]) -> list[dict]:
             medians[key] = statistics.median(prices)
 
     for l in listings:
-        key    = (l["disposition"], l["locality_city"])
+        key    = (l["disposition_group"], l["locality_city"])
         median = medians.get(key)
         if median and median > 0:
-            l["score"] = round((1 - l["price_per_m2"] / median) * 100, 1)
+            l["score"]              = round((1 - l["price_per_m2"] / median) * 100, 1)
+            l["median_price_per_m2"] = round(median)
         else:
-            l["score"] = 0
+            l["score"]              = 0
+            l["median_price_per_m2"] = None
 
     return listings
 
@@ -374,20 +389,25 @@ def main():
             unique.append(l)
     all_listings = unique
 
-    # Archiv — co zmizelo z feedu
+    # ── Akumulace: sloučíme staré + nové inzeráty ──────────────────
+    # Nové scraping data přepíší staré záznamy stejného ID (čerstvější info)
+    merged: dict[str, dict] = {l["id"]: l for l in prev_listings}
+    for l in all_listings:
+        merged[l["id"]] = l  # přepíše starý záznam čerstvým
+
+    # Archiv — co bylo minule ve feedu a teď Sreality nevrátilo
     newly_archived = update_archive(seen, prev_listings)
-    # Přidáme do archivu, ale nevkládáme duplicity
     for l in newly_archived:
         if l["id"] not in prev_arch_ids:
             prev_archived.append(l)
             prev_arch_ids.add(l["id"])
+            del merged[l["id"]]  # vyřaď prodané z feedu
 
     print(f"Nove archivovano (prodano): {len(newly_archived)}")
     print(f"Celkem v archivu: {len(prev_archived)}")
 
-    # Top N dle score
-    all_listings.sort(key=lambda x: x["score"], reverse=True)
-    top_listings = all_listings[:TOP_N]
+    # Výsledný feed — seřadit dle score, zachovat vše
+    top_listings = sorted(merged.values(), key=lambda x: x["score"], reverse=True)
 
     # Uložit feed.json
     feed = {
