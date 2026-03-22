@@ -17,6 +17,7 @@ import urllib.parse
 API_BASE = "https://www.sreality.cz/api/cs/v2/estates"
 OUTPUT_FILE  = "feed.json"
 ARCHIVE_FILE = "archived.json"
+HISTORY_FILE = "price_history.json"   # denní mediány cen/m² per město
 
 # Kolik stránek stáhnout na kategorii (60 inzerátů/stránka)
 MAX_PAGES = 5
@@ -353,6 +354,72 @@ def update_archive(new_ids: set, previous_listings: list[dict]) -> list[dict]:
     return archived
 
 
+# ── Cenová historie ────────────────────────────────────────────────────────────
+
+def compute_city_medians(listings: list[dict]) -> dict:
+    """
+    Vrátí slovník { město: { "byty": median|None, "domy": median|None, "celkem": median|None } }
+    Počítá se z předaného seznamu listingů (typicky celý merged feed).
+    """
+    from collections import defaultdict
+    buckets: dict[str, dict[str, list]] = defaultdict(lambda: {"byty": [], "domy": [], "celkem": []})
+
+    for l in listings:
+        city = l.get("locality_city", "").strip()
+        if not city:
+            continue
+        pm2 = l.get("price_per_m2", 0)
+        if not pm2 or pm2 <= 0:
+            continue
+        t = l.get("type", "")
+        buckets[city]["celkem"].append(pm2)
+        if t == "byt":
+            buckets[city]["byty"].append(pm2)
+        elif t == "dům":
+            buckets[city]["domy"].append(pm2)
+
+    result = {}
+    for city, groups in buckets.items():
+        result[city] = {}
+        for key, prices in groups.items():
+            if prices:
+                s = sorted(prices)
+                result[city][key] = s[len(s) // 2]
+            else:
+                result[city][key] = None
+    return result
+
+
+def update_price_history(listings: list[dict]) -> None:
+    """
+    Načte price_history.json, přidá záznam pro dnešní den (přepíše pokud již existuje),
+    a uloží zpět. Struktura:
+      { "updated": "...", "days": [ { "date": "YYYY-MM-DD", "cities": { ... } }, ... ] }
+    """
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    medians = compute_city_medians(listings)
+
+    prev = load_json_file(HISTORY_FILE)
+    days: list[dict] = prev.get("days", [])
+
+    # Odstraň případný starší záznam pro dnešní datum
+    days = [d for d in days if d.get("date") != today]
+
+    days.append({"date": today, "cities": medians})
+
+    # Seřadit vzestupně dle data (pro přehlednost a grafy)
+    days.sort(key=lambda d: d["date"])
+
+    history = {
+        "updated": datetime.now(timezone.utc).isoformat(),
+        "days":    days,
+    }
+    with open(HISTORY_FILE, "w", encoding="utf-8") as f:
+        json.dump(history, f, ensure_ascii=False, indent=2)
+
+    print(f"Ulozeno: {HISTORY_FILE} ({len(days)} dni, {len(medians)} mest)")
+
+
 # ── Hlavní funkce ──────────────────────────────────────────────────────────────
 
 def main():
@@ -430,6 +497,9 @@ def main():
     }
     with open(ARCHIVE_FILE, "w", encoding="utf-8") as f:
         json.dump(archive, f, ensure_ascii=False, indent=2)
+
+    # Uložit price_history.json
+    update_price_history(top_listings)
 
     print(f"\nUlozeno: {OUTPUT_FILE} ({len(top_listings)} inzeratu)")
     print(f"Ulozeno: {ARCHIVE_FILE} ({len(prev_archived)} prodanych)")
