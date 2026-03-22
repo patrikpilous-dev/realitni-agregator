@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MAX Reality — Výhodné nabídky (Preview)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Nunito+Sans:wght@400;600&display=swap">
+  <style>
+    body { margin: 0; padding: 24px; background: #f2f2f2; font-family: 'Nunito Sans', sans-serif; }
+  </style>
+</head>
+<body>
+
+<script>
+  const FEED_URL    = "./feed.json";
+  const ARCHIVE_URL = "./archived.json";
+  const HISTORY_URL = "./price_history.json";
+</script>
+
+<style>
+  .rea-wrapper {
+    --max-red:    #C8102E;
+    --max-red-dk: #96081F;
+    --max-dark:   #2d2d2d;
+    --max-grey:   #f7f7f7;
+    --max-border: #e0e0e0;
+    font-family: 'Nunito Sans', sans-serif;
+    max-width: 1120px; margin: 0 auto; color: var(--max-dark);
+  }
+  .rea-wrapper h1, .rea-wrapper h2, .rea-wrapper h3,
+  .rea-wrapper .rea-title, .rea-wrapper .rea-price-val {
+    font-family: 'Poppins', sans-serif;
+  }
+
+  /* ── Filtry ── */
+  .rea-filters {
+    display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end;
+    margin-bottom: 12px; padding: 16px 20px;
+    background: var(--max-grey); border: 1px solid var(--max-border);
+  }
+  .rea-filters label { font-size: 12px; font-weight: 600; color: #666; text-transform: uppercase; letter-spacing: .4px; }
+  .rea-filters select {
+    display: block; margin-top: 5px; padding: 7px 12px;
+    border: 1px solid #ccc; border-radius: 0; font-size: 13px;
+    font-family: 'Nunito Sans', sans-serif; background: #fff;
+    cursor: pointer; min-width: 130px;
+  }
+  .rea-filters select:focus { outline: 2px solid var(--max-red); }
+  .rea-filters input[type=range] { display: block; margin-top: 8px; width: 180px; cursor: pointer; accent-color: var(--max-red); }
+  .rea-price-label { font-size: 13px; color: var(--max-dark); margin-top: 5px; font-weight: 600; }
+  .rea-reset-btn {
+    padding: 8px 18px; background: var(--max-dark); color: #fff;
+    border: none; cursor: pointer; font-size: 13px;
+    font-family: 'Nunito Sans', sans-serif; font-weight: 600;
+    border-radius: 0; transition: background .2s;
+  }
+  .rea-reset-btn:hover { background: var(--max-red); }
+
+  /* ── Aktivní filtry ── */
+  .rea-active-filters { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; min-height: 4px; }
+  .rea-filter-chip {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 4px 12px; background: var(--max-dark); color: #fff;
+    font-size: 12px; cursor: pointer; font-weight: 600;
+  }
+  .rea-filter-chip:hover { background: var(--max-red); }
+
+  /* ── Tabs ── */
+  .rea-tabs { display: flex; margin-bottom: 20px; border-bottom: 3px solid var(--max-red); }
+  .rea-tab {
+    padding: 10px 26px; border: none; cursor: pointer;
+    font-size: 14px; font-weight: 700; font-family: 'Poppins', sans-serif;
+    background: #fff; color: #888; border-radius: 0;
+    transition: all .15s; border-bottom: 3px solid transparent; margin-bottom: -3px;
+  }
+  .rea-tab.active  { background: var(--max-red); color: #fff; border-bottom-color: var(--max-red); }
+  .rea-tab:hover:not(.active) { background: #f5f5f5; color: var(--max-dark); }
+
+  /* ── Stats ── */
+  .rea-stats { font-size: 13px; color: #777; margin-bottom: 16px; }
+  .rea-stats strong { color: var(--max-red); }
+
+  /* ── City info banner ── */
+  #rea-city-banner {
+    display: none;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 14px;
+    color: #222;
+    line-height: 1.7;
+    margin: 10px 0 18px;
+  }
+  #rea-city-banner a { color: var(--max-red); text-decoration: none; }
+  #rea-city-banner a:hover { text-decoration: underline; }
+
+  /* ── Sort + stats řádek ── */
+  .rea-statsort-row { display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:8px; }
+  .rea-sort-row { display:flex; align-items:center; gap:6px; font-family:'Nunito Sans',sans-serif; font-size:13px; color:#555; }
+  .rea-sort-row label { margin:0; font-size:13px; color:#555; }
+  .rea-sort-row select { font-family:'Nunito Sans',sans-serif; font-size:13px; padding:4px 8px; border:1px solid #ddd; border-radius:0; color:#333; background:#fff; cursor:pointer; }
+
+  /* ── Sekce pod výpisem ── */
+  .rea-below-section { margin-top:48px; font-family:'Nunito Sans',sans-serif; font-size:14px; color:#222; line-height:1.7; }
+  .rea-below-section h4 { font-family:'Poppins',sans-serif; font-size:15px; font-weight:700; color:#111; margin:0 0 10px; letter-spacing:.2px; }
+  .rea-below-section h2 { font-family:'Poppins',sans-serif; font-size:18px; font-weight:700; color:#111; margin:0 0 14px; letter-spacing:.2px; }
+  .rea-below-section p { margin:6px 0; font-size:14px; font-family:'Nunito Sans',sans-serif; color:#222; line-height:1.7; }
+  .rea-below-section .rea-note { font-size:12px; color:#999; margin-top:8px; }
+  .rea-city-compare-grid { display:flex; flex-wrap:wrap; gap:10px; margin-top:10px; }
+  .rea-city-compare-item { padding:8px 14px; background:#f9f9f9; border-left:3px solid #ddd; min-width:150px; }
+  .rea-city-compare-item.rea-current { border-left-color:var(--max-red); background:#fff5f6; }
+  .rea-city-compare-item a { color:#222; text-decoration:none; font-size:12px; }
+  .rea-city-compare-item a:hover { color:var(--max-red); }
+  .rea-city-compare-item strong { display:block; font-size:15px; margin-top:2px; }
+  .rea-yield-bar { display:flex; gap:6px; align-items:center; margin:6px 0 10px; }
+  .rea-yield-dot { width:12px; height:12px; border-radius:50%; flex-shrink:0; }
+
+  /* ── Grid ── */
+  .rea-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 16px; }
+
+  /* ── Karta ── */
+  .rea-card {
+    background: #fff; padding: 20px; display: flex; flex-direction: column; gap: 0;
+    border: 1px solid var(--max-border); border-radius: 0; position: relative;
+    transition: box-shadow .2s, border-color .2s;
+  }
+  .rea-card:hover { box-shadow: 0 6px 24px rgba(200,16,46,.10); border-color: var(--max-red); }
+  .rea-card.sold  { background: #fafafa; opacity: .85; }
+
+  /* Score badge */
+  .rea-score-badge {
+    display: inline-block; margin-bottom: 12px; padding: 4px 12px;
+    font-size: 12px; font-weight: 700; font-family: 'Poppins', sans-serif;
+    border-radius: 0; align-self: flex-start; letter-spacing: .3px;
+  }
+  .rea-score-badge.good { background: #e8f5e9; color: #2e7d32; border-left: 3px solid #2e7d32; }
+  .rea-score-badge.avg  { background: #fff3e0; color: #e65100; border-left: 3px solid #e65100; }
+  .rea-score-badge.bad  { background: #fce4ec; color: #c62828; border-left: 3px solid #c62828; }
+  .rea-score-badge.sold-badge { background: #f5f5f5; color: #757575; border-left: 3px solid #bdbdbd; }
+  .rea-opportunity-badge {
+    display: inline-block; margin-bottom: 8px; padding: 3px 10px;
+    font-size: 11px; font-weight: 700; font-family: 'Poppins', sans-serif;
+    letter-spacing: .3px; background: #fff8e1; color: #f57f17;
+    border-left: 3px solid #f9a825; border-radius: 0;
+  }
+
+  /* Hlavička karty — badge vlevo, datum vpravo */
+  .rea-card-header { display: flex; justify-content: space-between; align-items: flex-start; }
+  .rea-card-badges { display: flex; flex-direction: column; align-items: flex-start; }
+  .rea-scraped     { font-size: 11px; color: #ccc; white-space: nowrap; margin-left: 8px; padding-top: 3px; }
+
+  /* Název */
+  .rea-title { font-size: 15px; font-weight: 700; color: var(--max-dark); margin: 0 0 14px; line-height: 1.4; font-family: 'Poppins', sans-serif; }
+
+  /* Info řádky */
+  .rea-info { width: 100%; margin-bottom: 14px; }
+  .rea-info-row { display: flex; align-items: baseline; padding: 3px 0; background: none; border: none; }
+  .rea-lbl { color: var(--max-dark); width: 38%; flex-shrink: 0; font-size: 13px; font-weight: 600; }
+  .rea-val { color: var(--max-dark); font-weight: 600; font-size: 13px; }
+  .rea-info-row.rea-price-row .rea-val { font-size: 18px; font-weight: 700; color: var(--max-red); font-family: 'Poppins', sans-serif; }
+  .rea-info-row.rea-pm2-row .rea-val   { color: #777; font-weight: 400; font-size: 12px; }
+  .rea-median { color: #aaa; font-size: 11px; font-weight: 400; }
+
+  /* Tagy */
+  .rea-extras { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 16px; }
+  .rea-tag {
+    font-size: 11px; padding: 3px 10px; font-weight: 600;
+    cursor: pointer; border-radius: 0; border: none;
+    background: #fff3e0; color: #bf360c;
+    transition: opacity .15s, transform .1s;
+  }
+  .rea-tag:hover      { opacity: .75; transform: translateY(-1px); }
+  .rea-tag.active-tag { outline: 2px solid var(--max-red); opacity: 1; }
+
+  /* CTA */
+  .rea-link {
+    display: block; margin-top: auto; padding: 11px 18px;
+    background: var(--max-red); color: #fff !important; border-radius: 0;
+    font-size: 13px; font-weight: 700; font-family: 'Poppins', sans-serif;
+    text-decoration: none !important; text-align: center; letter-spacing: .4px; transition: background .2s;
+  }
+  .rea-link:hover, .rea-link:focus { background: var(--max-red-dk); color: #fff !important; }
+  .rea-link.sold-link       { background: #9e9e9e; }
+  .rea-link.sold-link:hover { background: #757575; }
+
+  /* Stavy */
+  .rea-loading, .rea-empty, .rea-error {
+    grid-column: 1/-1; text-align: center; padding: 48px; color: #aaa; font-size: 15px;
+  }
+  .rea-error   { color: var(--max-red); }
+  .rea-updated { font-size: 12px; color: #bbb; text-align: right; margin-top: 20px; }
+</style>
+
+<div class="rea-wrapper">
+
+  <!-- Intro text -->
+  <div style="background:#C8102E;padding:12px 20px;margin-bottom:0;">
+    <p style="margin:0;font-family:'Nunito Sans',sans-serif;font-size:15px;color:#fff;font-weight:600;letter-spacing:.2px;">
+      Domy, byty a další nemovitosti na prodej aktuálně a výhodně.
+    </p>
+  </div>
+
+  <!-- Filtry -->
+  <div class="rea-filters">
+    <label>Typ nemovitosti
+      <select id="rea-f-type">
+        <option value="">— Vše —</option>
+        <option value="byt">Byty</option>
+        <option value="dům">Domy</option>
+      </select>
+    </label>
+    <label>Dispozice
+      <select id="rea-f-disp"><option value="">— Vše —</option></select>
+    </label>
+    <label>Město
+      <select id="rea-f-city"><option value="">— Vše —</option></select>
+    </label>
+    <label>Vlastnictví
+      <select id="rea-f-own">
+        <option value="">— Vše —</option>
+        <option value="Osobní">Osobní</option>
+        <option value="Družstevní">Družstevní</option>
+      </select>
+    </label>
+    <label>Vybavení
+      <select id="rea-f-extra"><option value="">— Vše —</option></select>
+    </label>
+    <label>
+      Max. cena: <div class="rea-price-label" id="rea-price-val">—</div>
+      <input type="range" id="rea-f-price" min="0" max="30000000" step="100000" value="30000000">
+    </label>
+
+    <button class="rea-reset-btn" onclick="reaReset()">Resetovat</button>
+  </div>
+
+  <!-- Aktivní filtry -->
+  <div class="rea-active-filters" id="rea-active-filters"></div>
+
+  <!-- Informační banner o městu -->
+  <p id="rea-city-banner"></p>
+
+  <!-- Tabs -->
+  <div class="rea-tabs">
+    <button class="rea-tab active" onclick="reaTab('active', this)">Aktivní nabídky</button>
+    <button class="rea-tab" onclick="reaTab('sold', this)">Prodáno / Archiv</button>
+  </div>
+
+  <div class="rea-statsort-row">
+    <div class="rea-stats" id="rea-stats"></div>
+    <div class="rea-sort-row">
+      <label for="rea-sort">Řadit dle</label>
+      <select id="rea-sort">
+        <option value="score">Nejlepší skóre</option>
+        <option value="price_asc">Cena ↑</option>
+        <option value="price_desc">Cena ↓</option>
+        <option value="pm2_asc">Cena/m² ↑</option>
+        <option value="pm2_desc">Cena/m² ↓</option>
+        <option value="area_desc">Největší plocha</option>
+        <option value="newest">Nejnovější</option>
+      </select>
+    </div>
+  </div>
+  <div class="rea-grid" id="rea-grid"><div class="rea-loading">Načítám nabídky…</div></div>
+  <div class="rea-updated" id="rea-updated"></div>
+
+  <!-- Srovnání cen okolních měst -->
+  <div id="rea-city-compare" class="rea-below-section" style="display:none;"></div>
+  <!-- Výnosnost pronájmu -->
+  <div id="rea-rental-yield" class="rea-below-section" style="display:none;"></div>
+  <!-- Výhody města -->
+  <div id="rea-city-infra" class="rea-below-section" style="display:none;"></div>
+  <!-- Cenový trend -->
+  <div id="rea-price-history" class="rea-below-section" style="display:none;"></div>
+
+
+</div>
+
+<script>
+(function() {
+  'use strict';
+
+  let activeListings = [], archivedListings = [], currentTab = "active", maxPrice = 30000000;
+  let priceHistory = null;
+  let cityPrefixFilter = "";
+
+  // ── Načtení dat ──────────────────────────────────────────────
+
+  // ── Informace o městech (ČSÚ 2024, průzkumy spokojenosti) ─────────────────
+  const CITY_INFO = {
+    "Praha":              { rankCZ:  1, rankKraj: 0, krajLoc: null,                        pop: 1357000, hap: 7.0, hapCmp: "Brně",               hapSlug: "brno" },
+    "Brno":               { rankCZ:  2, rankKraj: 1, krajLoc: "Jihomoravském kraji",        pop:  382000, hap: 7.1, hapCmp: "Praze",              hapSlug: "praha" },
+    "Ostrava":            { rankCZ:  3, rankKraj: 1, krajLoc: "Moravskoslezském kraji",     pop:  285000, hap: 6.3, hapCmp: "Kladně",             hapSlug: "kladno" },
+    "Plzeň":              { rankCZ:  4, rankKraj: 1, krajLoc: "Plzeňském kraji",            pop:  175000, hap: 7.2, hapCmp: "Hradci Králové",     hapSlug: "hradec-kralove" },
+    "Liberec":            { rankCZ:  5, rankKraj: 1, krajLoc: "Libereckém kraji",           pop:  105000, hap: 7.5, hapCmp: "Pardubicích",        hapSlug: "pardubice" },
+    "Olomouc":            { rankCZ:  6, rankKraj: 1, krajLoc: "Olomouckém kraji",           pop:  101000, hap: 7.4, hapCmp: "Českých Budějovicích", hapSlug: "ceske-budejovice" },
+    "České Budějovice":   { rankCZ:  7, rankKraj: 1, krajLoc: "Jihočeském kraji",           pop:   94000, hap: 7.4, hapCmp: "Olomouci",           hapSlug: "olomouc" },
+    "Hradec Králové":     { rankCZ:  8, rankKraj: 1, krajLoc: "Královéhradeckém kraji",     pop:   93000, hap: 7.6, hapCmp: "Zlíně",              hapSlug: "zlin" },
+    "Pardubice":          { rankCZ:  9, rankKraj: 1, krajLoc: "Pardubickém kraji",          pop:   92000, hap: 7.8, hapCmp: "Hradci Králové",     hapSlug: "hradec-kralove" },
+    "Ústí nad Labem":     { rankCZ: 10, rankKraj: 1, krajLoc: "Ústeckém kraji",             pop:   91000, hap: 6.0, hapCmp: "Ostravě",            hapSlug: "ostrava" },
+    "Zlín":               { rankCZ: 11, rankKraj: 1, krajLoc: "Zlínském kraji",             pop:   74000, hap: 7.7, hapCmp: "Pardubicích",        hapSlug: "pardubice" },
+    "Havířov":            { rankCZ: 12, rankKraj: 2, krajLoc: "Moravskoslezském kraji",     pop:   71000, hap: 6.4, hapCmp: "Teplicích",          hapSlug: "teplice" },
+    "Kladno":             { rankCZ: 13, rankKraj: 1, krajLoc: "Středočeském kraji",         pop:   70000, hap: 6.3, hapCmp: "Ostravě",            hapSlug: "ostrava" },
+    "Most":               { rankCZ: 14, rankKraj: 2, krajLoc: "Ústeckém kraji",             pop:   65000, hap: 5.8, hapCmp: "Karviné",            hapSlug: "karvina" },
+    "Opava":              { rankCZ: 15, rankKraj: 3, krajLoc: "Moravskoslezském kraji",     pop:   57000, hap: 6.8, hapCmp: "Přerově",            hapSlug: "prerov" },
+    "Frýdek-Místek":      { rankCZ: 16, rankKraj: 4, krajLoc: "Moravskoslezském kraji",    pop:   56000, hap: 6.7, hapCmp: "Příbrami",           hapSlug: "pribram" },
+    "Jihlava":            { rankCZ: 17, rankKraj: 1, krajLoc: "kraji Vysočina",             pop:   55000, hap: 7.3, hapCmp: "Táboře",             hapSlug: "tabor" },
+    "Karviná":            { rankCZ: 18, rankKraj: 5, krajLoc: "Moravskoslezském kraji",     pop:   54000, hap: 5.9, hapCmp: "Mostě",              hapSlug: "most" },
+    "Teplice":            { rankCZ: 19, rankKraj: 3, krajLoc: "Ústeckém kraji",             pop:   50000, hap: 6.4, hapCmp: "Děčíně",             hapSlug: "decin" },
+    "Děčín":              { rankCZ: 20, rankKraj: 4, krajLoc: "Ústeckém kraji",             pop:   48000, hap: 6.2, hapCmp: "Chomutově",          hapSlug: "chomutov" },
+    "Chomutov":           { rankCZ: 21, rankKraj: 5, krajLoc: "Ústeckém kraji",             pop:   48000, hap: 6.2, hapCmp: "Děčíně",             hapSlug: "decin" },
+    "Mladá Boleslav":     { rankCZ: 22, rankKraj: 2, krajLoc: "Středočeském kraji",         pop:   45000, hap: 6.8, hapCmp: "Přerově",            hapSlug: "prerov" },
+    "Jablonec nad Nisou": { rankCZ: 23, rankKraj: 2, krajLoc: "Libereckém kraji",           pop:   44000, hap: 7.2, hapCmp: "Jihlavě",            hapSlug: "jihlava" },
+    "Přerov":             { rankCZ: 24, rankKraj: 2, krajLoc: "Olomouckém kraji",           pop:   43000, hap: 6.8, hapCmp: "Opavě",              hapSlug: "opava" },
+    "Prostějov":          { rankCZ: 25, rankKraj: 3, krajLoc: "Olomouckém kraji",           pop:   43000, hap: 6.9, hapCmp: "Znojmě",             hapSlug: "znojmo" },
+    "Třebíč":             { rankCZ: 26, rankKraj: 2, krajLoc: "kraji Vysočina",             pop:   36000, hap: 7.2, hapCmp: "Plzni",              hapSlug: "plzen" },
+    "Česká Lípa":         { rankCZ: 27, rankKraj: 3, krajLoc: "Libereckém kraji",           pop:   36000, hap: 6.5, hapCmp: "Chebu",              hapSlug: "cheb" },
+    "Tábor":              { rankCZ: 28, rankKraj: 2, krajLoc: "Jihočeském kraji",           pop:   35000, hap: 7.2, hapCmp: "Jablonci nad Nisou", hapSlug: "jablonec-nad-nisou" },
+    "Třinec":             { rankCZ: 29, rankKraj: 6, krajLoc: "Moravskoslezském kraji",     pop:   35000, hap: 7.0, hapCmp: "Kolíně",             hapSlug: "kolin" },
+    "Znojmo":             { rankCZ: 30, rankKraj: 2, krajLoc: "Jihomoravském kraji",        pop:   35000, hap: 6.9, hapCmp: "Prostějově",         hapSlug: "prostejov" },
+    "Kolín":              { rankCZ: 31, rankKraj: 4, krajLoc: "Středočeském kraji",         pop:   33000, hap: 7.0, hapCmp: "Třinci",             hapSlug: "trinec" },
+    "Příbram":            { rankCZ: 32, rankKraj: 3, krajLoc: "Středočeském kraji",         pop:   33000, hap: 6.7, hapCmp: "Frýdku-Místku",      hapSlug: "frydek-mistek" },
+    "Cheb":               { rankCZ: 33, rankKraj: 2, krajLoc: "Karlovarském kraji",         pop:   33000, hap: 6.5, hapCmp: "České Lípě",         hapSlug: "ceska-lipa" },
+    "Trutnov":            { rankCZ: 34, rankKraj: 2, krajLoc: "Královéhradeckém kraji",     pop:   31000, hap: 7.1, hapCmp: "Třebíči",            hapSlug: "trebic" },
+    "Písek":              { rankCZ: 35, rankKraj: 3, krajLoc: "Jihočeském kraji",           pop:   30000, hap: 7.3, hapCmp: "Jihlavě",            hapSlug: "jihlava" },
+    "Kroměříž":           { rankCZ: 36, rankKraj: 2, krajLoc: "Zlínském kraji",             pop:   29000, hap: 7.2, hapCmp: "Uherském Hradišti",  hapSlug: "uherske-hradiste" },
+    "Šumperk":            { rankCZ: 37, rankKraj: 4, krajLoc: "Olomouckém kraji",           pop:   27000, hap: 6.9, hapCmp: "Prostějově",         hapSlug: "prostejov" },
+    "Uherské Hradiště":   { rankCZ: 38, rankKraj: 3, krajLoc: "Zlínském kraji",             pop:   26000, hap: 7.2, hapCmp: "Kroměříži",          hapSlug: "kromeriz" },
+    "Vsetín":             { rankCZ: 39, rankKraj: 4, krajLoc: "Zlínském kraji",             pop:   26000, hap: 7.0, hapCmp: "Třinci",             hapSlug: "trinec" },
+    "Hodonín":            { rankCZ: 40, rankKraj: 3, krajLoc: "Jihomoravském kraji",        pop:   25000, hap: 6.7, hapCmp: "Příbrami",           hapSlug: "pribram" },
+    "Břeclav":            { rankCZ: 41, rankKraj: 4, krajLoc: "Jihomoravském kraji",        pop:   25000, hap: 6.8, hapCmp: "Mladé Boleslavi",    hapSlug: "mlada-boleslav" },
+    "Sokolov":            { rankCZ: 42, rankKraj: 3, krajLoc: "Karlovarském kraji",         pop:   24000, hap: 6.3, hapCmp: "Ostravě",            hapSlug: "ostrava" },
+    "Nový Jičín":         { rankCZ: 43, rankKraj: 7, krajLoc: "Moravskoslezském kraji",     pop:   24000, hap: 7.0, hapCmp: "Vsetíně",            hapSlug: "vsetin" },
+    "Kopřivnice":         { rankCZ: 44, rankKraj: 8, krajLoc: "Moravskoslezském kraji",     pop:   23000, hap: 7.0, hapCmp: "Třinci",             hapSlug: "trinec" },
+    "Karlovy Vary":       { rankCZ: 16, rankKraj: 1, krajLoc: "Karlovarském kraji",         pop:   49000, hap: 6.2, hapCmp: "Chebu",              hapSlug: "cheb" },
+    "Krnov":              { rankCZ: 45, rankKraj: 9, krajLoc: "Moravskoslezském kraji",     pop:   22000, hap: 6.5, hapCmp: "Chebu",              hapSlug: "cheb" },
+  };
+
+  // ── Informační banner o městu ────────────────────────────────────────────
+  function renderCityInfo() {
+    if (!window.REA_DEFAULT_CITY) return;
+    const el = document.getElementById("rea-city-banner");
+    if (!el) return;
+    const cityName = window.REA_DEFAULT_CITY;
+    const info = CITY_INFO[cityName];
+    if (!info) return;
+
+    const pfx = cityName.toLowerCase();
+    const typeFilter = window.REA_DEFAULT_TYPE || null;
+
+    const cityListings  = activeListings.filter(l => (l.locality_city || "").toLowerCase().startsWith(pfx));
+    const typeListings  = typeFilter ? cityListings.filter(l => l.type === typeFilter) : cityListings;
+
+    function median(arr) {
+      if (!arr.length) return 0;
+      const s = [...arr].sort((a, b) => a - b);
+      return s[Math.floor(s.length / 2)];
+    }
+
+    const cityPrices = typeListings.map(l => l.price_per_m2).filter(p => p > 0);
+    const natPrices  = activeListings.map(l => l.price_per_m2).filter(p => p > 0);
+    const cityMed    = median(cityPrices);
+    const natMed     = median(natPrices);
+
+    let priceScale = "";
+    if (cityMed > 0 && natMed > 0) {
+      const r = (cityMed - natMed) / natMed;
+      if      (r >  0.25) priceScale = "velký nadprůměr";
+      else if (r >  0.10) priceScale = "nadprůměr";
+      else if (r > -0.10) priceScale = "průměr";
+      else if (r > -0.25) priceScale = "podprůměr";
+      else                priceScale = "velký podprůměr";
+    }
+
+    const h = info.hap;
+    let hapScale = "";
+    if      (h >= 7.5) hapScale = "velký nadprůměr";
+    else if (h >= 7.1) hapScale = "nadprůměr";
+    else if (h >= 6.6) hapScale = "průměr";
+    else if (h >= 6.0) hapScale = "podprůměr";
+    else               hapScale = "velký podprůměr";
+
+    let s = `<strong>${cityName}</strong> je ${info.rankCZ}. největší město ČR`;
+    if (info.rankKraj > 0 && info.krajLoc) {
+      s += ` a ${info.rankKraj}. největší v ${info.krajLoc}`;
+    }
+    s += ` (cca ${info.pop.toLocaleString("cs-CZ")} obyvatel).`;
+
+    if (cityMed > 0) {
+      const typeStr = typeFilter === "byt" ? "bytů" : typeFilter === "dům" ? "domů" : "nemovitostí";
+      s += ` Průměrná cena ${typeStr} dle aktuálních inzerátů: <strong>${Math.round(cityMed).toLocaleString("cs-CZ")} Kč/m²</strong>`;
+      if (priceScale) s += ` (${priceScale} oproti ČR)`;
+      s += `.`;
+    }
+
+    s += ` Index spokojenosti obyvatel: <strong>${h.toFixed(1).replace(".", ",")}/10</strong> (${hapScale}`;
+    if (info.hapCmp && info.hapSlug) {
+      s += `, podobně jako v <a href="/real/${info.hapSlug}/">${info.hapCmp}</a>`;
+    }
+    s += `).`;
+
+    el.innerHTML = s;
+    el.style.display = "block";
+  }
+
+
+  // ── Sousední města (pro srovnání cen) ───────────────────────────────────
+  const CITY_NEIGHBORS = {
+    "Praha":              ["Kladno","Mladá Boleslav","Příbram","Kolín"],
+    "Brno":               ["Znojmo","Hodonín","Břeclav","Prostějov","Jihlava"],
+    "Ostrava":            ["Frýdek-Místek","Opava","Karviná","Havířov","Třinec"],
+    "Plzeň":              ["České Budějovice","Cheb","Sokolov","Příbram"],
+    "Liberec":            ["Jablonec nad Nisou","Česká Lípa","Trutnov"],
+    "Olomouc":            ["Prostějov","Přerov","Kroměříž","Šumperk"],
+    "České Budějovice":   ["Tábor","Písek","Třebíč","Plzeň"],
+    "Hradec Králové":     ["Pardubice","Trutnov","Kolín"],
+    "Pardubice":          ["Hradec Králové","Kolín","Jihlava"],
+    "Ústí nad Labem":     ["Most","Teplice","Děčín","Chomutov"],
+    "Zlín":               ["Kroměříž","Uherské Hradiště","Vsetín","Frýdek-Místek"],
+    "Havířov":            ["Ostrava","Karviná","Frýdek-Místek","Třinec"],
+    "Kladno":             ["Praha","Mladá Boleslav","Příbram"],
+    "Most":               ["Ústí nad Labem","Teplice","Chomutov","Sokolov"],
+    "Opava":              ["Ostrava","Karviná","Nový Jičín","Krnov"],
+    "Frýdek-Místek":      ["Ostrava","Třinec","Havířov","Vsetín","Kopřivnice"],
+    "Jihlava":            ["Třebíč","Znojmo","Tábor","Brno"],
+    "Karviná":            ["Ostrava","Havířov","Frýdek-Místek","Třinec"],
+    "Teplice":            ["Most","Ústí nad Labem","Děčín","Chomutov"],
+    "Děčín":              ["Teplice","Ústí nad Labem","Česká Lípa"],
+    "Chomutov":           ["Most","Teplice","Ústí nad Labem","Sokolov"],
+    "Mladá Boleslav":     ["Praha","Kladno","Kolín","Jablonec nad Nisou"],
+    "Jablonec nad Nisou": ["Liberec","Česká Lípa","Mladá Boleslav"],
+    "Přerov":             ["Olomouc","Prostějov","Kroměříž","Uherské Hradiště"],
+    "Prostějov":          ["Olomouc","Přerov","Kroměříž"],
+    "Třebíč":             ["Jihlava","Znojmo","Brno"],
+    "Česká Lípa":         ["Liberec","Jablonec nad Nisou","Děčín"],
+    "Tábor":              ["České Budějovice","Písek","Jihlava"],
+    "Třinec":             ["Frýdek-Místek","Havířov","Karviná","Kopřivnice"],
+    "Znojmo":             ["Brno","Jihlava","Třebíč","Hodonín"],
+    "Kolín":              ["Praha","Hradec Králové","Pardubice","Příbram"],
+    "Příbram":            ["Praha","Kladno","Kolín","Písek"],
+    "Cheb":               ["Sokolov","Plzeň"],
+    "Trutnov":            ["Hradec Králové","Liberec","Jablonec nad Nisou"],
+    "Písek":              ["Tábor","České Budějovice","Příbram"],
+    "Kroměříž":           ["Prostějov","Přerov","Uherské Hradiště","Zlín"],
+    "Šumperk":            ["Olomouc","Přerov","Vsetín"],
+    "Uherské Hradiště":   ["Zlín","Kroměříž","Přerov","Hodonín","Vsetín"],
+    "Vsetín":             ["Zlín","Frýdek-Místek","Nový Jičín","Uherské Hradiště"],
+    "Hodonín":            ["Brno","Znojmo","Břeclav","Uherské Hradiště"],
+    "Břeclav":            ["Brno","Hodonín","Znojmo"],
+    "Sokolov":            ["Cheb","Chomutov","Most"],
+    "Nový Jičín":         ["Ostrava","Opava","Kopřivnice","Frýdek-Místek","Vsetín"],
+    "Kopřivnice":         ["Frýdek-Místek","Nový Jičín","Třinec","Ostrava"],
+    "Karlovy Vary":       ["Cheb","Sokolov","Most"],
+    "Krnov":              ["Opava","Ostrava","Nový Jičín"],
+  };
+
+  // ── Průměrný nájem Kč/m²/měsíc (Bezrealitky, 2024) ─────────────────────
+  const CITY_RENT_PM2 = {
+    "Praha":              370, "Brno":               295, "Ostrava":            195,
+    "Plzeň":              240, "Liberec":            215, "Olomouc":            225,
+    "České Budějovice":   230, "Hradec Králové":     235, "Pardubice":          220,
+    "Ústí nad Labem":     160, "Zlín":               195, "Havířov":            160,
+    "Kladno":             210, "Most":               140, "Opava":              180,
+    "Frýdek-Místek":      185, "Jihlava":            195, "Karviná":            150,
+    "Teplice":            165, "Děčín":              160, "Chomutov":           160,
+    "Mladá Boleslav":     205, "Jablonec nad Nisou": 205, "Přerov":             185,
+    "Prostějov":          180, "Třebíč":             180, "Česká Lípa":         190,
+    "Tábor":              195, "Třinec":             175, "Znojmo":             175,
+    "Kolín":              205, "Příbram":            195, "Cheb":               185,
+    "Trutnov":            190, "Písek":              195, "Kroměříž":           180,
+    "Šumperk":            175, "Uherské Hradiště":   195, "Vsetín":             175,
+    "Hodonín":            170, "Břeclav":            180, "Sokolov":            155,
+    "Nový Jičín":         185, "Kopřivnice":         180, "Krnov":              165, "Karlovy Vary":        185,
+  };
+
+
+  // ── Infrastruktura a vybavenost měst ─────────────────────────────────────────
+  // ZDROJE: vlak=IDOS/SŽDC 2024, dálnice=ŘSD 2024, fotbal=Fortuna liga 2024/25,
+  //         nemocnice=ÚZIS 2023, střední školy=MŠMT 2023, VŠ=MŠMT 2024,
+  //         kina+divadla=vlastní průzkum 2024
+  // AKTUALIZOVAT: fotbal každoročně po startu ligy (červen/červenec);
+  //               ostatní 1× za 2–3 roky při větší změně
+  //
+  // Pole:
+  //   trainMin      — nejrychlejší vlak do Prahy (min); null = Praha samotná
+  //   highway       — klíčové dálniční/rychlostní napojení
+  //   football      — prvoligový klub nebo null (žádný v 1. lize)
+  //   hospitals     — počet nemocnic ve městě
+  //   highSchools   — počet středních škol (gymnázia, SOŠ, SOU…)
+  //   universities  — počet VŠ a jejich detašovaných pracovišť ve městě
+  //   cinemaTheatre — počet kin a divadel ve městě
+  const CITY_INFRA = {
+    "Praha":              { trainMin: null, highway: "D1, D2, D5, D8, D11",   football: "Sparta Praha, Slavia Praha, Bohemians 1905", hospitals: 24, highSchools: 200, universities: 28, cinemaTheatre: 80 },
+    "Brno":               { trainMin:  140, highway: "D1, D2",                football: "FC Zbrojovka Brno",                          hospitals:  7, highSchools:  80, universities:  9, cinemaTheatre: 20 },
+    "Ostrava":            { trainMin:  205, highway: "D1, D56",               football: "FC Baník Ostrava",                           hospitals:  5, highSchools:  50, universities:  4, cinemaTheatre: 14 },
+    "Plzeň":              { trainMin:   80, highway: "D5",                    football: "FC Viktoria Plzeň",                          hospitals:  4, highSchools:  45, universities:  3, cinemaTheatre: 12 },
+    "Liberec":            { trainMin:  100, highway: "R35",                   football: null,                                         hospitals:  2, highSchools:  30, universities:  2, cinemaTheatre:  8 },
+    "Olomouc":            { trainMin:  125, highway: "D35",                   football: "SK Sigma Olomouc",                           hospitals:  4, highSchools:  35, universities:  2, cinemaTheatre: 10 },
+    "České Budějovice":   { trainMin:  145, highway: "D3",                    football: "SK Dynamo České Budějovice",                 hospitals:  2, highSchools:  35, universities:  2, cinemaTheatre:  8 },
+    "Hradec Králové":     { trainMin:  105, highway: "D11",                   football: "FC Hradec Králové",                          hospitals:  3, highSchools:  40, universities:  2, cinemaTheatre:  9 },
+    "Pardubice":          { trainMin:   95, highway: "D11, D35",              football: "FK Pardubice",                               hospitals:  2, highSchools:  35, universities:  2, cinemaTheatre:  7 },
+    "Zlín":               { trainMin:  245, highway: "D55",                   football: null,                                         hospitals:  2, highSchools:  30, universities:  2, cinemaTheatre:  6 },
+    "Ústí nad Labem":     { trainMin:   90, highway: "D8",                    football: null,                                         hospitals:  2, highSchools:  30, universities:  2, cinemaTheatre:  7 },
+    "Kladno":             { trainMin:   40, highway: "D7",                    football: null,                                         hospitals:  1, highSchools:  18, universities:  0, cinemaTheatre:  4 },
+    "Most":               { trainMin:   90, highway: "D7",                    football: null,                                         hospitals:  1, highSchools:  15, universities:  0, cinemaTheatre:  3 },
+    "Opava":              { trainMin:  255, highway: "D1, D56",               football: "SFC Opava",                                  hospitals:  1, highSchools:  20, universities:  1, cinemaTheatre:  5 },
+    "Karviná":            { trainMin:  240, highway: "D1",                    football: null,                                         hospitals:  1, highSchools:  15, universities:  1, cinemaTheatre:  3 },
+    "Frýdek-Místek":      { trainMin:  220, highway: "D56",                   football: null,                                         hospitals:  1, highSchools:  20, universities:  1, cinemaTheatre:  4 },
+    "Jihlava":            { trainMin:  130, highway: "D1",                    football: null,                                         hospitals:  1, highSchools:  22, universities:  1, cinemaTheatre:  5 },
+    "Teplice":            { trainMin:   80, highway: "D8",                    football: "FK Teplice",                                 hospitals:  1, highSchools:  20, universities:  0, cinemaTheatre:  5 },
+    "Děčín":              { trainMin:  110, highway: "D8",                    football: null,                                         hospitals:  1, highSchools:  15, universities:  0, cinemaTheatre:  3 },
+    "Chomutov":           { trainMin:  100, highway: "D7",                    football: null,                                         hospitals:  1, highSchools:  15, universities:  0, cinemaTheatre:  3 },
+    "Přerov":             { trainMin:  155, highway: "D1, D35",               football: null,                                         hospitals:  1, highSchools:  18, universities:  0, cinemaTheatre:  4 },
+    "Havířov":            { trainMin:  235, highway: "D1",                    football: null,                                         hospitals:  1, highSchools:  15, universities:  0, cinemaTheatre:  3 },
+    "Mladá Boleslav":     { trainMin:   70, highway: "D10",                   football: "FK Mladá Boleslav",                          hospitals:  1, highSchools:  20, universities:  1, cinemaTheatre:  4 },
+    "Prostějov":          { trainMin:  165, highway: "D46",                   football: null,                                         hospitals:  1, highSchools:  20, universities:  0, cinemaTheatre:  4 },
+    "Znojmo":             { trainMin:  200, highway: "D52",                   football: null,                                         hospitals:  1, highSchools:  15, universities:  0, cinemaTheatre:  4 },
+    "Třebíč":             { trainMin:  160, highway: "D1 (přes Jihlavu)",     football: null,                                         hospitals:  1, highSchools:  15, universities:  0, cinemaTheatre:  3 },
+    "Kolín":              { trainMin:   55, highway: "D11",                   football: null,                                         hospitals:  1, highSchools:  15, universities:  0, cinemaTheatre:  3 },
+    "Příbram":            { trainMin:   70, highway: "D4",                    football: null,                                         hospitals:  1, highSchools:  15, universities:  0, cinemaTheatre:  3 },
+    "Trutnov":            { trainMin:  145, highway: "R11",                   football: null,                                         hospitals:  1, highSchools:  15, universities:  0, cinemaTheatre:  3 },
+    "Cheb":               { trainMin:  190, highway: "D6",                    football: null,                                         hospitals:  1, highSchools:  12, universities:  0, cinemaTheatre:  3 },
+    "Jablonec nad Nisou": { trainMin:  120, highway: "R35",                   football: "FK Jablonec",                                hospitals:  1, highSchools:  15, universities:  0, cinemaTheatre:  4 },
+    "Tábor":              { trainMin:   90, highway: "D3",                    football: null,                                         hospitals:  1, highSchools:  15, universities:  0, cinemaTheatre:  4 },
+    "Česká Lípa":         { trainMin:  110, highway: "R35",                   football: null,                                         hospitals:  1, highSchools:  15, universities:  0, cinemaTheatre:  3 },
+    "Třinec":             { trainMin:  250, highway: "D56",                   football: "FK Třinec",                                  hospitals:  1, highSchools:  12, universities:  0, cinemaTheatre:  2 },
+    "Šumperk":            { trainMin:  180, highway: "Bez přímého napojení",  football: null,                                         hospitals:  1, highSchools:  15, universities:  0, cinemaTheatre:  3 },
+    "Kroměříž":           { trainMin:  200, highway: "D55",                   football: null,                                         hospitals:  1, highSchools:  12, universities:  0, cinemaTheatre:  4 },
+    "Uherské Hradiště":   { trainMin:  190, highway: "D55",                   football: "FC Slovácko",                                hospitals:  1, highSchools:  18, universities:  1, cinemaTheatre:  5 },
+    "Vsetín":             { trainMin:  230, highway: "Bez přímého napojení",  football: null,                                         hospitals:  1, highSchools:  12, universities:  0, cinemaTheatre:  3 },
+    "Hodonín":            { trainMin:  200, highway: "D2",                    football: null,                                         hospitals:  1, highSchools:  12, universities:  0, cinemaTheatre:  3 },
+    "Sokolov":            { trainMin:  175, highway: "D6",                    football: null,                                         hospitals:  1, highSchools:  10, universities:  0, cinemaTheatre:  2 },
+    "Nový Jičín":         { trainMin:  230, highway: "D1, D56",               football: null,                                         hospitals:  1, highSchools:  12, universities:  0, cinemaTheatre:  3 },
+    "Písek":              { trainMin:  110, highway: "D4",                    football: null,                                         hospitals:  1, highSchools:  12, universities:  0, cinemaTheatre:  3 },
+    "Břeclav":            { trainMin:  160, highway: "D2",                    football: null,                                         hospitals:  0, highSchools:  10, universities:  0, cinemaTheatre:  2 },
+    "Krnov":              { trainMin:  275, highway: "Bez přímého napojení",  football: null,                                         hospitals:  1, highSchools:   8, universities:  0, cinemaTheatre:  2 },
+    "Kopřivnice":         { trainMin:  230, highway: "D48",                   football: null,                                         hospitals:  0, highSchools:  10, universities:  0, cinemaTheatre:  2 },
+    "Karlovy Vary":       { trainMin:  185, highway: "D6",                    football: null,                                         hospitals:  1, highSchools:  15, universities:  1, cinemaTheatre:  6 },
+  };
+
+  // ── Skloňování názvů měst (lokál, 6. pád) ─────────────────────────────────
+  const CITY_LOCATIVE = {
+    "Praha":"Praze","Brno":"Brně","Ostrava":"Ostravě","Plzeň":"Plzni",
+    "Liberec":"Liberci","Olomouc":"Olomouci","České Budějovice":"Českých Budějovicích",
+    "Hradec Králové":"Hradci Králové","Pardubice":"Pardubicích","Zlín":"Zlíně",
+    "Ústí nad Labem":"Ústí nad Labem","Kladno":"Kladně","Most":"Mostě",
+    "Opava":"Opavě","Karviná":"Karviné","Frýdek-Místek":"Frýdku-Místku",
+    "Jihlava":"Jihlavě","Teplice":"Teplicích","Děčín":"Děčíně",
+    "Chomutov":"Chomutově","Přerov":"Přerově","Havířov":"Havířově",
+    "Mladá Boleslav":"Mladé Boleslavi","Prostějov":"Prostějově","Znojmo":"Znojmě",
+    "Třebíč":"Třebíči","Kolín":"Kolíně","Příbram":"Příbrami","Trutnov":"Trutnově",
+    "Cheb":"Chebu","Jablonec nad Nisou":"Jablonci nad Nisou","Tábor":"Táboře",
+    "Česká Lípa":"České Lípě","Třinec":"Třinci","Šumperk":"Šumperku",
+    "Kroměříž":"Kroměříži","Uherské Hradiště":"Uherském Hradišti","Vsetín":"Vsetíně",
+    "Hodonín":"Hodoníně","Sokolov":"Sokolově","Nový Jičín":"Novém Jičíně",
+    "Písek":"Písku","Břeclav":"Břeclavi","Krnov":"Krnově","Kopřivnice":"Kopřivnici",
+    "Karlovy Vary":"Karlových Varech",
+  };
+  function cityLoc(name) { return CITY_LOCATIVE[name] || name; }
+
+  // ── Srovnání cen okolních měst ───────────────────────────────────────────
+  function renderNeighborCompare() {
+    if (!window.REA_DEFAULT_CITY) return;
+    const el = document.getElementById("rea-city-compare");
+    if (!el) return;
+    const cityName = window.REA_DEFAULT_CITY;
+    const neighbors = CITY_NEIGHBORS[cityName];
+    if (!neighbors || !neighbors.length) return;
+
+    function cityMedianPm2(name) {
+      const pfx = name.toLowerCase();
+      const prices = activeListings
+        .filter(l => (l.locality_city||"").toLowerCase().startsWith(pfx))
+        .map(l => l.price_per_m2).filter(p => p > 0).sort((a,b) => a-b);
+      if (!prices.length) return null;
+      return prices[Math.floor(prices.length / 2)];
+    }
+
+    const results = [];
+    const currentMed = cityMedianPm2(cityName);
+    if (currentMed) results.push({ name: cityName, med: currentMed, isCurrent: true });
+    for (const n of neighbors) {
+      const med = cityMedianPm2(n);
+      if (med) results.push({ name: n, med, isCurrent: false });
+    }
+    if (results.length < 2) return;
+    results.sort((a, b) => a.med - b.med);
+
+    let html = `<h2>Srovnání okolních měst</h2>`;
+    html += `<div class="rea-city-compare-grid">`;
+    for (const r of results) {
+      const slug = slugify(r.name === "Praha" ? "Praha" : r.name);
+      const cls  = r.isCurrent ? " rea-current" : "";
+      const link = r.isCurrent
+        ? `<span style="font-size:12px;color:#999;">${r.name} (tato stránka)</span>`
+        : `<a href="/real/${slug}/">${r.name}</a>`;
+      html += `<div class="rea-city-compare-item${cls}">${link}<strong>${Math.round(r.med).toLocaleString("cs-CZ")} Kč/m²</strong></div>`;
+    }
+    html += `</div>`;
+    html += `<p class="rea-note">Medián ceny/m² z aktuálních inzerátů · aktualizováno denně</p>`;
+
+    el.innerHTML = html;
+    el.style.display = "block";
+  }
+
+  // ── Výnosnost pronájmu ───────────────────────────────────────────────────
+  function renderRentalYield() {
+    if (!window.REA_DEFAULT_CITY) return;
+    const el = document.getElementById("rea-rental-yield");
+    if (!el) return;
+    const cityName  = window.REA_DEFAULT_CITY;
+    const rentPm2   = CITY_RENT_PM2[cityName];
+    if (!rentPm2) return;
+
+    const pfx        = cityName.toLowerCase();
+    const typeFilter = window.REA_DEFAULT_TYPE || null;
+    const listings   = typeFilter
+      ? activeListings.filter(l => (l.locality_city||"").toLowerCase().startsWith(pfx) && l.type === typeFilter)
+      : activeListings.filter(l => (l.locality_city||"").toLowerCase().startsWith(pfx));
+
+    const prices = listings.map(l => l.price_per_m2).filter(p => p > 0).sort((a,b) => a-b);
+    if (!prices.length) return;
+    const medPricePm2 = prices[Math.floor(prices.length / 2)];
+
+    const grossYield = (rentPm2 * 12) / medPricePm2 * 100;
+
+    let label, dot, note;
+    if (grossYield < 3) {
+      label = "nízký výnos"; dot = "#e53935";
+      note  = "Pod hranicí inflace — ceny nemovitostí jsou vůči nájmům velmi vysoké.";
+    } else if (grossYield < 4) {
+      label = "podprůměrný výnos"; dot = "#fb8c00";
+      note  = "Pod průměrem ČR — spíše konzervativní investice s nižším výnosem.";
+    } else if (grossYield < 5) {
+      label = "průměrný výnos"; dot = "#fdd835";
+      note  = "Odpovídá průměru českého trhu — stabilní, ale bez výrazného zhodnocení.";
+    } else if (grossYield < 7) {
+      label = "dobrý výnos"; dot = "#43a047";
+      note  = "Nad průměrem ČR — lokalita s dobrým poměrem ceny a nájmu.";
+    } else {
+      label = "výborný výnos"; dot = "#1b5e20";
+      note  = "Výrazně nad průměrem — vysoký investiční potenciál.";
+    }
+
+    const typeStr = typeFilter === "byt" ? "bytů" : typeFilter === "dům" ? "domů" : "nemovitostí";
+
+    let html = `<h2>Výnosnost pronájmu v ${cityLoc(cityName)}</h2>`;
+    html += `<p>Průměrný nájem v ${cityName}: <strong>${rentPm2} Kč/m²/měsíc</strong></p>`;
+    html += `<div class="rea-yield-bar">`;
+    html += `<div class="rea-yield-dot" style="background:${dot};"></div>`;
+    html += `<span>Hrubý výnos z pronájmu ${typeStr}: <strong>${grossYield.toFixed(1).replace(".",",")} % ročně</strong> — ${label}</span>`;
+    html += `</div>`;
+    html += `<p>${note}</p>`;
+    html += `<p class="rea-note">Odhad vychází z průměrných nájmů (Bezrealitky, 2024) a mediánu cen aktuálních inzerátů. Nezohledňuje daně, správu, pojištění ani výpadky nájemců. Skutečný čistý výnos bývá o 1–2 % nižší.</p>`;
+
+    el.innerHTML = html;
+    el.style.display = "block";
+  }
+
+  // ── Výhody a vybavenost města ─────────────────────────────────────────────
+  function renderCityInfra() {
+    if (!window.REA_DEFAULT_CITY) return;
+    const el = document.getElementById("rea-city-infra");
+    if (!el) return;
+    const cityName = window.REA_DEFAULT_CITY;
+    const d = CITY_INFRA[cityName];
+    if (!d) return;
+
+    const lines = [];
+    if (d.trainMin !== null && d.trainMin !== undefined) {
+      lines.push(`🚆 <strong>Vlak do Prahy:</strong> přibližně ${d.trainMin} minut`);
+    }
+    if (d.highway) {
+      lines.push(`🛣️ <strong>Dálniční napojení:</strong> ${d.highway}`);
+    }
+    lines.push(d.football
+      ? `⚽ <strong>Prvoligový fotbalový klub:</strong> ${d.football}`
+      : `⚽ <strong>Prvoligový fotbalový klub:</strong> není`);
+    lines.push(`🏥 <strong>Počet nemocnic:</strong> ${d.hospitals}`);
+    lines.push(`🎓 <strong>Počet středních škol:</strong> ${d.highSchools}`);
+    lines.push(`🏛️ <strong>Počet vysokých škol:</strong> ${d.universities}`);
+    lines.push(`🎭 <strong>Počet kin a divadel:</strong> ${d.cinemaTheatre}`);
+
+    let html = `<h2>Výhody města ${cityName}</h2>`;
+    html += lines.map(l => `<p>${l}</p>`).join("\n");
+
+    el.innerHTML = html;
+    el.style.display = "block";
+  }
+
+  // ── Vývoj cen (SVG čárový graf z price_history.json) ────────────────────────
+  function renderPriceHistory() {
+    if (!priceHistory || !window.REA_DEFAULT_CITY) return;
+    const el = document.getElementById("rea-price-history");
+    if (!el) return;
+    const cityName  = window.REA_DEFAULT_CITY;
+    const typeFilter = window.REA_DEFAULT_TYPE || null;
+    const key = typeFilter === "byt" ? "byty" : typeFilter === "dům" ? "domy" : "celkem";
+
+    // Posledních 90 dní s daty pro dané město a klíč
+    const pts = (priceHistory.days || [])
+      .filter(d => d.cities && d.cities[cityName] && d.cities[cityName][key] != null)
+      .slice(-90)
+      .map(d => ({ date: d.date, val: d.cities[cityName][key] }));
+
+    if (pts.length < 2) return;
+
+    const W = 600, H = 180, PAD = { top: 16, right: 16, bottom: 28, left: 62 };
+    const vals = pts.map(p => p.val);
+    const minV = Math.min(...vals), maxV = Math.max(...vals);
+    const rangeV = maxV - minV || 1;
+    const toX = i  => PAD.left + (i / (pts.length - 1)) * (W - PAD.left - PAD.right);
+    const toY = v  => PAD.top  + (1 - (v - minV) / rangeV) * (H - PAD.top - PAD.bottom);
+    const fmt = v  => Math.round(v).toLocaleString("cs-CZ");
+
+    // Polyline body
+    const polyPts = pts.map((p, i) => `${toX(i).toFixed(1)},${toY(p.val).toFixed(1)}`).join(" ");
+
+    // Y-osa: 4 labely
+    const yTicks = [minV, minV + rangeV/3, minV + 2*rangeV/3, maxV];
+    const yLines = yTicks.map(v => {
+      const y = toY(v).toFixed(1);
+      return `<line x1="${PAD.left}" y1="${y}" x2="${W - PAD.right}" y2="${y}" stroke="#eee" stroke-width="1"/>
+              <text x="${PAD.left - 4}" y="${y}" text-anchor="end" dominant-baseline="middle" font-size="10" fill="#999">${fmt(v)}</text>`;
+    }).join("\n");
+
+    // X-osa: začátek a konec
+    const dateFirst = pts[0].date.slice(5);   // MM-DD
+    const dateLast  = pts[pts.length-1].date.slice(5);
+    const xLabels = `
+      <text x="${toX(0).toFixed(1)}" y="${H - 4}" text-anchor="middle" font-size="10" fill="#999">${dateFirst}</text>
+      <text x="${toX(pts.length-1).toFixed(1)}" y="${H - 4}" text-anchor="middle" font-size="10" fill="#999">${dateLast}</text>`;
+
+    // Aktuální hodnota — tečka na posledním bodu
+    const lx = toX(pts.length - 1), ly = toY(vals[vals.length - 1]);
+    const lastDot = `<circle cx="${lx.toFixed(1)}" cy="${ly.toFixed(1)}" r="4" fill="#C8102E"/>`;
+    const lastLabel = `<text x="${(lx + 6).toFixed(1)}" y="${(ly + 4).toFixed(1)}" font-size="11" font-weight="bold" fill="#C8102E">${fmt(vals[vals.length-1])} Kč</text>`;
+
+    const typeStr = typeFilter === "byt" ? "bytů" : typeFilter === "dům" ? "domů" : "nemovitostí";
+    let html = `<h2>Vývoj cen ${typeStr} v ${cityLoc(cityName)}</h2>`;
+    html += `<svg viewBox="0 0 ${W} ${H}" style="width:100%;max-width:${W}px;height:auto;display:block;overflow:visible;" xmlns="http://www.w3.org/2000/svg">`;
+    html += yLines;
+    html += xLabels;
+    html += `<polyline points="${polyPts}" fill="none" stroke="#C8102E" stroke-width="2" stroke-linejoin="round"/>`;
+    html += lastDot + lastLabel;
+    html += `</svg>`;
+    html += `<p class="rea-note">Medián ceny/m² dle aktuálních inzerátů · aktualizováno denně · historická data od spuštění sledování</p>`;
+
+    el.innerHTML = html;
+    el.style.display = "block";
+  }
+
+  async function loadAll() {
+    const [feedResp, archResp, histResp] = await Promise.allSettled([
+      fetch(FEED_URL),
+      fetch(ARCHIVE_URL),
+      fetch(HISTORY_URL),
+    ]);
+
+    if (histResp.status === "fulfilled" && histResp.value.ok) {
+      priceHistory = await histResp.value.json();
+    }
+
+    if (feedResp.status === "fulfilled" && feedResp.value.ok) {
+      const data = await feedResp.value.json();
+      activeListings = data.listings || [];
+      if (data.updated) {
+        const d = new Date(data.updated);
+        document.getElementById("rea-updated").textContent =
+          "Data ze Sreality.cz · aktualizováno " + d.toLocaleString("cs-CZ");
+      }
+    } else {
+      document.getElementById("rea-grid").innerHTML =
+        '<div class="rea-error">Nepodařilo se načíst data.</div>';
+      return;
+    }
+
+    if (archResp.status === "fulfilled" && archResp.value.ok) {
+      archivedListings = (await archResp.value.json()).listings || [];
+    }
+
+    if (activeListings.length > 0) {
+      maxPrice = Math.max(...activeListings.map(l => l.price));
+      const sl = document.getElementById("rea-f-price");
+      sl.max = maxPrice; sl.value = maxPrice;
+      updatePriceLabel(maxPrice);
+    }
+
+    populateFilters();
+    applyUrlParams();
+    render();
+    renderCityInfo();
+    renderNeighborCompare();
+    renderRentalYield();
+    renderCityInfra();
+    renderPriceHistory();
+  }
+
+  // ── Filtry ───────────────────────────────────────────────────
+
+  function cityMedians() {
+    const map = {};
+    activeListings.forEach(l => {
+      if (!l.locality_city) return;
+      if (!map[l.locality_city]) map[l.locality_city] = [];
+      map[l.locality_city].push(l.price_per_m2);
+    });
+    const result = {};
+    Object.entries(map).forEach(([city, prices]) => {
+      const s = [...prices].sort((a, b) => a - b);
+      const mid = Math.floor(s.length / 2);
+      result[city] = s.length % 2 ? s[mid] : Math.round((s[mid - 1] + s[mid]) / 2);
+    });
+    return result;
+  }
+
+  function populateFilters() {
+    const dispositions = [...new Set(activeListings.map(l => l.disposition))].sort();
+    const cities       = [...new Set(activeListings.map(l => l.locality_city).filter(Boolean))].sort();
+    const extras       = [...new Set(activeListings.flatMap(l => l.extras || []))].sort();
+    fillSelect("rea-f-disp",  dispositions);
+    fillSelect("rea-f-extra", extras);
+
+    // Města — optgroup: s vlastní stránkou první (tučně), ostatní pod nimi
+    const medians = cityMedians();
+    const sel = document.getElementById("rea-f-city");
+    const mkOpt = city => {
+      const o = document.createElement("option");
+      o.value = city;
+      const med = medians[city];
+      o.textContent = med ? `${city} (${med.toLocaleString("cs-CZ")} Kč/m²)` : city;
+      return o;
+    };
+    const withPage    = cities.filter(c => CITY_PAGES.includes(c));
+    const withoutPage = cities.filter(c => !CITY_PAGES.includes(c));
+    if (withPage.length) {
+      const g = document.createElement("optgroup");
+      g.label = "── Města s vlastní stránkou ──";
+      withPage.forEach(c => g.appendChild(mkOpt(c)));
+      sel.appendChild(g);
+    }
+    if (withoutPage.length) {
+      const g = document.createElement("optgroup");
+      g.label = "── Ostatní lokality ──";
+      withoutPage.forEach(c => g.appendChild(mkOpt(c)));
+      sel.appendChild(g);
+    }
+  }
+
+  function fillSelect(id, values) {
+    const sel = document.getElementById(id);
+    values.forEach(v => {
+      const o = document.createElement("option");
+      o.value = v; o.textContent = v; sel.appendChild(o);
+    });
+  }
+
+  // Města s vlastní WP stránkou (/real/[slug]/) — pro navigaci z dropdownu
+  const CITY_PAGES = [
+    "Praha","Brno","Ostrava","Plzeň","Liberec","Olomouc","České Budějovice",
+    "Hradec Králové","Pardubice","Zlín","Ústí nad Labem","Kladno","Most",
+    "Opava","Karviná","Frýdek-Místek","Jihlava","Teplice","Děčín","Chomutov",
+    "Přerov","Havířov","Mladá Boleslav","Prostějov","Znojmo","Třebíč",
+    "Kolín","Příbram","Trutnov","Cheb",
+    "Jablonec nad Nisou","Tábor","Česká Lípa","Třinec","Šumperk",
+    "Kroměříž","Uherské Hradiště","Vsetín","Hodonín","Sokolov",
+    "Nový Jičín","Písek","Břeclav","Krnov","Kopřivnice","Karlovy Vary"
+  ];
+
+  function cityToSlug(city) {
+    return city.toLowerCase()
+      .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+      .replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
+  }
+
+  function findCityPage(selected) {
+    const lc = selected.toLowerCase();
+    return CITY_PAGES.find(c => lc === c.toLowerCase() || lc.startsWith(c.toLowerCase() + " "));
+  }
+
+  // ── Filtrové podstránky (typ, dispozice, vybavení, vlastnictví) ──
+  function slugify(s) {
+    return s.toLowerCase()
+      .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+      .replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
+  }
+
+  const TYPE_PAGES  = ["byt", "dům"];
+  const DISP_PAGES  = ["1+kk","1+1","2+kk","2+1","3+kk","3+1","4+kk","4+1","5+kk","5+1","ostatní"];
+  const EXTRA_PAGES = ["Balkón","Garáž","Lodžie","Novostavba","Parkování","Sklep","Terasa","Výtah","Zařízeno","Částečně zařízeno"];
+  const OWN_PAGES   = ["Osobní","Družstevní"];
+
+  function typeToSlug(t)  { return ({byt:"byty","dům":"domy"})[t] || slugify(t); }
+  function dispToSlug(d)  { return slugify(d.replace(/\+/g, "-")); }
+  function extraToSlug(e) { return slugify(e); }
+  function ownToSlug(o)   { return ({Osobní:"osobni",Družstevní:"druzstevni"})[o] || slugify(o); }
+
+  function findTypePage(v)  { return TYPE_PAGES.find(x => x.toLowerCase() === (v||"").toLowerCase()); }
+  function findDispPage(v)  { return DISP_PAGES.find(x => x.toLowerCase() === (v||"").toLowerCase()); }
+  function findExtraPage(v) { return EXTRA_PAGES.find(x => x.toLowerCase() === (v||"").toLowerCase()); }
+  function findOwnPage(v)   { return OWN_PAGES.find(x => x.toLowerCase() === (v||"").toLowerCase()); }
+
+  function applyUrlParams() {
+    const p = new URLSearchParams(window.location.search);
+    const pathMatch = window.location.pathname.match(/\/real\/([^\/]+)\/?$/i);
+    const cityFromPath = pathMatch
+      ? decodeURIComponent(pathMatch[1]).replace(/-/g, " ") : null;
+    // REA_DEFAULT_CITY má přednost — obsahuje správný název s diakritikou
+    const cityVal = (window.REA_DEFAULT_CITY || "") || cityFromPath || p.get("mesto") || "";
+    if (cityVal) {
+      const sel  = document.getElementById("rea-f-city");
+      const opts = [...sel.options].map(o => o.value);
+      const exactMatch = opts.find(o => o.toLowerCase() === cityVal.toLowerCase());
+      if (exactMatch) {
+        sel.value = exactMatch;
+        cityPrefixFilter = "";
+      } else if (opts.some(o => o.toLowerCase().startsWith(cityVal.toLowerCase()))) {
+        cityPrefixFilter = cityVal.toLowerCase();
+        const o = document.createElement("option");
+        o.value = "__prefix__"; o.textContent = cityVal + " (vše)";
+        sel.insertBefore(o, sel.options[1]);
+        sel.value = "__prefix__";
+      } else if (window.REA_DEFAULT_CITY) {
+        // Město je nastaveno ale není v inzerátech → přidej syntetickou volbu, zobraz 0 výsledků
+        const o = document.createElement("option");
+        o.value = cityVal; o.textContent = cityVal + " (žádné inzeráty)";
+        sel.insertBefore(o, sel.options[1]);
+        sel.value = cityVal;
+      }
+    }
+    // REA_DEFAULT_* pro filtrové podstránky (mají přednost před URL params)
+    if (window.REA_DEFAULT_TYPE)  document.getElementById("rea-f-type").value  = window.REA_DEFAULT_TYPE;
+    if (window.REA_DEFAULT_DISP)  document.getElementById("rea-f-disp").value  = window.REA_DEFAULT_DISP;
+    if (window.REA_DEFAULT_EXTRA) document.getElementById("rea-f-extra").value = window.REA_DEFAULT_EXTRA;
+    if (window.REA_DEFAULT_OWN)   document.getElementById("rea-f-own").value   = window.REA_DEFAULT_OWN;
+    if (p.get("dispozice")) document.getElementById("rea-f-disp").value = p.get("dispozice");
+    if (p.get("typ"))       document.getElementById("rea-f-type").value = p.get("typ");
+    if (p.get("max_cena")) {
+      const v = parseInt(p.get("max_cena"));
+      document.getElementById("rea-f-price").value = v;
+      updatePriceLabel(v);
+    }
+  }
+
+  function getFilters() {
+    return {
+      disp:     document.getElementById("rea-f-disp").value,
+      city:     document.getElementById("rea-f-city").value,
+      type:     document.getElementById("rea-f-type").value,
+      own:      document.getElementById("rea-f-own").value,
+      extra:    document.getElementById("rea-f-extra").value,
+      maxPrice: parseInt(document.getElementById("rea-f-price").value),
+    };
+  }
+
+  function filterListings(list) {
+    const f = getFilters();
+    return list.filter(l => {
+      if (f.disp  && l.disposition   !== f.disp)  return false;
+      if (f.city === "__prefix__") {
+        if (!(l.locality_city||"").toLowerCase().startsWith(cityPrefixFilter)) return false;
+      } else if (f.city && l.locality_city !== f.city) return false;
+      if (f.type  && l.type          !== f.type)  return false;
+      if (f.own   && l.ownership     !== f.own)   return false;
+      if (f.extra && !(l.extras||[]).includes(f.extra)
+                  && l.building_type !== f.extra
+                  && l.ownership     !== f.extra) return false;
+      if (l.price <= 1) return false;
+      if (l.price > f.maxPrice) return false;
+      return true;
+    });
+  }
+
+  // ── Aktivní filtry (chipy) ────────────────────────────────────
+
+  function renderChips() {
+    const f = getFilters();
+    const c = document.getElementById("rea-active-filters");
+    c.innerHTML = "";
+    const map = {
+      type:  "rea-f-type",  disp: "rea-f-disp",
+      city:  "rea-f-city",  own:  "rea-f-own",  extra: "rea-f-extra",
+    };
+    const vals = { type: f.type, disp: f.disp, city: f.city, own: f.own, extra: f.extra };
+    Object.entries(vals).forEach(([k, v]) => {
+      if (!v) return;
+      const ch = document.createElement("span");
+      ch.className = "rea-filter-chip";
+      ch.textContent = v + " ✕";
+      ch.onclick = () => {
+        if (k === "city" && window.REA_DEFAULT_CITY) {
+          if (window.REA_DEFAULT_TYPE) {
+            const tp = findTypePage(window.REA_DEFAULT_TYPE);
+            if (tp) { window.location.href = "/real/" + typeToSlug(tp) + "/"; return; }
+          }
+          window.location.href = "/real/"; return;
+        }
+        if (k === "type" && window.REA_DEFAULT_TYPE) {
+          if (window.REA_DEFAULT_CITY) {
+            const cp = findCityPage(window.REA_DEFAULT_CITY);
+            if (cp) { window.location.href = "/real/" + cityToSlug(cp) + "/"; return; }
+          }
+          window.location.href = "/real/"; return;
+        }
+        if (k === "disp"  && window.REA_DEFAULT_DISP)  { window.location.href = "/real/"; return; }
+        if (k === "extra" && window.REA_DEFAULT_EXTRA) { window.location.href = "/real/"; return; }
+        if (k === "own"   && window.REA_DEFAULT_OWN)   { window.location.href = "/real/"; return; }
+        document.getElementById(map[k]).value = ""; render();
+      };
+      c.appendChild(ch);
+    });
+  }
+
+  // ── Renderování ──────────────────────────────────────────────
+
+  function render() {
+    const list     = currentTab === "active" ? activeListings : archivedListings;
+    const filtered = filterListings(list);
+    // ── Řazení výsledků ─────────────────────────────────────
+    const sortVal = document.getElementById("rea-sort")?.value || "score";
+    const sorted  = [...filtered];
+    switch (sortVal) {
+      case "price_asc":  sorted.sort((a,b) => a.price - b.price); break;
+      case "price_desc": sorted.sort((a,b) => b.price - a.price); break;
+      case "pm2_asc":    sorted.sort((a,b) => (a.price_per_m2||0) - (b.price_per_m2||0)); break;
+      case "pm2_desc":   sorted.sort((a,b) => (b.price_per_m2||0) - (a.price_per_m2||0)); break;
+      case "area_desc":  sorted.sort((a,b) => (b.area||0) - (a.area||0)); break;
+      case "newest":     sorted.sort((a,b) => new Date(b.scraped_at||0) - new Date(a.scraped_at||0)); break;
+      default:           sorted.sort((a,b) => (b.score||0) - (a.score||0)); break;
+    }
+
+    const grid     = document.getElementById("rea-grid");
+    const stats    = document.getElementById("rea-stats");
+    renderChips();
+
+    if (filtered.length === 0) {
+      grid.innerHTML = '<div class="rea-empty">Žádné inzeráty neodpovídají filtru.</div>';
+      stats.innerHTML = ""; return;
+    }
+
+    const výhodné = filtered.filter(l => l.score >= 10).length;
+    stats.innerHTML = `Zobrazeno <strong>${filtered.length}</strong> inzerátů`
+      + (výhodné ? ` · <strong>${výhodné}</strong> výhodných (10 %+ pod trhem)` : "");
+    grid.innerHTML = sorted.map((l, idx) => cardHTML(l, currentTab === "sold", idx)).join("");
+  }
+
+  function cardHTML(l, sold, idx) {
+    const sc = l.score || 0;
+    const scoreText = sc > 0
+      ? `${sc.toFixed(1)} % pod trhem`
+      : sc < 0 ? `${Math.abs(sc).toFixed(1)} % nad trhem` : "Průměr trhu";
+    const badgeCls = sc >= 10 ? "good" : sc >= 0 ? "avg" : "bad";
+    const badgeTxt = scoreText;
+
+    const price = l.price.toLocaleString("cs-CZ") + " Kč";
+    const pm2   = l.price_per_m2.toLocaleString("cs-CZ") + " Kč/m²";
+
+    const soldRow = sold && l.sold_at
+      ? `<div class="rea-info-row"><span class="rea-lbl">📦 Prodáno/Staženo</span><span class="rea-val">${new Date(l.sold_at).getFullYear()}</span></div>` : "";
+
+    const f = getFilters();
+    const allTags = [];
+    if (l.building_type) allTags.push({ label: l.building_type, filter: "extra", value: l.building_type });
+    if (l.ownership)     allTags.push({ label: l.ownership,     filter: "own",   value: l.ownership });
+    (l.extras || []).forEach(e => allTags.push({ label: e, filter: "extra", value: e }));
+
+    const tagsHTML = allTags.length
+      ? `<div class="rea-extras">${allTags.map(t => {
+          const isActive = (t.filter === "own"   && f.own   === t.value)
+                        || (t.filter === "extra" && f.extra === t.value);
+          return `<span class="rea-tag${isActive ? " active-tag" : ""}"
+            onclick="reaTagClick('${esc(t.filter)}','${esc(t.value)}')"
+          >${esc(t.label)}</span>`;
+        }).join("")}</div>` : "";
+
+    const oppBadge = (!sold && idx < 5)
+      ? `<span class="rea-opportunity-badge">⭐ Příležitost dne</span>` : "";
+
+    const scrapedDate = l.scraped_at
+      ? new Date(l.scraped_at).toLocaleDateString("cs-CZ", { day: "numeric", month: "numeric", year: "numeric" })
+      : "";
+
+    return `
+      <div class="rea-card${sold ? " sold" : ""}">
+        <div class="rea-card-header">
+          <div class="rea-card-badges">
+            ${oppBadge ? `<div style="margin-bottom:4px">${oppBadge}</div>` : ""}
+            <span class="rea-score-badge ${badgeCls}">${badgeTxt}</span>
+          </div>
+          ${scrapedDate ? `<span class="rea-scraped">Přidáno ${scrapedDate}</span>` : ""}
+        </div>
+        <div class="rea-title">${esc(l.title)}</div>
+        <div class="rea-info">
+          <div class="rea-info-row"><span class="rea-lbl">📍 Lokalita</span><span class="rea-val">${esc(l.locality)}</span></div>
+          <div class="rea-info-row"><span class="rea-lbl">📐 Plocha</span><span class="rea-val">${l.area} m²</span></div>
+          <div class="rea-info-row rea-price-row"><span class="rea-lbl">💰 Cena</span><span class="rea-val">${price}</span></div>
+          <div class="rea-info-row rea-pm2-row"><span class="rea-lbl">📊 Cena/m²</span><span class="rea-val">${pm2}${l.median_price_per_m2 ? ` <span class="rea-median">(trh: ${l.median_price_per_m2.toLocaleString("cs-CZ")} Kč/m²)</span>` : ""}</span></div>
+          ${soldRow}
+        </div>
+        ${tagsHTML}
+        <a class="rea-link${sold ? " sold-link" : ""}"
+           href="${esc(l.url)}" target="_blank" rel="noopener">
+          ${sold ? "Archiv Sreality →" : "Prohlédnout inzerát →"}
+        </a>
+      </div>`;
+  }
+
+  function esc(s) {
+    return String(s || "")
+      .replace(/&/g,"&amp;").replace(/</g,"&lt;")
+      .replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;");
+  }
+
+  // ── Klik na tag → filtr ───────────────────────────────────────
+
+  window.reaTagClick = function(filterKey, value) {
+    const ids = { extra: "rea-f-extra", own: "rea-f-own" };
+    const sel = document.getElementById(ids[filterKey]);
+    if (sel) { sel.value = sel.value === value ? "" : value; render(); }
+  };
+
+  // ── Ovládání ─────────────────────────────────────────────────
+
+  window.reaTab = function(tab, btn) {
+    currentTab = tab;
+    document.querySelectorAll(".rea-tab").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    render();
+  };
+
+  window.reaReset = function() {
+    cityPrefixFilter = "";
+    ["rea-f-type","rea-f-disp","rea-f-city","rea-f-own","rea-f-extra"]
+      .forEach(id => document.getElementById(id).value = "");
+    const sl = document.getElementById("rea-f-price");
+    sl.value = maxPrice; updatePriceLabel(maxPrice);
+    render();
+  };
+
+  function updatePriceLabel(val) {
+    document.getElementById("rea-price-val").textContent =
+      parseInt(val).toLocaleString("cs-CZ") + " Kč";
+  }
+
+  // Typ — navigace na podstránku (s kontextem města → kombinace /real/byty/brno/)
+  document.getElementById("rea-f-type").addEventListener("change", function() {
+    if (this.value) {
+      const p = findTypePage(this.value);
+      if (p) {
+        if (window.REA_DEFAULT_CITY) {
+          const cp = findCityPage(window.REA_DEFAULT_CITY);
+          if (cp) { window.location.href = "/real/" + typeToSlug(p) + "/" + cityToSlug(cp) + "/"; return; }
+        }
+        window.location.href = "/real/" + typeToSlug(p) + "/"; return;
+      }
+    }
+    render();
+  });
+
+  // Město — navigační logika:
+  //   Na filter stránce (disp/extra/own) → vždy JS filtr, nikdy navigace
+  //   Na city stránce + výběr bez vlastní stránky → přejdi na /real/
+  //   Jinak → naviguj na city stránku (s typem pokud je nastaven)
+  document.getElementById("rea-f-city").addEventListener("change", function() {
+    if (this.value && this.value !== "__prefix__") {
+      const page = findCityPage(this.value);
+      if (page) {
+        // Má vlastní stránku, ale jsme na filter stránce (disp/extra/own) → jen JS filtr
+        if (window.REA_DEFAULT_DISP || window.REA_DEFAULT_EXTRA || window.REA_DEFAULT_OWN) {
+          render(); return;
+        }
+        // Naviguj na stránku města (případně s typem)
+        if (window.REA_DEFAULT_TYPE) {
+          const tp = findTypePage(window.REA_DEFAULT_TYPE);
+          if (tp) { window.location.href = "/real/" + typeToSlug(tp) + "/" + cityToSlug(page) + "/"; return; }
+        }
+        window.location.href = "/real/" + cityToSlug(page) + "/"; return;
+      } else {
+        // Nemá vlastní stránku
+        if (window.REA_DEFAULT_CITY) {
+          // Jsme na city stránce → přejdi na /real/ (nelze filtrovat bez stránky)
+          window.location.href = "/real/"; return;
+        }
+        // Na hlavní nebo filter stránce → JS filtr v místě
+      }
+    }
+    render();
+  });
+
+  // Dispozice — navigace na filtrovou podstránku
+  document.getElementById("rea-f-disp").addEventListener("change", function() {
+    if (this.value) {
+      const p = findDispPage(this.value);
+      if (p) { window.location.href = "/real/" + dispToSlug(p) + "/"; return; }
+    }
+    render();
+  });
+
+  // Vybavení — navigace na filtrovou podstránku
+  document.getElementById("rea-f-extra").addEventListener("change", function() {
+    if (this.value) {
+      const p = findExtraPage(this.value);
+      if (p) { window.location.href = "/real/" + extraToSlug(p) + "/"; return; }
+    }
+    render();
+  });
+
+  // Vlastnictví — navigace na filtrovou podstránku
+  document.getElementById("rea-f-own").addEventListener("change", function() {
+    if (this.value) {
+      const p = findOwnPage(this.value);
+      if (p) { window.location.href = "/real/" + ownToSlug(p) + "/"; return; }
+    }
+    render();
+  });
+
+  document.getElementById("rea-f-price").addEventListener("input", function() {
+    updatePriceLabel(this.value); render();
+  });
+  document.getElementById("rea-sort").addEventListener("change", render);
+
+  loadAll();
+})();
+</script>
+</body>
+</html>
