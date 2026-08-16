@@ -641,10 +641,12 @@ def main():
     # Archiv — co bylo minule ve feedu a teď Sreality nevrátilo
     newly_archived = update_archive(seen, prev_listings)
     for l in newly_archived:
+        # Z feedu ven vždy — jinak by inzerát, který se do archivu dostal
+        # už dřív, zůstal navěky viset i mezi aktivními nabídkami.
+        merged.pop(l["id"], None)
         if l["id"] not in prev_arch_ids:
             prev_archived.append(l)
             prev_arch_ids.add(l["id"])
-            merged.pop(l["id"], None)  # vyřaď prodané z feedu
 
     print(f"Nove archivovano (prodano): {len(newly_archived)}")
     print(f"Celkem v archivu: {len(prev_archived)}")
