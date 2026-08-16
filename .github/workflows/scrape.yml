@@ -23,16 +23,16 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Debug - seznam souboru
-        run: ls -la
-
       - name: Spuštění scraperu
         run: python scraper.py
 
-      - name: Commit a push feed.json
+      # Scraper končí s exit code 1, když zdroj nevrátí dost inzerátů.
+      # Job pak spadne a tenhle krok se přeskočí — feed zůstane nedotčený.
+      - name: Commit a push dat
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add feed.json
+          git add feed.json archived.json price_history.json
           git diff --staged --quiet || git commit -m "feed: aktualizace $(date -u +'%Y-%m-%d %H:%M') UTC"
+          git pull --rebase origin main
           git push
