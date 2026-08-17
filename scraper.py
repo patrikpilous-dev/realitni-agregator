@@ -12,8 +12,9 @@ import sys
 import time
 import statistics
 import unicodedata
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from collections import defaultdict
+import urllib.error
 import urllib.request
 
 # ── Konfigurace ────────────────────────────────────────────────────────────────
@@ -37,6 +38,17 @@ MIN_SCRAPED_OK = 100
 # Inzeráty, na které se nedostane, se doplní v dalších bězích.
 MAX_DETAILS   = 250
 DETAIL_SLEEP  = 0.3
+
+# Kolik kandidátů na "prodáno" za běh ověřit (viz update_archive)
+MAX_ARCHIVE_CHECKS  = 150
+ARCHIVE_CHECK_SLEEP = 0.2
+
+# Okno výpisu na Sreality se za den skoro celé obmění, feed proto akumuluje
+# i starší inzeráty — ale jen ty, u kterých se potvrdí, že pořád běží.
+# Bez potvrzení do STALE_DAYS jde inzerát z feedu pryč (ne do archivu —
+# o prodeji nic nevíme). MAX_FEED_SIZE je strop, aby feed.json nenabobtnal.
+STALE_DAYS    = 14
+MAX_FEED_SIZE = 2000
 
 # Pozor: hlavičku "Accept" s text/html NEPOSÍLAT. Sreality na ni reagují
 # přesměrováním na login.seznam.cz/autologin, což skončí jako smyčka 301/302.
@@ -488,19 +500,53 @@ def load_json_file(path: str) -> dict:
         return {}
 
 
+def is_gone(url: str) -> bool:
+    """
+    Ověří, že inzerát na Sreality opravdu zmizel (HTTP 404).
+    Bez tohohle testu nelze "prodáno" poznat: scraper vidí jen nejnovějších
+    pár set inzerátů na kategorii a všechno starší z toho okna vypadne,
+    i když se to dál prodává.
+    """
+    req = urllib.request.Request(url, headers=HEADERS)
+    try:
+        with urllib.request.urlopen(req, timeout=20):
+            return False
+    except urllib.error.HTTPError as e:
+        return e.code in (404, 410)
+    except Exception:
+        # Síťová chyba není důkaz, že je inzerát pryč — necháme ho ve feedu
+        return False
+
+
 def update_archive(new_ids: set, previous_listings: list[dict]) -> list[dict]:
     """
-    Inzeráty z předchozího feedu, které už nejsou v novém scrapování,
-    jsou považovány za prodané → přejdou do archivu.
+    Kandidáti na archivaci jsou inzeráty z předchozího feedu, které scraper
+    teď nevrátil. Do archivu jde jen ten, u kterého se ověří, že je pryč.
+    Neověření kandidáti zůstávají ve feedu a přijdou na řadu příště.
     """
     now = datetime.now(timezone.utc).isoformat()
+    candidates = [l for l in previous_listings if l["id"] not in new_ids]
+    if not candidates:
+        return []
+
+    # Nejdřív ti, které jsme kontrolovali nejdéle zpátky — jinak by se
+    # při větším feedu pořád dokola ověřoval jen začátek seznamu.
+    candidates.sort(key=lambda l: l.get("last_checked_at") or l.get("scraped_at") or "")
+    batch = candidates[:MAX_ARCHIVE_CHECKS]
+    print(f"\nArchiv: overuji {len(batch)} z {len(candidates)} kandidatu...")
+
     archived = []
-    for listing in previous_listings:
-        if listing["id"] not in new_ids:
+    for listing in batch:
+        gone = is_gone(listing["url"])
+        listing["last_checked_at"] = now
+        if gone:
             listing = dict(listing)
             if "sold_at" not in listing:
                 listing["sold_at"] = now
             archived.append(listing)
+        time.sleep(ARCHIVE_CHECK_SLEEP)
+
+    print(f"  >> Opravdu pryc: {len(archived)}, stale inzerovano: {len(batch) - len(archived)}")
     return archived
 
 
@@ -638,6 +684,14 @@ def main():
     for l in all_listings:
         merged[l["id"]] = l  # přepíše starý záznam čerstvým
 
+    # Inzerát, který se znovu objevil ve výpisu, prodaný evidentně není —
+    # zpátky mezi aktivní. (Vypadnout z okna a vrátit se je běžné.)
+    resurrected = [l for l in prev_archived if l["id"] in seen]
+    if resurrected:
+        prev_archived = [l for l in prev_archived if l["id"] not in seen]
+        prev_arch_ids = {l["id"] for l in prev_archived}
+        print(f"Vraceno z archivu (znovu inzerovano): {len(resurrected)}")
+
     # Archiv — co bylo minule ve feedu a teď Sreality nevrátilo
     newly_archived = update_archive(seen, prev_listings)
     for l in newly_archived:
@@ -651,6 +705,18 @@ def main():
     print(f"Nove archivovano (prodano): {len(newly_archived)}")
     print(f"Celkem v archivu: {len(prev_archived)}")
 
+    # Vyřaď zastaralé — inzeráty, které jsme ani neviděli ve výpisu,
+    # ani se u nich v posledních STALE_DAYS nepotvrdilo, že běží.
+    cutoff = (datetime.now(timezone.utc) - timedelta(days=STALE_DAYS)).isoformat()
+    expired = [
+        i for i, l in merged.items()
+        if max(l.get("scraped_at") or "", l.get("last_checked_at") or "") < cutoff
+    ]
+    for i in expired:
+        merged.pop(i, None)
+    if expired:
+        print(f"Vyrazeno jako neoverene starsi {STALE_DAYS} dni: {len(expired)}")
+
     # Dotáhni chybějící detaily (vlastnictví, konstrukce, vybavení)
     enrich_with_details(list(merged.values()))
 
@@ -659,8 +725,17 @@ def main():
     all_merged = compute_scores(list(merged.values()))
     merged = {l["id"]: l for l in all_merged}
 
-    # Výsledný feed — seřadit dle score, zachovat vše
+    # Výsledný feed — seřadit dle score
     top_listings = sorted(merged.values(), key=lambda x: x["score"], reverse=True)
+
+    # Strop: inzeráty z aktuálního scrapu si držíme vždy (i s nulovým score,
+    # medián pro ně ještě nemusí existovat), zbytek se ořízne dle score.
+    if len(top_listings) > MAX_FEED_SIZE:
+        fresh = [l for l in top_listings if l["id"] in seen]
+        older = [l for l in top_listings if l["id"] not in seen]
+        room  = max(0, MAX_FEED_SIZE - len(fresh))
+        print(f"Feed orezan z {len(top_listings)} na {len(fresh) + room}")
+        top_listings = sorted(fresh + older[:room], key=lambda x: x["score"], reverse=True)
 
     # Uložit feed.json
     feed = {
