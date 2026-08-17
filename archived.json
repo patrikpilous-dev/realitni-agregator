@@ -1,6 +1,6 @@
 {
-  "updated": "2026-08-17T12:31:48.122363+00:00",
-  "total": 17,
+  "updated": "2026-08-17T18:34:21.140464+00:00",
+  "total": 15,
   "listings": [
     {
       "id": "849356108",
@@ -43,27 +43,6 @@
       "transaction": "prodej",
       "url": "https://www.sreality.cz/detail/prodej/dum/milonice-milonice-/306975564",
       "sold_at": "2026-03-21T11:25:35.538694+00:00"
-    },
-    {
-      "id": "1566339916",
-      "title": "Prodej  rodinného domu 110 m², pozemek 631 m²",
-      "price": 2890000,
-      "area": 110.0,
-      "price_per_m2": 26273,
-      "score": 69.6,
-      "disposition": "ostatní",
-      "locality": "Dohalice, okres Hradec Králové",
-      "locality_city": "Dohalice",
-      "type": "dům",
-      "transaction": "prodej",
-      "ownership": "",
-      "building_type": "",
-      "floor": "",
-      "energy_class": "",
-      "extras": [],
-      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny-dum/dohalice-dohalice-/1566339916",
-      "scraped_at": "2026-03-21T11:25:35.537358+00:00",
-      "sold_at": "2026-03-21T11:28:31.004866+00:00"
     },
     {
       "id": "2214843212",
@@ -147,48 +126,6 @@
       "extras": [],
       "url": "https://www.sreality.cz/detail/prodej/dum/rodinny-dum/zajecice-zajecice-/969658956",
       "scraped_at": "2026-03-21T11:25:35.533902+00:00",
-      "sold_at": "2026-03-21T11:28:31.004866+00:00"
-    },
-    {
-      "id": "2563494476",
-      "title": "Prodej  rodinného domu 163 m², pozemek 427 m²",
-      "price": 5042450,
-      "area": 163.0,
-      "price_per_m2": 30935,
-      "score": 13.9,
-      "disposition": "ostatní",
-      "locality": "Zaječice, okres Chrudim",
-      "locality_city": "Zaječice",
-      "type": "dům",
-      "transaction": "prodej",
-      "ownership": "",
-      "building_type": "",
-      "floor": "",
-      "energy_class": "",
-      "extras": [],
-      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny-dum/zajecice-zajecice-/2563494476",
-      "scraped_at": "2026-03-21T11:25:35.534083+00:00",
-      "sold_at": "2026-03-21T11:28:31.004866+00:00"
-    },
-    {
-      "id": "4118270796",
-      "title": "Prodej  rodinného domu 89 m², pozemek 600 m²",
-      "price": 7290000,
-      "area": 89.0,
-      "price_per_m2": 81910,
-      "score": 13.0,
-      "disposition": "ostatní",
-      "locality": "28. října, Pardubice - Nemošice",
-      "locality_city": "28. října",
-      "type": "dům",
-      "transaction": "prodej",
-      "ownership": "",
-      "building_type": "",
-      "floor": "",
-      "energy_class": "",
-      "extras": [],
-      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny-dum/pardubice-nemosice-28--rijna/4118270796",
-      "scraped_at": "2026-03-21T11:25:35.536560+00:00",
       "sold_at": "2026-03-21T11:28:31.004866+00:00"
     },
     {
@@ -365,6 +302,32 @@
       "url": "https://www.sreality.cz/detail/prodej/dum/chata/sternberk/3366572108",
       "scraped_at": "2026-08-16T18:14:17.419121+00:00",
       "sold_at": "2026-08-17T00:39:48.848619+00:00"
+    },
+    {
+      "id": "1440063564",
+      "title": "Prodej bytu 3+1 108 m²",
+      "price": 3490000,
+      "area": 108.0,
+      "price_per_m2": 32315,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "3+1",
+      "disposition_group": "3",
+      "locality": "Krátká, Štětí, okres Litoměřice",
+      "locality_city": "Štětí",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Cihlová",
+      "extras": [
+        "Částečně zařízeno"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/3+1/steti-steti-kratka/1440063564",
+      "scraped_at": "2026-08-17T06:43:44.239573+00:00",
+      "listed_since": "2026-05-06",
+      "last_checked_at": "2026-08-17T18:23:08.470823+00:00",
+      "sold_at": "2026-08-17T18:23:08.470823+00:00"
     }
   ]
 }
