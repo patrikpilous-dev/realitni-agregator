@@ -1,6 +1,6 @@
 {
-  "updated": "2026-08-18T06:39:01.177827+00:00",
-  "total": 36,
+  "updated": "2026-08-18T12:34:15.696332+00:00",
+  "total": 39,
   "listings": [
     {
       "id": "849356108",
@@ -919,6 +919,88 @@
       "listed_since": "2026-08-17",
       "last_checked_at": "2026-08-18T06:25:38.498370+00:00",
       "sold_at": "2026-08-18T06:25:38.498370+00:00"
+    },
+    {
+      "id": "994033740",
+      "title": "Prodej bytu 1+1 41 m²",
+      "price": 3399000,
+      "area": 41.0,
+      "price_per_m2": 82902,
+      "score": 1.8,
+      "median_price_per_m2": 84444,
+      "disposition": "1+1",
+      "disposition_group": "1",
+      "locality": "Vietnamská, Ostrava-město - Poruba",
+      "locality_city": "Ostrava-město",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Panelová",
+      "extras": [
+        "Balkón",
+        "Částečně zařízeno"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/1+1/ostrava-poruba-vietnamska/994033740",
+      "scraped_at": "2026-08-17T12:21:57.256183+00:00",
+      "listed_since": "2026-08-17",
+      "last_checked_at": "2026-08-18T12:24:08.277368+00:00",
+      "sold_at": "2026-08-18T12:24:08.277368+00:00"
+    },
+    {
+      "id": "2571092044",
+      "title": "Prodej bytu 1+1 39 m²",
+      "price": 2100000,
+      "area": 39.0,
+      "price_per_m2": 53846,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "1+1",
+      "disposition_group": "1",
+      "locality": "Slavíčkova, Sokolov",
+      "locality_city": "Sokolov",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Panelová",
+      "extras": [
+        "Sklep",
+        "Výtah"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/1+1/sokolov-sokolov-slavickova/2571092044",
+      "scraped_at": "2026-08-17T12:21:57.256319+00:00",
+      "listed_since": "2026-08-17",
+      "last_checked_at": "2026-08-18T12:24:08.277368+00:00",
+      "sold_at": "2026-08-18T12:24:08.277368+00:00"
+    },
+    {
+      "id": "847700044",
+      "title": "Prodej bytu 3+kk 112 m²",
+      "price": 10052726,
+      "area": 112.0,
+      "price_per_m2": 89756,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "3+kk",
+      "disposition_group": "3",
+      "locality": "Slavíkova, Jince, okres Příbram",
+      "locality_city": "Jince",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Smíšená",
+      "extras": [
+        "Parkování",
+        "Sklep",
+        "Novostavba"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/3+kk/jince-jince-slavikova/847700044",
+      "scraped_at": "2026-08-17T12:21:57.257868+00:00",
+      "listed_since": "2026-07-20",
+      "last_checked_at": "2026-08-18T12:24:08.277368+00:00",
+      "sold_at": "2026-08-18T12:24:08.277368+00:00"
     }
   ]
 }
