@@ -1,6 +1,6 @@
 {
-  "updated": "2026-08-19T06:38:38.295578+00:00",
-  "total": 45,
+  "updated": "2026-08-19T12:38:00.348285+00:00",
+  "total": 47,
   "listings": [
     {
       "id": "849356108",
@@ -1163,6 +1163,62 @@
       "listed_since": "2026-08-11",
       "last_checked_at": "2026-08-19T06:26:04.559576+00:00",
       "sold_at": "2026-08-19T06:26:04.559576+00:00"
+    },
+    {
+      "id": "1788338252",
+      "title": "Prodej bytu 2+kk 60 m²",
+      "price": 14990000,
+      "area": 60.0,
+      "price_per_m2": 249833,
+      "score": 0.1,
+      "median_price_per_m2": 250000,
+      "disposition": "2+kk",
+      "disposition_group": "2",
+      "locality": "Opletalova, Praha 1 - Nové Město",
+      "locality_city": "Praha 1",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Cihlová",
+      "extras": [
+        "Balkón",
+        "Sklep"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/2+kk/praha-nove-mesto-opletalova/1788338252",
+      "scraped_at": "2026-08-18T06:25:17.074472+00:00",
+      "listed_since": "2026-07-18",
+      "last_checked_at": "2026-08-19T12:24:06.644714+00:00",
+      "sold_at": "2026-08-19T12:24:06.644714+00:00"
+    },
+    {
+      "id": "3948118092",
+      "title": "Prodej bytu 5+kk 150 m²",
+      "price": 9290000,
+      "area": 150.0,
+      "price_per_m2": 61933,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "5+kk",
+      "disposition_group": "5",
+      "locality": "Pašinka, okres Kolín",
+      "locality_city": "Pašinka",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Cihlová",
+      "extras": [
+        "Terasa",
+        "Garáž",
+        "Parkování",
+        "Novostavba"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/5+kk/pasinka/3948118092",
+      "scraped_at": "2026-08-18T06:25:17.075336+00:00",
+      "listed_since": "2026-06-03",
+      "last_checked_at": "2026-08-19T12:24:06.644714+00:00",
+      "sold_at": "2026-08-19T12:24:06.644714+00:00"
     }
   ]
 }
