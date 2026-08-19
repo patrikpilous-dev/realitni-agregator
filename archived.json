@@ -1,6 +1,6 @@
 {
-  "updated": "2026-08-18T18:32:19.478519+00:00",
-  "total": 40,
+  "updated": "2026-08-19T00:48:51.510615+00:00",
+  "total": 44,
   "listings": [
     {
       "id": "849356108",
@@ -1024,6 +1024,119 @@
       "scraped_at": "2026-08-17T12:22:12.719867+00:00",
       "last_checked_at": "2026-08-18T18:22:15.663844+00:00",
       "sold_at": "2026-08-18T18:22:15.663844+00:00"
+    },
+    {
+      "id": "3613384780",
+      "title": "Prodej bytu 3+1 70 m²",
+      "price": 7199900,
+      "area": 70.0,
+      "price_per_m2": 102856,
+      "score": 0.5,
+      "median_price_per_m2": 103408,
+      "disposition": "3+1",
+      "disposition_group": "3",
+      "locality": "Na Vyhaslém, Kladno",
+      "locality_city": "Kladno",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Cihlová",
+      "extras": [
+        "Balkón",
+        "Výtah",
+        "Částečně zařízeno"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/3+1/kladno-kladno-na-vyhaslem/3613384780",
+      "scraped_at": "2026-08-17T06:43:44.237763+00:00",
+      "listed_since": "2026-07-07",
+      "last_checked_at": "2026-08-19T00:39:15.118510+00:00",
+      "sold_at": "2026-08-19T00:39:15.118510+00:00"
+    },
+    {
+      "id": "2780881740",
+      "title": "Prodej bytu 2+kk 59 m²",
+      "price": 9150000,
+      "area": 59.0,
+      "price_per_m2": 155085,
+      "score": 0.2,
+      "median_price_per_m2": 155333,
+      "disposition": "2+kk",
+      "disposition_group": "2",
+      "locality": "Semtínská, Praha 9 - Vinoř",
+      "locality_city": "Praha 9",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Cihlová",
+      "extras": [
+        "Garáž",
+        "Parkování",
+        "Novostavba",
+        "Zahrada"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/2+kk/praha-vinor-semtinska/2780881740",
+      "scraped_at": "2026-08-17T06:43:44.237139+00:00",
+      "listed_since": "2025-09-12",
+      "last_checked_at": "2026-08-19T00:39:15.118510+00:00",
+      "sold_at": "2026-08-19T00:39:15.118510+00:00"
+    },
+    {
+      "id": "4111056972",
+      "title": "Prodej bytu 4+kk 120 m²",
+      "price": 11190000,
+      "area": 120.0,
+      "price_per_m2": 93250,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "4+kk",
+      "disposition_group": "4",
+      "locality": "Okružní, Třebíč - Borovina",
+      "locality_city": "Třebíč",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Cihlová",
+      "extras": [
+        "Balkón",
+        "Garáž",
+        "Výtah",
+        "Zařízeno",
+        "Novostavba"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/4+kk/trebic-borovina-okruzni/4111056972",
+      "scraped_at": "2026-08-17T06:43:44.236630+00:00",
+      "listed_since": "2026-08-13",
+      "last_checked_at": "2026-08-19T00:39:15.118510+00:00",
+      "sold_at": "2026-08-19T00:39:15.118510+00:00"
+    },
+    {
+      "id": "2991583308",
+      "title": "Prodej bytu 2+kk 43 m²",
+      "price": 4749000,
+      "area": 43.0,
+      "price_per_m2": 110442,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "2+kk",
+      "disposition_group": "2",
+      "locality": "Rimavské Soboty, Kolín - Kolín II",
+      "locality_city": "Kolín",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Panelová",
+      "extras": [
+        "Výtah"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/2+kk/kolin-kolin-ii-rimavske-soboty/2991583308",
+      "scraped_at": "2026-08-17T06:43:44.231306+00:00",
+      "listed_since": "2026-06-17",
+      "last_checked_at": "2026-08-19T00:39:15.118510+00:00",
+      "sold_at": "2026-08-19T00:39:15.118510+00:00"
     }
   ]
 }
