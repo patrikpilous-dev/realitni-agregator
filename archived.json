@@ -1,6 +1,6 @@
 {
-  "updated": "2026-08-20T06:40:55.316791+00:00",
-  "total": 52,
+  "updated": "2026-08-20T12:40:19.810507+00:00",
+  "total": 55,
   "listings": [
     {
       "id": "3009487436",
@@ -1357,6 +1357,89 @@
       "scraped_at": "2026-08-18T12:24:08.275768+00:00",
       "last_checked_at": "2026-08-20T06:27:44.663825+00:00",
       "sold_at": "2026-08-20T06:27:44.663825+00:00"
+    },
+    {
+      "id": "2944790604",
+      "title": "Prodej bytu 5+kk 248 m²",
+      "price": 19900000,
+      "area": 248.0,
+      "price_per_m2": 80242,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "5+kk",
+      "disposition_group": "5",
+      "locality": "Zenklova, Praha 8 - Kobylisy",
+      "locality_city": "Praha 8",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Smíšená",
+      "extras": [
+        "Terasa",
+        "Garáž",
+        "Částečně zařízeno",
+        "Zahrada"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/5+kk/praha-kobylisy-zenklova/2944790604",
+      "scraped_at": "2026-08-17T12:21:57.257912+00:00",
+      "listed_since": "2026-06-30",
+      "last_checked_at": "2026-08-20T12:26:16.401195+00:00",
+      "sold_at": "2026-08-20T12:26:16.401195+00:00"
+    },
+    {
+      "id": "2867978316",
+      "title": "Prodej bytu 2+kk 54 m²",
+      "price": 7990000,
+      "area": 54.0,
+      "price_per_m2": 147963,
+      "score": 12.5,
+      "median_price_per_m2": 169021,
+      "disposition": "2+kk",
+      "disposition_group": "2",
+      "locality": "Hlubocká, Praha 5 - Jinonice",
+      "locality_city": "Praha 5",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Smíšená",
+      "extras": [
+        "Balkón",
+        "Výtah"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/2+kk/praha-jinonice-hlubocka/2867978316",
+      "scraped_at": "2026-08-18T18:22:00.145983+00:00",
+      "listed_since": "2026-07-15",
+      "last_checked_at": "2026-08-20T12:26:16.401195+00:00",
+      "sold_at": "2026-08-20T12:26:16.401195+00:00"
+    },
+    {
+      "id": "4153065548",
+      "title": "Prodej bytu 2+1 55 m²",
+      "price": 2600000,
+      "area": 55.0,
+      "price_per_m2": 47273,
+      "score": 13.7,
+      "median_price_per_m2": 54798,
+      "disposition": "2+1",
+      "disposition_group": "2",
+      "locality": "U Prodejny, Ostrava-město - Hrabůvka",
+      "locality_city": "Ostrava-město",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Družstevní",
+      "building_type": "Panelová",
+      "extras": [
+        "Sklep",
+        "Částečně zařízeno"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/2+1/ostrava-hrabuvka-u-prodejny/4153065548",
+      "scraped_at": "2026-08-18T18:22:00.148267+00:00",
+      "listed_since": "2026-08-13",
+      "last_checked_at": "2026-08-20T12:26:16.401195+00:00",
+      "sold_at": "2026-08-20T12:26:16.401195+00:00"
     }
   ]
 }
