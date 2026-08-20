@@ -1,6 +1,6 @@
 {
-  "updated": "2026-08-20T12:40:19.810507+00:00",
-  "total": 55,
+  "updated": "2026-08-20T18:35:32.183530+00:00",
+  "total": 58,
   "listings": [
     {
       "id": "3009487436",
@@ -1440,6 +1440,86 @@
       "listed_since": "2026-08-13",
       "last_checked_at": "2026-08-20T12:26:16.401195+00:00",
       "sold_at": "2026-08-20T12:26:16.401195+00:00"
+    },
+    {
+      "id": "3277955148",
+      "title": "Prodej chaty 71 m², pozemek 348 m²",
+      "price": 2500000,
+      "area": 71.0,
+      "price_per_m2": 35211,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "ostatní",
+      "disposition_group": "ostatní",
+      "locality": "Nad Kuřívodskou Silnicí, Bělá pod Bezdězem, okres Mladá Boleslav",
+      "locality_city": "Bělá pod Bezdězem",
+      "type": "dům",
+      "transaction": "prodej",
+      "ownership": "",
+      "building_type": "Smíšená",
+      "extras": [
+        "Parkování",
+        "Zařízeno",
+        "Zahrada"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/dum/chata/bela-pod-bezdezem-bela-pod-bezdezem-nad-kurivodskou-silnici/3277955148",
+      "scraped_at": "2026-08-17T12:22:12.719568+00:00",
+      "listed_since": "2026-05-02",
+      "last_checked_at": "2026-08-20T18:23:39.499826+00:00",
+      "sold_at": "2026-08-20T18:23:39.499826+00:00"
+    },
+    {
+      "id": "1839120460",
+      "title": "Prodej chaty 40 m², pozemek 1773 m²",
+      "price": 795000,
+      "area": 40.0,
+      "price_per_m2": 19875,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "ostatní",
+      "disposition_group": "ostatní",
+      "locality": "Světlá Hora - Dětřichovice, okres Bruntál",
+      "locality_city": "Světlá Hora",
+      "type": "dům",
+      "transaction": "prodej",
+      "ownership": "",
+      "building_type": "Smíšená",
+      "extras": [],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/dum/chata/svetla-hora-detrichovice/1839120460",
+      "scraped_at": "2026-08-19T00:39:15.116739+00:00",
+      "listed_since": "2026-08-18",
+      "last_checked_at": "2026-08-20T18:23:39.499826+00:00",
+      "sold_at": "2026-08-20T18:23:39.499826+00:00"
+    },
+    {
+      "id": "3853815884",
+      "title": "Prodej bytu 2+1 57 m²",
+      "price": 2490000,
+      "area": 57.0,
+      "price_per_m2": 43684,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "2+1",
+      "disposition_group": "2",
+      "locality": "Sídliště, Libčeves, okres Louny",
+      "locality_city": "Libčeves",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Panelová",
+      "extras": [
+        "Lodžie",
+        "Garáž",
+        "Sklep"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/2+1/libceves-libceves-sidliste/3853815884",
+      "scraped_at": "2026-08-19T06:25:45.558605+00:00",
+      "listed_since": "2026-05-26",
+      "last_checked_at": "2026-08-20T18:23:39.499826+00:00",
+      "sold_at": "2026-08-20T18:23:39.499826+00:00"
     }
   ]
 }
