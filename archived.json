@@ -1,6 +1,6 @@
 {
-  "updated": "2026-08-19T18:29:40.587897+00:00",
-  "total": 50,
+  "updated": "2026-08-20T00:49:28.260590+00:00",
+  "total": 52,
   "listings": [
     {
       "id": "3009487436",
@@ -1321,6 +1321,62 @@
       "listed_since": "2026-05-11",
       "last_checked_at": "2026-08-19T18:19:17.037297+00:00",
       "sold_at": "2026-08-19T18:19:17.037297+00:00"
+    },
+    {
+      "id": "3949301836",
+      "title": "Prodej rodinného domu 175 m², pozemek 1439 m²",
+      "price": 3390000,
+      "area": 175.0,
+      "price_per_m2": 19371,
+      "score": 57.8,
+      "median_price_per_m2": 45955,
+      "disposition": "ostatní",
+      "disposition_group": "ostatní",
+      "locality": "Horská, Dubí - Bystřice, okres Teplice",
+      "locality_city": "Dubí",
+      "type": "dům",
+      "transaction": "prodej",
+      "ownership": "",
+      "building_type": "Smíšená",
+      "extras": [
+        "Garáž",
+        "Parkování",
+        "Sklep",
+        "Částečně zařízeno",
+        "Zahrada"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/dubi-bystrice-horska/3949301836",
+      "scraped_at": "2026-08-18T06:25:38.497274+00:00",
+      "listed_since": "2026-05-24",
+      "last_checked_at": "2026-08-20T00:39:24.400753+00:00",
+      "sold_at": "2026-08-20T00:39:24.400753+00:00"
+    },
+    {
+      "id": "1243197516",
+      "title": "Prodej bytu 4+1 120 m²",
+      "price": 13800000,
+      "area": 120.0,
+      "price_per_m2": 115000,
+      "score": 1.2,
+      "median_price_per_m2": 116443,
+      "disposition": "4+1",
+      "disposition_group": "4",
+      "locality": "Krejčího, Praha 8 - Libeň",
+      "locality_city": "Praha 8",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Družstevní",
+      "building_type": "Smíšená",
+      "extras": [
+        "Částečně zařízeno"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/4+1/praha-liben-krejciho/1243197516",
+      "scraped_at": "2026-08-17T12:21:57.250158+00:00",
+      "listed_since": "2026-04-08",
+      "last_checked_at": "2026-08-20T00:39:24.400753+00:00",
+      "sold_at": "2026-08-20T00:39:24.400753+00:00"
     }
   ]
 }
