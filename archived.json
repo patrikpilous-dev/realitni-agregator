@@ -1,6 +1,6 @@
 {
-  "updated": "2026-08-21T12:37:20.323273+00:00",
-  "total": 69,
+  "updated": "2026-08-21T18:32:34.464720+00:00",
+  "total": 71,
   "listings": [
     {
       "id": "3009487436",
@@ -1809,6 +1809,60 @@
       "listed_since": "2026-08-19",
       "last_checked_at": "2026-08-21T12:25:46.121086+00:00",
       "sold_at": "2026-08-21T12:25:46.121086+00:00"
+    },
+    {
+      "id": "4170785612",
+      "title": "Prodej bytu 5+1 171 m²",
+      "price": 26300000,
+      "area": 171.0,
+      "price_per_m2": 153801,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "5+1",
+      "disposition_group": "5",
+      "locality": "Před Skalkami I, Praha 10 - Záběhlice",
+      "locality_city": "Praha 10",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Cihlová",
+      "extras": [
+        "Terasa",
+        "Parkování",
+        "Zahrada"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/5+1/praha-zabehlice-pred-skalkami-i/4170785612",
+      "scraped_at": "2026-08-20T00:39:08.163923+00:00",
+      "listed_since": "2025-11-14",
+      "last_checked_at": "2026-08-21T18:22:15.682640+00:00",
+      "sold_at": "2026-08-21T18:22:15.682640+00:00"
+    },
+    {
+      "id": "1860747340",
+      "title": "Prodej bytu 2+kk 52 m²",
+      "price": 6790000,
+      "area": 52.0,
+      "price_per_m2": 130577,
+      "score": 25.9,
+      "median_price_per_m2": 176250,
+      "disposition": "2+kk",
+      "disposition_group": "2",
+      "locality": "Jana Želivského, Praha 3 - Žižkov",
+      "locality_city": "Praha 3",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Cihlová",
+      "extras": [
+        "Částečně zařízeno"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/2+kk/praha-zizkov-jana-zelivskeho/1860747340",
+      "scraped_at": "2026-08-20T00:39:08.163981+00:00",
+      "listed_since": "2026-08-16",
+      "last_checked_at": "2026-08-21T18:22:15.682640+00:00",
+      "sold_at": "2026-08-21T18:22:15.682640+00:00"
     }
   ]
 }
