@@ -1,6 +1,6 @@
 {
-  "updated": "2026-08-21T00:52:47.916910+00:00",
-  "total": 61,
+  "updated": "2026-08-21T06:41:53.604470+00:00",
+  "total": 63,
   "listings": [
     {
       "id": "3009487436",
@@ -1598,6 +1598,56 @@
       "listed_since": "2026-08-17",
       "last_checked_at": "2026-08-21T00:42:00.659115+00:00",
       "sold_at": "2026-08-21T00:42:00.659115+00:00"
+    },
+    {
+      "id": "1470357580",
+      "title": "Prodej bytu 3+1 58 m²",
+      "price": 2470000,
+      "area": 58.0,
+      "price_per_m2": 42586,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "3+1",
+      "disposition_group": "3",
+      "locality": "Osvobození, Orlová - Lutyně, okres Karviná",
+      "locality_city": "Orlová",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "",
+      "building_type": "",
+      "extras": [],
+      "detail_fetched": false,
+      "url": "https://www.sreality.cz/detail/prodej/byt/3+1/orlova-lutyne-osvobozeni/1470357580",
+      "scraped_at": "2026-08-19T12:23:46.504670+00:00",
+      "last_checked_at": "2026-08-21T06:28:35.087074+00:00",
+      "sold_at": "2026-08-21T06:28:35.087074+00:00"
+    },
+    {
+      "id": "3049705548",
+      "title": "Prodej bytu 5+1 140 m²",
+      "price": 14499900,
+      "area": 140.0,
+      "price_per_m2": 103571,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "5+1",
+      "disposition_group": "5",
+      "locality": "V Holešovičkách, Praha 8 - Libeň",
+      "locality_city": "Praha 8",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Cihlová",
+      "extras": [
+        "Balkón",
+        "Zařízeno"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/5+1/praha-liben-v-holesovickach/3049705548",
+      "scraped_at": "2026-08-19T12:23:46.505744+00:00",
+      "listed_since": "2026-08-07",
+      "last_checked_at": "2026-08-21T06:28:35.087074+00:00",
+      "sold_at": "2026-08-21T06:28:35.087074+00:00"
     }
   ]
 }
