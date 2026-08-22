@@ -1,6 +1,6 @@
 {
-  "updated": "2026-08-22T12:30:30.317916+00:00",
-  "total": 83,
+  "updated": "2026-08-22T18:27:07.082762+00:00",
+  "total": 86,
   "listings": [
     {
       "id": "3009487436",
@@ -2174,6 +2174,87 @@
       "scraped_at": "2026-08-20T18:23:39.495150+00:00",
       "last_checked_at": "2026-08-22T12:18:50.685994+00:00",
       "sold_at": "2026-08-22T12:18:50.685994+00:00"
+    },
+    {
+      "id": "594395212",
+      "title": "Prodej bytu 3+1 95 m²",
+      "price": 15500000,
+      "area": 95.0,
+      "price_per_m2": 163158,
+      "score": 0.0,
+      "median_price_per_m2": 163158,
+      "disposition": "3+1",
+      "disposition_group": "3",
+      "locality": "Lužická, Praha 2 - Vinohrady",
+      "locality_city": "Praha 2",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Cihlová",
+      "extras": [
+        "Výtah"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/3+1/praha-vinohrady-luzicka/594395212",
+      "scraped_at": "2026-08-19T00:38:59.641168+00:00",
+      "listed_since": "2026-08-18",
+      "last_checked_at": "2026-08-22T18:14:51.276488+00:00",
+      "sold_at": "2026-08-22T18:14:51.276488+00:00"
+    },
+    {
+      "id": "3537150028",
+      "title": "Prodej chaty 48 m², pozemek 519 m²",
+      "price": 1265000,
+      "area": 48.0,
+      "price_per_m2": 26354,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "ostatní",
+      "disposition_group": "ostatní",
+      "locality": "Třinec - Konská, okres Frýdek-Místek",
+      "locality_city": "Třinec",
+      "type": "dům",
+      "transaction": "prodej",
+      "ownership": "",
+      "building_type": "Cihlová",
+      "extras": [
+        "Zahrada"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/dum/chata/trinec-konska/3537150028",
+      "scraped_at": "2026-08-19T00:39:15.117739+00:00",
+      "listed_since": "2026-05-07",
+      "last_checked_at": "2026-08-22T18:14:51.276488+00:00",
+      "sold_at": "2026-08-22T18:14:51.276488+00:00"
+    },
+    {
+      "id": "2706366540",
+      "title": "Prodej bytu 2+1 61 m²",
+      "price": 5690000,
+      "area": 61.0,
+      "price_per_m2": 93279,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "2+1",
+      "disposition_group": "2",
+      "locality": "Průběžná, Milovice - Mladá, okres Nymburk",
+      "locality_city": "Milovice",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Cihlová",
+      "extras": [
+        "Lodžie",
+        "Sklep",
+        "Výtah",
+        "Částečně zařízeno"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/2+1/milovice-mlada-prubezna/2706366540",
+      "scraped_at": "2026-08-21T00:41:43.808627+00:00",
+      "listed_since": "2026-07-07",
+      "last_checked_at": "2026-08-22T18:14:51.276488+00:00",
+      "sold_at": "2026-08-22T18:14:51.276488+00:00"
     }
   ]
 }
