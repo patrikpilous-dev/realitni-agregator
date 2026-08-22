@@ -1,6 +1,6 @@
 {
-  "updated": "2026-08-22T06:33:37.328331+00:00",
-  "total": 80,
+  "updated": "2026-08-22T12:30:30.317916+00:00",
+  "total": 83,
   "listings": [
     {
       "id": "3009487436",
@@ -2096,6 +2096,84 @@
       "scraped_at": "2026-08-20T12:26:16.399146+00:00",
       "last_checked_at": "2026-08-22T06:21:52.966905+00:00",
       "sold_at": "2026-08-22T06:21:52.966905+00:00"
+    },
+    {
+      "id": "645386316",
+      "title": "Prodej bytu 3+1 75 m²",
+      "price": 3200000,
+      "area": 75.0,
+      "price_per_m2": 42667,
+      "score": 28.7,
+      "median_price_per_m2": 59862,
+      "disposition": "3+1",
+      "disposition_group": "3",
+      "locality": "Arbesova, Ostrava-město - Přívoz",
+      "locality_city": "Ostrava-město",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Panelová",
+      "extras": [
+        "Lodžie",
+        "Výtah",
+        "Částečně zařízeno"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/3+1/ostrava-privoz-arbesova/645386316",
+      "scraped_at": "2026-08-20T18:23:21.064229+00:00",
+      "listed_since": "2026-08-06",
+      "last_checked_at": "2026-08-22T12:18:50.685994+00:00",
+      "sold_at": "2026-08-22T12:18:50.685994+00:00"
+    },
+    {
+      "id": "330088524",
+      "title": "Prodej bytu 2+kk 46 m²",
+      "price": 3680000,
+      "area": 46.0,
+      "price_per_m2": 80000,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "2+kk",
+      "disposition_group": "2",
+      "locality": "Kpt. Jaroše, Beroun - Beroun-Město",
+      "locality_city": "Beroun",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Panelová",
+      "extras": [
+        "Parkování",
+        "Sklep"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/2+kk/beroun-beroun-mesto-kpt-jarose/330088524",
+      "scraped_at": "2026-08-20T18:23:21.065538+00:00",
+      "listed_since": "2026-08-20",
+      "last_checked_at": "2026-08-22T12:18:50.685994+00:00",
+      "sold_at": "2026-08-22T12:18:50.685994+00:00"
+    },
+    {
+      "id": "1447555148",
+      "title": "Prodej chaty 48 m², pozemek 400 m²",
+      "price": 2100000,
+      "area": 48.0,
+      "price_per_m2": 43750,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "ostatní",
+      "disposition_group": "ostatní",
+      "locality": "Bohdalice-Pavlovice - Pavlovice, okres Vyškov",
+      "locality_city": "Bohdalice-Pavlovice",
+      "type": "dům",
+      "transaction": "prodej",
+      "ownership": "",
+      "building_type": "",
+      "extras": [],
+      "detail_fetched": false,
+      "url": "https://www.sreality.cz/detail/prodej/dum/chata/bohdalice-pavlovice-pavlovice/1447555148",
+      "scraped_at": "2026-08-20T18:23:39.495150+00:00",
+      "last_checked_at": "2026-08-22T12:18:50.685994+00:00",
+      "sold_at": "2026-08-22T12:18:50.685994+00:00"
     }
   ]
 }
