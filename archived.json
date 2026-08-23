@@ -1,6 +1,6 @@
 {
-  "updated": "2026-08-23T06:36:57.763167+00:00",
-  "total": 94,
+  "updated": "2026-08-23T12:30:08.540273+00:00",
+  "total": 93,
   "listings": [
     {
       "id": "3009487436",
@@ -52,27 +52,6 @@
       "sold_at": "2026-03-21T11:28:31.004866+00:00"
     },
     {
-      "id": "281793100",
-      "title": "Prodej  rodinného domu 163 m², pozemek 436 m²",
-      "price": 5019863,
-      "area": 163.0,
-      "price_per_m2": 30797,
-      "score": 14.3,
-      "disposition": "ostatní",
-      "locality": "Zaječice, okres Chrudim",
-      "locality_city": "Zaječice",
-      "type": "dům",
-      "transaction": "prodej",
-      "ownership": "",
-      "building_type": "",
-      "floor": "",
-      "energy_class": "",
-      "extras": [],
-      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny-dum/zajecice-zajecice-/281793100",
-      "scraped_at": "2026-03-21T11:25:35.533714+00:00",
-      "sold_at": "2026-03-21T11:28:31.004866+00:00"
-    },
-    {
       "id": "1623970380",
       "title": "Prodej  rodinného domu 163 m², pozemek 428 m²",
       "price": 5019863,
@@ -91,27 +70,6 @@
       "extras": [],
       "url": "https://www.sreality.cz/detail/prodej/dum/rodinny-dum/zajecice-zajecice-/1623970380",
       "scraped_at": "2026-03-21T11:25:35.533808+00:00",
-      "sold_at": "2026-03-21T11:28:31.004866+00:00"
-    },
-    {
-      "id": "969658956",
-      "title": "Prodej  rodinného domu 163 m², pozemek 425 m²",
-      "price": 5042450,
-      "area": 163.0,
-      "price_per_m2": 30935,
-      "score": 13.9,
-      "disposition": "ostatní",
-      "locality": "Zaječice, okres Chrudim",
-      "locality_city": "Zaječice",
-      "type": "dům",
-      "transaction": "prodej",
-      "ownership": "",
-      "building_type": "",
-      "floor": "",
-      "energy_class": "",
-      "extras": [],
-      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny-dum/zajecice-zajecice-/969658956",
-      "scraped_at": "2026-03-21T11:25:35.533902+00:00",
       "sold_at": "2026-03-21T11:28:31.004866+00:00"
     },
     {
@@ -2468,6 +2426,29 @@
       "listed_since": "2026-06-20",
       "last_checked_at": "2026-08-23T06:23:35.615735+00:00",
       "sold_at": "2026-08-23T06:23:35.615735+00:00"
+    },
+    {
+      "id": "3543384140",
+      "title": "Prodej rodinného domu 100 m², pozemek 329 m²",
+      "price": 2650000,
+      "area": 100.0,
+      "price_per_m2": 26500,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "ostatní",
+      "disposition_group": "ostatní",
+      "locality": "Cheznovice, okres Rokycany",
+      "locality_city": "Cheznovice",
+      "type": "dům",
+      "transaction": "prodej",
+      "ownership": "",
+      "building_type": "",
+      "extras": [],
+      "detail_fetched": false,
+      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/cheznovice-cheznovice/3543384140",
+      "scraped_at": "2026-08-21T12:25:46.119873+00:00",
+      "last_checked_at": "2026-08-23T12:19:09.663196+00:00",
+      "sold_at": "2026-08-23T12:19:09.663196+00:00"
     }
   ]
 }
