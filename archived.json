@@ -1,6 +1,6 @@
 {
-  "updated": "2026-08-23T12:30:08.540273+00:00",
-  "total": 93,
+  "updated": "2026-08-23T18:25:25.207972+00:00",
+  "total": 92,
   "listings": [
     {
       "id": "3009487436",
@@ -2241,60 +2241,6 @@
       "sold_at": "2026-08-23T00:42:10.438978+00:00"
     },
     {
-      "id": "2957176908",
-      "title": "Prodej bytu 3+kk 123 m²",
-      "price": 7990000,
-      "area": 123.0,
-      "price_per_m2": 64959,
-      "score": 0,
-      "median_price_per_m2": null,
-      "disposition": "3+kk",
-      "disposition_group": "3",
-      "locality": "Karlovo nám., Třebíč - Vnitřní Město",
-      "locality_city": "Třebíč",
-      "type": "byt",
-      "transaction": "prodej",
-      "ownership": "Osobní",
-      "building_type": "Smíšená",
-      "extras": [
-        "Garáž",
-        "Zařízeno",
-        "Zahrada"
-      ],
-      "detail_fetched": true,
-      "url": "https://www.sreality.cz/detail/prodej/byt/3+kk/trebic-vnitrni-mesto-karlovo-nam/2957176908",
-      "scraped_at": "2026-08-18T00:38:41.421814+00:00",
-      "listed_since": "2026-06-23",
-      "last_checked_at": "2026-08-23T00:42:10.438978+00:00",
-      "sold_at": "2026-08-23T00:42:10.438978+00:00"
-    },
-    {
-      "id": "712151116",
-      "title": "Prodej bytu 3+kk 80 m²",
-      "price": 5780000,
-      "area": 80.0,
-      "price_per_m2": 72250,
-      "score": 0,
-      "median_price_per_m2": null,
-      "disposition": "3+kk",
-      "disposition_group": "3",
-      "locality": "Karlovo nám., Třebíč - Vnitřní Město",
-      "locality_city": "Třebíč",
-      "type": "byt",
-      "transaction": "prodej",
-      "ownership": "Družstevní",
-      "building_type": "Smíšená",
-      "extras": [
-        "Částečně zařízeno"
-      ],
-      "detail_fetched": true,
-      "url": "https://www.sreality.cz/detail/prodej/byt/3+kk/trebic-vnitrni-mesto-karlovo-nam/712151116",
-      "scraped_at": "2026-08-18T00:38:41.421778+00:00",
-      "listed_since": "2026-05-18",
-      "last_checked_at": "2026-08-23T00:42:10.438978+00:00",
-      "sold_at": "2026-08-23T00:42:10.438978+00:00"
-    },
-    {
       "id": "2598277708",
       "title": "Prodej bytu 2+kk 67 m²",
       "price": 7490000,
@@ -2449,6 +2395,34 @@
       "scraped_at": "2026-08-21T12:25:46.119873+00:00",
       "last_checked_at": "2026-08-23T12:19:09.663196+00:00",
       "sold_at": "2026-08-23T12:19:09.663196+00:00"
+    },
+    {
+      "id": "212070476",
+      "title": "Prodej bytu 3+1 76 m²",
+      "price": 8500000,
+      "area": 76.0,
+      "price_per_m2": 111842,
+      "score": 6.3,
+      "median_price_per_m2": 119306,
+      "disposition": "3+1",
+      "disposition_group": "3",
+      "locality": "Hyacintová, Praha 10 - Záběhlice",
+      "locality_city": "Praha 10",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Panelová",
+      "extras": [
+        "Lodžie",
+        "Sklep",
+        "Výtah"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/3+1/praha-zabehlice-hyacintova/212070476",
+      "scraped_at": "2026-08-21T18:22:00.080657+00:00",
+      "listed_since": "2026-06-23",
+      "last_checked_at": "2026-08-23T18:14:56.638881+00:00",
+      "sold_at": "2026-08-23T18:14:56.638881+00:00"
     }
   ]
 }
