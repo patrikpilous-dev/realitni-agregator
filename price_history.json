@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-24T06:48:35.664725+00:00",
+  "updated": "2026-08-24T12:38:28.004579+00:00",
   "days": [
     {
       "date": "2026-08-16",
@@ -31990,134 +31990,154 @@
       "date": "2026-08-24",
       "cities": {
         "Brno-město": {
-          "byty": 103797,
-          "domy": 48276,
+          "byty": 107857,
+          "domy": 59894,
           "celkem": 96931
         },
+        "Sázava": {
+          "byty": null,
+          "domy": 76087,
+          "celkem": 76087
+        },
         "Karlovy Vary": {
-          "byty": 58333,
+          "byty": 55952,
           "domy": 14316,
-          "celkem": 57572
+          "celkem": 55952
         },
         "Petřvald": {
           "byty": null,
-          "domy": 27722,
-          "celkem": 27722
+          "domy": 97000,
+          "celkem": 97000
         },
-        "Kamenice": {
+        "Hanušovice": {
           "byty": null,
-          "domy": 62941,
-          "celkem": 62941
+          "domy": 28595,
+          "celkem": 28595
         },
-        "Ostrava-město": {
-          "byty": 53415,
-          "domy": 31357,
-          "celkem": 52899
-        },
-        "Hradec Králové": {
-          "byty": 94188,
-          "domy": 33898,
-          "celkem": 89773
-        },
-        "Praha 4": {
-          "byty": 129057,
-          "domy": 70476,
-          "celkem": 122708
-        },
-        "Olomouc": {
-          "byty": 80000,
-          "domy": 61250,
-          "celkem": 79971
-        },
-        "Praha 10": {
-          "byty": 113333,
-          "domy": 76097,
-          "celkem": 110556
+        "Děčín": {
+          "byty": 45676,
+          "domy": 24994,
+          "celkem": 26852
         },
         "Praha 9": {
           "byty": 119437,
-          "domy": 77882,
-          "celkem": 117086
+          "domy": 76596,
+          "celkem": 117529
+        },
+        "Praha 4": {
+          "byty": 131579,
+          "domy": 70476,
+          "celkem": 129077
+        },
+        "Jince": {
+          "byty": null,
+          "domy": 88728,
+          "celkem": 88728
+        },
+        "Ostrava-město": {
+          "byty": 57000,
+          "domy": 22368,
+          "celkem": 53415
+        },
+        "Harrachov": {
+          "byty": 103333,
+          "domy": 186111,
+          "celkem": 103333
+        },
+        "Praha 5": {
+          "byty": 120000,
+          "domy": 78392,
+          "celkem": 118163
         },
         "Žatec": {
           "byty": null,
           "domy": 20891,
           "celkem": 20891
         },
-        "Praha 5": {
-          "byty": 122125,
-          "domy": 58212,
-          "celkem": 121329
+        "Suchdol nad Lužnicí": {
+          "byty": null,
+          "domy": 36600,
+          "celkem": 36600
         },
-        "Kladno": {
-          "byty": 86627,
-          "domy": 38865,
-          "celkem": 83194
+        "Praha 10": {
+          "byty": 119333,
+          "domy": 75439,
+          "celkem": 117394
         },
-        "Slaný": {
-          "byty": 119259,
-          "domy": 59917,
-          "celkem": 107279
+        "Hradec Králové": {
+          "byty": 94188,
+          "domy": 33898,
+          "celkem": 89773
+        },
+        "Pardubice": {
+          "byty": 87500,
+          "domy": 42618,
+          "celkem": 85781
+        },
+        "Praha 6": {
+          "byty": 156667,
+          "domy": 107280,
+          "celkem": 147963
+        },
+        "Liběchov": {
+          "byty": null,
+          "domy": 36084,
+          "celkem": 36084
         },
         "Úholičky": {
           "byty": null,
-          "domy": 110383,
-          "celkem": 110383
-        },
-        "Jílové": {
-          "byty": 36667,
-          "domy": 19658,
-          "celkem": 36667
+          "domy": 108435,
+          "celkem": 108435
         },
         "Říčany": {
           "byty": 138434,
           "domy": 60000,
           "celkem": 105652
         },
+        "Mcely": {
+          "byty": null,
+          "domy": 93832,
+          "celkem": 93832
+        },
         "Bor": {
           "byty": 58209,
           "domy": 28950,
-          "celkem": 45870
-        },
-        "Mcely": {
-          "byty": null,
-          "domy": 101011,
-          "celkem": 101011
-        },
-        "Praha 6": {
-          "byty": 144333,
-          "domy": 54515,
-          "celkem": 128378
-        },
-        "Praha": {
-          "byty": 167295,
-          "domy": null,
-          "celkem": 167295
-        },
-        "Pardubice": {
-          "byty": 85781,
-          "domy": 42618,
-          "celkem": 75254
+          "celkem": 28950
         },
         "Pohořelice": {
           "byty": 76319,
           "domy": 36250,
           "celkem": 76319
         },
+        "Liberec": {
+          "byty": 94286,
+          "domy": 42095,
+          "celkem": 88094
+        },
+        "Praha": {
+          "byty": 188071,
+          "domy": 158852,
+          "celkem": 188071
+        },
+        "Olomouc": {
+          "byty": 79565,
+          "domy": 61250,
+          "celkem": 76607
+        },
         "Libušín": {
           "byty": null,
-          "domy": 37692,
-          "celkem": 37692
+          "domy": 36517,
+          "celkem": 36517
         },
-        "Karviná": {
-          "byty": 45429,
-          "domy": 23846,
-          "celkem": 34286
+        "Kladno": {
+          "byty": 84462,
+          "domy": 30600,
+          "celkem": 82632
         },
-        "Liběchov": {
-          "byty": null,
-          "domy": 71361,
-          "celkem": 71361
+        "Nový Bor": {
+          "byty": 61471,
+          "domy": 16170,
+          "celkem": 49241
         },
         "Štoky": {
           "byty": null,
@@ -32126,13 +32146,13 @@
         },
         "Jílové u Prahy": {
           "byty": null,
-          "domy": 35556,
-          "celkem": 35556
+          "domy": 24375,
+          "celkem": 24375
         },
-        "Plzeň-město": {
-          "byty": 77500,
-          "domy": 50749,
-          "celkem": 75598
+        "Třebíč": {
+          "byty": 89815,
+          "domy": 34500,
+          "celkem": 72250
         },
         "Vraňany": {
           "byty": null,
@@ -32144,70 +32164,1245 @@
           "domy": 76773,
           "celkem": 76773
         },
+        "Karviná": {
+          "byty": 34259,
+          "domy": 23846,
+          "celkem": 34259
+        },
         "Chyňava": {
           "byty": null,
           "domy": 53774,
           "celkem": 53774
         },
-        "Nový Bor": {
-          "byty": 61471,
-          "domy": 48218,
-          "celkem": 49241
-        },
         "Mladá Boleslav": {
           "byty": 81061,
           "domy": 23000,
-          "celkem": 80515
+          "celkem": 73110
         },
-        "Roudnice nad Labem": {
-          "byty": 75741,
-          "domy": 44333,
-          "celkem": 64615
+        "Tábor": {
+          "byty": 68281,
+          "domy": 37989,
+          "celkem": 62361
+        },
+        "Ohrobec": {
+          "byty": null,
+          "domy": 89950,
+          "celkem": 89950
         },
         "Praha 1": {
-          "byty": 174661,
+          "byty": 163041,
           "domy": null,
-          "celkem": 174661
+          "celkem": 163041
         },
-        "Kostelec nad Černými lesy": {
-          "byty": 96866,
-          "domy": 163571,
-          "celkem": 96866
+        "Český Těšín": {
+          "byty": 55938,
+          "domy": 52526,
+          "celkem": 52526
         },
-        "Olešnice": {
+        "Lány": {
           "byty": null,
-          "domy": 43148,
-          "celkem": 43148
+          "domy": 87097,
+          "celkem": 87097
         },
-        "Praha 8": {
-          "byty": 138308,
-          "domy": 66071,
-          "celkem": 137800
+        "Boskovice": {
+          "byty": null,
+          "domy": 59062,
+          "celkem": 59062
         },
         "Kostelec nad Labem": {
           "byty": null,
           "domy": 32394,
           "celkem": 32394
         },
-        "Liberec": {
-          "byty": 101731,
-          "domy": 93103,
-          "celkem": 100426
-        },
-        "Kněževes": {
+        "Mukařov": {
           "byty": null,
-          "domy": 111019,
-          "celkem": 111019
+          "domy": 128652,
+          "celkem": 128652
+        },
+        "Protivín": {
+          "byty": null,
+          "domy": 36600,
+          "celkem": 36600
+        },
+        "Plzeň-město": {
+          "byty": 74886,
+          "domy": 50749,
+          "celkem": 73049
+        },
+        "Jesenice": {
+          "byty": 171667,
+          "domy": 31887,
+          "celkem": 145340
+        },
+        "Břeclav": {
+          "byty": 86613,
+          "domy": 58824,
+          "celkem": 58824
         },
         "Poděbrady": {
           "byty": 86198,
           "domy": 121327,
           "celkem": 90258
         },
+        "Horoměřice": {
+          "byty": null,
+          "domy": 93438,
+          "celkem": 93438
+        },
         "Česká Lípa": {
-          "byty": 53465,
+          "byty": 48635,
           "domy": 21446,
           "celkem": 45946
+        },
+        "Jenštejn": {
+          "byty": null,
+          "domy": 142411,
+          "celkem": 142411
+        },
+        "Slaný": {
+          "byty": 107279,
+          "domy": 59917,
+          "celkem": 102467
+        },
+        "Praha 3": {
+          "byty": 158718,
+          "domy": null,
+          "celkem": 158718
+        },
+        "Praha 8": {
+          "byty": 137800,
+          "domy": 66071,
+          "celkem": 137059
+        },
+        "Ústí nad Labem": {
+          "byty": 49412,
+          "domy": 32917,
+          "celkem": 43429
+        },
+        "Uničov": {
+          "byty": 56415,
+          "domy": 53710,
+          "celkem": 53710
+        },
+        "Chomutov": {
+          "byty": 31475,
+          "domy": 40741,
+          "celkem": 31475
+        },
+        "Třeboň": {
+          "byty": null,
+          "domy": 54867,
+          "celkem": 54867
+        },
+        "Most": {
+          "byty": 33824,
+          "domy": 42778,
+          "celkem": 33824
+        },
+        "Stříbrná Skalice": {
+          "byty": null,
+          "domy": 82250,
+          "celkem": 82250
+        },
+        "Nučice": {
+          "byty": 100000,
+          "domy": 51600,
+          "celkem": 51600
+        },
+        "Zvole": {
+          "byty": null,
+          "domy": 71429,
+          "celkem": 71429
+        },
+        "Heřmanova Huť": {
+          "byty": 62169,
+          "domy": 129754,
+          "celkem": 129754
+        },
+        "Kroměříž": {
+          "byty": 84118,
+          "domy": 55263,
+          "celkem": 65410
+        },
+        "Opava": {
+          "byty": 67458,
+          "domy": 71429,
+          "celkem": 71429
+        },
+        "Velké Karlovice": {
+          "byty": 40667,
+          "domy": 24359,
+          "celkem": 24359
+        },
+        "Praha 7": {
+          "byty": 166667,
+          "domy": 148338,
+          "celkem": 152991
+        },
+        "Modřice": {
+          "byty": 142618,
+          "domy": null,
+          "celkem": 142618
+        },
+        "Jihlava": {
+          "byty": 65410,
+          "domy": 39016,
+          "celkem": 54556
+        },
+        "Havířov": {
+          "byty": 72353,
+          "domy": 36500,
+          "celkem": 58750
+        },
+        "Kačice": {
+          "byty": 102151,
+          "domy": 134409,
+          "celkem": 112903
+        },
+        "Příbram": {
+          "byty": 92000,
+          "domy": 29940,
+          "celkem": 82923
+        },
+        "Hostivice": {
+          "byty": 138889,
+          "domy": 80000,
+          "celkem": 130980
+        },
+        "Praha 2": {
+          "byty": 154083,
+          "domy": null,
+          "celkem": 154083
+        },
+        "Beroun": {
+          "byty": 126923,
+          "domy": 82963,
+          "celkem": 102042
+        },
+        "Slapy": {
+          "byty": null,
+          "domy": 120301,
+          "celkem": 120301
+        },
+        "Kamenné Žehrovice": {
+          "byty": null,
+          "domy": 97872,
+          "celkem": 97872
+        },
+        "České Budějovice": {
+          "byty": 77488,
+          "domy": 45072,
+          "celkem": 67949
+        },
+        "Lipová-lázně": {
+          "byty": 105000,
+          "domy": null,
+          "celkem": 105000
+        },
+        "Lužec nad Vltavou": {
+          "byty": null,
+          "domy": 58758,
+          "celkem": 58758
+        },
+        "Těrlicko": {
+          "byty": null,
+          "domy": 22422,
+          "celkem": 22422
+        },
+        "Benešov": {
+          "byty": 81421,
+          "domy": 49990,
+          "celkem": 73034
+        },
+        "Kralupy nad Vltavou": {
+          "byty": 84884,
+          "domy": 93200,
+          "celkem": 84884
+        },
+        "Nižbor": {
+          "byty": null,
+          "domy": 56591,
+          "celkem": 56591
+        },
+        "Frýdek-Místek": {
+          "byty": 66653,
+          "domy": 39474,
+          "celkem": 64107
+        },
+        "Milonice": {
+          "byty": null,
+          "domy": 106612,
+          "celkem": 106612
+        },
+        "Olešnice": {
+          "byty": null,
+          "domy": 23704,
+          "celkem": 23704
+        },
+        "Neratovice": {
+          "byty": 80629,
+          "domy": 107471,
+          "celkem": 80629
+        },
+        "Komorní Lhotka": {
+          "byty": null,
+          "domy": 56500,
+          "celkem": 56500
+        },
+        "Mimoň": {
+          "byty": null,
+          "domy": 19167,
+          "celkem": 19167
+        },
+        "Zaječice": {
+          "byty": null,
+          "domy": 30935,
+          "celkem": 30935
+        },
+        "Černá v Pošumaví": {
+          "byty": 134651,
+          "domy": null,
+          "celkem": 134651
+        },
+        "Mnichovice": {
+          "byty": null,
+          "domy": 87678,
+          "celkem": 87678
+        },
+        "Křečovice": {
+          "byty": null,
+          "domy": 97500,
+          "celkem": 97500
+        },
+        "Zlatníky-Hodkovice": {
+          "byty": null,
+          "domy": 79422,
+          "celkem": 79422
+        },
+        "Valtice": {
+          "byty": 104054,
+          "domy": null,
+          "celkem": 104054
+        },
+        "Zlatá": {
+          "byty": null,
+          "domy": 127791,
+          "celkem": 127791
+        },
+        "Verneřice": {
+          "byty": null,
+          "domy": 26130,
+          "celkem": 26130
+        },
+        "Hřivice": {
+          "byty": null,
+          "domy": 51000,
+          "celkem": 51000
+        },
+        "Volary": {
+          "byty": 35000,
+          "domy": null,
+          "celkem": 35000
+        },
+        "Kropáčova Vrutice": {
+          "byty": null,
+          "domy": 54364,
+          "celkem": 54364
+        },
+        "Louňovice pod Blaníkem": {
+          "byty": null,
+          "domy": 48347,
+          "celkem": 48347
+        },
+        "Květnice": {
+          "byty": null,
+          "domy": 66067,
+          "celkem": 66067
+        },
+        "Kněždub": {
+          "byty": null,
+          "domy": 23780,
+          "celkem": 23780
+        },
+        "Jinočany": {
+          "byty": 154900,
+          "domy": null,
+          "celkem": 154900
+        },
+        "Libavské Údolí": {
+          "byty": 13646,
+          "domy": null,
+          "celkem": 13646
+        },
+        "Uherčice": {
+          "byty": 68052,
+          "domy": null,
+          "celkem": 68052
+        },
+        "Luka nad Jihlavou": {
+          "byty": 65958,
+          "domy": null,
+          "celkem": 65958
+        },
+        "Bystřice": {
+          "byty": 52740,
+          "domy": 105871,
+          "celkem": 105871
+        },
+        "Horní Maršov": {
+          "byty": 172241,
+          "domy": 23317,
+          "celkem": 157273
+        },
+        "Třinec": {
+          "byty": 71818,
+          "domy": null,
+          "celkem": 71818
+        },
+        "Prusy-Boškůvky": {
+          "byty": 81536,
+          "domy": null,
+          "celkem": 81536
+        },
+        "Holýšov": {
+          "byty": 77500,
+          "domy": null,
+          "celkem": 77500
+        },
+        "Tanvald": {
+          "byty": 73500,
+          "domy": null,
+          "celkem": 73500
+        },
+        "Veselí nad Moravou": {
+          "byty": 105257,
+          "domy": null,
+          "celkem": 105257
+        },
+        "Písek": {
+          "byty": 62143,
+          "domy": 57432,
+          "celkem": 62143
+        },
+        "Zlín": {
+          "byty": 104257,
+          "domy": 29574,
+          "celkem": 65055
+        },
+        "Lipno nad Vltavou": {
+          "byty": 134484,
+          "domy": 77632,
+          "celkem": 77632
+        },
+        "Tisá": {
+          "byty": 47732,
+          "domy": null,
+          "celkem": 47732
+        },
+        "Stochov": {
+          "byty": 97843,
+          "domy": null,
+          "celkem": 97843
+        },
+        "Plavy": {
+          "byty": 88778,
+          "domy": 107952,
+          "celkem": 88778
+        },
+        "Velké Přílepy": {
+          "byty": 129508,
+          "domy": 92123,
+          "celkem": 92123
+        },
+        "Brandýs nad Labem-Stará Boleslav": {
+          "byty": 73515,
+          "domy": 75000,
+          "celkem": 75000
+        },
+        "Železný Brod": {
+          "byty": 52727,
+          "domy": 12456,
+          "celkem": 12456
+        },
+        "Kolín": {
+          "byty": 95119,
+          "domy": 66243,
+          "celkem": 95119
+        },
+        "Znojmo": {
+          "byty": 113977,
+          "domy": 34024,
+          "celkem": 84894
+        },
+        "Vítězná": {
+          "byty": 56567,
+          "domy": null,
+          "celkem": 56567
+        },
+        "Brandýs nad Orlicí": {
+          "byty": 38421,
+          "domy": null,
+          "celkem": 38421
+        },
+        "Nové Strašecí": {
+          "byty": 97692,
+          "domy": null,
+          "celkem": 97692
+        },
+        "Kutná Hora": {
+          "byty": 90704,
+          "domy": 59333,
+          "celkem": 90704
+        },
+        "Uherský Brod": {
+          "byty": 73382,
+          "domy": 56790,
+          "celkem": 73382
+        },
+        "Horní Planá": {
+          "byty": 110484,
+          "domy": 175000,
+          "celkem": 110484
+        },
+        "Pelhřimov": {
+          "byty": 73281,
+          "domy": null,
+          "celkem": 73281
+        },
+        "Jindřichův Hradec": {
+          "byty": 52090,
+          "domy": 58250,
+          "celkem": 58250
+        },
+        "Sezimovo Ústí": {
+          "byty": 88913,
+          "domy": 93042,
+          "celkem": 93042
+        },
+        "Králův Dvůr": {
+          "byty": 114211,
+          "domy": null,
+          "celkem": 114211
+        },
+        "Kněževes": {
+          "byty": 65455,
+          "domy": 111019,
+          "celkem": 70874
+        },
+        "Havlíčkův Brod": {
+          "byty": 52090,
+          "domy": 41842,
+          "celkem": 52090
+        },
+        "Zašovice": {
+          "byty": 43750,
+          "domy": null,
+          "celkem": 43750
+        },
+        "Moravany": {
+          "byty": 122222,
+          "domy": 71781,
+          "celkem": 118750
+        },
+        "Brumov-Bylnice": {
+          "byty": 86885,
+          "domy": null,
+          "celkem": 86885
+        },
+        "Jindřichov": {
+          "byty": null,
+          "domy": 28750,
+          "celkem": 28750
+        },
+        "Velká Dobrá": {
+          "byty": null,
+          "domy": 141361,
+          "celkem": 141361
+        },
+        "Vestec": {
+          "byty": null,
+          "domy": 73892,
+          "celkem": 73892
+        },
+        "Komárov": {
+          "byty": null,
+          "domy": 30667,
+          "celkem": 30667
+        },
+        "Hřebeč": {
+          "byty": null,
+          "domy": 83984,
+          "celkem": 83984
+        },
+        "Varvažov": {
+          "byty": null,
+          "domy": 99205,
+          "celkem": 99205
+        },
+        "Roztoky": {
+          "byty": null,
+          "domy": 357143,
+          "celkem": 357143
+        },
+        "Číčovice": {
+          "byty": null,
+          "domy": 122829,
+          "celkem": 122829
+        },
+        "Počátky": {
+          "byty": null,
+          "domy": 46667,
+          "celkem": 46667
+        },
+        "Dobrá Voda u Českých Budějovic": {
+          "byty": null,
+          "domy": 62000,
+          "celkem": 62000
+        },
+        "Střítež nad Ludinou": {
+          "byty": null,
+          "domy": 4048,
+          "celkem": 4048
+        },
+        "Kralice na Hané": {
+          "byty": null,
+          "domy": 34545,
+          "celkem": 34545
+        },
+        "Zásmuky": {
+          "byty": null,
+          "domy": 30588,
+          "celkem": 30588
+        },
+        "Horní Stropnice": {
+          "byty": null,
+          "domy": 46253,
+          "celkem": 46253
+        },
+        "Traplice": {
+          "byty": null,
+          "domy": 23686,
+          "celkem": 23686
+        },
+        "Letohrad": {
+          "byty": null,
+          "domy": 38507,
+          "celkem": 38507
+        },
+        "Malíkovice": {
+          "byty": null,
+          "domy": 126087,
+          "celkem": 126087
+        },
+        "Kozojedy": {
+          "byty": null,
+          "domy": 132258,
+          "celkem": 132258
+        },
+        "Rybnice": {
+          "byty": null,
+          "domy": 73430,
+          "celkem": 73430
+        },
+        "Obruby": {
+          "byty": null,
+          "domy": 140000,
+          "celkem": 140000
+        },
+        "Nýřany": {
+          "byty": null,
+          "domy": 147895,
+          "celkem": 147895
+        },
+        "Plužná": {
+          "byty": null,
+          "domy": 107075,
+          "celkem": 107075
+        },
+        "Čistá": {
+          "byty": null,
+          "domy": 126337,
+          "celkem": 126337
+        },
+        "Krakovany": {
+          "byty": null,
+          "domy": 130382,
+          "celkem": 130382
+        },
+        "Chotíkov": {
+          "byty": null,
+          "domy": 91667,
+          "celkem": 91667
+        },
+        "Obory": {
+          "byty": null,
+          "domy": 127941,
+          "celkem": 127941
+        },
+        "Vysoká nad Labem": {
+          "byty": null,
+          "domy": 106287,
+          "celkem": 106287
+        },
+        "Brtnice": {
+          "byty": null,
+          "domy": 85345,
+          "celkem": 85345
+        },
+        "Rynoltice": {
+          "byty": null,
+          "domy": 31260,
+          "celkem": 31260
+        },
+        "Domažlice": {
+          "byty": 57237,
+          "domy": 12273,
+          "celkem": 57237
+        },
+        "Svitavy": {
+          "byty": null,
+          "domy": 40269,
+          "celkem": 40269
+        },
+        "Polička": {
+          "byty": null,
+          "domy": 46357,
+          "celkem": 46357
+        },
+        "Holešov": {
+          "byty": null,
+          "domy": 24449,
+          "celkem": 24449
+        },
+        "Bystré": {
+          "byty": null,
+          "domy": 21450,
+          "celkem": 21450
+        },
+        "Opatov": {
+          "byty": null,
+          "domy": 26284,
+          "celkem": 26284
+        },
+        "Rohozná": {
+          "byty": null,
+          "domy": 31635,
+          "celkem": 31635
+        },
+        "Pustá Rybná": {
+          "byty": null,
+          "domy": 78429,
+          "celkem": 78429
+        },
+        "Ratenice": {
+          "byty": null,
+          "domy": 62845,
+          "celkem": 62845
+        },
+        "Dobřany": {
+          "byty": null,
+          "domy": 86371,
+          "celkem": 86371
+        },
+        "Huntířov": {
+          "byty": null,
+          "domy": 51315,
+          "celkem": 51315
+        },
+        "Březová-Oleško": {
+          "byty": null,
+          "domy": 145000,
+          "celkem": 145000
+        },
+        "Frymburk": {
+          "byty": null,
+          "domy": 59237,
+          "celkem": 59237
+        },
+        "Nové Hrady": {
+          "byty": null,
+          "domy": 74028,
+          "celkem": 74028
+        },
+        "Tupadly": {
+          "byty": null,
+          "domy": 74194,
+          "celkem": 74194
+        },
+        "Skrbeň": {
+          "byty": null,
+          "domy": 82667,
+          "celkem": 82667
+        },
+        "Osečná": {
+          "byty": null,
+          "domy": 22517,
+          "celkem": 22517
+        },
+        "Ropice": {
+          "byty": null,
+          "domy": 53614,
+          "celkem": 53614
+        },
+        "Hnojník": {
+          "byty": null,
+          "domy": 50370,
+          "celkem": 50370
+        },
+        "Němčice nad Hanou": {
+          "byty": null,
+          "domy": 6500,
+          "celkem": 6500
+        },
+        "Náklo": {
+          "byty": null,
+          "domy": 46889,
+          "celkem": 46889
+        },
+        "Soběhrdy": {
+          "byty": null,
+          "domy": 26000,
+          "celkem": 26000
+        },
+        "Sosnová": {
+          "byty": null,
+          "domy": 48495,
+          "celkem": 48495
+        },
+        "Čestlice": {
+          "byty": null,
+          "domy": 93649,
+          "celkem": 93649
+        },
+        "Ronov nad Doubravou": {
+          "byty": null,
+          "domy": 82925,
+          "celkem": 82925
+        },
+        "Ondřejov": {
+          "byty": null,
+          "domy": 83333,
+          "celkem": 83333
+        },
+        "Budíkov": {
+          "byty": null,
+          "domy": 22232,
+          "celkem": 22232
+        },
+        "Rakovník": {
+          "byty": 105588,
+          "domy": 79000,
+          "celkem": 79000
+        },
+        "Bukovany": {
+          "byty": null,
+          "domy": 91583,
+          "celkem": 91583
+        },
+        "Vrbčany": {
+          "byty": null,
+          "domy": 17732,
+          "celkem": 17732
+        },
+        "Dolní Dvůr": {
+          "byty": null,
+          "domy": 59450,
+          "celkem": 59450
+        },
+        "Studnice": {
+          "byty": null,
+          "domy": 36577,
+          "celkem": 36577
+        },
+        "Rabyně": {
+          "byty": null,
+          "domy": 62312,
+          "celkem": 62312
+        },
+        "Loučná pod Klínovcem": {
+          "byty": 155600,
+          "domy": 143590,
+          "celkem": 143590
+        },
+        "Chocerady": {
+          "byty": null,
+          "domy": 77451,
+          "celkem": 77451
+        },
+        "Paceřice": {
+          "byty": 101827,
+          "domy": 45170,
+          "celkem": 101827
+        },
+        "Jablonec nad Nisou": {
+          "byty": 66562,
+          "domy": 106250,
+          "celkem": 66562
+        },
+        "Vrbová Lhota": {
+          "byty": null,
+          "domy": 40704,
+          "celkem": 40704
+        },
+        "Březí": {
+          "byty": null,
+          "domy": 64903,
+          "celkem": 64903
+        },
+        "Čáslav": {
+          "byty": null,
+          "domy": 45921,
+          "celkem": 45921
+        },
+        "Zvánovice": {
+          "byty": null,
+          "domy": 141852,
+          "celkem": 141852
+        },
+        "Králova Lhota": {
+          "byty": null,
+          "domy": 34211,
+          "celkem": 34211
+        },
+        "Žlebské Chvalovice": {
+          "byty": null,
+          "domy": 40306,
+          "celkem": 40306
+        },
+        "Popovičky": {
+          "byty": null,
+          "domy": 84027,
+          "celkem": 84027
+        },
+        "Pec pod Sněžkou": {
+          "byty": 134351,
+          "domy": 104556,
+          "celkem": 134351
+        },
+        "Hradec nad Svitavou": {
+          "byty": null,
+          "domy": 34900,
+          "celkem": 34900
+        },
+        "Nový Knín": {
+          "byty": null,
+          "domy": 65686,
+          "celkem": 65686
+        },
+        "Chotyně": {
+          "byty": null,
+          "domy": 70647,
+          "celkem": 70647
+        },
+        "Jirny": {
+          "byty": 126071,
+          "domy": 118434,
+          "celkem": 118434
+        },
+        "Lejšovka": {
+          "byty": null,
+          "domy": 48667,
+          "celkem": 48667
+        },
+        "Kunvald": {
+          "byty": null,
+          "domy": 60081,
+          "celkem": 60081
+        },
+        "Třebestovice": {
+          "byty": null,
+          "domy": 51960,
+          "celkem": 51960
+        },
+        "Přimda": {
+          "byty": null,
+          "domy": 84519,
+          "celkem": 84519
+        },
+        "Královice": {
+          "byty": null,
+          "domy": 105864,
+          "celkem": 105864
+        },
+        "Tatrovice": {
+          "byty": null,
+          "domy": 32778,
+          "celkem": 32778
+        },
+        "Žandov": {
+          "byty": null,
+          "domy": 148000,
+          "celkem": 148000
+        },
+        "Žeravice": {
+          "byty": null,
+          "domy": 23267,
+          "celkem": 23267
+        },
+        "Bělá": {
+          "byty": null,
+          "domy": 53357,
+          "celkem": 53357
+        },
+        "Nemojany": {
+          "byty": null,
+          "domy": 51840,
+          "celkem": 51840
+        },
+        "Čebín": {
+          "byty": null,
+          "domy": 58915,
+          "celkem": 58915
+        },
+        "Podveky": {
+          "byty": null,
+          "domy": 41319,
+          "celkem": 41319
+        },
+        "Suchdol": {
+          "byty": null,
+          "domy": 28333,
+          "celkem": 28333
+        },
+        "Zruč nad Sázavou": {
+          "byty": null,
+          "domy": 66197,
+          "celkem": 66197
+        },
+        "Mikulčice": {
+          "byty": null,
+          "domy": 42938,
+          "celkem": 42938
+        },
+        "Křelov-Břuchotín": {
+          "byty": null,
+          "domy": 78729,
+          "celkem": 78729
+        },
+        "Záboří nad Labem": {
+          "byty": null,
+          "domy": 47170,
+          "celkem": 47170
+        },
+        "Bílina": {
+          "byty": 42857,
+          "domy": 39020,
+          "celkem": 42857
+        },
+        "Kuřim": {
+          "byty": null,
+          "domy": 97615,
+          "celkem": 97615
+        },
+        "Jitkov": {
+          "byty": null,
+          "domy": 25861,
+          "celkem": 25861
+        },
+        "Káraný": {
+          "byty": null,
+          "domy": 83912,
+          "celkem": 83912
+        },
+        "Mirotice": {
+          "byty": null,
+          "domy": 64473,
+          "celkem": 64473
+        },
+        "Žacléř": {
+          "byty": 64766,
+          "domy": 27716,
+          "celkem": 64766
+        },
+        "Lkáň": {
+          "byty": null,
+          "domy": 89000,
+          "celkem": 89000
+        },
+        "Ryžoviště": {
+          "byty": null,
+          "domy": 16000,
+          "celkem": 16000
+        },
+        "Jiřetín pod Jedlovou": {
+          "byty": null,
+          "domy": 30172,
+          "celkem": 30172
+        },
+        "Brodce": {
+          "byty": null,
+          "domy": 33267,
+          "celkem": 33267
+        },
+        "Pravonín": {
+          "byty": null,
+          "domy": 35294,
+          "celkem": 35294
+        },
+        "Stožec": {
+          "byty": null,
+          "domy": 58165,
+          "celkem": 58165
+        },
+        "Hvězdonice": {
+          "byty": null,
+          "domy": 56710,
+          "celkem": 56710
+        },
+        "Jičín": {
+          "byty": null,
+          "domy": 67933,
+          "celkem": 67933
+        },
+        "Malšice": {
+          "byty": null,
+          "domy": 45792,
+          "celkem": 45792
+        },
+        "Bánov": {
+          "byty": null,
+          "domy": 35000,
+          "celkem": 35000
+        },
+        "Prušánky": {
+          "byty": 28535,
+          "domy": 87375,
+          "celkem": 87375
+        },
+        "Lípa nad Orlicí": {
+          "byty": null,
+          "domy": 31389,
+          "celkem": 31389
+        },
+        "Přehořov": {
+          "byty": null,
+          "domy": 42850,
+          "celkem": 42850
+        },
+        "Mladá Vožice": {
+          "byty": null,
+          "domy": 42571,
+          "celkem": 42571
+        },
+        "Milevsko": {
+          "byty": null,
+          "domy": 38500,
+          "celkem": 38500
+        },
+        "Čím": {
+          "byty": null,
+          "domy": 32143,
+          "celkem": 32143
+        },
+        "Nová Ves": {
+          "byty": null,
+          "domy": 69950,
+          "celkem": 69950
+        },
+        "Choťánky": {
+          "byty": null,
+          "domy": 88807,
+          "celkem": 88807
+        },
+        "Bouzov": {
+          "byty": null,
+          "domy": 74021,
+          "celkem": 74021
+        },
+        "Křenovice": {
+          "byty": null,
+          "domy": 55669,
+          "celkem": 55669
+        },
+        "Staříč": {
+          "byty": null,
+          "domy": 53964,
+          "celkem": 53964
+        },
+        "Velemín": {
+          "byty": null,
+          "domy": 30045,
+          "celkem": 30045
+        },
+        "Krnov": {
+          "byty": null,
+          "domy": 43017,
+          "celkem": 43017
+        },
+        "Staré Sedlo": {
+          "byty": null,
+          "domy": 49995,
+          "celkem": 49995
+        },
+        "Jemnice": {
+          "byty": 48679,
+          "domy": 18750,
+          "celkem": 48679
+        },
+        "Holetín": {
+          "byty": null,
+          "domy": 29259,
+          "celkem": 29259
+        },
+        "Mastník": {
+          "byty": null,
+          "domy": 74380,
+          "celkem": 74380
+        },
+        "Vladislav": {
+          "byty": null,
+          "domy": 91518,
+          "celkem": 91518
+        },
+        "Planá": {
+          "byty": 43740,
+          "domy": 58660,
+          "celkem": 58660
+        },
+        "Měchenice": {
+          "byty": null,
+          "domy": 59064,
+          "celkem": 59064
+        },
+        "Zbraslavice": {
+          "byty": null,
+          "domy": 15553,
+          "celkem": 15553
+        },
+        "Frýdlant": {
+          "byty": null,
+          "domy": 48000,
+          "celkem": 48000
+        },
+        "Vrbičany": {
+          "byty": null,
+          "domy": 37500,
+          "celkem": 37500
+        },
+        "Hustopeče": {
+          "byty": null,
+          "domy": 28014,
+          "celkem": 28014
+        },
+        "Kamenice": {
+          "byty": null,
+          "domy": 62941,
+          "celkem": 62941
+        },
+        "Jílové": {
+          "byty": 36667,
+          "domy": 19658,
+          "celkem": 36667
+        },
+        "Roudnice nad Labem": {
+          "byty": 88333,
+          "domy": 44333,
+          "celkem": 75741
+        },
+        "Kostelec nad Černými lesy": {
+          "byty": 96866,
+          "domy": 46533,
+          "celkem": 96866
         },
         "Orlová": {
           "byty": 45902,
@@ -32219,130 +33414,25 @@
           "domy": 64647,
           "celkem": 64647
         },
-        "Praha 3": {
-          "byty": 152642,
-          "domy": null,
-          "celkem": 152642
-        },
-        "Ústí nad Labem": {
-          "byty": 51923,
-          "domy": 32917,
-          "celkem": 51818
-        },
-        "Uničov": {
-          "byty": 56415,
-          "domy": 53710,
-          "celkem": 53710
-        },
         "Úvaly": {
           "byty": 136885,
           "domy": 58861,
-          "celkem": 131720
-        },
-        "Chomutov": {
-          "byty": 31094,
-          "domy": 107845,
-          "celkem": 40741
+          "celkem": 58861
         },
         "Cheb": {
-          "byty": 61765,
+          "byty": 34746,
           "domy": 58698,
-          "celkem": 58698
-        },
-        "Praha 2": {
-          "byty": 178482,
-          "domy": null,
-          "celkem": 178482
-        },
-        "Most": {
-          "byty": 38991,
-          "domy": 42778,
-          "celkem": 42295
-        },
-        "Kroměříž": {
-          "byty": 84118,
-          "domy": 55263,
-          "celkem": 79404
-        },
-        "Opava": {
-          "byty": 68354,
-          "domy": 71429,
-          "celkem": 71429
+          "celkem": 42857
         },
         "Hodonín": {
-          "byty": 58800,
+          "byty": null,
           "domy": 28587,
-          "celkem": 58800
-        },
-        "České Budějovice": {
-          "byty": 67949,
-          "domy": 45072,
-          "celkem": 66654
-        },
-        "Velké Karlovice": {
-          "byty": 40667,
-          "domy": 30000,
-          "celkem": 30000
-        },
-        "Modřice": {
-          "byty": 115982,
-          "domy": null,
-          "celkem": 115982
-        },
-        "Praha 7": {
-          "byty": 176353,
-          "domy": 148338,
-          "celkem": 166667
-        },
-        "Kamenné Žehrovice": {
-          "byty": null,
-          "domy": 97872,
-          "celkem": 97872
-        },
-        "Lipová-lázně": {
-          "byty": 107708,
-          "domy": null,
-          "celkem": 107708
-        },
-        "Hostivice": {
-          "byty": 138889,
-          "domy": 80000,
-          "celkem": 138889
-        },
-        "Železný Brod": {
-          "byty": null,
-          "domy": 12456,
-          "celkem": 12456
-        },
-        "Třebíč": {
-          "byty": 82123,
-          "domy": 17960,
-          "celkem": 72250
-        },
-        "Lužec nad Vltavou": {
-          "byty": null,
-          "domy": 58758,
-          "celkem": 58758
+          "celkem": 28587
         },
         "Unhošť": {
-          "byty": 97422,
+          "byty": null,
           "domy": 94382,
           "celkem": 94382
-        },
-        "Jenštejn": {
-          "byty": null,
-          "domy": 85544,
-          "celkem": 85544
-        },
-        "Třeboň": {
-          "byty": 104661,
-          "domy": 54867,
-          "celkem": 70851
-        },
-        "Těrlicko": {
-          "byty": null,
-          "domy": 22422,
-          "celkem": 22422
         },
         "Strašice": {
           "byty": null,
@@ -32354,60 +33444,10 @@
           "domy": 36000,
           "celkem": 61091
         },
-        "Frýdek-Místek": {
-          "byty": 64247,
-          "domy": 39474,
-          "celkem": 64107
-        },
-        "Jihlava": {
-          "byty": 54556,
-          "domy": 39016,
-          "celkem": 54556
-        },
-        "Jablonec nad Nisou": {
-          "byty": 66562,
-          "domy": 106250,
-          "celkem": 99767
-        },
-        "Milonice": {
-          "byty": null,
-          "domy": 106612,
-          "celkem": 106612
-        },
-        "Harrachov": {
-          "byty": 103333,
-          "domy": 186111,
-          "celkem": 103333
-        },
-        "Neratovice": {
-          "byty": 80629,
-          "domy": 107471,
-          "celkem": 81712
-        },
-        "Mimoň": {
-          "byty": null,
-          "domy": 19167,
-          "celkem": 19167
-        },
         "Vodochody": {
           "byty": null,
           "domy": 62178,
           "celkem": 62178
-        },
-        "Břeclav": {
-          "byty": 95833,
-          "domy": 43450,
-          "celkem": 86613
-        },
-        "Zaječice": {
-          "byty": null,
-          "domy": 30935,
-          "celkem": 30935
-        },
-        "Černá v Pošumaví": {
-          "byty": 134651,
-          "domy": null,
-          "celkem": 134651
         },
         "Běleč": {
           "byty": null,
@@ -32423,16 +33463,6 @@
           "byty": null,
           "domy": 104539,
           "celkem": 104539
-        },
-        "Loučná pod Klínovcem": {
-          "byty": 155600,
-          "domy": 143590,
-          "celkem": 143590
-        },
-        "Protivín": {
-          "byty": null,
-          "domy": 43043,
-          "celkem": 43043
         },
         "Klínec": {
           "byty": 122719,
@@ -32524,11 +33554,6 @@
           "domy": 37935,
           "celkem": 37935
         },
-        "Kolín": {
-          "byty": 108116,
-          "domy": 66243,
-          "celkem": 95119
-        },
         "Nupaky": {
           "byty": 120361,
           "domy": null,
@@ -32595,24 +33620,19 @@
           "celkem": 42738
         },
         "Bohumín": {
-          "byty": 60345,
+          "byty": 62766,
           "domy": 44633,
           "celkem": 48333
         },
         "Prostějov": {
           "byty": 77812,
-          "domy": 37458,
-          "celkem": 76575
+          "domy": null,
+          "celkem": 77812
         },
         "Šlapanice": {
           "byty": 115000,
           "domy": 110950,
           "celkem": 115000
-        },
-        "Beroun": {
-          "byty": 126923,
-          "domy": 93455,
-          "celkem": 102042
         },
         "Velké Popovice": {
           "byty": 81609,
@@ -32626,13 +33646,8 @@
         },
         "Kokořín": {
           "byty": 43832,
-          "domy": 49688,
-          "celkem": 49688
-        },
-        "Kralupy nad Vltavou": {
-          "byty": 84884,
-          "domy": 93200,
-          "celkem": 84884
+          "domy": null,
+          "celkem": 43832
         },
         "Rokytnice nad Jizerou": {
           "byty": 161154,
@@ -32652,17 +33667,12 @@
         "Bělá pod Bezdězem": {
           "byty": 75581,
           "domy": 66250,
-          "celkem": 66250
+          "celkem": 75581
         },
         "Zábřeh": {
           "byty": 66667,
           "domy": 42593,
           "celkem": 42593
-        },
-        "Bílina": {
-          "byty": 42857,
-          "domy": 66281,
-          "celkem": 66281
         },
         "Stráž pod Ralskem": {
           "byty": 47000,
@@ -32670,9 +33680,9 @@
           "celkem": 47000
         },
         "Přerov": {
-          "byty": 71270,
+          "byty": 69535,
           "domy": null,
-          "celkem": 71270
+          "celkem": 69535
         },
         "Pernink": {
           "byty": 71013,
@@ -32696,28 +33706,13 @@
         },
         "Cvikov": {
           "byty": 55854,
-          "domy": 12590,
-          "celkem": 12590
-        },
-        "Horní Planá": {
-          "byty": 110484,
-          "domy": 175000,
-          "celkem": 175000
+          "domy": 7180,
+          "celkem": 55854
         },
         "Hostinné": {
           "byty": 63929,
           "domy": null,
           "celkem": 63929
-        },
-        "Horní Maršov": {
-          "byty": 172241,
-          "domy": 23317,
-          "celkem": 172241
-        },
-        "Český Těšín": {
-          "byty": 37188,
-          "domy": 52526,
-          "celkem": 37188
         },
         "Desná": {
           "byty": 109923,
@@ -32799,11 +33794,6 @@
           "domy": 45000,
           "celkem": 45000
         },
-        "Komorní Lhotka": {
-          "byty": null,
-          "domy": 62500,
-          "celkem": 62500
-        },
         "Nalžovice": {
           "byty": null,
           "domy": 133649,
@@ -32813,11 +33803,6 @@
           "byty": null,
           "domy": 53864,
           "celkem": 53864
-        },
-        "Nižbor": {
-          "byty": null,
-          "domy": 56591,
-          "celkem": 56591
         },
         "Pěnčín": {
           "byty": null,
@@ -32840,9 +33825,9 @@
           "celkem": 147547
         },
         "Mariánské Lázně": {
-          "byty": 49464,
+          "byty": 47794,
           "domy": 27778,
-          "celkem": 47794
+          "celkem": 38831
         },
         "Chrudim": {
           "byty": 67288,
@@ -32858,11 +33843,6 @@
           "byty": null,
           "domy": 28784,
           "celkem": 28784
-        },
-        "Jičín": {
-          "byty": null,
-          "domy": 67933,
-          "celkem": 67933
         },
         "Dlouhá Ves": {
           "byty": null,
@@ -32894,11 +33874,6 @@
           "domy": 39196,
           "celkem": 39196
         },
-        "Jindřichův Hradec": {
-          "byty": null,
-          "domy": 58250,
-          "celkem": 58250
-        },
         "Kosořice": {
           "byty": null,
           "domy": 74141,
@@ -32908,11 +33883,6 @@
           "byty": null,
           "domy": 43500,
           "celkem": 43500
-        },
-        "Křečovice": {
-          "byty": null,
-          "domy": 97500,
-          "celkem": 97500
         },
         "Koleč": {
           "byty": null,
@@ -32926,8 +33896,8 @@
         },
         "Mohelnice": {
           "byty": null,
-          "domy": 79804,
-          "celkem": 79804
+          "domy": 25333,
+          "celkem": 25333
         },
         "Velatice": {
           "byty": null,
@@ -32948,11 +33918,6 @@
           "byty": null,
           "domy": 43878,
           "celkem": 43878
-        },
-        "Bystré": {
-          "byty": null,
-          "domy": 21226,
-          "celkem": 21226
         },
         "Letovice": {
           "byty": null,
@@ -32978,11 +33943,6 @@
           "byty": null,
           "domy": 39808,
           "celkem": 39808
-        },
-        "Čáslav": {
-          "byty": null,
-          "domy": 45921,
-          "celkem": 45921
         },
         "Vysoké nad Jizerou": {
           "byty": null,
@@ -33094,11 +34054,6 @@
           "domy": 75000,
           "celkem": 75000
         },
-        "Jirny": {
-          "byty": 126071,
-          "domy": 118434,
-          "celkem": 118434
-        },
         "Nový Dům": {
           "byty": null,
           "domy": 69872,
@@ -33123,16 +34078,6 @@
           "byty": null,
           "domy": 150000,
           "celkem": 150000
-        },
-        "Zvole": {
-          "byty": null,
-          "domy": 76020,
-          "celkem": 76020
-        },
-        "Lkáň": {
-          "byty": null,
-          "domy": 89000,
-          "celkem": 89000
         },
         "Telnice": {
           "byty": null,
@@ -33164,11 +34109,6 @@
           "domy": 39933,
           "celkem": 39933
         },
-        "Sosnová": {
-          "byty": null,
-          "domy": 48495,
-          "celkem": 48495
-        },
         "Mnich": {
           "byty": null,
           "domy": 59000,
@@ -33176,13 +34116,8 @@
         },
         "Svinařov": {
           "byty": null,
-          "domy": 45811,
-          "celkem": 45811
-        },
-        "Boskovice": {
-          "byty": null,
-          "domy": 59610,
-          "celkem": 59610
+          "domy": 17854,
+          "celkem": 17854
         },
         "Tisová": {
           "byty": null,
@@ -33364,20 +34299,10 @@
           "domy": 39900,
           "celkem": 39900
         },
-        "Hanušovice": {
-          "byty": null,
-          "domy": 50378,
-          "celkem": 50378
-        },
         "Podkopná Lhota": {
           "byty": null,
           "domy": 32000,
           "celkem": 32000
-        },
-        "Plavy": {
-          "byty": null,
-          "domy": 107952,
-          "celkem": 107952
         },
         "Kobylí": {
           "byty": null,
@@ -33394,11 +34319,6 @@
           "domy": 36950,
           "celkem": 36950
         },
-        "Příbram": {
-          "byty": 70000,
-          "domy": 29940,
-          "celkem": 59080
-        },
         "Stříbro": {
           "byty": 59552,
           "domy": 25200,
@@ -33413,11 +34333,6 @@
           "byty": null,
           "domy": 24224,
           "celkem": 24224
-        },
-        "Jesenice": {
-          "byty": 171667,
-          "domy": 31887,
-          "celkem": 31887
         },
         "Mikulov": {
           "byty": 70533,
@@ -33443,11 +34358,6 @@
           "byty": 87333,
           "domy": null,
           "celkem": 87333
-        },
-        "Benešov": {
-          "byty": 81421,
-          "domy": 49990,
-          "celkem": 49990
         },
         "Pastviny": {
           "byty": null,
@@ -33487,17 +34397,12 @@
         "Teplice": {
           "byty": 42113,
           "domy": 63812,
-          "celkem": 42113
+          "celkem": 63812
         },
         "Štíty": {
           "byty": null,
           "domy": 9889,
           "celkem": 9889
-        },
-        "Letohrad": {
-          "byty": null,
-          "domy": 17078,
-          "celkem": 17078
         },
         "Hrušovany nad Jevišovkou": {
           "byty": 24663,
@@ -33523,11 +34428,6 @@
           "byty": null,
           "domy": 106154,
           "celkem": 106154
-        },
-        "Lány": {
-          "byty": null,
-          "domy": 105000,
-          "celkem": 105000
         },
         "Košice": {
           "byty": null,
@@ -33570,9 +34470,9 @@
           "celkem": 93103
         },
         "Chlumec": {
-          "byty": 54531,
+          "byty": 51290,
           "domy": null,
-          "celkem": 54531
+          "celkem": 51290
         },
         "Velká Bystřice": {
           "byty": 85526,
@@ -33630,9 +34530,9 @@
           "celkem": 118559
         },
         "Průhonice": {
-          "byty": 107748,
+          "byty": 93509,
           "domy": 166667,
-          "celkem": 107748
+          "celkem": 166667
         },
         "Spálov": {
           "byty": null,
@@ -33670,19 +34570,14 @@
           "celkem": 64375
         },
         "Merklín": {
-          "byty": 106228,
+          "byty": null,
           "domy": 66458,
-          "celkem": 106228
+          "celkem": 66458
         },
         "Borušov": {
           "byty": null,
           "domy": 38235,
           "celkem": 38235
-        },
-        "Rakovník": {
-          "byty": 105588,
-          "domy": 79000,
-          "celkem": 105588
         },
         "Červený Kostelec": {
           "byty": null,
@@ -33724,11 +34619,6 @@
           "domy": 118261,
           "celkem": 118261
         },
-        "Nučice": {
-          "byty": 102000,
-          "domy": 125405,
-          "celkem": 102000
-        },
         "Kamýk nad Vltavou": {
           "byty": null,
           "domy": 88900,
@@ -33753,11 +34643,6 @@
           "byty": null,
           "domy": 51643,
           "celkem": 51643
-        },
-        "Kačice": {
-          "byty": 102151,
-          "domy": 134409,
-          "celkem": 112903
         },
         "Doubravník": {
           "byty": null,
@@ -33814,26 +34699,6 @@
           "domy": null,
           "celkem": 101143
         },
-        "Domažlice": {
-          "byty": 57237,
-          "domy": null,
-          "celkem": 57237
-        },
-        "Žacléř": {
-          "byty": 64766,
-          "domy": null,
-          "celkem": 64766
-        },
-        "Znojmo": {
-          "byty": 84894,
-          "domy": 34024,
-          "celkem": 84894
-        },
-        "Děčín": {
-          "byty": 45676,
-          "domy": 24994,
-          "celkem": 26852
-        },
         "Rychnov nad Kněžnou": {
           "byty": 61459,
           "domy": null,
@@ -33849,11 +34714,6 @@
           "domy": null,
           "celkem": 93441
         },
-        "Tábor": {
-          "byty": 68281,
-          "domy": 53767,
-          "celkem": 66026
-        },
         "Odolena Voda": {
           "byty": 88906,
           "domy": null,
@@ -33863,11 +34723,6 @@
           "byty": 55370,
           "domy": null,
           "celkem": 55370
-        },
-        "Jemnice": {
-          "byty": 48679,
-          "domy": null,
-          "celkem": 48679
         },
         "Velešín": {
           "byty": 47658,
@@ -34035,7 +34890,7 @@
           "celkem": 105093
         },
         "Horšovský Týn": {
-          "byty": 46528,
+          "byty": null,
           "domy": 54307,
           "celkem": 54307
         },
@@ -34043,11 +34898,6 @@
           "byty": null,
           "domy": 49923,
           "celkem": 49923
-        },
-        "Roztoky": {
-          "byty": null,
-          "domy": 107394,
-          "celkem": 107394
         },
         "Kunčice pod Ondřejníkem": {
           "byty": null,
@@ -34067,7 +34917,7 @@
         "Dobříš": {
           "byty": 83630,
           "domy": 50667,
-          "celkem": 83630
+          "celkem": 82857
         },
         "Býšť": {
           "byty": null,
@@ -34129,11 +34979,6 @@
           "domy": 53812,
           "celkem": 53812
         },
-        "Velká Dobrá": {
-          "byty": null,
-          "domy": 95000,
-          "celkem": 95000
-        },
         "Žilov": {
           "byty": null,
           "domy": 74510,
@@ -34150,9 +34995,9 @@
           "celkem": 95556
         },
         "Kouřim": {
-          "byty": 89103,
+          "byty": 95962,
           "domy": 78421,
-          "celkem": 89103
+          "celkem": 88391
         },
         "Studenec": {
           "byty": null,
@@ -34204,11 +35049,6 @@
           "domy": 22063,
           "celkem": 22063
         },
-        "Kropáčova Vrutice": {
-          "byty": null,
-          "domy": 54364,
-          "celkem": 54364
-        },
         "Jevišovice": {
           "byty": null,
           "domy": 50191,
@@ -34241,8 +35081,8 @@
         },
         "Týnec nad Labem": {
           "byty": null,
-          "domy": 36456,
-          "celkem": 36456
+          "domy": 30861,
+          "celkem": 30861
         },
         "Rašovice": {
           "byty": null,
@@ -34254,20 +35094,10 @@
           "domy": 114185,
           "celkem": 114185
         },
-        "Slapy": {
-          "byty": null,
-          "domy": 76319,
-          "celkem": 76319
-        },
         "Horoušany": {
           "byty": 108256,
           "domy": 106452,
           "celkem": 106452
-        },
-        "Brandýs nad Labem-Stará Boleslav": {
-          "byty": 104535,
-          "domy": 75000,
-          "celkem": 104535
         },
         "Ostravice": {
           "byty": null,
@@ -34284,30 +35114,20 @@
           "domy": 22182,
           "celkem": 22182
         },
-        "Mukařov": {
-          "byty": null,
-          "domy": 147273,
-          "celkem": 147273
-        },
         "Chýně": {
-          "byty": 141818,
+          "byty": null,
           "domy": 128704,
-          "celkem": 141818
+          "celkem": 128704
         },
         "Lipí": {
           "byty": null,
           "domy": 119798,
           "celkem": 119798
         },
-        "Mnichovice": {
-          "byty": null,
-          "domy": 87678,
-          "celkem": 87678
-        },
         "Bojanov": {
           "byty": 24875,
-          "domy": 62493,
-          "celkem": 62493
+          "domy": null,
+          "celkem": 24875
         },
         "Litomyšl": {
           "byty": 30966,
@@ -34334,11 +35154,6 @@
           "domy": 117768,
           "celkem": 117768
         },
-        "Krnov": {
-          "byty": null,
-          "domy": 43017,
-          "celkem": 43017
-        },
         "Žilina": {
           "byty": null,
           "domy": 105172,
@@ -34359,15 +35174,10 @@
           "domy": 19067,
           "celkem": 19067
         },
-        "Moravany": {
-          "byty": null,
-          "domy": 71781,
-          "celkem": 71781
-        },
         "Černošice": {
           "byty": 108411,
-          "domy": 105088,
-          "celkem": 105088
+          "domy": null,
+          "celkem": 108411
         },
         "Měnín": {
           "byty": null,
@@ -34426,13 +35236,8 @@
         },
         "Šternberk": {
           "byty": 85902,
-          "domy": 50000,
-          "celkem": 68167
-        },
-        "Paceřice": {
-          "byty": 101827,
           "domy": null,
-          "celkem": 101827
+          "celkem": 85902
         },
         "Mořice": {
           "byty": 52969,
@@ -34450,9 +35255,9 @@
           "celkem": 73966
         },
         "Ivančice": {
-          "byty": 105758,
+          "byty": 111294,
           "domy": null,
-          "celkem": 105758
+          "celkem": 111294
         },
         "Těmice": {
           "byty": null,
@@ -34468,11 +35273,6 @@
           "byty": null,
           "domy": 46766,
           "celkem": 46766
-        },
-        "Tupadly": {
-          "byty": null,
-          "domy": 34783,
-          "celkem": 34783
         },
         "Petrůvky": {
           "byty": null,
@@ -34491,8 +35291,8 @@
         },
         "Libiš": {
           "byty": null,
-          "domy": 127908,
-          "celkem": 127908
+          "domy": 48377,
+          "celkem": 48377
         },
         "Tři Studně": {
           "byty": null,
@@ -34565,7 +35365,7 @@
           "celkem": 115793
         },
         "Mníšek pod Brdy": {
-          "byty": 62727,
+          "byty": null,
           "domy": 65072,
           "celkem": 65072
         },
@@ -34609,15 +35409,10 @@
           "domy": 60894,
           "celkem": 60894
         },
-        "Zlatá": {
-          "byty": null,
-          "domy": 127791,
-          "celkem": 127791
-        },
         "Skorkov": {
-          "byty": 127683,
+          "byty": null,
           "domy": 42473,
-          "celkem": 119822
+          "celkem": 42473
         },
         "Sudovo Hlavno": {
           "byty": null,
@@ -34638,11 +35433,6 @@
           "byty": null,
           "domy": 7633,
           "celkem": 7633
-        },
-        "Uherský Brod": {
-          "byty": null,
-          "domy": 56790,
-          "celkem": 56790
         },
         "Pozořice": {
           "byty": null,
@@ -34744,16 +35534,6 @@
           "domy": 37059,
           "celkem": 37059
         },
-        "Frymburk": {
-          "byty": null,
-          "domy": 59237,
-          "celkem": 59237
-        },
-        "Horoměřice": {
-          "byty": 104211,
-          "domy": 149884,
-          "celkem": 104211
-        },
         "Městečko": {
           "byty": null,
           "domy": 42683,
@@ -34780,19 +35560,9 @@
           "celkem": 65305
         },
         "Vranovice": {
-          "byty": 55618,
+          "byty": null,
           "domy": 51406,
-          "celkem": 55618
-        },
-        "Zlín": {
-          "byty": 74407,
-          "domy": 29574,
-          "celkem": 74407
-        },
-        "Havířov": {
-          "byty": 56633,
-          "domy": 36500,
-          "celkem": 36500
+          "celkem": 51406
         },
         "Vojkov": {
           "byty": null,
@@ -34818,11 +35588,6 @@
           "byty": null,
           "domy": 14900,
           "celkem": 14900
-        },
-        "Prušánky": {
-          "byty": 28535,
-          "domy": null,
-          "celkem": 28535
         },
         "Terezín": {
           "byty": 52747,
@@ -34881,18 +35646,13 @@
         },
         "Hranice": {
           "byty": 86078,
-          "domy": 34552,
+          "domy": null,
           "celkem": 86078
         },
         "Křenek": {
           "byty": null,
           "domy": 86535,
           "celkem": 86535
-        },
-        "Pec pod Sněžkou": {
-          "byty": 150000,
-          "domy": null,
-          "celkem": 150000
         },
         "Všetaty": {
           "byty": null,
@@ -34904,11 +35664,6 @@
           "domy": 91189,
           "celkem": 91189
         },
-        "Jince": {
-          "byty": null,
-          "domy": 62515,
-          "celkem": 62515
-        },
         "Chotýčany": {
           "byty": null,
           "domy": 108514,
@@ -34918,11 +35673,6 @@
           "byty": null,
           "domy": 88788,
           "celkem": 88788
-        },
-        "Zlatníky-Hodkovice": {
-          "byty": null,
-          "domy": 79422,
-          "celkem": 79422
         },
         "Zaječí": {
           "byty": null,
@@ -34948,16 +35698,6 @@
           "byty": 100811,
           "domy": null,
           "celkem": 100811
-        },
-        "Planá": {
-          "byty": 43740,
-          "domy": null,
-          "celkem": 43740
-        },
-        "Heřmanova Huť": {
-          "byty": 62169,
-          "domy": null,
-          "celkem": 62169
         },
         "Bruntál": {
           "byty": 34153,
@@ -34988,11 +35728,6 @@
           "byty": 76426,
           "domy": null,
           "celkem": 76426
-        },
-        "Valtice": {
-          "byty": 104054,
-          "domy": null,
-          "celkem": 104054
         },
         "Kyjov": {
           "byty": 65625,
@@ -35043,11 +35778,6 @@
           "byty": null,
           "domy": 154297,
           "celkem": 154297
-        },
-        "Březí": {
-          "byty": null,
-          "domy": 39087,
-          "celkem": 39087
         },
         "Náchod": {
           "byty": null,
@@ -35134,11 +35864,6 @@
           "domy": 38090,
           "celkem": 38090
         },
-        "Písek": {
-          "byty": 62143,
-          "domy": 57432,
-          "celkem": 62143
-        },
         "Nová Říše": {
           "byty": null,
           "domy": 28916,
@@ -35174,20 +35899,10 @@
           "domy": 48276,
           "celkem": 48276
         },
-        "Bystřice": {
-          "byty": null,
-          "domy": 105871,
-          "celkem": 105871
-        },
         "Pluhův Žďár": {
           "byty": null,
           "domy": 39500,
           "celkem": 39500
-        },
-        "Huntířov": {
-          "byty": null,
-          "domy": 7450,
-          "celkem": 7450
         },
         "Nový Oldřichov": {
           "byty": null,
@@ -35304,11 +36019,6 @@
           "domy": 45579,
           "celkem": 45579
         },
-        "Stříbrná Skalice": {
-          "byty": null,
-          "domy": 85253,
-          "celkem": 85253
-        },
         "Teplice nad Metují": {
           "byty": null,
           "domy": 63158,
@@ -35324,11 +36034,6 @@
           "domy": 86466,
           "celkem": 86466
         },
-        "Bouzov": {
-          "byty": null,
-          "domy": 74021,
-          "celkem": 74021
-        },
         "Majetín": {
           "byty": null,
           "domy": 61673,
@@ -35336,8 +36041,8 @@
         },
         "Smečno": {
           "byty": null,
-          "domy": 95732,
-          "celkem": 95732
+          "domy": 53015,
+          "celkem": 53015
         },
         "Loket": {
           "byty": null,
@@ -35544,16 +36249,6 @@
           "domy": 68930,
           "celkem": 68930
         },
-        "Kutná Hora": {
-          "byty": null,
-          "domy": 59333,
-          "celkem": 59333
-        },
-        "Mirotice": {
-          "byty": null,
-          "domy": 64473,
-          "celkem": 64473
-        },
         "Horažďovice": {
           "byty": null,
           "domy": 47105,
@@ -35573,11 +36268,6 @@
           "byty": null,
           "domy": 40458,
           "celkem": 40458
-        },
-        "Verneřice": {
-          "byty": null,
-          "domy": 26130,
-          "celkem": 26130
         },
         "Chříč": {
           "byty": null,
@@ -35599,30 +36289,15 @@
           "domy": 70439,
           "celkem": 70439
         },
-        "Dobřany": {
-          "byty": null,
-          "domy": 86371,
-          "celkem": 86371
-        },
         "Lenešice": {
           "byty": null,
           "domy": 28625,
           "celkem": 28625
         },
-        "Hřivice": {
-          "byty": null,
-          "domy": 51000,
-          "celkem": 51000
-        },
         "Chvatěruby": {
           "byty": null,
           "domy": 85333,
           "celkem": 85333
-        },
-        "Kuřim": {
-          "byty": null,
-          "domy": 97615,
-          "celkem": 97615
         },
         "Hevlín": {
           "byty": null,
@@ -35634,20 +36309,10 @@
           "domy": 84600,
           "celkem": 84600
         },
-        "Suchdol nad Lužnicí": {
-          "byty": null,
-          "domy": 11857,
-          "celkem": 11857
-        },
         "Klatovy": {
           "byty": 75000,
           "domy": null,
           "celkem": 75000
-        },
-        "Králův Dvůr": {
-          "byty": 137250,
-          "domy": null,
-          "celkem": 137250
         },
         "Lužice": {
           "byty": 79464,
@@ -35658,11 +36323,6 @@
           "byty": 73786,
           "domy": 89674,
           "celkem": 89674
-        },
-        "Volary": {
-          "byty": 35000,
-          "domy": null,
-          "celkem": 35000
         },
         "Benešov nad Ploučnicí": {
           "byty": 50870,
@@ -35785,9 +36445,9 @@
           "celkem": 46222
         },
         "Hrušovany u Brna": {
-          "byty": 75274,
+          "byty": null,
           "domy": 6365,
-          "celkem": 75274
+          "celkem": 6365
         },
         "Přísnotice": {
           "byty": null,
@@ -35838,11 +36498,6 @@
           "byty": null,
           "domy": 64238,
           "celkem": 64238
-        },
-        "Choťánky": {
-          "byty": null,
-          "domy": 82215,
-          "celkem": 82215
         },
         "Mikulovice": {
           "byty": null,
@@ -35911,8 +36566,8 @@
         },
         "Pasohlávky": {
           "byty": null,
-          "domy": 84364,
-          "celkem": 84364
+          "domy": 77997,
+          "celkem": 77997
         },
         "Zdíkov": {
           "byty": null,
@@ -35926,18 +36581,13 @@
         },
         "Dubí": {
           "byty": null,
-          "domy": 77922,
-          "celkem": 77922
+          "domy": 29400,
+          "celkem": 29400
         },
         "Polerady": {
           "byty": null,
           "domy": 23292,
           "celkem": 23292
-        },
-        "Hřebeč": {
-          "byty": null,
-          "domy": 77381,
-          "celkem": 77381
         },
         "Konojedy": {
           "byty": null,
@@ -35948,16 +36598,6 @@
           "byty": null,
           "domy": 18182,
           "celkem": 18182
-        },
-        "Nová Ves": {
-          "byty": null,
-          "domy": 69950,
-          "celkem": 69950
-        },
-        "Měchenice": {
-          "byty": null,
-          "domy": 56613,
-          "celkem": 56613
         },
         "Světice": {
           "byty": null,
@@ -35973,601 +36613,6 @@
           "byty": 73951,
           "domy": null,
           "celkem": 73951
-        },
-        "Aš": {
-          "byty": 48077,
-          "domy": null,
-          "celkem": 48077
-        },
-        "Lipůvka": {
-          "byty": 105172,
-          "domy": 187396,
-          "celkem": 187396
-        },
-        "Nová Pec": {
-          "byty": 102647,
-          "domy": null,
-          "celkem": 102647
-        },
-        "Špindlerův Mlýn": {
-          "byty": 201406,
-          "domy": null,
-          "celkem": 201406
-        },
-        "Nejdek": {
-          "byty": 29580,
-          "domy": null,
-          "celkem": 29580
-        },
-        "Citice": {
-          "byty": null,
-          "domy": 29643,
-          "celkem": 29643
-        },
-        "Sluštice": {
-          "byty": null,
-          "domy": 67949,
-          "celkem": 67949
-        },
-        "Štěchovice": {
-          "byty": null,
-          "domy": 106062,
-          "celkem": 106062
-        },
-        "Třemešné": {
-          "byty": null,
-          "domy": 56197,
-          "celkem": 56197
-        },
-        "Bechlín": {
-          "byty": null,
-          "domy": 77258,
-          "celkem": 77258
-        },
-        "Černolice": {
-          "byty": null,
-          "domy": 42640,
-          "celkem": 42640
-        },
-        "Ohrobec": {
-          "byty": null,
-          "domy": 51304,
-          "celkem": 51304
-        },
-        "Drnholec": {
-          "byty": null,
-          "domy": 73842,
-          "celkem": 73842
-        },
-        "Polešovice": {
-          "byty": null,
-          "domy": 38830,
-          "celkem": 38830
-        },
-        "Blešno": {
-          "byty": null,
-          "domy": 93932,
-          "celkem": 93932
-        },
-        "Píšťany": {
-          "byty": null,
-          "domy": 80122,
-          "celkem": 80122
-        },
-        "Nosálov": {
-          "byty": null,
-          "domy": 22931,
-          "celkem": 22931
-        },
-        "Týn nad Bečvou": {
-          "byty": null,
-          "domy": 21225,
-          "celkem": 21225
-        },
-        "Jičíněves": {
-          "byty": null,
-          "domy": 57000,
-          "celkem": 57000
-        },
-        "Hojovice": {
-          "byty": null,
-          "domy": 31977,
-          "celkem": 31977
-        },
-        "Horní Bříza": {
-          "byty": null,
-          "domy": 60000,
-          "celkem": 60000
-        },
-        "Blatec": {
-          "byty": null,
-          "domy": 52991,
-          "celkem": 52991
-        },
-        "Chudčice": {
-          "byty": null,
-          "domy": 33969,
-          "celkem": 33969
-        },
-        "Radešínská Svratka": {
-          "byty": null,
-          "domy": 70234,
-          "celkem": 70234
-        },
-        "Troubsko": {
-          "byty": null,
-          "domy": 69335,
-          "celkem": 69335
-        },
-        "Nezdice": {
-          "byty": null,
-          "domy": 89256,
-          "celkem": 89256
-        },
-        "Budčeves": {
-          "byty": null,
-          "domy": 45000,
-          "celkem": 45000
-        },
-        "Mořina": {
-          "byty": null,
-          "domy": 59344,
-          "celkem": 59344
-        },
-        "Staňkovice": {
-          "byty": null,
-          "domy": 55565,
-          "celkem": 55565
-        },
-        "Dolní Benešov": {
-          "byty": null,
-          "domy": 32495,
-          "celkem": 32495
-        },
-        "Blovice": {
-          "byty": null,
-          "domy": 62188,
-          "celkem": 62188
-        },
-        "Chválenice": {
-          "byty": null,
-          "domy": 66533,
-          "celkem": 66533
-        },
-        "Životice": {
-          "byty": null,
-          "domy": 31765,
-          "celkem": 31765
-        },
-        "Křičeň": {
-          "byty": null,
-          "domy": 27136,
-          "celkem": 27136
-        },
-        "Řehlovice": {
-          "byty": null,
-          "domy": 161688,
-          "celkem": 161688
-        },
-        "Rovensko pod Troskami": {
-          "byty": null,
-          "domy": 73081,
-          "celkem": 73081
-        },
-        "Úpice": {
-          "byty": null,
-          "domy": 31156,
-          "celkem": 31156
-        },
-        "Horní Olešnice": {
-          "byty": null,
-          "domy": 75419,
-          "celkem": 75419
-        },
-        "Klášter Hradiště nad Jizerou": {
-          "byty": null,
-          "domy": 30000,
-          "celkem": 30000
-        },
-        "Bukovina u Čisté": {
-          "byty": null,
-          "domy": 114900,
-          "celkem": 114900
-        },
-        "Hodkovice nad Mohelkou": {
-          "byty": null,
-          "domy": 97941,
-          "celkem": 97941
-        },
-        "Nahořany": {
-          "byty": null,
-          "domy": 72111,
-          "celkem": 72111
-        },
-        "Mnichovo Hradiště": {
-          "byty": null,
-          "domy": 63267,
-          "celkem": 63267
-        },
-        "Maršov u Úpice": {
-          "byty": null,
-          "domy": 96000,
-          "celkem": 96000
-        },
-        "Hvozd": {
-          "byty": null,
-          "domy": 23000,
-          "celkem": 23000
-        },
-        "Volfartice": {
-          "byty": null,
-          "domy": 20265,
-          "celkem": 20265
-        },
-        "Popůvky": {
-          "byty": null,
-          "domy": 106369,
-          "celkem": 106369
-        },
-        "Kly": {
-          "byty": 90397,
-          "domy": 89597,
-          "celkem": 89597
-        },
-        "Železná Ruda": {
-          "byty": 76769,
-          "domy": null,
-          "celkem": 76769
-        },
-        "Bučovice": {
-          "byty": 72419,
-          "domy": 39950,
-          "celkem": 39950
-        },
-        "Lučany nad Nisou": {
-          "byty": null,
-          "domy": 24720,
-          "celkem": 24720
-        },
-        "Hradečno": {
-          "byty": null,
-          "domy": 93391,
-          "celkem": 93391
-        },
-        "Svoboda nad Úpou": {
-          "byty": null,
-          "domy": 34030,
-          "celkem": 34030
-        },
-        "Černilov": {
-          "byty": null,
-          "domy": 106855,
-          "celkem": 106855
-        },
-        "Stolany": {
-          "byty": null,
-          "domy": 92920,
-          "celkem": 92920
-        },
-        "Grunta": {
-          "byty": null,
-          "domy": 56192,
-          "celkem": 56192
-        },
-        "Blšany": {
-          "byty": null,
-          "domy": 16452,
-          "celkem": 16452
-        },
-        "Rataje nad Sázavou": {
-          "byty": null,
-          "domy": 77195,
-          "celkem": 77195
-        },
-        "Zahrádka": {
-          "byty": null,
-          "domy": 121429,
-          "celkem": 121429
-        },
-        "Kvítkovice": {
-          "byty": null,
-          "domy": 37914,
-          "celkem": 37914
-        },
-        "Středokluky": {
-          "byty": null,
-          "domy": 28117,
-          "celkem": 28117
-        },
-        "Chuchelna": {
-          "byty": null,
-          "domy": 46483,
-          "celkem": 46483
-        },
-        "Zdechovice": {
-          "byty": null,
-          "domy": 37308,
-          "celkem": 37308
-        },
-        "Otaslavice": {
-          "byty": null,
-          "domy": 60548,
-          "celkem": 60548
-        },
-        "Přerov nad Labem": {
-          "byty": null,
-          "domy": 105769,
-          "celkem": 105769
-        },
-        "Čisovice": {
-          "byty": null,
-          "domy": 106154,
-          "celkem": 106154
-        },
-        "Slatina": {
-          "byty": null,
-          "domy": 92173,
-          "celkem": 92173
-        },
-        "Louňovice pod Blaníkem": {
-          "byty": null,
-          "domy": 48347,
-          "celkem": 48347
-        },
-        "Hluboká nad Vltavou": {
-          "byty": 105000,
-          "domy": 90524,
-          "celkem": 105000
-        },
-        "Sokolov": {
-          "byty": 46575,
-          "domy": null,
-          "celkem": 46575
-        },
-        "Černý Důl": {
-          "byty": 121104,
-          "domy": null,
-          "celkem": 121104
-        },
-        "Jindřichov": {
-          "byty": 32553,
-          "domy": null,
-          "celkem": 32553
-        },
-        "Havlíčkův Brod": {
-          "byty": 78685,
-          "domy": null,
-          "celkem": 78685
-        },
-        "Hněvošice": {
-          "byty": null,
-          "domy": 17997,
-          "celkem": 17997
-        },
-        "Valašská Senice": {
-          "byty": null,
-          "domy": 27222,
-          "celkem": 27222
-        },
-        "Úhonice": {
-          "byty": null,
-          "domy": 155444,
-          "celkem": 155444
-        },
-        "Velké Opatovice": {
-          "byty": null,
-          "domy": 7619,
-          "celkem": 7619
-        },
-        "Květnice": {
-          "byty": null,
-          "domy": 66067,
-          "celkem": 66067
-        },
-        "Koryčany": {
-          "byty": null,
-          "domy": 10450,
-          "celkem": 10450
-        },
-        "Blšany u Loun": {
-          "byty": null,
-          "domy": 79545,
-          "celkem": 79545
-        },
-        "Mšené-lázně": {
-          "byty": null,
-          "domy": 71538,
-          "celkem": 71538
-        },
-        "Nové Město nad Metují": {
-          "byty": 70776,
-          "domy": null,
-          "celkem": 70776
-        },
-        "Valašské Meziříčí": {
-          "byty": 45312,
-          "domy": null,
-          "celkem": 45312
-        },
-        "Svitavy": {
-          "byty": 60000,
-          "domy": null,
-          "celkem": 60000
-        },
-        "Krajková": {
-          "byty": 35000,
-          "domy": null,
-          "celkem": 35000
-        },
-        "Tanvald": {
-          "byty": 50580,
-          "domy": null,
-          "celkem": 50580
-        },
-        "Dolní Břežany": {
-          "byty": 93438,
-          "domy": null,
-          "celkem": 93438
-        },
-        "Byšice": {
-          "byty": 81481,
-          "domy": null,
-          "celkem": 81481
-        },
-        "Říčky v Orlických horách": {
-          "byty": 95079,
-          "domy": null,
-          "celkem": 95079
-        },
-        "Jinočany": {
-          "byty": 155000,
-          "domy": null,
-          "celkem": 155000
-        },
-        "Chlumín": {
-          "byty": 58533,
-          "domy": null,
-          "celkem": 58533
-        },
-        "Dubá": {
-          "byty": 31807,
-          "domy": null,
-          "celkem": 31807
-        },
-        "Ždánice": {
-          "byty": 60656,
-          "domy": null,
-          "celkem": 60656
-        },
-        "Třinec": {
-          "byty": 64672,
-          "domy": null,
-          "celkem": 64672
-        },
-        "Brumovice": {
-          "byty": null,
-          "domy": 69872,
-          "celkem": 69872
-        },
-        "Chřibská": {
-          "byty": null,
-          "domy": 29524,
-          "celkem": 29524
-        },
-        "Rokytá": {
-          "byty": null,
-          "domy": 29289,
-          "celkem": 29289
-        },
-        "Kněždub": {
-          "byty": null,
-          "domy": 23780,
-          "celkem": 23780
-        },
-        "Svojkovice": {
-          "byty": null,
-          "domy": 42658,
-          "celkem": 42658
-        },
-        "Němčice nad Hanou": {
-          "byty": null,
-          "domy": 29944,
-          "celkem": 29944
-        },
-        "Víceměřice": {
-          "byty": null,
-          "domy": 29917,
-          "celkem": 29917
-        },
-        "Kundratice": {
-          "byty": null,
-          "domy": 14221,
-          "celkem": 14221
-        },
-        "Přemyslovice": {
-          "byty": null,
-          "domy": 23749,
-          "celkem": 23749
-        },
-        "Kralice na Hané": {
-          "byty": null,
-          "domy": 27227,
-          "celkem": 27227
-        },
-        "Nový Knín": {
-          "byty": null,
-          "domy": 37375,
-          "celkem": 37375
-        },
-        "Krnsko": {
-          "byty": null,
-          "domy": 36151,
-          "celkem": 36151
-        },
-        "Pelechy": {
-          "byty": null,
-          "domy": 35214,
-          "celkem": 35214
-        },
-        "Šluknov": {
-          "byty": null,
-          "domy": 13103,
-          "celkem": 13103
-        },
-        "Černíny": {
-          "byty": null,
-          "domy": 48611,
-          "celkem": 48611
-        },
-        "Dobročovice": {
-          "byty": null,
-          "domy": 108217,
-          "celkem": 108217
-        },
-        "Měčín": {
-          "byty": null,
-          "domy": 29875,
-          "celkem": 29875
-        },
-        "Kanice": {
-          "byty": null,
-          "domy": 91787,
-          "celkem": 91787
-        },
-        "Řevničov": {
-          "byty": null,
-          "domy": 80645,
-          "celkem": 80645
-        },
-        "Kojátky": {
-          "byty": null,
-          "domy": 16071,
-          "celkem": 16071
-        },
-        "Orlovice": {
-          "byty": null,
-          "domy": 23333,
-          "celkem": 23333
-        },
-        "Polevsko": {
-          "byty": null,
-          "domy": 40547,
-          "celkem": 40547
-        },
-        "Skalice u České Lípy": {
-          "byty": null,
-          "domy": 61475,
-          "celkem": 61475
-        },
-        "Rybniště": {
-          "byty": null,
-          "domy": 18605,
-          "celkem": 18605
-        },
-        "Dubnice": {
-          "byty": null,
-          "domy": 11302,
-          "celkem": 11302
         }
       }
     }
