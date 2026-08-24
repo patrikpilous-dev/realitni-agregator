@@ -1,6 +1,6 @@
 {
-  "updated": "2026-08-24T00:50:26.830705+00:00",
-  "total": 93,
+  "updated": "2026-08-24T06:48:35.651325+00:00",
+  "total": 91,
   "listings": [
     {
       "id": "3009487436",
@@ -888,34 +888,6 @@
       "sold_at": "2026-08-18T18:22:15.663844+00:00"
     },
     {
-      "id": "3613384780",
-      "title": "Prodej bytu 3+1 70 m²",
-      "price": 7199900,
-      "area": 70.0,
-      "price_per_m2": 102856,
-      "score": 0.5,
-      "median_price_per_m2": 103408,
-      "disposition": "3+1",
-      "disposition_group": "3",
-      "locality": "Na Vyhaslém, Kladno",
-      "locality_city": "Kladno",
-      "type": "byt",
-      "transaction": "prodej",
-      "ownership": "Osobní",
-      "building_type": "Cihlová",
-      "extras": [
-        "Balkón",
-        "Výtah",
-        "Částečně zařízeno"
-      ],
-      "detail_fetched": true,
-      "url": "https://www.sreality.cz/detail/prodej/byt/3+1/kladno-kladno-na-vyhaslem/3613384780",
-      "scraped_at": "2026-08-17T06:43:44.237763+00:00",
-      "listed_since": "2026-07-07",
-      "last_checked_at": "2026-08-19T00:39:15.118510+00:00",
-      "sold_at": "2026-08-19T00:39:15.118510+00:00"
-    },
-    {
       "id": "2780881740",
       "title": "Prodej bytu 2+kk 59 m²",
       "price": 9150000,
@@ -969,59 +941,6 @@
       "listed_since": "2026-06-17",
       "last_checked_at": "2026-08-19T00:39:15.118510+00:00",
       "sold_at": "2026-08-19T00:39:15.118510+00:00"
-    },
-    {
-      "id": "3337338956",
-      "title": "Prodej rodinného domu 130 m², pozemek 2066 m²",
-      "price": 2690000,
-      "area": 130.0,
-      "price_per_m2": 20692,
-      "score": 0,
-      "median_price_per_m2": null,
-      "disposition": "ostatní",
-      "disposition_group": "ostatní",
-      "locality": "Dlouhá Ves, okres Havlíčkův Brod",
-      "locality_city": "Dlouhá Ves",
-      "type": "dům",
-      "transaction": "prodej",
-      "ownership": "",
-      "building_type": "Smíšená",
-      "extras": [
-        "Sklep"
-      ],
-      "detail_fetched": true,
-      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/dlouha-ves-dlouha-ves/3337338956",
-      "scraped_at": "2026-08-17T06:44:03.874603+00:00",
-      "listed_since": "2026-08-11",
-      "last_checked_at": "2026-08-19T06:26:04.559576+00:00",
-      "sold_at": "2026-08-19T06:26:04.559576+00:00"
-    },
-    {
-      "id": "1788338252",
-      "title": "Prodej bytu 2+kk 60 m²",
-      "price": 14990000,
-      "area": 60.0,
-      "price_per_m2": 249833,
-      "score": 0.1,
-      "median_price_per_m2": 250000,
-      "disposition": "2+kk",
-      "disposition_group": "2",
-      "locality": "Opletalova, Praha 1 - Nové Město",
-      "locality_city": "Praha 1",
-      "type": "byt",
-      "transaction": "prodej",
-      "ownership": "Osobní",
-      "building_type": "Cihlová",
-      "extras": [
-        "Balkón",
-        "Sklep"
-      ],
-      "detail_fetched": true,
-      "url": "https://www.sreality.cz/detail/prodej/byt/2+kk/praha-nove-mesto-opletalova/1788338252",
-      "scraped_at": "2026-08-18T06:25:17.074472+00:00",
-      "listed_since": "2026-07-18",
-      "last_checked_at": "2026-08-19T12:24:06.644714+00:00",
-      "sold_at": "2026-08-19T12:24:06.644714+00:00"
     },
     {
       "id": "3948118092",
@@ -2446,6 +2365,30 @@
       "scraped_at": "2026-08-22T00:39:06.197909+00:00",
       "last_checked_at": "2026-08-24T00:40:45.165272+00:00",
       "sold_at": "2026-08-24T00:40:45.165272+00:00"
+    },
+    {
+      "id": "1584910412",
+      "title": "Prodej rodinného domu 376 m², pozemek 570 m²",
+      "price": 12400000,
+      "area": 376.0,
+      "price_per_m2": 32979,
+      "score": 46.2,
+      "median_price_per_m2": 61250,
+      "disposition": "ostatní",
+      "disposition_group": "ostatní",
+      "locality": "Olomouc",
+      "locality_city": "Olomouc",
+      "type": "dům",
+      "transaction": "prodej",
+      "ownership": "",
+      "building_type": "Cihlová",
+      "extras": [],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/olomouc-olomouc/1584910412",
+      "scraped_at": "2026-08-22T06:21:52.963179+00:00",
+      "listed_since": "2026-08-06",
+      "last_checked_at": "2026-08-24T06:36:21.633134+00:00",
+      "sold_at": "2026-08-24T06:36:21.633134+00:00"
     }
   ]
 }
