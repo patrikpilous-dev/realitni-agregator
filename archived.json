@@ -1,6 +1,6 @@
 {
-  "updated": "2026-08-26T06:40:45.501221+00:00",
-  "total": 123,
+  "updated": "2026-08-26T12:41:06.305637+00:00",
+  "total": 124,
   "listings": [
     {
       "id": "3009487436",
@@ -3233,6 +3233,34 @@
       "listed_since": "2026-08-16",
       "last_checked_at": "2026-08-26T06:30:31.276593+00:00",
       "sold_at": "2026-08-26T06:30:31.276593+00:00"
+    },
+    {
+      "id": "635551820",
+      "title": "Prodej bytu 3+1 98 m²",
+      "price": 4999999,
+      "area": 98.0,
+      "price_per_m2": 51020,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "3+1",
+      "disposition_group": "3",
+      "locality": "Meisnerova, Chomutov",
+      "locality_city": "Chomutov",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Cihlová",
+      "extras": [
+        "Terasa",
+        "Parkování",
+        "Sklep"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/3+1/chomutov-chomutov-meisnerova/635551820",
+      "scraped_at": "2026-08-25T00:40:23.470776+00:00",
+      "listed_since": "2026-08-24",
+      "last_checked_at": "2026-08-26T12:29:54.271754+00:00",
+      "sold_at": "2026-08-26T12:29:54.271754+00:00"
     }
   ]
 }
