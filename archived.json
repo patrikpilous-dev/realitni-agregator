@@ -1,6 +1,6 @@
 {
-  "updated": "2026-08-26T12:41:06.305637+00:00",
-  "total": 124,
+  "updated": "2026-08-26T19:44:57.290926+00:00",
+  "total": 127,
   "listings": [
     {
       "id": "3009487436",
@@ -3261,6 +3261,83 @@
       "listed_since": "2026-08-24",
       "last_checked_at": "2026-08-26T12:29:54.271754+00:00",
       "sold_at": "2026-08-26T12:29:54.271754+00:00"
+    },
+    {
+      "id": "1071353932",
+      "title": "Prodej rodinného domu 305 m², pozemek 729 m²",
+      "price": 10200000,
+      "area": 305.0,
+      "price_per_m2": 33443,
+      "score": 61.8,
+      "median_price_per_m2": 87486,
+      "disposition": "ostatní",
+      "disposition_group": "ostatní",
+      "locality": "Starodubečská, Praha 10 - Dubeč",
+      "locality_city": "Praha 10",
+      "type": "dům",
+      "transaction": "prodej",
+      "ownership": "",
+      "building_type": "Cihlová",
+      "extras": [],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/praha-dubec-starodubecska/1071353932",
+      "scraped_at": "2026-08-25T00:40:40.853144+00:00",
+      "listed_since": "2026-05-09",
+      "last_checked_at": "2026-08-26T19:34:19.105991+00:00",
+      "sold_at": "2026-08-26T19:34:19.105991+00:00"
+    },
+    {
+      "id": "727405388",
+      "title": "Prodej rodinného domu 166 m², pozemek 522 m²",
+      "price": 11590000,
+      "area": 166.0,
+      "price_per_m2": 69819,
+      "score": 0.0,
+      "median_price_per_m2": 69819,
+      "disposition": "ostatní",
+      "disposition_group": "ostatní",
+      "locality": "V Pískách, Neratovice, okres Mělník",
+      "locality_city": "Neratovice",
+      "type": "dům",
+      "transaction": "prodej",
+      "ownership": "",
+      "building_type": "Smíšená",
+      "extras": [
+        "Bazén"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/neratovice-neratovice-v-piskach/727405388",
+      "scraped_at": "2026-08-25T00:40:40.855432+00:00",
+      "listed_since": "2026-03-02",
+      "last_checked_at": "2026-08-26T19:34:19.105991+00:00",
+      "sold_at": "2026-08-26T19:34:19.105991+00:00"
+    },
+    {
+      "id": "1421267020",
+      "title": "Prodej bytu 2+kk 43 m²",
+      "price": 2299000,
+      "area": 43.0,
+      "price_per_m2": 53465,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "2+kk",
+      "disposition_group": "2",
+      "locality": "Jáchymovská, Česká Lípa",
+      "locality_city": "Česká Lípa",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Panelová",
+      "extras": [
+        "Balkón",
+        "Sklep"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/2+kk/ceska-lipa-ceska-lipa-jachymovska/1421267020",
+      "scraped_at": "2026-08-23T12:18:52.057922+00:00",
+      "listed_since": "2026-08-08",
+      "last_checked_at": "2026-08-26T19:34:19.105991+00:00",
+      "sold_at": "2026-08-26T19:34:19.105991+00:00"
     }
   ]
 }
