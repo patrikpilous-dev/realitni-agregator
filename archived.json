@@ -1,6 +1,6 @@
 {
-  "updated": "2026-08-25T18:34:30.570314+00:00",
-  "total": 119,
+  "updated": "2026-08-26T00:50:59.405672+00:00",
+  "total": 121,
   "listings": [
     {
       "id": "3009487436",
@@ -141,34 +141,6 @@
       "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/chlumec-nad-cidlinou-chlumec-nad-cidlinou-iv-machova/3674644556",
       "scraped_at": "2026-08-16T14:25:37.047483+00:00",
       "listed_since": "2026-05-05",
-      "sold_at": "2026-08-16T18:14:17.420016+00:00"
-    },
-    {
-      "id": "2554064972",
-      "title": "Prodej rodinného domu 177 m², pozemek 536 m²",
-      "price": 9300000,
-      "area": 177.0,
-      "price_per_m2": 52542,
-      "score": 0,
-      "median_price_per_m2": null,
-      "disposition": "ostatní",
-      "disposition_group": "ostatní",
-      "locality": "Litoměřická, Ústí nad Labem - Střekov",
-      "locality_city": "Ústí nad Labem",
-      "type": "dům",
-      "transaction": "prodej",
-      "ownership": "",
-      "building_type": "Smíšená",
-      "extras": [
-        "Parkování",
-        "Bazén",
-        "Částečně zařízeno",
-        "Zahrada"
-      ],
-      "detail_fetched": true,
-      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/usti-nad-labem-strekov-litomericka/2554064972",
-      "scraped_at": "2026-08-16T14:25:37.050323+00:00",
-      "listed_since": "2026-06-12",
       "sold_at": "2026-08-16T18:14:17.420016+00:00"
     },
     {
@@ -3133,6 +3105,79 @@
       "listed_since": "2026-04-28",
       "last_checked_at": "2026-08-25T18:24:09.378258+00:00",
       "sold_at": "2026-08-25T18:24:09.378258+00:00"
+    },
+    {
+      "id": "2863636556",
+      "title": "Prodej chaty 25 m², pozemek 37 m²",
+      "price": 290000,
+      "area": 25.0,
+      "price_per_m2": 11600,
+      "score": 82.0,
+      "median_price_per_m2": 64553,
+      "disposition": "ostatní",
+      "disposition_group": "ostatní",
+      "locality": "K Chatám, Hradec Králové - Roudnička",
+      "locality_city": "Hradec Králové",
+      "type": "dům",
+      "transaction": "prodej",
+      "ownership": "",
+      "building_type": "Dřevostavba",
+      "extras": [
+        "Parkování"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/dum/chata/hradec-kralove-roudnicka-k-chatam/2863636556",
+      "scraped_at": "2026-08-20T06:27:44.661813+00:00",
+      "listed_since": "2026-04-27",
+      "last_checked_at": "2026-08-26T00:41:13.673042+00:00",
+      "sold_at": "2026-08-26T00:41:13.673042+00:00"
+    },
+    {
+      "id": "60654412",
+      "title": "Prodej bytu 4+kk 120 m²",
+      "price": 18490000,
+      "area": 120.0,
+      "price_per_m2": 154083,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "4+kk",
+      "disposition_group": "4",
+      "locality": "Škrétova, Praha 2 - Vinohrady",
+      "locality_city": "Praha 2",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Cihlová",
+      "extras": [],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/4+kk/praha-vinohrady-skretova/60654412",
+      "scraped_at": "2026-08-24T12:26:08.908873+00:00",
+      "listed_since": "2025-07-30",
+      "last_checked_at": "2026-08-26T00:41:13.673042+00:00",
+      "sold_at": "2026-08-26T00:41:13.673042+00:00"
+    },
+    {
+      "id": "4087410764",
+      "title": "Prodej rodinného domu 90 m², pozemek 934 m²",
+      "price": 4200000,
+      "area": 90.0,
+      "price_per_m2": 46667,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "ostatní",
+      "disposition_group": "ostatní",
+      "locality": "Rudé armády, Počátky, okres Pelhřimov",
+      "locality_city": "Počátky",
+      "type": "dům",
+      "transaction": "prodej",
+      "ownership": "",
+      "building_type": "",
+      "extras": [],
+      "detail_fetched": false,
+      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/pocatky-pocatky-rude-armady/4087410764",
+      "scraped_at": "2026-08-24T12:26:26.502271+00:00",
+      "last_checked_at": "2026-08-26T00:41:13.673042+00:00",
+      "sold_at": "2026-08-26T00:41:13.673042+00:00"
     }
   ]
 }
