@@ -1,6 +1,6 @@
 {
-  "updated": "2026-08-29T01:29:00.288827+00:00",
-  "total": 143,
+  "updated": "2026-08-29T12:11:39.813816+00:00",
+  "total": 145,
   "listings": [
     {
       "id": "3009487436",
@@ -2496,36 +2496,6 @@
       "sold_at": "2026-08-25T00:40:40.856929+00:00"
     },
     {
-      "id": "2240147532",
-      "title": "Prodej bytu 4+kk 102 m²",
-      "price": 10800000,
-      "area": 102.0,
-      "price_per_m2": 105882,
-      "score": 0,
-      "median_price_per_m2": null,
-      "disposition": "4+kk",
-      "disposition_group": "4",
-      "locality": "Jeremiášova, Olomouc - Povel",
-      "locality_city": "Olomouc",
-      "type": "byt",
-      "transaction": "prodej",
-      "ownership": "Osobní",
-      "building_type": "Cihlová",
-      "extras": [
-        "Lodžie",
-        "Terasa",
-        "Garáž",
-        "Sklep",
-        "Výtah"
-      ],
-      "detail_fetched": true,
-      "url": "https://www.sreality.cz/detail/prodej/byt/4+kk/olomouc-povel-jeremiasova/2240147532",
-      "scraped_at": "2026-08-23T12:18:52.059903+00:00",
-      "listed_since": "2026-06-30",
-      "last_checked_at": "2026-08-25T00:40:40.856929+00:00",
-      "sold_at": "2026-08-25T00:40:40.856929+00:00"
-    },
-    {
       "id": "3237400652",
       "title": "Prodej bytu 2+kk 37 m²",
       "price": 5090000,
@@ -3770,6 +3740,94 @@
       "listed_since": "2026-08-24",
       "last_checked_at": "2026-08-29T01:19:04.743259+00:00",
       "sold_at": "2026-08-29T01:19:04.743259+00:00"
+    },
+    {
+      "id": "2851885900",
+      "title": "Prodej rodinného domu 137 m², pozemek 1489 m²",
+      "price": 11900000,
+      "area": 137.0,
+      "price_per_m2": 86861,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "ostatní",
+      "disposition_group": "ostatní",
+      "locality": "Hazlov, okres Cheb",
+      "locality_city": "Hazlov",
+      "type": "dům",
+      "transaction": "prodej",
+      "ownership": "",
+      "building_type": "Dřevostavba",
+      "extras": [
+        "Parkování",
+        "Částečně zařízeno",
+        "Novostavba"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/hazlov/2851885900",
+      "scraped_at": "2026-08-26T12:29:54.268482+00:00",
+      "listed_since": "2026-03-09",
+      "last_checked_at": "2026-08-29T11:57:58.640437+00:00",
+      "sold_at": "2026-08-29T11:57:58.640437+00:00"
+    },
+    {
+      "id": "227524684",
+      "title": "Prodej bytu 2+kk 52 m²",
+      "price": 2400000,
+      "area": 52.0,
+      "price_per_m2": 46154,
+      "score": 64.3,
+      "median_price_per_m2": 129318,
+      "disposition": "2+kk",
+      "disposition_group": "2",
+      "locality": "Bělomlýnská, Praha 9",
+      "locality_city": "Praha 9",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Družstevní",
+      "building_type": "Smíšená",
+      "extras": [
+        "Lodžie",
+        "Garáž",
+        "Sklep",
+        "Výtah",
+        "Částečně zařízeno",
+        "Ve výstavbě"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/2+kk/praha-belomlynska/227524684",
+      "scraped_at": "2026-08-18T00:38:41.423236+00:00",
+      "listed_since": "2026-08-17",
+      "last_checked_at": "2026-08-29T11:57:58.640437+00:00",
+      "sold_at": "2026-08-29T11:57:58.640437+00:00"
+    },
+    {
+      "id": "1446371404",
+      "title": "Prodej bytu 1+1 39 m²",
+      "price": 3690000,
+      "area": 39.0,
+      "price_per_m2": 94615,
+      "score": 17.8,
+      "median_price_per_m2": 115128,
+      "disposition": "1+1",
+      "disposition_group": "1",
+      "locality": "Finská, Kladno - Kročehlavy",
+      "locality_city": "Kladno",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Panelová",
+      "extras": [
+        "Balkón",
+        "Sklep",
+        "Výtah",
+        "Částečně zařízeno"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/1+1/kladno-krocehlavy-finska/1446371404",
+      "scraped_at": "2026-08-19T06:25:45.562600+00:00",
+      "listed_since": "2026-07-20",
+      "last_checked_at": "2026-08-29T11:57:58.640437+00:00",
+      "sold_at": "2026-08-29T11:57:58.640437+00:00"
     }
   ]
 }
