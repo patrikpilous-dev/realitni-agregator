@@ -1,6 +1,6 @@
 {
-  "updated": "2026-08-28T18:03:37.698515+00:00",
-  "total": 140,
+  "updated": "2026-08-29T01:29:00.288827+00:00",
+  "total": 143,
   "listings": [
     {
       "id": "3009487436",
@@ -3690,6 +3690,86 @@
       "scraped_at": "2026-08-26T06:30:15.382958+00:00",
       "last_checked_at": "2026-08-28T17:53:23.206502+00:00",
       "sold_at": "2026-08-28T17:53:23.206502+00:00"
+    },
+    {
+      "id": "125821004",
+      "title": "Prodej rodinného domu 308 m², pozemek 1619 m²",
+      "price": 19900000,
+      "area": 308.0,
+      "price_per_m2": 64610,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "ostatní",
+      "disposition_group": "ostatní",
+      "locality": "Na Viničkách, Hýskov, okres Beroun",
+      "locality_city": "Hýskov",
+      "type": "dům",
+      "transaction": "prodej",
+      "ownership": "",
+      "building_type": "Cihlová",
+      "extras": [
+        "Zahrada"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/hyskov-hyskov-na-vinickach/125821004",
+      "scraped_at": "2026-08-26T06:30:31.272736+00:00",
+      "listed_since": "2026-07-07",
+      "last_checked_at": "2026-08-29T01:19:04.743259+00:00",
+      "sold_at": "2026-08-29T01:19:04.743259+00:00"
+    },
+    {
+      "id": "4156604492",
+      "title": "Prodej rodinného domu 44 m², pozemek 302 m²",
+      "price": 3388000,
+      "area": 44.0,
+      "price_per_m2": 77000,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "ostatní",
+      "disposition_group": "ostatní",
+      "locality": "Bohaté Málkovice, okres Vyškov",
+      "locality_city": "Bohaté Málkovice",
+      "type": "dům",
+      "transaction": "prodej",
+      "ownership": "",
+      "building_type": "Montovaná",
+      "extras": [
+        "Parkování",
+        "Částečně zařízeno"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/bohate-malkovice-bohate-malkovice/4156604492",
+      "scraped_at": "2026-08-26T06:30:31.273206+00:00",
+      "listed_since": "2026-08-25",
+      "last_checked_at": "2026-08-29T01:19:04.743259+00:00",
+      "sold_at": "2026-08-29T01:19:04.743259+00:00"
+    },
+    {
+      "id": "897761356",
+      "title": "Prodej rodinného domu 140 m², pozemek 165 m²",
+      "price": 5500000,
+      "area": 140.0,
+      "price_per_m2": 39286,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "ostatní",
+      "disposition_group": "ostatní",
+      "locality": "Jablonského, Třeboň - Třeboň II, okres Jindřichův Hradec",
+      "locality_city": "Třeboň",
+      "type": "dům",
+      "transaction": "prodej",
+      "ownership": "",
+      "building_type": "Cihlová",
+      "extras": [
+        "Parkování",
+        "Sklep"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/trebon-trebon-ii-jablonskeho/897761356",
+      "scraped_at": "2026-08-24T12:26:26.506192+00:00",
+      "listed_since": "2026-08-24",
+      "last_checked_at": "2026-08-29T01:19:04.743259+00:00",
+      "sold_at": "2026-08-29T01:19:04.743259+00:00"
     }
   ]
 }
