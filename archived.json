@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-31T12:20:45.958523+00:00",
+  "updated": "2026-08-31T22:21:07.696198+00:00",
   "total": 187,
   "listings": [
     {
@@ -4687,34 +4687,6 @@
       "sold_at": "2026-08-30T20:17:39.325225+00:00"
     },
     {
-      "id": "3400327244",
-      "title": "Prodej rodinného domu 249 m², pozemek 1019 m²",
-      "price": 21990000,
-      "area": 249.0,
-      "price_per_m2": 88313,
-      "score": 0,
-      "median_price_per_m2": null,
-      "disposition": "ostatní",
-      "disposition_group": "ostatní",
-      "locality": "Vráž, okres Beroun",
-      "locality_city": "Vráž",
-      "type": "dům",
-      "transaction": "prodej",
-      "ownership": "",
-      "building_type": "Cihlová",
-      "extras": [
-        "Garáž",
-        "Parkování",
-        "Novostavba"
-      ],
-      "detail_fetched": true,
-      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/vraz-vraz/3400327244",
-      "scraped_at": "2026-08-29T01:19:04.740509+00:00",
-      "listed_since": "2026-07-13",
-      "last_checked_at": "2026-08-31T02:20:19.265777+00:00",
-      "sold_at": "2026-08-31T02:20:19.265777+00:00"
-    },
-    {
       "id": "413712460",
       "title": "Prodej bytu 2+1 73 m²",
       "price": 5900000,
@@ -4987,6 +4959,34 @@
       "listed_since": "2026-08-24",
       "last_checked_at": "2026-08-31T12:09:12.502793+00:00",
       "sold_at": "2026-08-31T12:09:12.502793+00:00"
+    },
+    {
+      "id": "2949042252",
+      "title": "Prodej bytu 3+1 65 m²",
+      "price": 3359000,
+      "area": 65.0,
+      "price_per_m2": 51677,
+      "score": 10.5,
+      "median_price_per_m2": 57763,
+      "disposition": "3+1",
+      "disposition_group": "3",
+      "locality": "Na Robinsonce, Ostrava-město - Poruba",
+      "locality_city": "Ostrava-město",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Družstevní",
+      "building_type": "Panelová",
+      "extras": [
+        "Parkování",
+        "Sklep",
+        "Výtah"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/3+1/ostrava-poruba-na-robinsonce/2949042252",
+      "scraped_at": "2026-08-21T06:28:13.627105+00:00",
+      "listed_since": "2026-08-08",
+      "last_checked_at": "2026-08-31T22:11:21.109322+00:00",
+      "sold_at": "2026-08-31T22:11:21.109322+00:00"
     }
   ]
 }
