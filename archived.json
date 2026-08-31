@@ -1,6 +1,6 @@
 {
-  "updated": "2026-08-30T20:31:31.867136+00:00",
-  "total": 176,
+  "updated": "2026-08-31T02:30:12.668441+00:00",
+  "total": 178,
   "listings": [
     {
       "id": "3009487436",
@@ -4685,6 +4685,61 @@
       "listed_since": "2026-05-31",
       "last_checked_at": "2026-08-30T20:17:39.325225+00:00",
       "sold_at": "2026-08-30T20:17:39.325225+00:00"
+    },
+    {
+      "id": "3400327244",
+      "title": "Prodej rodinného domu 249 m², pozemek 1019 m²",
+      "price": 21990000,
+      "area": 249.0,
+      "price_per_m2": 88313,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "ostatní",
+      "disposition_group": "ostatní",
+      "locality": "Vráž, okres Beroun",
+      "locality_city": "Vráž",
+      "type": "dům",
+      "transaction": "prodej",
+      "ownership": "",
+      "building_type": "Cihlová",
+      "extras": [
+        "Garáž",
+        "Parkování",
+        "Novostavba"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/vraz-vraz/3400327244",
+      "scraped_at": "2026-08-29T01:19:04.740509+00:00",
+      "listed_since": "2026-07-13",
+      "last_checked_at": "2026-08-31T02:20:19.265777+00:00",
+      "sold_at": "2026-08-31T02:20:19.265777+00:00"
+    },
+    {
+      "id": "413712460",
+      "title": "Prodej bytu 2+1 73 m²",
+      "price": 5900000,
+      "area": 73.0,
+      "price_per_m2": 80822,
+      "score": 39.5,
+      "median_price_per_m2": 133498,
+      "disposition": "2+1",
+      "disposition_group": "2",
+      "locality": "Řeporyjská, Praha 5 - Jinonice",
+      "locality_city": "Praha 5",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Smíšená",
+      "extras": [
+        "Parkování",
+        "Sklep"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/2+1/praha-jinonice-reporyjska/413712460",
+      "scraped_at": "2026-08-19T00:38:59.640686+00:00",
+      "listed_since": "2026-08-16",
+      "last_checked_at": "2026-08-31T02:20:19.265777+00:00",
+      "sold_at": "2026-08-31T02:20:19.265777+00:00"
     }
   ]
 }
