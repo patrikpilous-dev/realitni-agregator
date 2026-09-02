@@ -1,6 +1,6 @@
 {
-  "updated": "2026-09-01T20:32:01.834403+00:00",
-  "total": 216,
+  "updated": "2026-09-02T02:12:56.013919+00:00",
+  "total": 219,
   "listings": [
     {
       "id": "3009487436",
@@ -5776,6 +5776,84 @@
       "listed_since": "2026-07-13",
       "last_checked_at": "2026-09-01T20:18:42.239158+00:00",
       "sold_at": "2026-09-01T20:18:42.239158+00:00"
+    },
+    {
+      "id": "1274191948",
+      "title": "Prodej bytu 3+kk 88 m²",
+      "price": 8500000,
+      "area": 88.0,
+      "price_per_m2": 96591,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "3+kk",
+      "disposition_group": "3",
+      "locality": "Za Hotelem, Nupaky, okres Praha-východ",
+      "locality_city": "Nupaky",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Cihlová",
+      "extras": [
+        "Parkování"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/3+kk/nupaky-nupaky-za-hotelem/1274191948",
+      "scraped_at": "2026-08-31T02:20:03.829596+00:00",
+      "listed_since": "2026-05-01",
+      "last_checked_at": "2026-09-02T01:59:15.598500+00:00",
+      "sold_at": "2026-09-02T01:59:15.598500+00:00"
+    },
+    {
+      "id": "3359301708",
+      "title": "Prodej rodinného domu 155 m², pozemek 554 m²",
+      "price": 3900000,
+      "area": 155.0,
+      "price_per_m2": 25161,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "ostatní",
+      "disposition_group": "ostatní",
+      "locality": "Malé Hradisko, okres Prostějov",
+      "locality_city": "Malé Hradisko",
+      "type": "dům",
+      "transaction": "prodej",
+      "ownership": "",
+      "building_type": "Smíšená",
+      "extras": [
+        "Garáž",
+        "Parkování",
+        "Sklep"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/male-hradisko/3359301708",
+      "scraped_at": "2026-08-31T02:20:19.264131+00:00",
+      "listed_since": "2026-07-03",
+      "last_checked_at": "2026-09-02T01:59:15.598500+00:00",
+      "sold_at": "2026-09-02T01:59:15.598500+00:00"
+    },
+    {
+      "id": "100171852",
+      "title": "Prodej bytu 2+kk 50 m²",
+      "price": 5100000,
+      "area": 50.0,
+      "price_per_m2": 102000,
+      "score": 17.0,
+      "median_price_per_m2": 122882,
+      "disposition": "2+kk",
+      "disposition_group": "2",
+      "locality": "Otakara Ševčíka, Brno-město - Židenice",
+      "locality_city": "Brno-město",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Cihlová",
+      "extras": [],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/2+kk/brno-zidenice-otakara-sevcika/100171852",
+      "scraped_at": "2026-08-24T18:24:54.887618+00:00",
+      "listed_since": "2026-05-29",
+      "last_checked_at": "2026-09-02T01:59:15.598500+00:00",
+      "sold_at": "2026-09-02T01:59:15.598500+00:00"
     }
   ]
 }
