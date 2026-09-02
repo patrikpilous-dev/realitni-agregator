@@ -1,6 +1,6 @@
 {
-  "updated": "2026-09-02T10:23:26.853825+00:00",
-  "total": 223,
+  "updated": "2026-09-02T15:50:48.544028+00:00",
+  "total": 225,
   "listings": [
     {
       "id": "3009487436",
@@ -5452,30 +5452,6 @@
       "sold_at": "2026-09-01T10:46:06.781241+00:00"
     },
     {
-      "id": "2452025420",
-      "title": "Prodej rodinného domu 152 m², pozemek 1250 m²",
-      "price": 3995857,
-      "area": 152.0,
-      "price_per_m2": 26289,
-      "score": 0,
-      "median_price_per_m2": null,
-      "disposition": "ostatní",
-      "disposition_group": "ostatní",
-      "locality": "Úterská, Bezdružice, okres Tachov",
-      "locality_city": "Bezdružice",
-      "type": "dům",
-      "transaction": "prodej",
-      "ownership": "",
-      "building_type": "Cihlová",
-      "extras": [],
-      "detail_fetched": true,
-      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/bezdruzice-bezdruzice-uterska/2452025420",
-      "scraped_at": "2026-08-30T10:54:56.056368+00:00",
-      "listed_since": "2026-06-29",
-      "last_checked_at": "2026-09-01T10:46:06.781241+00:00",
-      "sold_at": "2026-09-01T10:46:06.781241+00:00"
-    },
-    {
       "id": "1759875148",
       "title": "Prodej chalupy 162 m², pozemek 1334 m²",
       "price": 5190000,
@@ -5952,6 +5928,90 @@
       "listed_since": "2026-08-31",
       "last_checked_at": "2026-09-02T10:11:00.753594+00:00",
       "sold_at": "2026-09-02T10:11:00.753594+00:00"
+    },
+    {
+      "id": "2352345164",
+      "title": "Prodej rodinného domu 336 m², pozemek 3766 m²",
+      "price": 26960000,
+      "area": 336.0,
+      "price_per_m2": 80238,
+      "score": 6.4,
+      "median_price_per_m2": 85714,
+      "disposition": "ostatní",
+      "disposition_group": "ostatní",
+      "locality": "Lhotecká, Chrustenice, okres Beroun",
+      "locality_city": "Chrustenice",
+      "type": "dům",
+      "transaction": "prodej",
+      "ownership": "",
+      "building_type": "Dřevostavba",
+      "extras": [
+        "Garáž",
+        "Parkování",
+        "Sklep",
+        "Bazén"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/chrustenice-chrustenice-lhotecka/2352345164",
+      "scraped_at": "2026-08-31T12:09:12.501124+00:00",
+      "listed_since": "2026-06-30",
+      "last_checked_at": "2026-09-02T15:37:03.724071+00:00",
+      "sold_at": "2026-09-02T15:37:03.724071+00:00"
+    },
+    {
+      "id": "3954372684",
+      "title": "Prodej bytu 4+1 103 m²",
+      "price": 4200000,
+      "area": 103.0,
+      "price_per_m2": 40777,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "4+1",
+      "disposition_group": "4",
+      "locality": "Žižkova, Tachov",
+      "locality_city": "Tachov",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Panelová",
+      "extras": [
+        "Lodžie",
+        "Sklep",
+        "Zařízeno"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/4+1/tachov-tachov-zizkova/3954372684",
+      "scraped_at": "2026-08-31T22:11:05.888802+00:00",
+      "listed_since": "2026-06-24",
+      "last_checked_at": "2026-09-02T15:37:03.724071+00:00",
+      "sold_at": "2026-09-02T15:37:03.724071+00:00"
+    },
+    {
+      "id": "3891982412",
+      "title": "Prodej rodinného domu 108 m², pozemek 350 m²",
+      "price": 13900000,
+      "area": 108.0,
+      "price_per_m2": 128704,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "ostatní",
+      "disposition_group": "ostatní",
+      "locality": "Cenomanská, Chýně, okres Praha-západ",
+      "locality_city": "Chýně",
+      "type": "dům",
+      "transaction": "prodej",
+      "ownership": "",
+      "building_type": "Cihlová",
+      "extras": [
+        "Parkování",
+        "Ve výstavbě"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/chyne-chyne-cenomanska/3891982412",
+      "scraped_at": "2026-08-31T22:11:21.105920+00:00",
+      "listed_since": "2026-06-14",
+      "last_checked_at": "2026-09-02T15:37:03.724071+00:00",
+      "sold_at": "2026-09-02T15:37:03.724071+00:00"
     }
   ]
 }
