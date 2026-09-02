@@ -1,6 +1,6 @@
 {
-  "updated": "2026-09-02T15:50:48.544028+00:00",
-  "total": 225,
+  "updated": "2026-09-02T20:29:59.475216+00:00",
+  "total": 228,
   "listings": [
     {
       "id": "3009487436",
@@ -4905,32 +4905,6 @@
       "sold_at": "2026-08-31T12:09:12.502793+00:00"
     },
     {
-      "id": "2943860812",
-      "title": "Prodej rodinného domu 180 m², pozemek 297 m²",
-      "price": 4199000,
-      "area": 180.0,
-      "price_per_m2": 23328,
-      "score": 69.3,
-      "median_price_per_m2": 76095,
-      "disposition": "ostatní",
-      "disposition_group": "ostatní",
-      "locality": "Zlatnická, Chotětov, okres Mladá Boleslav",
-      "locality_city": "Chotětov",
-      "type": "dům",
-      "transaction": "prodej",
-      "ownership": "",
-      "building_type": "Cihlová",
-      "extras": [
-        "Parkování"
-      ],
-      "detail_fetched": true,
-      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/chotetov-chotetov-zlatnicka/2943860812",
-      "scraped_at": "2026-08-26T12:29:54.268885+00:00",
-      "listed_since": "2026-08-26",
-      "last_checked_at": "2026-08-31T12:09:12.502793+00:00",
-      "sold_at": "2026-08-31T12:09:12.502793+00:00"
-    },
-    {
       "id": "1894891596",
       "title": "Prodej bytu 1+kk 33 m²",
       "price": 2281000,
@@ -6012,6 +5986,118 @@
       "listed_since": "2026-06-14",
       "last_checked_at": "2026-09-02T15:37:03.724071+00:00",
       "sold_at": "2026-09-02T15:37:03.724071+00:00"
+    },
+    {
+      "id": "1223852108",
+      "title": "Prodej bytu 2+kk 51 m²",
+      "price": 2990000,
+      "area": 51.0,
+      "price_per_m2": 58627,
+      "score": 51.4,
+      "median_price_per_m2": 120732,
+      "disposition": "2+kk",
+      "disposition_group": "2",
+      "locality": "Arnošta Valenty, Praha 9 - Černý Most",
+      "locality_city": "Praha 9",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Družstevní",
+      "building_type": "Cihlová",
+      "extras": [
+        "Balkón",
+        "Novostavba"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/2+kk/praha-cerny-most-arnosta-valenty/1223852108",
+      "scraped_at": "2026-09-01T02:37:33.417728+00:00",
+      "listed_since": "2026-06-04",
+      "last_checked_at": "2026-09-02T20:17:26.526770+00:00",
+      "sold_at": "2026-09-02T20:17:26.526770+00:00"
+    },
+    {
+      "id": "3666534476",
+      "title": "Prodej bytu 2+kk 59 m²",
+      "price": 4990000,
+      "area": 59.0,
+      "price_per_m2": 84576,
+      "score": 29.9,
+      "median_price_per_m2": 120732,
+      "disposition": "2+kk",
+      "disposition_group": "2",
+      "locality": "Arnošta Valenty, Praha 9 - Černý Most",
+      "locality_city": "Praha 9",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Družstevní",
+      "building_type": "Smíšená",
+      "extras": [
+        "Balkón",
+        "Parkování",
+        "Sklep",
+        "Výtah",
+        "Novostavba"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/2+kk/praha-cerny-most-arnosta-valenty/3666534476",
+      "scraped_at": "2026-08-30T10:54:39.307148+00:00",
+      "listed_since": "2026-07-03",
+      "last_checked_at": "2026-09-02T20:17:26.526770+00:00",
+      "sold_at": "2026-09-02T20:17:26.526770+00:00"
+    },
+    {
+      "id": "1868099660",
+      "title": "Prodej bytu 3+kk 85 m²",
+      "price": 5290000,
+      "area": 85.0,
+      "price_per_m2": 62235,
+      "score": 26.7,
+      "median_price_per_m2": 84943,
+      "disposition": "3+kk",
+      "disposition_group": "3",
+      "locality": "Schweitzerova, Olomouc - Povel",
+      "locality_city": "Olomouc",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Cihlová",
+      "extras": [
+        "Parkování",
+        "Sklep",
+        "Zahrada"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/3+kk/olomouc-povel-schweitzerova/1868099660",
+      "scraped_at": "2026-08-25T12:26:52.905610+00:00",
+      "listed_since": "2026-06-16",
+      "last_checked_at": "2026-09-02T20:17:26.526770+00:00",
+      "sold_at": "2026-09-02T20:17:26.526770+00:00"
+    },
+    {
+      "id": "774357068",
+      "title": "Prodej bytu 2+1 54 m²",
+      "price": 2690000,
+      "area": 54.0,
+      "price_per_m2": 49815,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "2+1",
+      "disposition_group": "2",
+      "locality": "Obránců míru, Kopřivnice, okres Nový Jičín",
+      "locality_city": "Kopřivnice",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Panelová",
+      "extras": [
+        "Sklep",
+        "Výtah"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/2+1/koprivnice-koprivnice-obrancu-miru/774357068",
+      "scraped_at": "2026-09-01T10:45:51.198403+00:00",
+      "listed_since": "2026-08-26",
+      "last_checked_at": "2026-09-02T20:17:26.526770+00:00",
+      "sold_at": "2026-09-02T20:17:26.526770+00:00"
     }
   ]
 }
