@@ -1,6 +1,6 @@
 {
-  "updated": "2026-09-02T20:29:59.475216+00:00",
-  "total": 228,
+  "updated": "2026-09-03T02:15:48.431744+00:00",
+  "total": 227,
   "listings": [
     {
       "id": "3009487436",
@@ -168,33 +168,6 @@
       "url": "https://www.sreality.cz/detail/prodej/byt/3+kk/praha-smichov-nadrazni/638107724",
       "scraped_at": "2026-08-16T14:25:19.564082+00:00",
       "listed_since": "2026-08-15",
-      "sold_at": "2026-08-16T18:14:17.420016+00:00"
-    },
-    {
-      "id": "3654844492",
-      "title": "Prodej bytu 3+kk 97 m²",
-      "price": 20600000,
-      "area": 97.0,
-      "price_per_m2": 212371,
-      "score": -39.9,
-      "median_price_per_m2": 151772,
-      "disposition": "3+kk",
-      "disposition_group": "3",
-      "locality": "Ke Kapslovně, Praha 3 - Žižkov",
-      "locality_city": "Praha 3",
-      "type": "byt",
-      "transaction": "prodej",
-      "ownership": "Osobní",
-      "building_type": "Skeletová",
-      "extras": [
-        "Terasa",
-        "Parkování",
-        "Sklep"
-      ],
-      "detail_fetched": true,
-      "url": "https://www.sreality.cz/detail/prodej/byt/3+kk/praha-zizkov-ke-kapslovne/3654844492",
-      "scraped_at": "2026-08-16T14:25:19.569428+00:00",
-      "listed_since": "2026-05-29",
       "sold_at": "2026-08-16T18:14:17.420016+00:00"
     },
     {
@@ -5961,33 +5934,6 @@
       "sold_at": "2026-09-02T15:37:03.724071+00:00"
     },
     {
-      "id": "3891982412",
-      "title": "Prodej rodinného domu 108 m², pozemek 350 m²",
-      "price": 13900000,
-      "area": 108.0,
-      "price_per_m2": 128704,
-      "score": 0,
-      "median_price_per_m2": null,
-      "disposition": "ostatní",
-      "disposition_group": "ostatní",
-      "locality": "Cenomanská, Chýně, okres Praha-západ",
-      "locality_city": "Chýně",
-      "type": "dům",
-      "transaction": "prodej",
-      "ownership": "",
-      "building_type": "Cihlová",
-      "extras": [
-        "Parkování",
-        "Ve výstavbě"
-      ],
-      "detail_fetched": true,
-      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/chyne-chyne-cenomanska/3891982412",
-      "scraped_at": "2026-08-31T22:11:21.105920+00:00",
-      "listed_since": "2026-06-14",
-      "last_checked_at": "2026-09-02T15:37:03.724071+00:00",
-      "sold_at": "2026-09-02T15:37:03.724071+00:00"
-    },
-    {
       "id": "1223852108",
       "title": "Prodej bytu 2+kk 51 m²",
       "price": 2990000,
@@ -6098,6 +6044,34 @@
       "listed_since": "2026-08-26",
       "last_checked_at": "2026-09-02T20:17:26.526770+00:00",
       "sold_at": "2026-09-02T20:17:26.526770+00:00"
+    },
+    {
+      "id": "147898444",
+      "title": "Prodej bytu 1+1 32 m²",
+      "price": 3250000,
+      "area": 32.0,
+      "price_per_m2": 101562,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "1+1",
+      "disposition_group": "1",
+      "locality": "Olomouc",
+      "locality_city": "Olomouc",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Panelová",
+      "extras": [
+        "Lodžie",
+        "Sklep",
+        "Výtah"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/1+1/olomouc/147898444",
+      "scraped_at": "2026-08-30T10:54:39.308407+00:00",
+      "listed_since": "2026-08-26",
+      "last_checked_at": "2026-09-03T02:03:59.647015+00:00",
+      "sold_at": "2026-09-03T02:03:59.647015+00:00"
     }
   ]
 }
