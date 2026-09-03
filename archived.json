@@ -1,6 +1,6 @@
 {
-  "updated": "2026-09-03T15:40:09.543630+00:00",
-  "total": 229,
+  "updated": "2026-09-03T20:27:16.658401+00:00",
+  "total": 230,
   "listings": [
     {
       "id": "3009487436",
@@ -5013,35 +5013,6 @@
       "sold_at": "2026-09-01T02:37:55.058833+00:00"
     },
     {
-      "id": "2836512844",
-      "title": "Prodej bytu 3+kk 70 m²",
-      "price": 6997000,
-      "area": 70.0,
-      "price_per_m2": 99957,
-      "score": 19.4,
-      "median_price_per_m2": 124032,
-      "disposition": "3+kk",
-      "disposition_group": "3",
-      "locality": "Slévačská, Praha 9 - Hloubětín",
-      "locality_city": "Praha 9",
-      "type": "byt",
-      "transaction": "prodej",
-      "ownership": "Družstevní",
-      "building_type": "Panelová",
-      "extras": [
-        "Lodžie",
-        "Parkování",
-        "Sklep",
-        "Výtah"
-      ],
-      "detail_fetched": true,
-      "url": "https://www.sreality.cz/detail/prodej/byt/3+kk/praha-hloubetin-slevacska/2836512844",
-      "scraped_at": "2026-08-27T17:05:13.818448+00:00",
-      "listed_since": "2026-08-24",
-      "last_checked_at": "2026-09-01T02:37:55.058833+00:00",
-      "sold_at": "2026-09-01T02:37:55.058833+00:00"
-    },
-    {
       "id": "914219084",
       "title": "Prodej bytu 3+kk 81 m²",
       "price": 6464742,
@@ -6128,6 +6099,57 @@
       "listed_since": "2026-03-06",
       "last_checked_at": "2026-09-03T15:28:30.929708+00:00",
       "sold_at": "2026-09-03T15:28:30.929708+00:00"
+    },
+    {
+      "id": "3050975308",
+      "title": "Prodej bytu 3+kk 50 m²",
+      "price": 5449000,
+      "area": 50.0,
+      "price_per_m2": 108980,
+      "score": 32.1,
+      "median_price_per_m2": 160474,
+      "disposition": "3+kk",
+      "disposition_group": "3",
+      "locality": "Elišky Krásnohorské, Praha 1",
+      "locality_city": "Praha 1",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Cihlová",
+      "extras": [],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/3+kk/praha-elisky-krasnohorske/3050975308",
+      "scraped_at": "2026-09-02T01:58:55.064733+00:00",
+      "listed_since": "2026-09-01",
+      "last_checked_at": "2026-09-03T20:17:10.844146+00:00",
+      "sold_at": "2026-09-03T20:17:10.844146+00:00"
+    },
+    {
+      "id": "1776472140",
+      "title": "Prodej rodinného domu 228 m², pozemek 1076 m²",
+      "price": 10800000,
+      "area": 228.0,
+      "price_per_m2": 47368,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "ostatní",
+      "disposition_group": "ostatní",
+      "locality": "Na Husinci, Rokycany - Nové Město",
+      "locality_city": "Rokycany",
+      "type": "dům",
+      "transaction": "prodej",
+      "ownership": "",
+      "building_type": "Cihlová",
+      "extras": [
+        "Garáž",
+        "Sklep"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/rokycany-nove-mesto-na-husinci/1776472140",
+      "scraped_at": "2026-09-02T01:59:15.595153+00:00",
+      "listed_since": "2026-08-03",
+      "last_checked_at": "2026-09-03T20:17:10.844146+00:00",
+      "sold_at": "2026-09-03T20:17:10.844146+00:00"
     }
   ]
 }
