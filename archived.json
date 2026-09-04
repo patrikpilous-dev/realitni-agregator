@@ -1,6 +1,6 @@
 {
-  "updated": "2026-09-04T15:36:50.932340+00:00",
-  "total": 241,
+  "updated": "2026-09-04T20:13:46.781199+00:00",
+  "total": 242,
   "listings": [
     {
       "id": "3009487436",
@@ -3480,33 +3480,6 @@
       "sold_at": "2026-08-28T01:54:29.090447+00:00"
     },
     {
-      "id": "532725836",
-      "title": "Prodej rodinného domu 142 m², pozemek 785 m²",
-      "price": 12280000,
-      "area": 142.0,
-      "price_per_m2": 86479,
-      "score": 0,
-      "median_price_per_m2": null,
-      "disposition": "ostatní",
-      "disposition_group": "ostatní",
-      "locality": "Nová, Otvice, okres Chomutov",
-      "locality_city": "Otvice",
-      "type": "dům",
-      "transaction": "prodej",
-      "ownership": "",
-      "building_type": "Cihlová",
-      "extras": [
-        "Garáž",
-        "Bazén"
-      ],
-      "detail_fetched": true,
-      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/otvice-otvice-nova/532725836",
-      "scraped_at": "2026-08-26T00:41:13.669010+00:00",
-      "listed_since": "2026-08-25",
-      "last_checked_at": "2026-08-28T01:54:29.090447+00:00",
-      "sold_at": "2026-08-28T01:54:29.090447+00:00"
-    },
-    {
       "id": "628084812",
       "title": "Prodej bytu 3+kk 65 m²",
       "price": 5610000,
@@ -3665,34 +3638,6 @@
       "listed_since": "2026-08-24",
       "last_checked_at": "2026-08-29T01:19:04.743259+00:00",
       "sold_at": "2026-08-29T01:19:04.743259+00:00"
-    },
-    {
-      "id": "2851885900",
-      "title": "Prodej rodinného domu 137 m², pozemek 1489 m²",
-      "price": 11900000,
-      "area": 137.0,
-      "price_per_m2": 86861,
-      "score": 0,
-      "median_price_per_m2": null,
-      "disposition": "ostatní",
-      "disposition_group": "ostatní",
-      "locality": "Hazlov, okres Cheb",
-      "locality_city": "Hazlov",
-      "type": "dům",
-      "transaction": "prodej",
-      "ownership": "",
-      "building_type": "Dřevostavba",
-      "extras": [
-        "Parkování",
-        "Částečně zařízeno",
-        "Novostavba"
-      ],
-      "detail_fetched": true,
-      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/hazlov/2851885900",
-      "scraped_at": "2026-08-26T12:29:54.268482+00:00",
-      "listed_since": "2026-03-09",
-      "last_checked_at": "2026-08-29T11:57:58.640437+00:00",
-      "sold_at": "2026-08-29T11:57:58.640437+00:00"
     },
     {
       "id": "227524684",
@@ -6448,6 +6393,86 @@
       "listed_since": "2026-05-12",
       "last_checked_at": "2026-09-04T15:26:26.230511+00:00",
       "sold_at": "2026-09-04T15:26:26.230511+00:00"
+    },
+    {
+      "id": "1268461644",
+      "title": "Prodej bytu 1+kk 25 m²",
+      "price": 3600000,
+      "area": 25.0,
+      "price_per_m2": 144000,
+      "score": 0.8,
+      "median_price_per_m2": 145110,
+      "disposition": "1+kk",
+      "disposition_group": "1",
+      "locality": "Děčínská, Praha 8 - Střížkov",
+      "locality_city": "Praha 8",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Skeletová",
+      "extras": [
+        "Výtah"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/1+kk/praha-strizkov-decinska/1268461644",
+      "scraped_at": "2026-09-01T10:45:51.198954+00:00",
+      "listed_since": "2026-09-01",
+      "last_checked_at": "2026-09-04T20:01:47.001194+00:00",
+      "sold_at": "2026-09-04T20:01:47.001194+00:00"
+    },
+    {
+      "id": "3321507916",
+      "title": "Prodej bytu 2+kk 43 m²",
+      "price": 1900000,
+      "area": 43.0,
+      "price_per_m2": 44186,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "2+kk",
+      "disposition_group": "2",
+      "locality": "Trnovanská, Teplice - Trnovany",
+      "locality_city": "Teplice",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Družstevní",
+      "building_type": "Panelová",
+      "extras": [
+        "Sklep",
+        "Výtah"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/2+kk/teplice-trnovany-trnovanska/3321507916",
+      "scraped_at": "2026-09-01T15:45:42.955716+00:00",
+      "listed_since": "2026-09-01",
+      "last_checked_at": "2026-09-04T20:01:47.001194+00:00",
+      "sold_at": "2026-09-04T20:01:47.001194+00:00"
+    },
+    {
+      "id": "4195889228",
+      "title": "Prodej bytu 1+1 39 m²",
+      "price": 5200000,
+      "area": 39.0,
+      "price_per_m2": 133333,
+      "score": 0.3,
+      "median_price_per_m2": 133772,
+      "disposition": "1+1",
+      "disposition_group": "1",
+      "locality": "Dvorského, Brno-město - Štýřice",
+      "locality_city": "Brno-město",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Cihlová",
+      "extras": [
+        "Sklep",
+        "Výtah"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/1+1/brno-styrice-dvorskeho/4195889228",
+      "scraped_at": "2026-09-03T10:22:35.233086+00:00",
+      "listed_since": "2026-09-03",
+      "last_checked_at": "2026-09-04T20:01:47.001194+00:00",
+      "sold_at": "2026-09-04T20:01:47.001194+00:00"
     }
   ]
 }
