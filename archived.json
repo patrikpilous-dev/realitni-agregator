@@ -1,6 +1,6 @@
 {
-  "updated": "2026-09-05T14:26:23.955289+00:00",
-  "total": 249,
+  "updated": "2026-09-05T19:56:22.381285+00:00",
+  "total": 251,
   "listings": [
     {
       "id": "3009487436",
@@ -6656,6 +6656,60 @@
       "scraped_at": "2026-09-03T20:16:55.615031+00:00",
       "last_checked_at": "2026-09-05T14:13:55.417183+00:00",
       "sold_at": "2026-09-05T14:13:55.417183+00:00"
+    },
+    {
+      "id": "3613339724",
+      "title": "Prodej bytu 2+1 56 m²",
+      "price": 2590000,
+      "area": 56.0,
+      "price_per_m2": 46250,
+      "score": 3.7,
+      "median_price_per_m2": 48036,
+      "disposition": "2+1",
+      "disposition_group": "2",
+      "locality": "Horní, Ostrava-město",
+      "locality_city": "Ostrava-město",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Družstevní",
+      "building_type": "Panelová",
+      "extras": [
+        "Balkón",
+        "Sklep"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/2+1/ostrava-horni/3613339724",
+      "scraped_at": "2026-09-04T01:59:42.659121+00:00",
+      "listed_since": "2026-09-03",
+      "last_checked_at": "2026-09-05T19:42:57.881796+00:00",
+      "sold_at": "2026-09-05T19:42:57.881796+00:00"
+    },
+    {
+      "id": "867360844",
+      "title": "Prodej bytu 2+kk 53 m²",
+      "price": 6840000,
+      "area": 53.0,
+      "price_per_m2": 129057,
+      "score": 14.4,
+      "median_price_per_m2": 150755,
+      "disposition": "2+kk",
+      "disposition_group": "2",
+      "locality": "V zálomu, Praha 4 - Nusle",
+      "locality_city": "Praha 4",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Družstevní",
+      "building_type": "Cihlová",
+      "extras": [
+        "Sklep",
+        "Částečně zařízeno"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/2+kk/praha-nusle-v-zalomu/867360844",
+      "scraped_at": "2026-09-04T01:59:42.659573+00:00",
+      "listed_since": "2026-07-14",
+      "last_checked_at": "2026-09-05T19:42:57.881796+00:00",
+      "sold_at": "2026-09-05T19:42:57.881796+00:00"
     }
   ]
 }
