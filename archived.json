@@ -1,6 +1,6 @@
 {
-  "updated": "2026-09-05T09:50:21.219272+00:00",
-  "total": 248,
+  "updated": "2026-09-05T14:26:23.955289+00:00",
+  "total": 249,
   "listings": [
     {
       "id": "3009487436",
@@ -5336,34 +5336,6 @@
       "sold_at": "2026-09-01T15:46:01.762152+00:00"
     },
     {
-      "id": "3930058828",
-      "title": "Prodej bytu 1+kk 35 m²",
-      "price": 6259000,
-      "area": 35.0,
-      "price_per_m2": 178829,
-      "score": 0,
-      "median_price_per_m2": null,
-      "disposition": "1+kk",
-      "disposition_group": "1",
-      "locality": "Praha",
-      "locality_city": "Praha",
-      "type": "byt",
-      "transaction": "prodej",
-      "ownership": "Osobní",
-      "building_type": "Cihlová",
-      "extras": [
-        "Výtah",
-        "Ve výstavbě",
-        "Zahrada"
-      ],
-      "detail_fetched": true,
-      "url": "https://www.sreality.cz/detail/prodej/byt/1+kk/praha/3930058828",
-      "scraped_at": "2026-08-30T15:42:40.281681+00:00",
-      "listed_since": "2026-06-17",
-      "last_checked_at": "2026-09-01T15:46:01.762152+00:00",
-      "sold_at": "2026-09-01T15:46:01.762152+00:00"
-    },
-    {
       "id": "1025753932",
       "title": "Prodej vícegeneračního domu 202 m², pozemek 596 m²",
       "price": 17000000,
@@ -6633,6 +6605,57 @@
       "listed_since": "2026-05-21",
       "last_checked_at": "2026-09-05T09:39:11.541974+00:00",
       "sold_at": "2026-09-05T09:39:11.541974+00:00"
+    },
+    {
+      "id": "2454839372",
+      "title": "Prodej bytu 4+kk 144 m²",
+      "price": 10490000,
+      "area": 144.0,
+      "price_per_m2": 72847,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "4+kk",
+      "disposition_group": "4",
+      "locality": "Pohořelice - Nová Ves, okres Brno-venkov",
+      "locality_city": "Pohořelice",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Cihlová",
+      "extras": [
+        "Terasa",
+        "Garáž",
+        "Novostavba"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/4+kk/pohorelice-nova-ves/2454839372",
+      "scraped_at": "2026-09-03T20:16:55.614529+00:00",
+      "listed_since": "2026-07-15",
+      "last_checked_at": "2026-09-05T14:13:55.417183+00:00",
+      "sold_at": "2026-09-05T14:13:55.417183+00:00"
+    },
+    {
+      "id": "1974632524",
+      "title": "Prodej bytu 2+1 57 m²",
+      "price": 2850000,
+      "area": 57.0,
+      "price_per_m2": 50000,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "2+1",
+      "disposition_group": "2",
+      "locality": "Luční, Semily - Podmoklice",
+      "locality_city": "Semily",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "",
+      "building_type": "",
+      "extras": [],
+      "detail_fetched": false,
+      "url": "https://www.sreality.cz/detail/prodej/byt/2+1/semily-podmoklice-lucni/1974632524",
+      "scraped_at": "2026-09-03T20:16:55.615031+00:00",
+      "last_checked_at": "2026-09-05T14:13:55.417183+00:00",
+      "sold_at": "2026-09-05T14:13:55.417183+00:00"
     }
   ]
 }
