@@ -1,6 +1,6 @@
 {
-  "updated": "2026-09-06T19:55:49.401011+00:00",
-  "total": 263,
+  "updated": "2026-09-07T02:06:32.534976+00:00",
+  "total": 265,
   "listings": [
     {
       "id": "3009487436",
@@ -7040,6 +7040,62 @@
       "listed_since": "2026-07-14",
       "last_checked_at": "2026-09-06T19:45:37.067672+00:00",
       "sold_at": "2026-09-06T19:45:37.067672+00:00"
+    },
+    {
+      "id": "497582156",
+      "title": "Prodej rodinného domu 120 m², pozemek 745 m²",
+      "price": 5490000,
+      "area": 120.0,
+      "price_per_m2": 45750,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "ostatní",
+      "disposition_group": "ostatní",
+      "locality": "Riegrova, Golčův Jeníkov, okres Havlíčkův Brod",
+      "locality_city": "Golčův Jeníkov",
+      "type": "dům",
+      "transaction": "prodej",
+      "ownership": "",
+      "building_type": "Smíšená",
+      "extras": [
+        "Garáž",
+        "Parkování",
+        "Sklep",
+        "Zahrada"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/golcuv-jenikov-golcuv-jenikov-riegrova/497582156",
+      "scraped_at": "2026-09-05T02:00:10.590051+00:00",
+      "listed_since": "2026-05-29",
+      "last_checked_at": "2026-09-07T01:53:18.799158+00:00",
+      "sold_at": "2026-09-07T01:53:18.799158+00:00"
+    },
+    {
+      "id": "2237583436",
+      "title": "Prodej bytu 2+1 52 m²",
+      "price": 2490000,
+      "area": 52.0,
+      "price_per_m2": 47885,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "2+1",
+      "disposition_group": "2",
+      "locality": "Zborovská, Znojmo",
+      "locality_city": "Znojmo",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Cihlová",
+      "extras": [
+        "Sklep",
+        "Zahrada"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/2+1/znojmo-znojmo-zborovska/2237583436",
+      "scraped_at": "2026-09-03T15:28:13.078248+00:00",
+      "listed_since": "2026-07-28",
+      "last_checked_at": "2026-09-07T01:53:18.799158+00:00",
+      "sold_at": "2026-09-07T01:53:18.799158+00:00"
     }
   ]
 }
