@@ -1,6 +1,6 @@
 {
-  "updated": "2026-09-07T02:06:32.534976+00:00",
-  "total": 265,
+  "updated": "2026-09-07T11:15:51.312473+00:00",
+  "total": 267,
   "listings": [
     {
       "id": "3009487436",
@@ -6744,32 +6744,6 @@
       "sold_at": "2026-09-06T01:55:54.896569+00:00"
     },
     {
-      "id": "4011524940",
-      "title": "Prodej rodinného domu 100 m², pozemek 1270 m²",
-      "price": 2990000,
-      "area": 100.0,
-      "price_per_m2": 29900,
-      "score": 0,
-      "median_price_per_m2": null,
-      "disposition": "ostatní",
-      "disposition_group": "ostatní",
-      "locality": "Žihle, okres Plzeň-sever",
-      "locality_city": "Žihle",
-      "type": "dům",
-      "transaction": "prodej",
-      "ownership": "",
-      "building_type": "Smíšená",
-      "extras": [
-        "Sklep"
-      ],
-      "detail_fetched": true,
-      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/zihle-zihle/4011524940",
-      "scraped_at": "2026-09-04T10:10:09.962674+00:00",
-      "listed_since": "2026-01-04",
-      "last_checked_at": "2026-09-06T01:55:54.896569+00:00",
-      "sold_at": "2026-09-06T01:55:54.896569+00:00"
-    },
-    {
       "id": "2854010956",
       "title": "Prodej rodinného domu 95 m², pozemek 258 m²",
       "price": 1550000,
@@ -7096,6 +7070,94 @@
       "listed_since": "2026-07-28",
       "last_checked_at": "2026-09-07T01:53:18.799158+00:00",
       "sold_at": "2026-09-07T01:53:18.799158+00:00"
+    },
+    {
+      "id": "3916079948",
+      "title": "Prodej rodinného domu 171 m², pozemek 1155 m²",
+      "price": 12690000,
+      "area": 171.0,
+      "price_per_m2": 74211,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "ostatní",
+      "disposition_group": "ostatní",
+      "locality": "Podlešín, okres Kladno",
+      "locality_city": "Podlešín",
+      "type": "dům",
+      "transaction": "prodej",
+      "ownership": "",
+      "building_type": "Cihlová",
+      "extras": [
+        "Garáž",
+        "Parkování",
+        "Bazén",
+        "Zahrada"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/podlesin-podlesin/3916079948",
+      "scraped_at": "2026-09-05T09:39:11.541001+00:00",
+      "listed_since": "2025-06-12",
+      "last_checked_at": "2026-09-07T11:02:21.639328+00:00",
+      "sold_at": "2026-09-07T11:02:21.639328+00:00"
+    },
+    {
+      "id": "1187644236",
+      "title": "Prodej rodinného domu 123 m², pozemek 1290 m²",
+      "price": 8490000,
+      "area": 123.0,
+      "price_per_m2": 69024,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "ostatní",
+      "disposition_group": "ostatní",
+      "locality": "Luční, Milín, okres Příbram",
+      "locality_city": "Milín",
+      "type": "dům",
+      "transaction": "prodej",
+      "ownership": "",
+      "building_type": "Cihlová",
+      "extras": [
+        "Sklep",
+        "Bazén",
+        "Zařízeno",
+        "Zahrada"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/milin-milin-lucni/1187644236",
+      "scraped_at": "2026-09-05T09:39:11.541164+00:00",
+      "listed_since": "2026-01-05",
+      "last_checked_at": "2026-09-07T11:02:21.639328+00:00",
+      "sold_at": "2026-09-07T11:02:21.639328+00:00"
+    },
+    {
+      "id": "3197558860",
+      "title": "Prodej rodinného domu 168 m², pozemek 391 m²",
+      "price": 4090000,
+      "area": 168.0,
+      "price_per_m2": 24345,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "ostatní",
+      "disposition_group": "ostatní",
+      "locality": "Tyršova, Černovice, okres Pelhřimov",
+      "locality_city": "Černovice",
+      "type": "dům",
+      "transaction": "prodej",
+      "ownership": "",
+      "building_type": "Cihlová",
+      "extras": [
+        "Garáž",
+        "Parkování",
+        "Sklep",
+        "Částečně zařízeno",
+        "Zahrada"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/cernovice-cernovice-tyrsova/3197558860",
+      "scraped_at": "2026-09-05T09:39:11.541176+00:00",
+      "listed_since": "2026-07-20",
+      "last_checked_at": "2026-09-07T11:02:21.639328+00:00",
+      "sold_at": "2026-09-07T11:02:21.639328+00:00"
     }
   ]
 }
