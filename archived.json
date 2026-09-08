@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-08T15:52:13.421077+00:00",
+  "updated": "2026-09-08T20:41:24.794477+00:00",
   "total": 275,
   "listings": [
     {
@@ -6963,65 +6963,6 @@
       "sold_at": "2026-09-07T11:02:21.639328+00:00"
     },
     {
-      "id": "1187644236",
-      "title": "Prodej rodinného domu 123 m², pozemek 1290 m²",
-      "price": 8490000,
-      "area": 123.0,
-      "price_per_m2": 69024,
-      "score": 0,
-      "median_price_per_m2": null,
-      "disposition": "ostatní",
-      "disposition_group": "ostatní",
-      "locality": "Luční, Milín, okres Příbram",
-      "locality_city": "Milín",
-      "type": "dům",
-      "transaction": "prodej",
-      "ownership": "",
-      "building_type": "Cihlová",
-      "extras": [
-        "Sklep",
-        "Bazén",
-        "Zařízeno",
-        "Zahrada"
-      ],
-      "detail_fetched": true,
-      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/milin-milin-lucni/1187644236",
-      "scraped_at": "2026-09-05T09:39:11.541164+00:00",
-      "listed_since": "2026-01-05",
-      "last_checked_at": "2026-09-07T11:02:21.639328+00:00",
-      "sold_at": "2026-09-07T11:02:21.639328+00:00"
-    },
-    {
-      "id": "3197558860",
-      "title": "Prodej rodinného domu 168 m², pozemek 391 m²",
-      "price": 4090000,
-      "area": 168.0,
-      "price_per_m2": 24345,
-      "score": 0,
-      "median_price_per_m2": null,
-      "disposition": "ostatní",
-      "disposition_group": "ostatní",
-      "locality": "Tyršova, Černovice, okres Pelhřimov",
-      "locality_city": "Černovice",
-      "type": "dům",
-      "transaction": "prodej",
-      "ownership": "",
-      "building_type": "Cihlová",
-      "extras": [
-        "Garáž",
-        "Parkování",
-        "Sklep",
-        "Částečně zařízeno",
-        "Zahrada"
-      ],
-      "detail_fetched": true,
-      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/cernovice-cernovice-tyrsova/3197558860",
-      "scraped_at": "2026-09-05T09:39:11.541176+00:00",
-      "listed_since": "2026-07-20",
-      "last_checked_at": "2026-09-07T11:02:21.639328+00:00",
-      "sold_at": "2026-09-07T11:02:21.639328+00:00"
-    },
-    {
       "id": "2664153164",
       "title": "Prodej rodinného domu 160 m², pozemek 135 m²",
       "price": 4410000,
@@ -7367,6 +7308,61 @@
       "listed_since": "2026-08-14",
       "last_checked_at": "2026-09-08T15:39:40.739140+00:00",
       "sold_at": "2026-09-08T15:39:40.739140+00:00"
+    },
+    {
+      "id": "4225577036",
+      "title": "Prodej bytu 3+1 68 m²",
+      "price": 3200000,
+      "area": 68.0,
+      "price_per_m2": 47059,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "3+1",
+      "disposition_group": "3",
+      "locality": "Kladská, Náchod",
+      "locality_city": "Náchod",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Smíšená",
+      "extras": [
+        "Balkón",
+        "Sklep",
+        "Výtah"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/3+1/nachod-nachod-kladska/4225577036",
+      "scraped_at": "2026-09-07T11:01:59.799720+00:00",
+      "listed_since": "2026-09-07",
+      "last_checked_at": "2026-09-08T20:28:58.974208+00:00",
+      "sold_at": "2026-09-08T20:28:58.974208+00:00"
+    },
+    {
+      "id": "2581409868",
+      "title": "Prodej bytu 2+kk 43 m²",
+      "price": 5200000,
+      "area": 43.0,
+      "price_per_m2": 120930,
+      "score": 12.9,
+      "median_price_per_m2": 138778,
+      "disposition": "2+kk",
+      "disposition_group": "2",
+      "locality": "Trnková, Praha 4 - Krč",
+      "locality_city": "Praha 4",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Družstevní",
+      "building_type": "Panelová",
+      "extras": [
+        "Sklep",
+        "Výtah"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/2+kk/praha-krc-trnkova/2581409868",
+      "scraped_at": "2026-09-07T11:01:59.799820+00:00",
+      "listed_since": "2026-09-07",
+      "last_checked_at": "2026-09-08T20:28:58.974208+00:00",
+      "sold_at": "2026-09-08T20:28:58.974208+00:00"
     }
   ]
 }
