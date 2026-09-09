@@ -1,6 +1,6 @@
 {
-  "updated": "2026-09-09T10:34:14.959455+00:00",
-  "total": 276,
+  "updated": "2026-09-09T15:44:41.471090+00:00",
+  "total": 278,
   "listings": [
     {
       "id": "3009487436",
@@ -1290,29 +1290,6 @@
       "listed_since": "2026-08-17",
       "last_checked_at": "2026-08-21T00:42:00.659115+00:00",
       "sold_at": "2026-08-21T00:42:00.659115+00:00"
-    },
-    {
-      "id": "1470357580",
-      "title": "Prodej bytu 3+1 58 m²",
-      "price": 2470000,
-      "area": 58.0,
-      "price_per_m2": 42586,
-      "score": 0,
-      "median_price_per_m2": null,
-      "disposition": "3+1",
-      "disposition_group": "3",
-      "locality": "Osvobození, Orlová - Lutyně, okres Karviná",
-      "locality_city": "Orlová",
-      "type": "byt",
-      "transaction": "prodej",
-      "ownership": "",
-      "building_type": "",
-      "extras": [],
-      "detail_fetched": false,
-      "url": "https://www.sreality.cz/detail/prodej/byt/3+1/orlova-lutyne-osvobozeni/1470357580",
-      "scraped_at": "2026-08-19T12:23:46.504670+00:00",
-      "last_checked_at": "2026-08-21T06:28:35.087074+00:00",
-      "sold_at": "2026-08-21T06:28:35.087074+00:00"
     },
     {
       "id": "3049705548",
@@ -7395,6 +7372,84 @@
       "listed_since": "2023-10-12",
       "last_checked_at": "2026-09-09T10:23:35.982783+00:00",
       "sold_at": "2026-09-09T10:23:35.982783+00:00"
+    },
+    {
+      "id": "654438476",
+      "title": "Prodej bytu 3+1 88 m²",
+      "price": 5230000,
+      "area": 88.0,
+      "price_per_m2": 59432,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "3+1",
+      "disposition_group": "3",
+      "locality": "Tečovice, okres Zlín",
+      "locality_city": "Tečovice",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Cihlová",
+      "extras": [
+        "Sklep"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/3+1/tecovice-tecovice/654438476",
+      "scraped_at": "2026-09-07T20:54:44.139430+00:00",
+      "listed_since": "2026-06-24",
+      "last_checked_at": "2026-09-09T15:33:41.698340+00:00",
+      "sold_at": "2026-09-09T15:33:41.698340+00:00"
+    },
+    {
+      "id": "2242961484",
+      "title": "Prodej bytu 3+1 88 m²",
+      "price": 5990000,
+      "area": 88.0,
+      "price_per_m2": 68068,
+      "score": 1.5,
+      "median_price_per_m2": 69128,
+      "disposition": "3+1",
+      "disposition_group": "3",
+      "locality": "Havlíčkova, Plzeň-město - Jižní Předměstí",
+      "locality_city": "Plzeň-město",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Cihlová",
+      "extras": [
+        "Sklep"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/3+1/plzen-jizni-predmesti-havlickova/2242961484",
+      "scraped_at": "2026-09-08T02:03:52.807523+00:00",
+      "listed_since": "2026-07-16",
+      "last_checked_at": "2026-09-09T15:33:41.698340+00:00",
+      "sold_at": "2026-09-09T15:33:41.698340+00:00"
+    },
+    {
+      "id": "1572528204",
+      "title": "Prodej bytu 1+1 38 m²",
+      "price": 2690000,
+      "area": 38.0,
+      "price_per_m2": 70789,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "1+1",
+      "disposition_group": "1",
+      "locality": "Rýchorské náměstí, Žacléř, okres Trutnov",
+      "locality_city": "Žacléř",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Cihlová",
+      "extras": [
+        "Sklep"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/1+1/zacler-zacler-rychorske-namesti/1572528204",
+      "scraped_at": "2026-09-08T02:03:52.807830+00:00",
+      "listed_since": "2026-07-03",
+      "last_checked_at": "2026-09-09T15:33:41.698340+00:00",
+      "sold_at": "2026-09-09T15:33:41.698340+00:00"
     }
   ]
 }
