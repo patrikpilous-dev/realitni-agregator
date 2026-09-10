@@ -1,6 +1,6 @@
 {
-  "updated": "2026-09-09T20:22:00.236451+00:00",
-  "total": 286,
+  "updated": "2026-09-10T02:18:37.888138+00:00",
+  "total": 289,
   "listings": [
     {
       "id": "3009487436",
@@ -7665,6 +7665,91 @@
       "listed_since": "2026-01-11",
       "last_checked_at": "2026-09-09T20:11:46.348067+00:00",
       "sold_at": "2026-09-09T20:11:46.348067+00:00"
+    },
+    {
+      "id": "2874069068",
+      "title": "Prodej bytu 2+1 66 m²",
+      "price": 2799000,
+      "area": 66.0,
+      "price_per_m2": 42409,
+      "score": 72.9,
+      "median_price_per_m2": 156731,
+      "disposition": "2+1",
+      "disposition_group": "2",
+      "locality": "Praha 5 - Stodůlky",
+      "locality_city": "Praha 5",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Družstevní",
+      "building_type": "Smíšená",
+      "extras": [
+        "Lodžie",
+        "Garáž",
+        "Sklep",
+        "Výtah",
+        "Ve výstavbě"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/2+1/praha-stodulky/2874069068",
+      "scraped_at": "2026-08-29T16:07:40.144762+00:00",
+      "listed_since": "2026-07-28",
+      "last_checked_at": "2026-09-10T02:06:11.842677+00:00",
+      "sold_at": "2026-09-10T02:06:11.842677+00:00"
+    },
+    {
+      "id": "1784361036",
+      "title": "Prodej bytu 2+kk 33 m²",
+      "price": 4400000,
+      "area": 33.0,
+      "price_per_m2": 133333,
+      "score": 15.3,
+      "median_price_per_m2": 157480,
+      "disposition": "2+kk",
+      "disposition_group": "2",
+      "locality": "Žerotínova, Praha 3 - Žižkov",
+      "locality_city": "Praha 3",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Cihlová",
+      "extras": [
+        "Sklep"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/2+kk/praha-zizkov-zerotinova/1784361036",
+      "scraped_at": "2026-09-01T02:37:33.418315+00:00",
+      "listed_since": "2026-08-31",
+      "last_checked_at": "2026-09-10T02:06:11.842677+00:00",
+      "sold_at": "2026-09-10T02:06:11.842677+00:00"
+    },
+    {
+      "id": "1120772172",
+      "title": "Prodej rodinného domu 170 m², pozemek 566 m²",
+      "price": 7299000,
+      "area": 170.0,
+      "price_per_m2": 42935,
+      "score": 0.0,
+      "median_price_per_m2": 42935,
+      "disposition": "ostatní",
+      "disposition_group": "ostatní",
+      "locality": "Rosická, Říčany, okres Brno-venkov",
+      "locality_city": "Říčany",
+      "type": "dům",
+      "transaction": "prodej",
+      "ownership": "",
+      "building_type": "Cihlová",
+      "extras": [
+        "Parkování",
+        "Sklep",
+        "Zařízeno",
+        "Zahrada"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/ricany-ricany-rosicka/1120772172",
+      "scraped_at": "2026-08-24T18:25:15.897596+00:00",
+      "listed_since": "2026-04-28",
+      "last_checked_at": "2026-09-10T02:06:11.842677+00:00",
+      "sold_at": "2026-09-10T02:06:11.842677+00:00"
     }
   ]
 }
