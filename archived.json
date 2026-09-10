@@ -1,6 +1,6 @@
 {
-  "updated": "2026-09-10T02:18:37.888138+00:00",
-  "total": 289,
+  "updated": "2026-09-10T10:28:04.766881+00:00",
+  "total": 291,
   "listings": [
     {
       "id": "3009487436",
@@ -7750,6 +7750,58 @@
       "listed_since": "2026-04-28",
       "last_checked_at": "2026-09-10T02:06:11.842677+00:00",
       "sold_at": "2026-09-10T02:06:11.842677+00:00"
+    },
+    {
+      "id": "404369484",
+      "title": "Prodej bytu 2+kk 71 m²",
+      "price": 6900000,
+      "area": 71.0,
+      "price_per_m2": 97183,
+      "score": 10.9,
+      "median_price_per_m2": 109048,
+      "disposition": "2+kk",
+      "disposition_group": "2",
+      "locality": "Tenorova, Brno-město - Židenice",
+      "locality_city": "Brno-město",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Cihlová",
+      "extras": [
+        "Parkování",
+        "Sklep",
+        "Novostavba"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/2+kk/brno-zidenice-tenorova/404369484",
+      "scraped_at": "2026-09-01T15:45:42.957842+00:00",
+      "listed_since": "2026-09-01",
+      "last_checked_at": "2026-09-10T10:15:23.656624+00:00",
+      "sold_at": "2026-09-10T10:15:23.656624+00:00"
+    },
+    {
+      "id": "1090007116",
+      "title": "Prodej bytu 1+1 40 m²",
+      "price": 4800000,
+      "area": 40.0,
+      "price_per_m2": 120000,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "1+1",
+      "disposition_group": "1",
+      "locality": "Nad Kajetánkou, Praha 6 - Břevnov",
+      "locality_city": "Praha 6",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Cihlová",
+      "extras": [],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/1+1/praha-brevnov-nad-kajetankou/1090007116",
+      "scraped_at": "2026-09-03T10:22:35.231463+00:00",
+      "listed_since": "2026-09-03",
+      "last_checked_at": "2026-09-10T10:15:23.656624+00:00",
+      "sold_at": "2026-09-10T10:15:23.656624+00:00"
     }
   ]
 }
