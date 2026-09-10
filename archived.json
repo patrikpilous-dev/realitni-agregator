@@ -1,6 +1,6 @@
 {
-  "updated": "2026-09-10T15:42:04.526056+00:00",
-  "total": 292,
+  "updated": "2026-09-10T20:25:01.514170+00:00",
+  "total": 294,
   "listings": [
     {
       "id": "3009487436",
@@ -4233,35 +4233,6 @@
       "sold_at": "2026-08-30T02:26:12.768805+00:00"
     },
     {
-      "id": "2814812236",
-      "title": "Prodej chaty 83 m², pozemek 471 m²",
-      "price": 5490000,
-      "area": 83.0,
-      "price_per_m2": 66145,
-      "score": 0,
-      "median_price_per_m2": null,
-      "disposition": "ostatní",
-      "disposition_group": "ostatní",
-      "locality": "Tři Studně, okres Žďár nad Sázavou",
-      "locality_city": "Tři Studně",
-      "type": "dům",
-      "transaction": "prodej",
-      "ownership": "",
-      "building_type": "Cihlová",
-      "extras": [
-        "Parkování",
-        "Sklep",
-        "Částečně zařízeno",
-        "Zahrada"
-      ],
-      "detail_fetched": true,
-      "url": "https://www.sreality.cz/detail/prodej/dum/chata/tri-studne-tri-studne/2814812236",
-      "scraped_at": "2026-08-27T17:05:33.267840+00:00",
-      "listed_since": "2026-05-06",
-      "last_checked_at": "2026-08-30T02:26:12.768805+00:00",
-      "sold_at": "2026-08-30T02:26:12.768805+00:00"
-    },
-    {
       "id": "3481137228",
       "title": "Prodej rodinného domu 93 m², pozemek 1686 m²",
       "price": 4690000,
@@ -7824,6 +7795,90 @@
       "listed_since": "2026-07-20",
       "last_checked_at": "2026-09-10T15:29:33.227632+00:00",
       "sold_at": "2026-09-10T15:29:33.227632+00:00"
+    },
+    {
+      "id": "1338363980",
+      "title": "Prodej bytu 2+kk 53 m²",
+      "price": 8388000,
+      "area": 53.0,
+      "price_per_m2": 158264,
+      "score": 1.8,
+      "median_price_per_m2": 161194,
+      "disposition": "2+kk",
+      "disposition_group": "2",
+      "locality": "Komunardů, Praha 7 - Holešovice",
+      "locality_city": "Praha 7",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Cihlová",
+      "extras": [
+        "Sklep",
+        "Výtah"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/2+kk/praha-holesovice-komunardu/1338363980",
+      "scraped_at": "2026-09-09T02:08:41.054153+00:00",
+      "listed_since": "2026-08-10",
+      "last_checked_at": "2026-09-10T20:13:33.776707+00:00",
+      "sold_at": "2026-09-10T20:13:33.776707+00:00"
+    },
+    {
+      "id": "1728503884",
+      "title": "Prodej rodinného domu 200 m², pozemek 218 m²",
+      "price": 3800000,
+      "area": 200.0,
+      "price_per_m2": 19000,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "ostatní",
+      "disposition_group": "ostatní",
+      "locality": "Mírová, Mimoň - Mimoň III, okres Česká Lípa",
+      "locality_city": "Mimoň",
+      "type": "dům",
+      "transaction": "prodej",
+      "ownership": "",
+      "building_type": "Smíšená",
+      "extras": [
+        "Parkování",
+        "Sklep",
+        "Zařízeno",
+        "Zahrada"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/mimon-mimon-iii-mirova/1728503884",
+      "scraped_at": "2026-09-09T02:09:02.707612+00:00",
+      "listed_since": "2026-07-19",
+      "last_checked_at": "2026-09-10T20:13:33.776707+00:00",
+      "sold_at": "2026-09-10T20:13:33.776707+00:00"
+    },
+    {
+      "id": "1060909132",
+      "title": "Prodej bytu 1+1 48 m²",
+      "price": 6800000,
+      "area": 48.0,
+      "price_per_m2": 141667,
+      "score": 31.9,
+      "median_price_per_m2": 208095,
+      "disposition": "1+1",
+      "disposition_group": "1",
+      "locality": "Hradecká, Praha 3 - Vinohrady",
+      "locality_city": "Praha 3",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Družstevní",
+      "building_type": "Cihlová",
+      "extras": [
+        "Balkón",
+        "Sklep",
+        "Výtah"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/1+1/praha-vinohrady-hradecka/1060909132",
+      "scraped_at": "2026-09-07T16:50:57.638761+00:00",
+      "listed_since": "2026-09-07",
+      "last_checked_at": "2026-09-10T20:13:33.776707+00:00",
+      "sold_at": "2026-09-10T20:13:33.776707+00:00"
     }
   ]
 }
