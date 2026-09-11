@@ -1,6 +1,6 @@
 {
-  "updated": "2026-09-10T20:25:01.514170+00:00",
-  "total": 294,
+  "updated": "2026-09-11T02:13:43.392692+00:00",
+  "total": 298,
   "listings": [
     {
       "id": "3009487436",
@@ -7879,6 +7879,119 @@
       "listed_since": "2026-09-07",
       "last_checked_at": "2026-09-10T20:13:33.776707+00:00",
       "sold_at": "2026-09-10T20:13:33.776707+00:00"
+    },
+    {
+      "id": "2413253452",
+      "title": "Prodej rodinného domu 760 m², pozemek 664 m²",
+      "price": 22900000,
+      "area": 760.0,
+      "price_per_m2": 30132,
+      "score": 52.4,
+      "median_price_per_m2": 63312,
+      "disposition": "ostatní",
+      "disposition_group": "ostatní",
+      "locality": "Strážovská, Praha 5 - Radotín",
+      "locality_city": "Praha 5",
+      "type": "dům",
+      "transaction": "prodej",
+      "ownership": "",
+      "building_type": "Skeletová",
+      "extras": [
+        "Garáž",
+        "Parkování",
+        "Výtah",
+        "Ve výstavbě"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/praha-radotin-strazovska/2413253452",
+      "scraped_at": "2026-09-09T10:23:35.979674+00:00",
+      "listed_since": "2026-03-14",
+      "last_checked_at": "2026-09-11T02:03:28.450527+00:00",
+      "sold_at": "2026-09-11T02:03:28.450527+00:00"
+    },
+    {
+      "id": "173060172",
+      "title": "Prodej bytu 3+kk 139 m²",
+      "price": 6999000,
+      "area": 139.0,
+      "price_per_m2": 50353,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "3+kk",
+      "disposition_group": "3",
+      "locality": "Ostravice, okres Frýdek-Místek",
+      "locality_city": "Ostravice",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Cihlová",
+      "extras": [
+        "Terasa",
+        "Parkování",
+        "Sklep",
+        "Ve výstavbě",
+        "Zahrada"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/3+kk/ostravice-ostravice/173060172",
+      "scraped_at": "2026-09-09T15:33:24.031625+00:00",
+      "listed_since": "2026-04-16",
+      "last_checked_at": "2026-09-11T02:03:28.450527+00:00",
+      "sold_at": "2026-09-11T02:03:28.450527+00:00"
+    },
+    {
+      "id": "2085273676",
+      "title": "Prodej bytu 4+1 157 m²",
+      "price": 4480000,
+      "area": 157.0,
+      "price_per_m2": 28535,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "4+1",
+      "disposition_group": "4",
+      "locality": "Prušánky, okres Hodonín",
+      "locality_city": "Prušánky",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Cihlová",
+      "extras": [
+        "Lodžie",
+        "Parkování",
+        "Sklep"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/4+1/prusanky/2085273676",
+      "scraped_at": "2026-09-09T15:33:24.038096+00:00",
+      "listed_since": "2026-08-12",
+      "last_checked_at": "2026-09-11T02:03:28.450527+00:00",
+      "sold_at": "2026-09-11T02:03:28.450527+00:00"
+    },
+    {
+      "id": "1585590348",
+      "title": "Prodej bytu 2+1 69 m²",
+      "price": 4550000,
+      "area": 69.0,
+      "price_per_m2": 65942,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "2+1",
+      "disposition_group": "2",
+      "locality": "Havlíčkova, Jihlava",
+      "locality_city": "Jihlava",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Cihlová",
+      "extras": [
+        "Částečně zařízeno"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/2+1/jihlava-jihlava-havlickova/1585590348",
+      "scraped_at": "2026-09-09T15:33:24.038173+00:00",
+      "listed_since": "2026-09-09",
+      "last_checked_at": "2026-09-11T02:03:28.450527+00:00",
+      "sold_at": "2026-09-11T02:03:28.450527+00:00"
     }
   ]
 }
