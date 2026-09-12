@@ -1,6 +1,6 @@
 {
-  "updated": "2026-09-12T14:50:51.676733+00:00",
-  "total": 314,
+  "updated": "2026-09-12T20:04:35.878945+00:00",
+  "total": 316,
   "listings": [
     {
       "id": "3009487436",
@@ -8421,6 +8421,63 @@
       "listed_since": "2026-05-25",
       "last_checked_at": "2026-09-12T14:38:06.685798+00:00",
       "sold_at": "2026-09-12T14:38:06.685798+00:00"
+    },
+    {
+      "id": "810561612",
+      "title": "Prodej bytu 1+1 36 m²",
+      "price": 1799000,
+      "area": 36.0,
+      "price_per_m2": 49972,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "1+1",
+      "disposition_group": "1",
+      "locality": "Jiráskova, Krnov - Pod Bezručovým vrchem, okres Bruntál",
+      "locality_city": "Krnov",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Panelová",
+      "extras": [
+        "Sklep",
+        "Částečně zařízeno"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/1+1/krnov-pod-bezrucovym-vrchem-jiraskova/810561612",
+      "scraped_at": "2026-09-11T02:03:11.857826+00:00",
+      "listed_since": "2026-09-10",
+      "last_checked_at": "2026-09-12T19:51:50.820959+00:00",
+      "sold_at": "2026-09-12T19:51:50.820959+00:00"
+    },
+    {
+      "id": "3188105292",
+      "title": "Prodej rodinného domu 150 m², pozemek 1054 m²",
+      "price": 16000000,
+      "area": 150.0,
+      "price_per_m2": 106667,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "ostatní",
+      "disposition_group": "ostatní",
+      "locality": "Koleč, okres Kladno",
+      "locality_city": "Koleč",
+      "type": "dům",
+      "transaction": "prodej",
+      "ownership": "",
+      "building_type": "Cihlová",
+      "extras": [
+        "Garáž",
+        "Parkování",
+        "Sklep",
+        "Bazén",
+        "Zahrada"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/kolec-kolec/3188105292",
+      "scraped_at": "2026-09-11T02:03:28.446857+00:00",
+      "listed_since": "2026-05-05",
+      "last_checked_at": "2026-09-12T19:51:50.820959+00:00",
+      "sold_at": "2026-09-12T19:51:50.820959+00:00"
     }
   ]
 }
