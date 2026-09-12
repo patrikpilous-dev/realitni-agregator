@@ -1,6 +1,6 @@
 {
-  "updated": "2026-09-12T02:20:21.605544+00:00",
-  "total": 309,
+  "updated": "2026-09-12T09:57:46.780443+00:00",
+  "total": 311,
   "listings": [
     {
       "id": "3009487436",
@@ -8296,6 +8296,53 @@
       "listed_since": "2026-06-30",
       "last_checked_at": "2026-09-12T02:08:45.880106+00:00",
       "sold_at": "2026-09-12T02:08:45.880106+00:00"
+    },
+    {
+      "id": "59846732",
+      "title": "Prodej rodinného domu 140 m², pozemek 347 m²",
+      "price": 3250000,
+      "area": 140.0,
+      "price_per_m2": 23214,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "ostatní",
+      "disposition_group": "ostatní",
+      "locality": "Nepřevázka, okres Mladá Boleslav",
+      "locality_city": "Nepřevázka",
+      "type": "dům",
+      "transaction": "prodej",
+      "ownership": "",
+      "building_type": "Cihlová",
+      "extras": [],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/neprevazka-neprevazka/59846732",
+      "scraped_at": "2026-09-10T15:29:33.226285+00:00",
+      "listed_since": "2026-09-10",
+      "last_checked_at": "2026-09-12T09:47:20.719198+00:00",
+      "sold_at": "2026-09-12T09:47:20.719198+00:00"
+    },
+    {
+      "id": "1137636172",
+      "title": "Prodej chalupy 71 m², pozemek 593 m²",
+      "price": 5790000,
+      "area": 71.0,
+      "price_per_m2": 81549,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "ostatní",
+      "disposition_group": "ostatní",
+      "locality": "Bystřice pod Lopeníkem, okres Uherské Hradiště",
+      "locality_city": "Bystřice pod Lopeníkem",
+      "type": "dům",
+      "transaction": "prodej",
+      "ownership": "",
+      "building_type": "",
+      "extras": [],
+      "detail_fetched": false,
+      "url": "https://www.sreality.cz/detail/prodej/dum/chalupa/bystrice-pod-lopenikem-bystrice-pod-lopenikem/1137636172",
+      "scraped_at": "2026-09-10T15:29:33.226595+00:00",
+      "last_checked_at": "2026-09-12T09:47:20.719198+00:00",
+      "sold_at": "2026-09-12T09:47:20.719198+00:00"
     }
   ]
 }
