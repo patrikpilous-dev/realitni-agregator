@@ -1,6 +1,6 @@
 {
-  "updated": "2026-09-12T09:57:46.780443+00:00",
-  "total": 311,
+  "updated": "2026-09-12T14:50:51.676733+00:00",
+  "total": 314,
   "listings": [
     {
       "id": "3009487436",
@@ -8343,6 +8343,84 @@
       "scraped_at": "2026-09-10T15:29:33.226595+00:00",
       "last_checked_at": "2026-09-12T09:47:20.719198+00:00",
       "sold_at": "2026-09-12T09:47:20.719198+00:00"
+    },
+    {
+      "id": "3471323212",
+      "title": "Prodej rodinného domu 240 m², pozemek 676 m²",
+      "price": 13900000,
+      "area": 240.0,
+      "price_per_m2": 57917,
+      "score": 29.1,
+      "median_price_per_m2": 81683,
+      "disposition": "ostatní",
+      "disposition_group": "ostatní",
+      "locality": "Marvanova, Praha 9 - Satalice",
+      "locality_city": "Praha 9",
+      "type": "dům",
+      "transaction": "prodej",
+      "ownership": "",
+      "building_type": "Cihlová",
+      "extras": [
+        "Parkování",
+        "Sklep",
+        "Zahrada"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/praha-satalice-marvanova/3471323212",
+      "scraped_at": "2026-09-03T10:22:56.393517+00:00",
+      "listed_since": "2026-09-03",
+      "last_checked_at": "2026-09-12T14:38:06.685798+00:00",
+      "sold_at": "2026-09-12T14:38:06.685798+00:00"
+    },
+    {
+      "id": "4159295564",
+      "title": "Prodej bytu 2+kk 48 m²",
+      "price": 5890000,
+      "area": 48.0,
+      "price_per_m2": 122708,
+      "score": 2.4,
+      "median_price_per_m2": 125741,
+      "disposition": "2+kk",
+      "disposition_group": "2",
+      "locality": "Rovnoběžná, Praha 4 - Nusle",
+      "locality_city": "Praha 4",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Cihlová",
+      "extras": [
+        "Parkování"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/2+kk/praha-nusle-rovnobezna/4159295564",
+      "scraped_at": "2026-09-10T20:13:15.570629+00:00",
+      "listed_since": "2026-07-24",
+      "last_checked_at": "2026-09-12T14:38:06.685798+00:00",
+      "sold_at": "2026-09-12T14:38:06.685798+00:00"
+    },
+    {
+      "id": "3487862860",
+      "title": "Prodej bytu 1+kk 30 m²",
+      "price": 4499000,
+      "area": 30.0,
+      "price_per_m2": 149967,
+      "score": 19.1,
+      "median_price_per_m2": 185484,
+      "disposition": "1+kk",
+      "disposition_group": "1",
+      "locality": "Husitská, Praha 3 - Žižkov",
+      "locality_city": "Praha 3",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Smíšená",
+      "extras": [],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/1+kk/praha-zizkov-husitska/3487862860",
+      "scraped_at": "2026-09-11T02:03:11.856404+00:00",
+      "listed_since": "2026-05-25",
+      "last_checked_at": "2026-09-12T14:38:06.685798+00:00",
+      "sold_at": "2026-09-12T14:38:06.685798+00:00"
     }
   ]
 }
