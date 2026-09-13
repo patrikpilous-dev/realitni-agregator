@@ -1,6 +1,6 @@
 {
-  "updated": "2026-09-13T11:00:26.753650+00:00",
-  "total": 322,
+  "updated": "2026-09-13T15:28:26.380098+00:00",
+  "total": 324,
   "listings": [
     {
       "id": "3009487436",
@@ -8640,6 +8640,57 @@
       "listed_since": "2026-07-17",
       "last_checked_at": "2026-09-13T10:47:58.556866+00:00",
       "sold_at": "2026-09-13T10:47:58.556866+00:00"
+    },
+    {
+      "id": "621731916",
+      "title": "Prodej rodinného domu 177 m², pozemek 446 m²",
+      "price": 5990000,
+      "area": 177.0,
+      "price_per_m2": 33842,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "ostatní",
+      "disposition_group": "ostatní",
+      "locality": "Železná Ruda - Hojsova Stráž, okres Klatovy",
+      "locality_city": "Železná Ruda",
+      "type": "dům",
+      "transaction": "prodej",
+      "ownership": "",
+      "building_type": "Smíšená",
+      "extras": [
+        "Garáž",
+        "Částečně zařízeno"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/zelezna-ruda-hojsova-straz/621731916",
+      "scraped_at": "2026-09-11T15:31:30.035981+00:00",
+      "listed_since": "2026-07-09",
+      "last_checked_at": "2026-09-13T15:17:57.724913+00:00",
+      "sold_at": "2026-09-13T15:17:57.724913+00:00"
+    },
+    {
+      "id": "4170702924",
+      "title": "Prodej rodinného domu 113 m², pozemek 292 m²",
+      "price": 1390000,
+      "area": 113.0,
+      "price_per_m2": 12301,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "ostatní",
+      "disposition_group": "ostatní",
+      "locality": "Nalžovské Hory - Stříbrné Hory, okres Klatovy",
+      "locality_city": "Nalžovské Hory",
+      "type": "dům",
+      "transaction": "prodej",
+      "ownership": "",
+      "building_type": "Smíšená",
+      "extras": [],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/nalzovske-hory-stribrne-hory/4170702924",
+      "scraped_at": "2026-09-11T15:31:30.036057+00:00",
+      "listed_since": "2026-07-18",
+      "last_checked_at": "2026-09-13T15:17:57.724913+00:00",
+      "sold_at": "2026-09-13T15:17:57.724913+00:00"
     }
   ]
 }
