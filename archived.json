@@ -1,6 +1,6 @@
 {
-  "updated": "2026-09-13T15:28:26.380098+00:00",
-  "total": 324,
+  "updated": "2026-09-13T20:12:39.971768+00:00",
+  "total": 325,
   "listings": [
     {
       "id": "3009487436",
@@ -3076,32 +3076,6 @@
       "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/praha-dubec-starodubecska/1071353932",
       "scraped_at": "2026-08-25T00:40:40.853144+00:00",
       "listed_since": "2026-05-09",
-      "last_checked_at": "2026-08-26T19:34:19.105991+00:00",
-      "sold_at": "2026-08-26T19:34:19.105991+00:00"
-    },
-    {
-      "id": "727405388",
-      "title": "Prodej rodinného domu 166 m², pozemek 522 m²",
-      "price": 11590000,
-      "area": 166.0,
-      "price_per_m2": 69819,
-      "score": 0.0,
-      "median_price_per_m2": 69819,
-      "disposition": "ostatní",
-      "disposition_group": "ostatní",
-      "locality": "V Pískách, Neratovice, okres Mělník",
-      "locality_city": "Neratovice",
-      "type": "dům",
-      "transaction": "prodej",
-      "ownership": "",
-      "building_type": "Smíšená",
-      "extras": [
-        "Bazén"
-      ],
-      "detail_fetched": true,
-      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/neratovice-neratovice-v-piskach/727405388",
-      "scraped_at": "2026-08-25T00:40:40.855432+00:00",
-      "listed_since": "2026-03-02",
       "last_checked_at": "2026-08-26T19:34:19.105991+00:00",
       "sold_at": "2026-08-26T19:34:19.105991+00:00"
     },
@@ -8691,6 +8665,58 @@
       "listed_since": "2026-07-18",
       "last_checked_at": "2026-09-13T15:17:57.724913+00:00",
       "sold_at": "2026-09-13T15:17:57.724913+00:00"
+    },
+    {
+      "id": "3638464588",
+      "title": "Prodej bytu 4+kk 116 m²",
+      "price": 11490000,
+      "area": 116.0,
+      "price_per_m2": 99052,
+      "score": 32.4,
+      "median_price_per_m2": 146617,
+      "disposition": "4+kk",
+      "disposition_group": "4",
+      "locality": "Legerova, Praha 1",
+      "locality_city": "Praha 1",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Družstevní",
+      "building_type": "Smíšená",
+      "extras": [],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/4+kk/praha-legerova/3638464588",
+      "scraped_at": "2026-08-23T12:18:52.058298+00:00",
+      "listed_since": "2026-05-14",
+      "last_checked_at": "2026-09-13T20:00:14.927088+00:00",
+      "sold_at": "2026-09-13T20:00:14.927088+00:00"
+    },
+    {
+      "id": "965529676",
+      "title": "Prodej bytu 2+1 71 m²",
+      "price": 8390000,
+      "area": 71.0,
+      "price_per_m2": 118169,
+      "score": 23.9,
+      "median_price_per_m2": 155240,
+      "disposition": "2+1",
+      "disposition_group": "2",
+      "locality": "Na hranicích, Praha 8 - Čimice",
+      "locality_city": "Praha 8",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Družstevní",
+      "building_type": "Panelová",
+      "extras": [
+        "Balkón",
+        "Lodžie",
+        "Sklep"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/2+1/praha-cimice-na-hranicich/965529676",
+      "scraped_at": "2026-08-29T11:57:36.327798+00:00",
+      "listed_since": "2026-08-01",
+      "last_checked_at": "2026-09-13T20:00:14.927088+00:00",
+      "sold_at": "2026-09-13T20:00:14.927088+00:00"
     }
   ]
 }
