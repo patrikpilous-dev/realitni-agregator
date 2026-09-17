@@ -1,6 +1,6 @@
 {
-  "updated": "2026-09-17T02:39:44.022911+00:00",
-  "total": 371,
+  "updated": "2026-09-17T10:52:31.141944+00:00",
+  "total": 373,
   "listings": [
     {
       "id": "3009487436",
@@ -9948,6 +9948,60 @@
       "listed_since": "2026-09-15",
       "last_checked_at": "2026-09-17T02:25:56.887151+00:00",
       "sold_at": "2026-09-17T02:25:56.887151+00:00"
+    },
+    {
+      "id": "1386562380",
+      "title": "Prodej rodinného domu 160 m², pozemek 811 m²",
+      "price": 9812500,
+      "area": 160.0,
+      "price_per_m2": 61328,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "ostatní",
+      "disposition_group": "ostatní",
+      "locality": "Vážany nad Litavou, okres Vyškov",
+      "locality_city": "Vážany nad Litavou",
+      "type": "dům",
+      "transaction": "prodej",
+      "ownership": "",
+      "building_type": "Cihlová",
+      "extras": [
+        "Parkování",
+        "Sklep"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/vazany-nad-litavou-vazany-nad-litavou/1386562380",
+      "scraped_at": "2026-09-15T15:54:35.641564+00:00",
+      "listed_since": "2026-04-02",
+      "last_checked_at": "2026-09-17T10:39:17.478976+00:00",
+      "sold_at": "2026-09-17T10:39:17.478976+00:00"
+    },
+    {
+      "id": "1177497676",
+      "title": "Prodej chaty 45 m², pozemek 300 m²",
+      "price": 1200000,
+      "area": 45.0,
+      "price_per_m2": 26667,
+      "score": 57.5,
+      "median_price_per_m2": 62673,
+      "disposition": "ostatní",
+      "disposition_group": "ostatní",
+      "locality": "Praha 5",
+      "locality_city": "Praha 5",
+      "type": "dům",
+      "transaction": "prodej",
+      "ownership": "",
+      "building_type": "Smíšená",
+      "extras": [
+        "Parkování",
+        "Sklep"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/dum/chata/praha/1177497676",
+      "scraped_at": "2026-09-04T02:00:00.345677+00:00",
+      "listed_since": "2026-09-03",
+      "last_checked_at": "2026-09-17T10:39:17.478976+00:00",
+      "sold_at": "2026-09-17T10:39:17.478976+00:00"
     }
   ]
 }
