@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-19T02:26:06.418961+00:00",
+  "updated": "2026-09-19T10:07:44.859189+00:00",
   "total": 410,
   "listings": [
     {
@@ -6777,33 +6777,6 @@
       "sold_at": "2026-09-08T02:04:13.438066+00:00"
     },
     {
-      "id": "2121056332",
-      "title": "Prodej rodinného domu 140 m², pozemek 10000 m²",
-      "price": 7000000,
-      "area": 140.0,
-      "price_per_m2": 50000,
-      "score": 0,
-      "median_price_per_m2": null,
-      "disposition": "ostatní",
-      "disposition_group": "ostatní",
-      "locality": "Radonice, okres Chomutov",
-      "locality_city": "Radonice",
-      "type": "dům",
-      "transaction": "prodej",
-      "ownership": "",
-      "building_type": "Cihlová",
-      "extras": [
-        "Garáž",
-        "Parkování"
-      ],
-      "detail_fetched": true,
-      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/radonice/2121056332",
-      "scraped_at": "2026-09-06T14:37:31.918362+00:00",
-      "listed_since": "2026-08-19",
-      "last_checked_at": "2026-09-08T10:16:58.897483+00:00",
-      "sold_at": "2026-09-08T10:16:58.897483+00:00"
-    },
-    {
       "id": "1802121292",
       "title": "Prodej bytu 1+kk 21 m²",
       "price": 750000,
@@ -7675,32 +7648,6 @@
       "url": "https://www.sreality.cz/detail/prodej/byt/4+1/prusanky/2085273676",
       "scraped_at": "2026-09-09T15:33:24.038096+00:00",
       "listed_since": "2026-08-12",
-      "last_checked_at": "2026-09-11T02:03:28.450527+00:00",
-      "sold_at": "2026-09-11T02:03:28.450527+00:00"
-    },
-    {
-      "id": "1585590348",
-      "title": "Prodej bytu 2+1 69 m²",
-      "price": 4550000,
-      "area": 69.0,
-      "price_per_m2": 65942,
-      "score": 0,
-      "median_price_per_m2": null,
-      "disposition": "2+1",
-      "disposition_group": "2",
-      "locality": "Havlíčkova, Jihlava",
-      "locality_city": "Jihlava",
-      "type": "byt",
-      "transaction": "prodej",
-      "ownership": "Osobní",
-      "building_type": "Cihlová",
-      "extras": [
-        "Částečně zařízeno"
-      ],
-      "detail_fetched": true,
-      "url": "https://www.sreality.cz/detail/prodej/byt/2+1/jihlava-jihlava-havlickova/1585590348",
-      "scraped_at": "2026-09-09T15:33:24.038173+00:00",
-      "listed_since": "2026-09-09",
       "last_checked_at": "2026-09-11T02:03:28.450527+00:00",
       "sold_at": "2026-09-11T02:03:28.450527+00:00"
     },
@@ -8923,33 +8870,6 @@
       "listed_since": "2026-07-07",
       "last_checked_at": "2026-09-15T02:27:58.161234+00:00",
       "sold_at": "2026-09-15T02:27:58.161234+00:00"
-    },
-    {
-      "id": "190394444",
-      "title": "Prodej bytu 3+1 72 m²",
-      "price": 5090000,
-      "area": 72.0,
-      "price_per_m2": 70694,
-      "score": 0,
-      "median_price_per_m2": null,
-      "disposition": "3+1",
-      "disposition_group": "3",
-      "locality": "Na Výšině, Havlíčkův Brod",
-      "locality_city": "Havlíčkův Brod",
-      "type": "byt",
-      "transaction": "prodej",
-      "ownership": "Osobní",
-      "building_type": "Panelová",
-      "extras": [
-        "Balkón",
-        "Sklep"
-      ],
-      "detail_fetched": true,
-      "url": "https://www.sreality.cz/detail/prodej/byt/3+1/havlickuv-brod-havlickuv-brod-na-vysine/190394444",
-      "scraped_at": "2026-09-13T15:17:41.345969+00:00",
-      "listed_since": "2026-09-02",
-      "last_checked_at": "2026-09-15T10:41:27.881020+00:00",
-      "sold_at": "2026-09-15T10:41:27.881020+00:00"
     },
     {
       "id": "4079992908",
@@ -11009,6 +10929,87 @@
       "scraped_at": "2026-09-17T15:52:49.379928+00:00",
       "last_checked_at": "2026-09-19T02:14:28.634896+00:00",
       "sold_at": "2026-09-19T02:14:28.634896+00:00"
+    },
+    {
+      "id": "2372653132",
+      "title": "Prodej bytu 2+1 70 m²",
+      "price": 4795000,
+      "area": 70.0,
+      "price_per_m2": 68500,
+      "score": 16.2,
+      "median_price_per_m2": 81714,
+      "disposition": "2+1",
+      "disposition_group": "2",
+      "locality": "Ořechová, Plzeň-město - Východní Předměstí",
+      "locality_city": "Plzeň-město",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Smíšená",
+      "extras": [
+        "Sklep",
+        "Zahrada"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/2+1/plzen-vychodni-predmesti-orechova/2372653132",
+      "scraped_at": "2026-09-17T15:52:49.450103+00:00",
+      "listed_since": "2026-07-22",
+      "last_checked_at": "2026-09-19T09:57:07.596451+00:00",
+      "sold_at": "2026-09-19T09:57:07.596451+00:00"
+    },
+    {
+      "id": "3054813260",
+      "title": "Prodej rodinného domu 128 m², pozemek 612 m²",
+      "price": 14990000,
+      "area": 128.0,
+      "price_per_m2": 117109,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "ostatní",
+      "disposition_group": "ostatní",
+      "locality": "Veselská, Popůvky, okres Brno-venkov",
+      "locality_city": "Popůvky",
+      "type": "dům",
+      "transaction": "prodej",
+      "ownership": "",
+      "building_type": "Cihlová",
+      "extras": [
+        "Garáž",
+        "Zahrada"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/popuvky-popuvky-veselska/3054813260",
+      "scraped_at": "2026-09-17T15:53:05.616627+00:00",
+      "listed_since": "2026-08-31",
+      "last_checked_at": "2026-09-19T09:57:07.596451+00:00",
+      "sold_at": "2026-09-19T09:57:07.596451+00:00"
+    },
+    {
+      "id": "212288332",
+      "title": "Prodej rodinného domu 117 m², pozemek 1389 m²",
+      "price": 10990000,
+      "area": 117.0,
+      "price_per_m2": 93932,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "ostatní",
+      "disposition_group": "ostatní",
+      "locality": "Blešno, okres Hradec Králové",
+      "locality_city": "Blešno",
+      "type": "dům",
+      "transaction": "prodej",
+      "ownership": "",
+      "building_type": "Dřevostavba",
+      "extras": [
+        "Parkování",
+        "Částečně zařízeno"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/blesno-blesno/212288332",
+      "scraped_at": "2026-09-17T15:53:05.616815+00:00",
+      "listed_since": "2026-03-31",
+      "last_checked_at": "2026-09-19T09:57:07.596451+00:00",
+      "sold_at": "2026-09-19T09:57:07.596451+00:00"
     }
   ]
 }
