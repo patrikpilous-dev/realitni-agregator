@@ -1,6 +1,6 @@
 {
-  "updated": "2026-09-19T10:07:44.859189+00:00",
-  "total": 410,
+  "updated": "2026-09-19T15:14:55.160085+00:00",
+  "total": 412,
   "listings": [
     {
       "id": "3009487436",
@@ -10154,35 +10154,6 @@
       "sold_at": "2026-09-18T02:11:26.948372+00:00"
     },
     {
-      "id": "564687692",
-      "title": "Prodej chaty 58 m², pozemek 470 m²",
-      "price": 2990000,
-      "area": 58.0,
-      "price_per_m2": 51552,
-      "score": 28.1,
-      "median_price_per_m2": 71722,
-      "disposition": "ostatní",
-      "disposition_group": "ostatní",
-      "locality": "Na Hujaru, Babice, okres Praha-východ",
-      "locality_city": "Babice",
-      "type": "dům",
-      "transaction": "prodej",
-      "ownership": "",
-      "building_type": "Dřevostavba",
-      "extras": [
-        "Garáž",
-        "Parkování",
-        "Sklep",
-        "Bazén"
-      ],
-      "detail_fetched": true,
-      "url": "https://www.sreality.cz/detail/prodej/dum/chata/babice-babice-na-hujaru/564687692",
-      "scraped_at": "2026-09-16T15:46:20.847253+00:00",
-      "listed_since": "2026-01-27",
-      "last_checked_at": "2026-09-18T10:15:03.344648+00:00",
-      "sold_at": "2026-09-18T10:15:03.344648+00:00"
-    },
-    {
       "id": "2257264716",
       "title": "Prodej rodinného domu 200 m², pozemek 569 m²",
       "price": 22400000,
@@ -11010,6 +10981,88 @@
       "listed_since": "2026-03-31",
       "last_checked_at": "2026-09-19T09:57:07.596451+00:00",
       "sold_at": "2026-09-19T09:57:07.596451+00:00"
+    },
+    {
+      "id": "1593688140",
+      "title": "Prodej bytu 3+1 81 m²",
+      "price": 6990000,
+      "area": 81.0,
+      "price_per_m2": 86296,
+      "score": 39.5,
+      "median_price_per_m2": 142752,
+      "disposition": "3+1",
+      "disposition_group": "3",
+      "locality": "Janského, Praha 5 - Stodůlky",
+      "locality_city": "Praha 5",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Družstevní",
+      "building_type": "Panelová",
+      "extras": [
+        "Lodžie",
+        "Sklep",
+        "Výtah"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/3+1/praha-stodulky-janskeho/1593688140",
+      "scraped_at": "2026-08-19T12:23:46.504893+00:00",
+      "listed_since": "2026-08-19",
+      "last_checked_at": "2026-09-19T15:02:11.686442+00:00",
+      "sold_at": "2026-09-19T15:02:11.686442+00:00"
+    },
+    {
+      "id": "1435889740",
+      "title": "Prodej bytu 3+1 80 m²",
+      "price": 7290000,
+      "area": 80.0,
+      "price_per_m2": 91125,
+      "score": 36.2,
+      "median_price_per_m2": 142752,
+      "disposition": "3+1",
+      "disposition_group": "3",
+      "locality": "Kurzova, Praha 5 - Stodůlky",
+      "locality_city": "Praha 5",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Družstevní",
+      "building_type": "Panelová",
+      "extras": [
+        "Lodžie",
+        "Výtah",
+        "Zařízeno"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/3+1/praha-stodulky-kurzova/1435889740",
+      "scraped_at": "2026-09-16T02:21:29.155809+00:00",
+      "listed_since": "2026-06-30",
+      "last_checked_at": "2026-09-19T15:02:11.686442+00:00",
+      "sold_at": "2026-09-19T15:02:11.686442+00:00"
+    },
+    {
+      "id": "4104269900",
+      "title": "Prodej bytu 2+1 65 m²",
+      "price": 7990000,
+      "area": 65.0,
+      "price_per_m2": 122923,
+      "score": 11.3,
+      "median_price_per_m2": 138571,
+      "disposition": "2+1",
+      "disposition_group": "2",
+      "locality": "Pod Kynclovkou, Praha 8 - Kobylisy",
+      "locality_city": "Praha 8",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Cihlová",
+      "extras": [
+        "Sklep"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/2+1/praha-kobylisy-pod-kynclovkou/4104269900",
+      "scraped_at": "2026-09-14T11:14:22.375684+00:00",
+      "listed_since": "2026-09-09",
+      "last_checked_at": "2026-09-19T15:02:11.686442+00:00",
+      "sold_at": "2026-09-19T15:02:11.686442+00:00"
     }
   ]
 }
