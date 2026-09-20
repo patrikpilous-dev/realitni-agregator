@@ -1,6 +1,6 @@
 {
-  "updated": "2026-09-20T02:34:18.355709+00:00",
-  "total": 416,
+  "updated": "2026-09-20T10:28:52.577918+00:00",
+  "total": 417,
   "listings": [
     {
       "id": "3009487436",
@@ -8329,33 +8329,6 @@
       "sold_at": "2026-09-14T02:22:47.704749+00:00"
     },
     {
-      "id": "427668044",
-      "title": "Prodej bytu 2+1 52 m²",
-      "price": 3300000,
-      "area": 52.0,
-      "price_per_m2": 63462,
-      "score": 0,
-      "median_price_per_m2": null,
-      "disposition": "2+1",
-      "disposition_group": "2",
-      "locality": "Hrádek nad Nisou - Dolní Suchá, okres Liberec",
-      "locality_city": "Hrádek nad Nisou",
-      "type": "byt",
-      "transaction": "prodej",
-      "ownership": "Osobní",
-      "building_type": "Cihlová",
-      "extras": [
-        "Parkování",
-        "Sklep"
-      ],
-      "detail_fetched": true,
-      "url": "https://www.sreality.cz/detail/prodej/byt/2+1/hradek-nad-nisou-dolni-sucha/427668044",
-      "scraped_at": "2026-09-12T09:47:04.004955+00:00",
-      "listed_since": "2024-07-16",
-      "last_checked_at": "2026-09-14T02:22:47.704749+00:00",
-      "sold_at": "2026-09-14T02:22:47.704749+00:00"
-    },
-    {
       "id": "2632396876",
       "title": "Prodej bytu 2+1 45 m²",
       "price": 2850000,
@@ -11177,6 +11150,61 @@
       "listed_since": "2026-08-06",
       "last_checked_at": "2026-09-20T02:22:45.684438+00:00",
       "sold_at": "2026-09-20T02:22:45.684438+00:00"
+    },
+    {
+      "id": "1630971212",
+      "title": "Prodej rodinného domu 664 m², pozemek 1202 m²",
+      "price": 7500000,
+      "area": 664.0,
+      "price_per_m2": 11295,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "ostatní",
+      "disposition_group": "ostatní",
+      "locality": "K Trafostanici, Kunice - Všešímy, okres Praha-východ",
+      "locality_city": "Kunice",
+      "type": "dům",
+      "transaction": "prodej",
+      "ownership": "",
+      "building_type": "Smíšená",
+      "extras": [
+        "Parkování",
+        "Zahrada"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/kunice-vsesimy-k-trafostanici/1630971212",
+      "scraped_at": "2026-09-18T10:15:03.341523+00:00",
+      "listed_since": "2023-09-12",
+      "last_checked_at": "2026-09-20T10:17:35.848339+00:00",
+      "sold_at": "2026-09-20T10:17:35.848339+00:00"
+    },
+    {
+      "id": "3428307020",
+      "title": "Prodej bytu 2+kk 95 m²",
+      "price": 3300000,
+      "area": 95.0,
+      "price_per_m2": 34737,
+      "score": 16.2,
+      "median_price_per_m2": 41476,
+      "disposition": "2+kk",
+      "disposition_group": "2",
+      "locality": "Zengrova, Ostrava-město - Vítkovice",
+      "locality_city": "Ostrava-město",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Cihlová",
+      "extras": [
+        "Terasa",
+        "Sklep",
+        "Zahrada"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/2+kk/ostrava-vitkovice-zengrova/3428307020",
+      "scraped_at": "2026-09-13T02:04:16.055137+00:00",
+      "listed_since": "2026-08-06",
+      "last_checked_at": "2026-09-20T10:17:35.848339+00:00",
+      "sold_at": "2026-09-20T10:17:35.848339+00:00"
     }
   ]
 }
