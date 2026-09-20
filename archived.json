@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-19T19:59:02.228953+00:00",
+  "updated": "2026-09-20T02:34:18.355709+00:00",
   "total": 416,
   "listings": [
     {
@@ -2839,29 +2839,6 @@
       "url": "https://www.sreality.cz/detail/prodej/byt/4+kk/praha-vinohrady-skretova/60654412",
       "scraped_at": "2026-08-24T12:26:08.908873+00:00",
       "listed_since": "2025-07-30",
-      "last_checked_at": "2026-08-26T00:41:13.673042+00:00",
-      "sold_at": "2026-08-26T00:41:13.673042+00:00"
-    },
-    {
-      "id": "4087410764",
-      "title": "Prodej rodinného domu 90 m², pozemek 934 m²",
-      "price": 4200000,
-      "area": 90.0,
-      "price_per_m2": 46667,
-      "score": 0,
-      "median_price_per_m2": null,
-      "disposition": "ostatní",
-      "disposition_group": "ostatní",
-      "locality": "Rudé armády, Počátky, okres Pelhřimov",
-      "locality_city": "Počátky",
-      "type": "dům",
-      "transaction": "prodej",
-      "ownership": "",
-      "building_type": "",
-      "extras": [],
-      "detail_fetched": false,
-      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/pocatky-pocatky-rude-armady/4087410764",
-      "scraped_at": "2026-08-24T12:26:26.502271+00:00",
       "last_checked_at": "2026-08-26T00:41:13.673042+00:00",
       "sold_at": "2026-08-26T00:41:13.673042+00:00"
     },
@@ -11174,6 +11151,32 @@
       "listed_since": "2026-09-07",
       "last_checked_at": "2026-09-19T19:46:07.177155+00:00",
       "sold_at": "2026-09-19T19:46:07.177155+00:00"
+    },
+    {
+      "id": "138924108",
+      "title": "Prodej bytu 2+kk 77 m²",
+      "price": 5790000,
+      "area": 77.0,
+      "price_per_m2": 75195,
+      "score": 2.6,
+      "median_price_per_m2": 77222,
+      "disposition": "2+kk",
+      "disposition_group": "2",
+      "locality": "Polská, Olomouc",
+      "locality_city": "Olomouc",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Cihlová",
+      "extras": [
+        "Zařízeno"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/2+kk/olomouc-olomouc-polska/138924108",
+      "scraped_at": "2026-09-08T20:28:39.546522+00:00",
+      "listed_since": "2026-08-06",
+      "last_checked_at": "2026-09-20T02:22:45.684438+00:00",
+      "sold_at": "2026-09-20T02:22:45.684438+00:00"
     }
   ]
 }
