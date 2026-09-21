@@ -1,6 +1,6 @@
 {
-  "updated": "2026-09-21T02:34:27.144307+00:00",
-  "total": 426,
+  "updated": "2026-09-21T11:38:11.961993+00:00",
+  "total": 429,
   "listings": [
     {
       "id": "3009487436",
@@ -11125,33 +11125,6 @@
       "sold_at": "2026-09-20T02:22:45.684438+00:00"
     },
     {
-      "id": "1630971212",
-      "title": "Prodej rodinného domu 664 m², pozemek 1202 m²",
-      "price": 7500000,
-      "area": 664.0,
-      "price_per_m2": 11295,
-      "score": 0,
-      "median_price_per_m2": null,
-      "disposition": "ostatní",
-      "disposition_group": "ostatní",
-      "locality": "K Trafostanici, Kunice - Všešímy, okres Praha-východ",
-      "locality_city": "Kunice",
-      "type": "dům",
-      "transaction": "prodej",
-      "ownership": "",
-      "building_type": "Smíšená",
-      "extras": [
-        "Parkování",
-        "Zahrada"
-      ],
-      "detail_fetched": true,
-      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/kunice-vsesimy-k-trafostanici/1630971212",
-      "scraped_at": "2026-09-18T10:15:03.341523+00:00",
-      "listed_since": "2023-09-12",
-      "last_checked_at": "2026-09-20T10:17:35.848339+00:00",
-      "sold_at": "2026-09-20T10:17:35.848339+00:00"
-    },
-    {
       "id": "3428307020",
       "title": "Prodej bytu 2+kk 95 m²",
       "price": 3300000,
@@ -11467,6 +11440,118 @@
       "listed_since": "2026-09-07",
       "last_checked_at": "2026-09-21T02:21:44.503290+00:00",
       "sold_at": "2026-09-21T02:21:44.503290+00:00"
+    },
+    {
+      "id": "338804812",
+      "title": "Prodej bytu 2+1 52 m²",
+      "price": 2890000,
+      "area": 52.0,
+      "price_per_m2": 55577,
+      "score": 0.0,
+      "median_price_per_m2": 55577,
+      "disposition": "2+1",
+      "disposition_group": "2",
+      "locality": "Jižní čtvrť IV, Přerov - Přerov I-Město",
+      "locality_city": "Přerov",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Cihlová",
+      "extras": [
+        "Sklep"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/2+1/prerov-prerov-i-mesto-jizni-ctvrt-iv/338804812",
+      "scraped_at": "2026-09-17T15:52:49.380236+00:00",
+      "listed_since": "2026-08-24",
+      "last_checked_at": "2026-09-21T11:26:16.506528+00:00",
+      "sold_at": "2026-09-21T11:26:16.506528+00:00"
+    },
+    {
+      "id": "3342409804",
+      "title": "Prodej bytu 2+kk 46 m²",
+      "price": 6890000,
+      "area": 46.0,
+      "price_per_m2": 149783,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "2+kk",
+      "disposition_group": "2",
+      "locality": "Karlovarská, Pernink, okres Karlovy Vary",
+      "locality_city": "Pernink",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Cihlová",
+      "extras": [
+        "Balkón",
+        "Parkování",
+        "Sklep",
+        "Novostavba"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/2+kk/pernink-pernink-karlovarska/3342409804",
+      "scraped_at": "2026-09-19T09:56:50.927447+00:00",
+      "listed_since": "2026-09-17",
+      "last_checked_at": "2026-09-21T11:26:16.506528+00:00",
+      "sold_at": "2026-09-21T11:26:16.506528+00:00"
+    },
+    {
+      "id": "1796943948",
+      "title": "Prodej bytu 2+kk 66 m²",
+      "price": 4400000,
+      "area": 66.0,
+      "price_per_m2": 66667,
+      "score": 0.0,
+      "median_price_per_m2": 66667,
+      "disposition": "2+kk",
+      "disposition_group": "2",
+      "locality": "Vlasty Javořické, Jihlava",
+      "locality_city": "Jihlava",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Cihlová",
+      "extras": [
+        "Garáž",
+        "Sklep"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/2+kk/jihlava-jihlava-vlasty-javoricke/1796943948",
+      "scraped_at": "2026-09-19T09:56:50.927629+00:00",
+      "listed_since": "2026-09-01",
+      "last_checked_at": "2026-09-21T11:26:16.506528+00:00",
+      "sold_at": "2026-09-21T11:26:16.506528+00:00"
+    },
+    {
+      "id": "1507311692",
+      "title": "Prodej bytu 2+kk 42 m²",
+      "price": 2548133,
+      "area": 42.0,
+      "price_per_m2": 60670,
+      "score": 50.3,
+      "median_price_per_m2": 122075,
+      "disposition": "2+kk",
+      "disposition_group": "2",
+      "locality": "Arnošta Valenty, Praha 9 - Černý Most",
+      "locality_city": "Praha 9",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Družstevní",
+      "building_type": "Smíšená",
+      "extras": [
+        "Lodžie",
+        "Sklep",
+        "Výtah",
+        "Částečně zařízeno",
+        "Novostavba"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/2+kk/praha-cerny-most-arnosta-valenty/1507311692",
+      "scraped_at": "2026-09-19T09:56:50.934345+00:00",
+      "listed_since": "2026-08-27",
+      "last_checked_at": "2026-09-21T11:26:16.506528+00:00",
+      "sold_at": "2026-09-21T11:26:16.506528+00:00"
     }
   ]
 }
