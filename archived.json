@@ -1,6 +1,6 @@
 {
-  "updated": "2026-09-21T11:38:11.961993+00:00",
-  "total": 429,
+  "updated": "2026-09-21T17:37:47.335774+00:00",
+  "total": 431,
   "listings": [
     {
       "id": "3009487436",
@@ -11298,35 +11298,6 @@
       "sold_at": "2026-09-20T19:58:43.079550+00:00"
     },
     {
-      "id": "2553401420",
-      "title": "Prodej bytu 4+kk 86 m²",
-      "price": 13843200,
-      "area": 86.0,
-      "price_per_m2": 160967,
-      "score": 0,
-      "median_price_per_m2": null,
-      "disposition": "4+kk",
-      "disposition_group": "4",
-      "locality": "Lipno nad Vltavou - Slupečná, okres Český Krumlov",
-      "locality_city": "Lipno nad Vltavou",
-      "type": "byt",
-      "transaction": "prodej",
-      "ownership": "Osobní",
-      "building_type": "Smíšená",
-      "extras": [
-        "Terasa",
-        "Parkování",
-        "Částečně zařízeno",
-        "Novostavba"
-      ],
-      "detail_fetched": true,
-      "url": "https://www.sreality.cz/detail/prodej/byt/4+kk/lipno-nad-vltavou-slupecna/2553401420",
-      "scraped_at": "2026-09-19T02:14:10.273617+00:00",
-      "listed_since": "2026-08-04",
-      "last_checked_at": "2026-09-21T02:21:44.503290+00:00",
-      "sold_at": "2026-09-21T02:21:44.503290+00:00"
-    },
-    {
       "id": "337125452",
       "title": "Prodej vícegeneračního domu 245 m², pozemek 913 m²",
       "price": 9500000,
@@ -11552,6 +11523,91 @@
       "listed_since": "2026-08-27",
       "last_checked_at": "2026-09-21T11:26:16.506528+00:00",
       "sold_at": "2026-09-21T11:26:16.506528+00:00"
+    },
+    {
+      "id": "2587217996",
+      "title": "Prodej bytu 3+1 97 m²",
+      "price": 5750000,
+      "area": 97.0,
+      "price_per_m2": 59278,
+      "score": 0.0,
+      "median_price_per_m2": 59278,
+      "disposition": "3+1",
+      "disposition_group": "3",
+      "locality": "Lonkova, Pardubice - Polabiny",
+      "locality_city": "Pardubice",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Panelová",
+      "extras": [
+        "Lodžie",
+        "Parkování",
+        "Sklep",
+        "Výtah",
+        "Částečně zařízeno"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/3+1/pardubice-polabiny-lonkova/2587217996",
+      "scraped_at": "2026-08-29T16:07:40.144298+00:00",
+      "listed_since": "2026-08-10",
+      "last_checked_at": "2026-09-21T17:25:30.686964+00:00",
+      "sold_at": "2026-09-21T17:25:30.686964+00:00"
+    },
+    {
+      "id": "4134768716",
+      "title": "Prodej bytu 3+1 127 m²",
+      "price": 4090000,
+      "area": 127.0,
+      "price_per_m2": 32205,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "3+1",
+      "disposition_group": "3",
+      "locality": "Švermova, Nová Bystřice, okres Jindřichův Hradec",
+      "locality_city": "Nová Bystřice",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Cihlová",
+      "extras": [
+        "Parkování",
+        "Sklep",
+        "Částečně zařízeno"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/3+1/nova-bystrice-nova-bystrice-svermova/4134768716",
+      "scraped_at": "2026-09-19T19:45:47.629626+00:00",
+      "listed_since": "2026-05-17",
+      "last_checked_at": "2026-09-21T17:25:30.686964+00:00",
+      "sold_at": "2026-09-21T17:25:30.686964+00:00"
+    },
+    {
+      "id": "1649422412",
+      "title": "Prodej bytu 2+1 45 m²",
+      "price": 3100000,
+      "area": 45.0,
+      "price_per_m2": 68889,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "2+1",
+      "disposition_group": "2",
+      "locality": "Kpt. Jaroše, Hranice - Hranice I-Město, okres Přerov",
+      "locality_city": "Hranice",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Panelová",
+      "extras": [
+        "Lodžie",
+        "Sklep"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/2+1/hranice-hranice-i-mesto-kpt-jarose/1649422412",
+      "scraped_at": "2026-09-19T19:45:47.631336+00:00",
+      "listed_since": "2026-09-10",
+      "last_checked_at": "2026-09-21T17:25:30.686964+00:00",
+      "sold_at": "2026-09-21T17:25:30.686964+00:00"
     }
   ]
 }
