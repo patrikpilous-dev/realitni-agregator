@@ -1,6 +1,6 @@
 {
-  "updated": "2026-09-21T17:37:47.335774+00:00",
-  "total": 431,
+  "updated": "2026-09-21T21:36:10.288285+00:00",
+  "total": 433,
   "listings": [
     {
       "id": "3009487436",
@@ -11608,6 +11608,60 @@
       "listed_since": "2026-09-10",
       "last_checked_at": "2026-09-21T17:25:30.686964+00:00",
       "sold_at": "2026-09-21T17:25:30.686964+00:00"
+    },
+    {
+      "id": "271593548",
+      "title": "Prodej rodinného domu 577 m², pozemek 577 m²",
+      "price": 12500000,
+      "area": 577.0,
+      "price_per_m2": 21664,
+      "score": 46.1,
+      "median_price_per_m2": 40196,
+      "disposition": "ostatní",
+      "disposition_group": "ostatní",
+      "locality": "Olomouc",
+      "locality_city": "Olomouc",
+      "type": "dům",
+      "transaction": "prodej",
+      "ownership": "",
+      "building_type": "Cihlová",
+      "extras": [
+        "Parkování",
+        "Sklep"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/olomouc-olomouc/271593548",
+      "scraped_at": "2026-09-18T02:11:26.946484+00:00",
+      "listed_since": "2026-09-11",
+      "last_checked_at": "2026-09-21T21:24:11.035678+00:00",
+      "sold_at": "2026-09-21T21:24:11.035678+00:00"
+    },
+    {
+      "id": "3460444236",
+      "title": "Prodej bytu 3+1 80 m²",
+      "price": 6499000,
+      "area": 80.0,
+      "price_per_m2": 81238,
+      "score": 24.8,
+      "median_price_per_m2": 108054,
+      "disposition": "3+1",
+      "disposition_group": "3",
+      "locality": "Borovanského, Praha 5 - Stodůlky",
+      "locality_city": "Praha 5",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Družstevní",
+      "building_type": "Panelová",
+      "extras": [
+        "Lodžie",
+        "Sklep"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/3+1/praha-stodulky-borovanskeho/3460444236",
+      "scraped_at": "2026-09-12T14:37:47.002180+00:00",
+      "listed_since": "2026-09-09",
+      "last_checked_at": "2026-09-21T21:24:11.035678+00:00",
+      "sold_at": "2026-09-21T21:24:11.035678+00:00"
     }
   ]
 }
