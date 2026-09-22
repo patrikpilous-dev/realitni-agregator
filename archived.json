@@ -1,6 +1,6 @@
 {
-  "updated": "2026-09-22T02:36:00.854293+00:00",
-  "total": 438,
+  "updated": "2026-09-22T10:45:57.845959+00:00",
+  "total": 437,
   "listings": [
     {
       "id": "3009487436",
@@ -11099,32 +11099,6 @@
       "sold_at": "2026-09-19T19:46:07.177155+00:00"
     },
     {
-      "id": "138924108",
-      "title": "Prodej bytu 2+kk 77 m²",
-      "price": 5790000,
-      "area": 77.0,
-      "price_per_m2": 75195,
-      "score": 2.6,
-      "median_price_per_m2": 77222,
-      "disposition": "2+kk",
-      "disposition_group": "2",
-      "locality": "Polská, Olomouc",
-      "locality_city": "Olomouc",
-      "type": "byt",
-      "transaction": "prodej",
-      "ownership": "Osobní",
-      "building_type": "Cihlová",
-      "extras": [
-        "Zařízeno"
-      ],
-      "detail_fetched": true,
-      "url": "https://www.sreality.cz/detail/prodej/byt/2+kk/olomouc-olomouc-polska/138924108",
-      "scraped_at": "2026-09-08T20:28:39.546522+00:00",
-      "listed_since": "2026-08-06",
-      "last_checked_at": "2026-09-20T02:22:45.684438+00:00",
-      "sold_at": "2026-09-20T02:22:45.684438+00:00"
-    },
-    {
       "id": "3428307020",
       "title": "Prodej bytu 2+kk 95 m²",
       "price": 3300000,
@@ -11241,29 +11215,6 @@
       "url": "https://www.sreality.cz/detail/prodej/byt/2+kk/praha-stodulky-svitakova/96452684",
       "scraped_at": "2026-08-17T18:22:50.165319+00:00",
       "listed_since": "2026-08-17",
-      "last_checked_at": "2026-09-20T19:58:43.079550+00:00",
-      "sold_at": "2026-09-20T19:58:43.079550+00:00"
-    },
-    {
-      "id": "1548537932",
-      "title": "Prodej bytu 3+kk 52 m²",
-      "price": 5270000,
-      "area": 52.0,
-      "price_per_m2": 101346,
-      "score": 0,
-      "median_price_per_m2": null,
-      "disposition": "3+kk",
-      "disposition_group": "3",
-      "locality": "Průmyslová, Uherské Hradiště",
-      "locality_city": "Uherské Hradiště",
-      "type": "byt",
-      "transaction": "prodej",
-      "ownership": "",
-      "building_type": "",
-      "extras": [],
-      "detail_fetched": false,
-      "url": "https://www.sreality.cz/detail/prodej/byt/3+kk/uherske-hradiste-uherske-hradiste-prumyslova/1548537932",
-      "scraped_at": "2026-09-18T20:08:58.992552+00:00",
       "last_checked_at": "2026-09-20T19:58:43.079550+00:00",
       "sold_at": "2026-09-20T19:58:43.079550+00:00"
     },
@@ -11801,6 +11752,33 @@
       "listed_since": "2026-08-03",
       "last_checked_at": "2026-09-22T02:25:17.047799+00:00",
       "sold_at": "2026-09-22T02:25:17.047799+00:00"
+    },
+    {
+      "id": "2316484684",
+      "title": "Prodej bytu 3+1 80 m²",
+      "price": 4800000,
+      "area": 80.0,
+      "price_per_m2": 60000,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "3+1",
+      "disposition_group": "3",
+      "locality": "Pekařská, Frýdek-Místek - Frýdek",
+      "locality_city": "Frýdek-Místek",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Panelová",
+      "extras": [
+        "Balkón",
+        "Sklep"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/3+1/frydek-mistek-frydek-pekarska/2316484684",
+      "scraped_at": "2026-09-20T15:05:39.755481+00:00",
+      "listed_since": "2026-08-24",
+      "last_checked_at": "2026-09-22T10:34:42.920468+00:00",
+      "sold_at": "2026-09-22T10:34:42.920468+00:00"
     }
   ]
 }
