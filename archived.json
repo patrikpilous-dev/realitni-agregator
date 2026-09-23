@@ -1,6 +1,6 @@
 {
-  "updated": "2026-09-23T15:58:45.967589+00:00",
-  "total": 468,
+  "updated": "2026-09-23T21:05:10.567994+00:00",
+  "total": 467,
   "listings": [
     {
       "id": "3009487436",
@@ -9963,34 +9963,6 @@
       "sold_at": "2026-09-18T02:11:26.948372+00:00"
     },
     {
-      "id": "3656855628",
-      "title": "Prodej bytu 2+1 71 m²",
-      "price": 8390000,
-      "area": 71.0,
-      "price_per_m2": 118169,
-      "score": 16.0,
-      "median_price_per_m2": 140604,
-      "disposition": "2+1",
-      "disposition_group": "2",
-      "locality": "Na hranicích, Praha 8 - Čimice",
-      "locality_city": "Praha 8",
-      "type": "byt",
-      "transaction": "prodej",
-      "ownership": "Družstevní",
-      "building_type": "Panelová",
-      "extras": [
-        "Balkón",
-        "Lodžie",
-        "Sklep"
-      ],
-      "detail_fetched": true,
-      "url": "https://www.sreality.cz/detail/prodej/byt/2+1/praha-cimice-na-hranicich/3656855628",
-      "scraped_at": "2026-09-12T14:37:47.002826+00:00",
-      "listed_since": "2026-09-12",
-      "last_checked_at": "2026-09-18T02:11:26.948372+00:00",
-      "sold_at": "2026-09-18T02:11:26.948372+00:00"
-    },
-    {
       "id": "3957731404",
       "title": "Prodej rodinného domu 220 m², pozemek 202 m²",
       "price": 2132500,
@@ -11478,34 +11450,6 @@
       "sold_at": "2026-09-21T17:25:30.686964+00:00"
     },
     {
-      "id": "4134768716",
-      "title": "Prodej bytu 3+1 127 m²",
-      "price": 4090000,
-      "area": 127.0,
-      "price_per_m2": 32205,
-      "score": 0,
-      "median_price_per_m2": null,
-      "disposition": "3+1",
-      "disposition_group": "3",
-      "locality": "Švermova, Nová Bystřice, okres Jindřichův Hradec",
-      "locality_city": "Nová Bystřice",
-      "type": "byt",
-      "transaction": "prodej",
-      "ownership": "Osobní",
-      "building_type": "Cihlová",
-      "extras": [
-        "Parkování",
-        "Sklep",
-        "Částečně zařízeno"
-      ],
-      "detail_fetched": true,
-      "url": "https://www.sreality.cz/detail/prodej/byt/3+1/nova-bystrice-nova-bystrice-svermova/4134768716",
-      "scraped_at": "2026-09-19T19:45:47.629626+00:00",
-      "listed_since": "2026-05-17",
-      "last_checked_at": "2026-09-21T17:25:30.686964+00:00",
-      "sold_at": "2026-09-21T17:25:30.686964+00:00"
-    },
-    {
       "id": "1649422412",
       "title": "Prodej bytu 2+1 45 m²",
       "price": 3100000,
@@ -12615,6 +12559,34 @@
       "listed_since": "2026-02-18",
       "last_checked_at": "2026-09-23T15:46:52.793897+00:00",
       "sold_at": "2026-09-23T15:46:52.793897+00:00"
+    },
+    {
+      "id": "713748556",
+      "title": "Prodej rodinného domu 152 m², pozemek 670 m²",
+      "price": 13990000,
+      "area": 152.0,
+      "price_per_m2": 92039,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "ostatní",
+      "disposition_group": "ostatní",
+      "locality": "Zahradní, Blučina, okres Brno-venkov",
+      "locality_city": "Blučina",
+      "type": "dům",
+      "transaction": "prodej",
+      "ownership": "",
+      "building_type": "Cihlová",
+      "extras": [
+        "Parkování",
+        "Částečně zařízeno",
+        "Zahrada"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/blucina-blucina-zahradni/713748556",
+      "scraped_at": "2026-09-22T02:25:17.046739+00:00",
+      "listed_since": "2026-06-15",
+      "last_checked_at": "2026-09-23T20:51:24.688385+00:00",
+      "sold_at": "2026-09-23T20:51:24.688385+00:00"
     }
   ]
 }
