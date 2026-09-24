@@ -1,6 +1,6 @@
 {
-  "updated": "2026-09-23T21:05:10.567994+00:00",
-  "total": 467,
+  "updated": "2026-09-24T02:26:05.332821+00:00",
+  "total": 470,
   "listings": [
     {
       "id": "3009487436",
@@ -12587,6 +12587,87 @@
       "listed_since": "2026-06-15",
       "last_checked_at": "2026-09-23T20:51:24.688385+00:00",
       "sold_at": "2026-09-23T20:51:24.688385+00:00"
+    },
+    {
+      "id": "1812320332",
+      "title": "Prodej bytu 3+1 69 m²",
+      "price": 6000000,
+      "area": 69.0,
+      "price_per_m2": 86957,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "3+1",
+      "disposition_group": "3",
+      "locality": "Petra Jilemnického, Adamov, okres Blansko",
+      "locality_city": "Adamov",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Panelová",
+      "extras": [
+        "Lodžie",
+        "Sklep",
+        "Výtah"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/3+1/adamov-adamov-petra-jilemnickeho/1812320332",
+      "scraped_at": "2026-09-22T10:34:24.444613+00:00",
+      "listed_since": "2026-08-10",
+      "last_checked_at": "2026-09-24T02:13:55.563088+00:00",
+      "sold_at": "2026-09-24T02:13:55.563088+00:00"
+    },
+    {
+      "id": "4008517708",
+      "title": "Prodej bytu 3+1 97 m²",
+      "price": 6990000,
+      "area": 97.0,
+      "price_per_m2": 72062,
+      "score": 18.6,
+      "median_price_per_m2": 88571,
+      "disposition": "3+1",
+      "disposition_group": "3",
+      "locality": "Kladno - Kročehlavy",
+      "locality_city": "Kladno",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Panelová",
+      "extras": [],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/3+1/kladno-krocehlavy/4008517708",
+      "scraped_at": "2026-09-22T15:56:31.303885+00:00",
+      "listed_since": "2026-09-22",
+      "last_checked_at": "2026-09-24T02:13:55.563088+00:00",
+      "sold_at": "2026-09-24T02:13:55.563088+00:00"
+    },
+    {
+      "id": "2693447756",
+      "title": "Prodej bytu 3+1 75 m²",
+      "price": 3550000,
+      "area": 75.0,
+      "price_per_m2": 47333,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "3+1",
+      "disposition_group": "3",
+      "locality": "Hromůvka, Hranice - Hranice I-Město, okres Přerov",
+      "locality_city": "Hranice",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Panelová",
+      "extras": [
+        "Balkón",
+        "Parkování",
+        "Sklep",
+        "Výtah"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/3+1/hranice-hranice-i-mesto-hromuvka/2693447756",
+      "scraped_at": "2026-09-22T15:56:31.303894+00:00",
+      "listed_since": "2026-08-13",
+      "last_checked_at": "2026-09-24T02:13:55.563088+00:00",
+      "sold_at": "2026-09-24T02:13:55.563088+00:00"
     }
   ]
 }
