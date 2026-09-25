@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-24T21:08:40.768073+00:00",
+  "updated": "2026-09-25T02:41:37.090952+00:00",
   "total": 476,
   "listings": [
     {
@@ -11638,33 +11638,6 @@
       "sold_at": "2026-09-22T15:56:52.993483+00:00"
     },
     {
-      "id": "3608621132",
-      "title": "Prodej bytu 1+kk 58 m²",
-      "price": 3997000,
-      "area": 58.0,
-      "price_per_m2": 68914,
-      "score": 49.0,
-      "median_price_per_m2": 135121,
-      "disposition": "1+kk",
-      "disposition_group": "1",
-      "locality": "Palmovka, Praha 8 - Libeň",
-      "locality_city": "Praha 8",
-      "type": "byt",
-      "transaction": "prodej",
-      "ownership": "Osobní",
-      "building_type": "Cihlová",
-      "extras": [
-        "Parkování",
-        "Sklep"
-      ],
-      "detail_fetched": true,
-      "url": "https://www.sreality.cz/detail/prodej/byt/1+kk/praha-liben-palmovka/3608621132",
-      "scraped_at": "2026-09-17T02:25:35.899993+00:00",
-      "listed_since": "2026-09-12",
-      "last_checked_at": "2026-09-22T15:56:52.993483+00:00",
-      "sold_at": "2026-09-22T15:56:52.993483+00:00"
-    },
-    {
       "id": "2596221004",
       "title": "Prodej bytu 2+1 66 m²",
       "price": 4390000,
@@ -12813,6 +12786,29 @@
       "listed_since": "2026-07-14",
       "last_checked_at": "2026-09-24T20:56:33.615849+00:00",
       "sold_at": "2026-09-24T20:56:33.615849+00:00"
+    },
+    {
+      "id": "2840338508",
+      "title": "Prodej rodinného domu 169 m², pozemek 466 m²",
+      "price": 5900000,
+      "area": 169.0,
+      "price_per_m2": 34911,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "ostatní",
+      "disposition_group": "ostatní",
+      "locality": "Dolní Bělá, okres Plzeň-sever",
+      "locality_city": "Dolní Bělá",
+      "type": "dům",
+      "transaction": "prodej",
+      "ownership": "",
+      "building_type": "",
+      "extras": [],
+      "detail_fetched": false,
+      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/dolni-bela-dolni-bela/2840338508",
+      "scraped_at": "2026-09-23T10:28:17.664820+00:00",
+      "last_checked_at": "2026-09-25T02:30:32.907041+00:00",
+      "sold_at": "2026-09-25T02:30:32.907041+00:00"
     }
   ]
 }
