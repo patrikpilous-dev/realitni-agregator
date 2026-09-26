@@ -1,6 +1,6 @@
 {
-  "updated": "2026-09-25T21:03:27.547673+00:00",
-  "total": 490,
+  "updated": "2026-09-26T02:44:38.430314+00:00",
+  "total": 492,
   "listings": [
     {
       "id": "3009487436",
@@ -13182,6 +13182,61 @@
       "listed_since": "2026-05-08",
       "last_checked_at": "2026-09-25T20:52:18.281928+00:00",
       "sold_at": "2026-09-25T20:52:18.281928+00:00"
+    },
+    {
+      "id": "1883619404",
+      "title": "Prodej bytu 3+kk 72 m²",
+      "price": 3580000,
+      "area": 72.0,
+      "price_per_m2": 49722,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "3+kk",
+      "disposition_group": "3",
+      "locality": "Choráze, Příbor, okres Nový Jičín",
+      "locality_city": "Příbor",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Panelová",
+      "extras": [
+        "Lodžie",
+        "Sklep"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/3+kk/pribor-pribor-choraze/1883619404",
+      "scraped_at": "2026-09-24T16:07:56.291807+00:00",
+      "listed_since": "2026-08-28",
+      "last_checked_at": "2026-09-26T02:33:25.017336+00:00",
+      "sold_at": "2026-09-26T02:33:25.017336+00:00"
+    },
+    {
+      "id": "3926691916",
+      "title": "Prodej rodinného domu 356 m², pozemek 487 m²",
+      "price": 6650000,
+      "area": 356.0,
+      "price_per_m2": 18680,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "ostatní",
+      "disposition_group": "ostatní",
+      "locality": "Vážany, okres Vyškov",
+      "locality_city": "Vážany",
+      "type": "dům",
+      "transaction": "prodej",
+      "ownership": "",
+      "building_type": "Smíšená",
+      "extras": [
+        "Garáž",
+        "Sklep",
+        "Zahrada"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/vazany-vazany/3926691916",
+      "scraped_at": "2026-09-24T16:08:15.382435+00:00",
+      "listed_since": "2026-05-15",
+      "last_checked_at": "2026-09-26T02:33:25.017336+00:00",
+      "sold_at": "2026-09-26T02:33:25.017336+00:00"
     }
   ]
 }
