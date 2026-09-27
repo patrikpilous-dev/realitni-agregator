@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-27T02:41:15.171012+00:00",
+  "updated": "2026-09-27T11:14:42.898233+00:00",
   "total": 502,
   "listings": [
     {
@@ -12262,34 +12262,6 @@
       "sold_at": "2026-09-23T20:51:24.688385+00:00"
     },
     {
-      "id": "1812320332",
-      "title": "Prodej bytu 3+1 69 m²",
-      "price": 6000000,
-      "area": 69.0,
-      "price_per_m2": 86957,
-      "score": 0,
-      "median_price_per_m2": null,
-      "disposition": "3+1",
-      "disposition_group": "3",
-      "locality": "Petra Jilemnického, Adamov, okres Blansko",
-      "locality_city": "Adamov",
-      "type": "byt",
-      "transaction": "prodej",
-      "ownership": "Osobní",
-      "building_type": "Panelová",
-      "extras": [
-        "Lodžie",
-        "Sklep",
-        "Výtah"
-      ],
-      "detail_fetched": true,
-      "url": "https://www.sreality.cz/detail/prodej/byt/3+1/adamov-adamov-petra-jilemnickeho/1812320332",
-      "scraped_at": "2026-09-22T10:34:24.444613+00:00",
-      "listed_since": "2026-08-10",
-      "last_checked_at": "2026-09-24T02:13:55.563088+00:00",
-      "sold_at": "2026-09-24T02:13:55.563088+00:00"
-    },
-    {
       "id": "4008517708",
       "title": "Prodej bytu 3+1 97 m²",
       "price": 6990000,
@@ -13375,34 +13347,6 @@
       "sold_at": "2026-09-26T20:22:32.312288+00:00"
     },
     {
-      "id": "2242781260",
-      "title": "Prodej bytu 4+kk 83 m²",
-      "price": 9399000,
-      "area": 83.0,
-      "price_per_m2": 113241,
-      "score": 0.0,
-      "median_price_per_m2": 113241,
-      "disposition": "4+kk",
-      "disposition_group": "4",
-      "locality": "Janského, Praha 5 - Stodůlky",
-      "locality_city": "Praha 5",
-      "type": "byt",
-      "transaction": "prodej",
-      "ownership": "Osobní",
-      "building_type": "Panelová",
-      "extras": [
-        "Lodžie",
-        "Sklep",
-        "Výtah"
-      ],
-      "detail_fetched": true,
-      "url": "https://www.sreality.cz/detail/prodej/byt/4+kk/praha-stodulky-janskeho/2242781260",
-      "scraped_at": "2026-09-25T10:48:53.606705+00:00",
-      "listed_since": "2026-09-22",
-      "last_checked_at": "2026-09-27T02:31:13.140345+00:00",
-      "sold_at": "2026-09-27T02:31:13.140345+00:00"
-    },
-    {
       "id": "1130557516",
       "title": "Prodej bytu 2+1 66 m²",
       "price": 3250000,
@@ -13505,6 +13449,61 @@
       "listed_since": "2026-04-27",
       "last_checked_at": "2026-09-27T02:31:13.140345+00:00",
       "sold_at": "2026-09-27T02:31:13.140345+00:00"
+    },
+    {
+      "id": "154464332",
+      "title": "Prodej rodinného domu 152 m², pozemek 972 m²",
+      "price": 4970000,
+      "area": 152.0,
+      "price_per_m2": 32697,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "ostatní",
+      "disposition_group": "ostatní",
+      "locality": "Litoměřická, Hoštka, okres Litoměřice",
+      "locality_city": "Hoštka",
+      "type": "dům",
+      "transaction": "prodej",
+      "ownership": "",
+      "building_type": "Cihlová",
+      "extras": [
+        "Garáž",
+        "Parkování",
+        "Sklep",
+        "Zahrada"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/hostka-hostka-litomericka/154464332",
+      "scraped_at": "2026-09-23T15:46:52.793145+00:00",
+      "listed_since": "2026-07-01",
+      "last_checked_at": "2026-09-27T11:02:01.016953+00:00",
+      "sold_at": "2026-09-27T11:02:01.016953+00:00"
+    },
+    {
+      "id": "3086688332",
+      "title": "Prodej bytu 2+kk 40 m²",
+      "price": 1990000,
+      "area": 40.0,
+      "price_per_m2": 49750,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "2+kk",
+      "disposition_group": "2",
+      "locality": "Hrnčířská, Česká Lípa",
+      "locality_city": "Česká Lípa",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Cihlová",
+      "extras": [
+        "Částečně zařízeno"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/2+kk/ceska-lipa-ceska-lipa-hrncirska/3086688332",
+      "scraped_at": "2026-09-25T16:08:28.998359+00:00",
+      "listed_since": "2026-09-16",
+      "last_checked_at": "2026-09-27T11:02:01.016953+00:00",
+      "sold_at": "2026-09-27T11:02:01.016953+00:00"
     }
   ]
 }
