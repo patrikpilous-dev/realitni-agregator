@@ -1,6 +1,6 @@
 {
-  "updated": "2026-09-29T17:26:51.284610+00:00",
-  "total": 516,
+  "updated": "2026-09-29T21:49:25.318666+00:00",
+  "total": 519,
   "listings": [
     {
       "id": "3009487436",
@@ -13906,6 +13906,87 @@
       "listed_since": "2026-06-05",
       "last_checked_at": "2026-09-29T17:16:03.443748+00:00",
       "sold_at": "2026-09-29T17:16:03.443748+00:00"
+    },
+    {
+      "id": "3353788492",
+      "title": "Prodej rodinného domu 173 m², pozemek 1021 m²",
+      "price": 22500000,
+      "area": 173.0,
+      "price_per_m2": 130058,
+      "score": -0.0,
+      "median_price_per_m2": 130000,
+      "disposition": "ostatní",
+      "disposition_group": "ostatní",
+      "locality": "Klínec, okres Praha-západ",
+      "locality_city": "Klínec",
+      "type": "dům",
+      "transaction": "prodej",
+      "ownership": "",
+      "building_type": "Cihlová",
+      "extras": [
+        "Parkování",
+        "Ve výstavbě"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/klinec-klinec/3353788492",
+      "scraped_at": "2026-09-27T16:01:28.064880+00:00",
+      "listed_since": "2026-08-27",
+      "last_checked_at": "2026-09-29T21:39:10.994569+00:00",
+      "sold_at": "2026-09-29T21:39:10.994569+00:00"
+    },
+    {
+      "id": "1929191500",
+      "title": "Prodej bytu 3+1 79 m²",
+      "price": 6400000,
+      "area": 79.0,
+      "price_per_m2": 81013,
+      "score": 19.4,
+      "median_price_per_m2": 100567,
+      "disposition": "3+1",
+      "disposition_group": "3",
+      "locality": "Praha 5 - Hlubočepy",
+      "locality_city": "Praha 5",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Družstevní",
+      "building_type": "Panelová",
+      "extras": [
+        "Lodžie",
+        "Sklep"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/3+1/praha-hlubocepy/1929191500",
+      "scraped_at": "2026-09-22T15:56:31.302671+00:00",
+      "listed_since": "2026-09-22",
+      "last_checked_at": "2026-09-29T21:39:10.994569+00:00",
+      "sold_at": "2026-09-29T21:39:10.994569+00:00"
+    },
+    {
+      "id": "1017036876",
+      "title": "Prodej bytu 3+1 72 m²",
+      "price": 4100000,
+      "area": 72.0,
+      "price_per_m2": 56944,
+      "score": 0.0,
+      "median_price_per_m2": 56944,
+      "disposition": "3+1",
+      "disposition_group": "3",
+      "locality": "sídl. Svobody, Prostějov",
+      "locality_city": "Prostějov",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Panelová",
+      "extras": [
+        "Lodžie",
+        "Sklep"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/3+1/prostejov-prostejov-sidl-svobody/1017036876",
+      "scraped_at": "2026-09-27T20:35:43.121851+00:00",
+      "listed_since": "2026-08-18",
+      "last_checked_at": "2026-09-29T21:39:10.994569+00:00",
+      "sold_at": "2026-09-29T21:39:10.994569+00:00"
     }
   ]
 }
