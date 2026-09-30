@@ -1,6 +1,6 @@
 {
-  "updated": "2026-09-30T17:26:24.855305+00:00",
-  "total": 530,
+  "updated": "2026-09-30T21:50:15.206100+00:00",
+  "total": 529,
   "listings": [
     {
       "id": "3009487436",
@@ -12902,33 +12902,6 @@
       "sold_at": "2026-09-26T02:33:25.017336+00:00"
     },
     {
-      "id": "1548599372",
-      "title": "Prodej rodinného domu 190 m², pozemek 1386 m²",
-      "price": 7390000,
-      "area": 190.0,
-      "price_per_m2": 38895,
-      "score": 0,
-      "median_price_per_m2": null,
-      "disposition": "ostatní",
-      "disposition_group": "ostatní",
-      "locality": "Rohoznice, okres Pardubice",
-      "locality_city": "Rohoznice",
-      "type": "dům",
-      "transaction": "prodej",
-      "ownership": "",
-      "building_type": "Cihlová",
-      "extras": [
-        "Garáž",
-        "Parkování"
-      ],
-      "detail_fetched": true,
-      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/rohoznice-rohoznice/1548599372",
-      "scraped_at": "2026-09-24T16:08:15.383440+00:00",
-      "listed_since": "2026-08-19",
-      "last_checked_at": "2026-09-26T10:30:39.985187+00:00",
-      "sold_at": "2026-09-26T10:30:39.985187+00:00"
-    },
-    {
       "id": "563581004",
       "title": "Prodej rodinného domu 268 m², pozemek 109 m²",
       "price": 6499000,
@@ -13187,34 +13160,6 @@
       "detail_fetched": false,
       "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/svarov/2763706444",
       "scraped_at": "2026-09-25T10:49:11.751341+00:00",
-      "last_checked_at": "2026-09-27T02:31:13.140345+00:00",
-      "sold_at": "2026-09-27T02:31:13.140345+00:00"
-    },
-    {
-      "id": "115253324",
-      "title": "Prodej chaty 28 m², pozemek 223 m²",
-      "price": 1850000,
-      "area": 28.0,
-      "price_per_m2": 66071,
-      "score": 0,
-      "median_price_per_m2": null,
-      "disposition": "ostatní",
-      "disposition_group": "ostatní",
-      "locality": "V Dolečku, Černolice, okres Praha-západ",
-      "locality_city": "Černolice",
-      "type": "dům",
-      "transaction": "prodej",
-      "ownership": "",
-      "building_type": "Smíšená",
-      "extras": [
-        "Sklep",
-        "Zařízeno",
-        "Zahrada"
-      ],
-      "detail_fetched": true,
-      "url": "https://www.sreality.cz/detail/prodej/dum/chata/cernolice-cernolice-v-dolecku/115253324",
-      "scraped_at": "2026-09-25T10:49:11.751780+00:00",
-      "listed_since": "2026-04-27",
       "last_checked_at": "2026-09-27T02:31:13.140345+00:00",
       "sold_at": "2026-09-27T02:31:13.140345+00:00"
     },
@@ -14303,6 +14248,32 @@
       "listed_since": "2026-09-21",
       "last_checked_at": "2026-09-30T17:14:15.631051+00:00",
       "sold_at": "2026-09-30T17:14:15.631051+00:00"
+    },
+    {
+      "id": "654782540",
+      "title": "Prodej bytu 2+kk 40 m²",
+      "price": 2490000,
+      "area": 40.0,
+      "price_per_m2": 62250,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "2+kk",
+      "disposition_group": "2",
+      "locality": "Velizská, Zdice, okres Beroun",
+      "locality_city": "Zdice",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Panelová",
+      "extras": [
+        "Sklep"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/2+kk/zdice-zdice-velizska/654782540",
+      "scraped_at": "2026-09-29T03:17:08.858728+00:00",
+      "listed_since": "2026-09-11",
+      "last_checked_at": "2026-09-30T21:39:49.764419+00:00",
+      "sold_at": "2026-09-30T21:39:49.764419+00:00"
     }
   ]
 }
