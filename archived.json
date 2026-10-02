@@ -1,6 +1,6 @@
 {
-  "updated": "2026-10-02T03:18:25.446364+00:00",
-  "total": 551,
+  "updated": "2026-10-02T11:45:12.114532+00:00",
+  "total": 554,
   "listings": [
     {
       "id": "3009487436",
@@ -14868,6 +14868,89 @@
       "scraped_at": "2026-09-30T11:34:47.674901+00:00",
       "last_checked_at": "2026-10-02T03:08:19.025242+00:00",
       "sold_at": "2026-10-02T03:08:19.025242+00:00"
+    },
+    {
+      "id": "1583587404",
+      "title": "Prodej rodinného domu 308 m², pozemek 1455 m²",
+      "price": 26700000,
+      "area": 308.0,
+      "price_per_m2": 86688,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "ostatní",
+      "disposition_group": "ostatní",
+      "locality": "Na Jaroši, Předboj, okres Praha-východ",
+      "locality_city": "Předboj",
+      "type": "dům",
+      "transaction": "prodej",
+      "ownership": "",
+      "building_type": "Cihlová",
+      "extras": [
+        "Garáž",
+        "Zahrada"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/predboj-predboj-na-jarosi/1583587404",
+      "scraped_at": "2026-09-30T11:34:47.675287+00:00",
+      "listed_since": "2026-04-29",
+      "last_checked_at": "2026-10-02T11:34:46.046891+00:00",
+      "sold_at": "2026-10-02T11:34:46.046891+00:00"
+    },
+    {
+      "id": "3278929996",
+      "title": "Prodej rodinného domu 158 m², pozemek 853 m²",
+      "price": 17900000,
+      "area": 158.0,
+      "price_per_m2": 113291,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "ostatní",
+      "disposition_group": "ostatní",
+      "locality": "Sedmidomí, Loděnice, okres Beroun",
+      "locality_city": "Loděnice",
+      "type": "dům",
+      "transaction": "prodej",
+      "ownership": "",
+      "building_type": "Cihlová",
+      "extras": [
+        "Částečně zařízeno",
+        "Novostavba"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/lodenice-lodenice-sedmidomi/3278929996",
+      "scraped_at": "2026-09-30T11:34:47.677456+00:00",
+      "listed_since": "2026-06-07",
+      "last_checked_at": "2026-10-02T11:34:46.046891+00:00",
+      "sold_at": "2026-10-02T11:34:46.046891+00:00"
+    },
+    {
+      "id": "4125937740",
+      "title": "Prodej bytu 2+kk 41 m²",
+      "price": 2250000,
+      "area": 41.0,
+      "price_per_m2": 54878,
+      "score": 57.9,
+      "median_price_per_m2": 130469,
+      "disposition": "2+kk",
+      "disposition_group": "2",
+      "locality": "Honzíkova, Praha 10 - Dolní Měcholupy",
+      "locality_city": "Praha 10",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Družstevní",
+      "building_type": "Cihlová",
+      "extras": [
+        "Balkón",
+        "Garáž",
+        "Výtah",
+        "Novostavba"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/2+kk/praha-dolni-mecholupy-honzikova/4125937740",
+      "scraped_at": "2026-09-26T10:30:22.459815+00:00",
+      "listed_since": "2026-07-31",
+      "last_checked_at": "2026-10-02T11:34:46.046891+00:00",
+      "sold_at": "2026-10-02T11:34:46.046891+00:00"
     }
   ]
 }
