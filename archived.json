@@ -1,6 +1,6 @@
 {
-  "updated": "2026-10-02T17:16:46.233691+00:00",
-  "total": 556,
+  "updated": "2026-10-02T21:46:21.087751+00:00",
+  "total": 559,
   "listings": [
     {
       "id": "3009487436",
@@ -15007,6 +15007,89 @@
       "listed_since": "2026-09-22",
       "last_checked_at": "2026-10-02T17:02:36.205786+00:00",
       "sold_at": "2026-10-02T17:02:36.205786+00:00"
+    },
+    {
+      "id": "3092349004",
+      "title": "Prodej bytu 2+1 54 m²",
+      "price": 1790000,
+      "area": 54.0,
+      "price_per_m2": 33148,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "2+1",
+      "disposition_group": "2",
+      "locality": "Nádražní, Žlutice, okres Karlovy Vary",
+      "locality_city": "Žlutice",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Cihlová",
+      "extras": [
+        "Parkování",
+        "Sklep",
+        "Zařízeno"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/2+1/zlutice-zlutice-nadrazni/3092349004",
+      "scraped_at": "2026-09-30T21:39:33.237395+00:00",
+      "listed_since": "2026-06-05",
+      "last_checked_at": "2026-10-02T21:35:06.785436+00:00",
+      "sold_at": "2026-10-02T21:35:06.785436+00:00"
+    },
+    {
+      "id": "1291198540",
+      "title": "Prodej rodinného domu 40 m², pozemek 291 m²",
+      "price": 1499000,
+      "area": 40.0,
+      "price_per_m2": 37475,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "ostatní",
+      "disposition_group": "ostatní",
+      "locality": "Chodouny - Lounky, okres Litoměřice",
+      "locality_city": "Chodouny",
+      "type": "dům",
+      "transaction": "prodej",
+      "ownership": "",
+      "building_type": "Smíšená",
+      "extras": [],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/chodouny-lounky/1291198540",
+      "scraped_at": "2026-09-30T21:39:49.759744+00:00",
+      "listed_since": "2026-09-30",
+      "last_checked_at": "2026-10-02T21:35:06.785436+00:00",
+      "sold_at": "2026-10-02T21:35:06.785436+00:00"
+    },
+    {
+      "id": "2999562316",
+      "title": "Prodej rodinného domu 533 m², pozemek 1400 m²",
+      "price": 23000000,
+      "area": 533.0,
+      "price_per_m2": 43152,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "ostatní",
+      "disposition_group": "ostatní",
+      "locality": "Vinařice, okres Mladá Boleslav",
+      "locality_city": "Vinařice",
+      "type": "dům",
+      "transaction": "prodej",
+      "ownership": "",
+      "building_type": "Smíšená",
+      "extras": [
+        "Garáž",
+        "Parkování",
+        "Sklep",
+        "Bazén",
+        "Zařízeno",
+        "Zahrada"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/vinarice/2999562316",
+      "scraped_at": "2026-09-30T21:39:49.763341+00:00",
+      "listed_since": "2026-04-08",
+      "last_checked_at": "2026-10-02T21:35:06.785436+00:00",
+      "sold_at": "2026-10-02T21:35:06.785436+00:00"
     }
   ]
 }
