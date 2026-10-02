@@ -1,6 +1,6 @@
 {
-  "updated": "2026-10-02T11:45:12.114532+00:00",
-  "total": 554,
+  "updated": "2026-10-02T17:16:46.233691+00:00",
+  "total": 556,
   "listings": [
     {
       "id": "3009487436",
@@ -14951,6 +14951,62 @@
       "listed_since": "2026-07-31",
       "last_checked_at": "2026-10-02T11:34:46.046891+00:00",
       "sold_at": "2026-10-02T11:34:46.046891+00:00"
+    },
+    {
+      "id": "3664875596",
+      "title": "Prodej bytu 2+1 55 m²",
+      "price": 3150000,
+      "area": 55.0,
+      "price_per_m2": 57273,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "2+1",
+      "disposition_group": "2",
+      "locality": "Palackého, Chotěboř, okres Havlíčkův Brod",
+      "locality_city": "Chotěboř",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Smíšená",
+      "extras": [
+        "Parkování",
+        "Sklep",
+        "Zařízeno"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/2+1/chotebor-chotebor-palackeho/3664875596",
+      "scraped_at": "2026-09-30T17:13:56.849413+00:00",
+      "listed_since": "2026-05-19",
+      "last_checked_at": "2026-10-02T17:02:36.205786+00:00",
+      "sold_at": "2026-10-02T17:02:36.205786+00:00"
+    },
+    {
+      "id": "4240318540",
+      "title": "Prodej rodinného domu 230 m², pozemek 1636 m²",
+      "price": 4890000,
+      "area": 230.0,
+      "price_per_m2": 21261,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "ostatní",
+      "disposition_group": "ostatní",
+      "locality": "Budějovická, Lomnice nad Lužnicí, okres Jindřichův Hradec",
+      "locality_city": "Lomnice nad Lužnicí",
+      "type": "dům",
+      "transaction": "prodej",
+      "ownership": "",
+      "building_type": "Cihlová",
+      "extras": [
+        "Garáž",
+        "Parkování",
+        "Zahrada"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/lomnice-nad-luznici-lomnice-nad-luznici-budejovicka/4240318540",
+      "scraped_at": "2026-09-30T17:14:15.628605+00:00",
+      "listed_since": "2026-09-22",
+      "last_checked_at": "2026-10-02T17:02:36.205786+00:00",
+      "sold_at": "2026-10-02T17:02:36.205786+00:00"
     }
   ]
 }
