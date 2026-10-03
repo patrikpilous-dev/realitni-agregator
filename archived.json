@@ -1,6 +1,6 @@
 {
-  "updated": "2026-10-03T03:07:37.557467+00:00",
-  "total": 566,
+  "updated": "2026-10-03T11:02:36.420479+00:00",
+  "total": 567,
   "listings": [
     {
       "id": "3009487436",
@@ -8202,61 +8202,6 @@
       "sold_at": "2026-09-14T02:22:47.704749+00:00"
     },
     {
-      "id": "886534988",
-      "title": "Prodej rodinného domu 280 m², pozemek 2085 m²",
-      "price": 15990000,
-      "area": 280.0,
-      "price_per_m2": 57107,
-      "score": 0,
-      "median_price_per_m2": null,
-      "disposition": "ostatní",
-      "disposition_group": "ostatní",
-      "locality": "Chotíkov, okres Plzeň-sever",
-      "locality_city": "Chotíkov",
-      "type": "dům",
-      "transaction": "prodej",
-      "ownership": "",
-      "building_type": "Cihlová",
-      "extras": [
-        "Bazén",
-        "Zařízeno"
-      ],
-      "detail_fetched": true,
-      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/chotikov-chotikov/886534988",
-      "scraped_at": "2026-09-12T09:47:20.716469+00:00",
-      "listed_since": "2026-02-06",
-      "last_checked_at": "2026-09-14T02:22:47.704749+00:00",
-      "sold_at": "2026-09-14T02:22:47.704749+00:00"
-    },
-    {
-      "id": "3108429900",
-      "title": "Prodej rodinného domu 210 m², pozemek 356 m²",
-      "price": 11990000,
-      "area": 210.0,
-      "price_per_m2": 57095,
-      "score": 28.6,
-      "median_price_per_m2": 80000,
-      "disposition": "ostatní",
-      "disposition_group": "ostatní",
-      "locality": "Revoluční, Plzeň-město - Lobzy",
-      "locality_city": "Plzeň-město",
-      "type": "dům",
-      "transaction": "prodej",
-      "ownership": "",
-      "building_type": "Cihlová",
-      "extras": [
-        "Garáž",
-        "Sklep",
-        "Částečně zařízeno"
-      ],
-      "detail_fetched": true,
-      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/plzen-lobzy-revolucni/3108429900",
-      "scraped_at": "2026-09-12T09:47:20.716539+00:00",
-      "listed_since": "2026-07-19",
-      "last_checked_at": "2026-09-14T02:22:47.704749+00:00",
-      "sold_at": "2026-09-14T02:22:47.704749+00:00"
-    },
-    {
       "id": "87539788",
       "title": "Prodej bytu 1+1 38 m²",
       "price": 3050000,
@@ -15275,6 +15220,91 @@
       "scraped_at": "2026-10-01T03:06:34.007346+00:00",
       "last_checked_at": "2026-10-03T02:55:00.494337+00:00",
       "sold_at": "2026-10-03T02:55:00.494337+00:00"
+    },
+    {
+      "id": "3968230220",
+      "title": "Prodej bytu atypický 136 m²",
+      "price": 26900000,
+      "area": 136.0,
+      "price_per_m2": 197794,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "ostatní",
+      "disposition_group": "ostatní",
+      "locality": "V tůních, Praha 2 - Nové Město",
+      "locality_city": "Praha 2",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Cihlová",
+      "extras": [
+        "Parkování",
+        "Sklep",
+        "Výtah",
+        "Částečně zařízeno"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/atypicky/praha-nove-mesto-v-tunich/3968230220",
+      "scraped_at": "2026-10-01T12:03:24.352396+00:00",
+      "listed_since": "2026-02-26",
+      "last_checked_at": "2026-10-03T10:49:05.802680+00:00",
+      "sold_at": "2026-10-03T10:49:05.802680+00:00"
+    },
+    {
+      "id": "4195979340",
+      "title": "Prodej bytu 2+kk 64 m²",
+      "price": 6980000,
+      "area": 64.0,
+      "price_per_m2": 109062,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "2+kk",
+      "disposition_group": "2",
+      "locality": "Loučná pod Klínovcem - Háj, okres Chomutov",
+      "locality_city": "Loučná pod Klínovcem",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Cihlová",
+      "extras": [
+        "Lodžie",
+        "Terasa",
+        "Parkování",
+        "Zařízeno"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/2+kk/loucna-pod-klinovcem-haj/4195979340",
+      "scraped_at": "2026-10-01T12:03:24.353809+00:00",
+      "listed_since": "2026-05-11",
+      "last_checked_at": "2026-10-03T10:49:05.802680+00:00",
+      "sold_at": "2026-10-03T10:49:05.802680+00:00"
+    },
+    {
+      "id": "3713519692",
+      "title": "Prodej bytu 2+1 83 m²",
+      "price": 10590000,
+      "area": 83.0,
+      "price_per_m2": 127590,
+      "score": 4.8,
+      "median_price_per_m2": 134019,
+      "disposition": "2+1",
+      "disposition_group": "2",
+      "locality": "Na Jezerce, Praha 4 - Nusle",
+      "locality_city": "Praha 4",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Smíšená",
+      "extras": [
+        "Lodžie",
+        "Výtah"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/2+1/praha-nusle-na-jezerce/3713519692",
+      "scraped_at": "2026-10-01T12:03:24.353965+00:00",
+      "listed_since": "2026-08-06",
+      "last_checked_at": "2026-10-03T10:49:05.802680+00:00",
+      "sold_at": "2026-10-03T10:49:05.802680+00:00"
     }
   ]
 }
