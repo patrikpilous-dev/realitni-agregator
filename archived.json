@@ -1,6 +1,6 @@
 {
-  "updated": "2026-10-03T20:33:13.353841+00:00",
-  "total": 579,
+  "updated": "2026-10-04T03:34:11.980651+00:00",
+  "total": 582,
   "listings": [
     {
       "id": "3009487436",
@@ -15642,6 +15642,88 @@
       "listed_since": "2026-08-06",
       "last_checked_at": "2026-10-03T20:20:49.069154+00:00",
       "sold_at": "2026-10-03T20:20:49.069154+00:00"
+    },
+    {
+      "id": "386146380",
+      "title": "Prodej bytu 2+1 62 m²",
+      "price": 12500,
+      "area": 62.0,
+      "price_per_m2": 202,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "2+1",
+      "disposition_group": "2",
+      "locality": "Máchova, Kroměříž",
+      "locality_city": "Kroměříž",
+      "type": "byt",
+      "transaction": "prodej",
+      "ownership": "Osobní",
+      "building_type": "Cihlová",
+      "extras": [
+        "Sklep"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/byt/2+1/kromeriz-kromeriz-machova/386146380",
+      "scraped_at": "2026-10-02T11:34:29.247650+00:00",
+      "listed_since": "2026-10-02",
+      "last_checked_at": "2026-10-04T03:24:31.056163+00:00",
+      "sold_at": "2026-10-04T03:24:31.056163+00:00"
+    },
+    {
+      "id": "429405004",
+      "title": "Prodej rodinného domu 213 m², pozemek 363 m²",
+      "price": 17550000,
+      "area": 213.0,
+      "price_per_m2": 82394,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "ostatní",
+      "disposition_group": "ostatní",
+      "locality": "Vontská, Kuřim, okres Brno-venkov",
+      "locality_city": "Kuřim",
+      "type": "dům",
+      "transaction": "prodej",
+      "ownership": "",
+      "building_type": "Cihlová",
+      "extras": [
+        "Garáž",
+        "Parkování",
+        "Bazén"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/kurim-kurim-vontska/429405004",
+      "scraped_at": "2026-10-02T11:34:46.042124+00:00",
+      "listed_since": "2025-10-28",
+      "last_checked_at": "2026-10-04T03:24:31.056163+00:00",
+      "sold_at": "2026-10-04T03:24:31.056163+00:00"
+    },
+    {
+      "id": "2809467724",
+      "title": "Prodej rodinného domu 242 m², pozemek 783 m²",
+      "price": 7490000,
+      "area": 242.0,
+      "price_per_m2": 30950,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "ostatní",
+      "disposition_group": "ostatní",
+      "locality": "Uličky, Přítluky, okres Břeclav",
+      "locality_city": "Přítluky",
+      "type": "dům",
+      "transaction": "prodej",
+      "ownership": "",
+      "building_type": "Cihlová",
+      "extras": [
+        "Garáž",
+        "Parkování",
+        "Sklep"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/pritluky-pritluky-ulicky/2809467724",
+      "scraped_at": "2026-10-02T11:34:46.042146+00:00",
+      "listed_since": "2025-12-29",
+      "last_checked_at": "2026-10-04T03:24:31.056163+00:00",
+      "sold_at": "2026-10-04T03:24:31.056163+00:00"
     }
   ]
 }
