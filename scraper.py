@@ -40,6 +40,17 @@ HISTORY_FILE = "price_history.json"   # denní mediány cen/m² per město (star
 STATS_FILE   = "market_stats.json"    # týdenní mediány pro grafy na stránkách měst
 CITIES_FILE  = "mesta.json"           # přehled měst: kraj, počet nabídek, mediány (úvod stránek měst)
 REGION_DIR   = "feed-kraje"           # nejvýhodnější nabídky po krajích pro stránky měst
+PAGES_FILE   = "stranky.json"         # 12 nejvýhodnějších pro každou stránku webu, vypisuje je server (SEO)
+PAGE_TOP     = 12
+# Města, která mají na webu stránku /real/<mesto>/ (při založení nové stránky doplnit)
+PAGE_CITIES = {
+    "Praha", "Brno", "Ostrava", "Plzeň", "Liberec", "Olomouc", "České Budějovice", "Hradec Králové",
+    "Ústí nad Labem", "Pardubice", "Zlín", "Kladno", "Most", "Opava", "Karviná", "Frýdek-Místek", "Jihlava",
+    "Teplice", "Děčín", "Chomutov", "Přerov", "Havířov", "Mladá Boleslav", "Prostějov", "Znojmo", "Třebíč",
+    "Kolín", "Příbram", "Trutnov", "Cheb", "Uherské Hradiště", "Kopřivnice", "Krnov", "Břeclav", "Písek",
+    "Nový Jičín", "Sokolov", "Hodonín", "Vsetín", "Kroměříž", "Šumperk", "Třinec", "Česká Lípa", "Tábor",
+    "Jablonec nad Nisou",
+}
 REGION_FEED_SIZE = 600       # nejvýhodnějších v kraji
 REGION_CITY_TOP  = 150       # plus nejvýhodnějších z každého většího města kraje, aby stránky měst nebyly prázdné
 REGION_CITY_MIN  = 50        # větší město = aspoň tolik srovnatelných nabídek
@@ -1107,6 +1118,40 @@ def write_cities(valid: list[dict], scored: list[dict], cstats: dict, out_dir: s
                {"updated": now_iso(), "mesta": {k: v for k, v in info.items() if v["aktivnich"] >= 3}})
 
 
+def write_pages(scored: list[dict], out_dir: str) -> None:
+    """
+    Pro každou kombinaci filtrů, kterou může mít web jako stránku, nejvýhodnějších PAGE_TOP nabídek
+    v malém tvaru. Klíče: "all", "t:byt", "d:2+kk", "e:Balkón", "o:Osobní", "c:Brno", "c:Brno|t:byt".
+    """
+    def mini(l: dict) -> dict:
+        return {
+            "id": l["id"], "t": l["title"], "p": l["price"], "a": l["area"], "m": l["ppm2"],
+            "l": l["locality"], "u": l["url"], "i": l["images"][0] if l["images"] else "",
+            "s": l.get("deal_score", 0), "d": round(max(0.0, l.get("discount", 0.0))),
+            "b": (l.get("benchmark") or {}).get("ppm2"),
+        }
+    pages: dict[str, list] = defaultdict(list)
+
+    def add(key: str, l: dict) -> None:
+        if len(pages[key]) < PAGE_TOP:
+            pages[key].append(mini(l))
+
+    for l in scored:                              # seřazeno od nejvýhodnějších
+        typ = "byt" if l["type"] == "byt" else "dum"
+        add("all", l)
+        add("t:" + typ, l)
+        if l["type"] == "byt":
+            add("d:" + l["disposition"], l)
+        for e in l["extras"]:
+            add("e:" + e, l)
+        if l.get("ownership"):
+            add("o:" + l["ownership"], l)
+        if l["city"] in PAGE_CITIES:
+            add("c:" + l["city"], l)
+            add("c:" + l["city"] + "|t:" + typ, l)
+    write_json(os.path.join(out_dir, PAGES_FILE), {"updated": now_iso(), "pages": pages})
+
+
 def write_price_history(con: sqlite3.Connection, out_dir: str) -> None:
     """Starý formát pro graf na /real/: { days: [ {date, cities: {město: {byty, domy, celkem}}} ] }"""
     path = os.path.join(out_dir, HISTORY_FILE)
@@ -1262,6 +1307,7 @@ def main() -> None:
     write_json(os.path.join(args.out, ARCHIVE_FILE), {"updated": now_iso(), "total": len(arch_items), "listings": arch_items})
 
     write_region_feeds(scored, args.out)
+    write_pages(scored, args.out)
     write_cities(valid, scored, cstats, args.out)
     write_price_history(con, args.out)
     write_market_stats(con, args.out)
