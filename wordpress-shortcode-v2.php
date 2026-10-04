@@ -5,6 +5,18 @@
  * Stránka se shortcodem dostane noindex, dokud je to test.
  */
 
+// Nastavení postranního panelu šablony WpResidence čitelné a zapisovatelné přes REST (stránky agregátoru bez sidebaru)
+add_action( 'rest_api_init', function () {
+	foreach ( array( 'sidebar_option', 'sidebar_select' ) as $mxr_klic ) {
+		register_post_meta( 'page', $mxr_klic, array(
+			'type'          => 'string',
+			'single'        => true,
+			'show_in_rest'  => true,
+			'auth_callback' => function () { return current_user_can( 'edit_pages' ); },
+		) );
+	}
+} );
+
 add_filter( 'wpseo_robots', function ( $robots ) {
 	global $post;
 	if ( is_singular() && $post && has_shortcode( $post->post_content, 'nemovitosti_real_v2' ) ) {
@@ -32,12 +44,14 @@ add_shortcode( 'nemovitosti_real_v2', function ( $atts ) {
 .rv2-stat { font-size:14px; color:var(--muted); margin:0 0 16px; }
 .rv2-stat b { color:var(--ink); }
 .rv2-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:24px; align-items:start; }
-.rv2-card { background:#fff; border:1px solid var(--line); display:flex; flex-direction:column; }
+.rv2-card { background:#fff; border:1px solid var(--line); display:flex; flex-direction:column; transition:box-shadow .2s, transform .2s, border-color .2s; }
+.rv2-card:hover { box-shadow:0 8px 24px rgba(0,0,0,.09); transform:translateY(-2px); border-color:#d2d2d2; }
+.rv2-photo { overflow:hidden; }
 .rv2-photo { position:relative; aspect-ratio:3/2; background:#e9e9e9 center/cover no-repeat; display:block; }
 .rv2-photo::after { content:""; position:absolute; inset:45% 0 0 0; background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.78)); }
 .rv2-nophoto { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; color:#999; font-size:13px; }
 .rv2-tags { position:absolute; left:0; top:14px; display:flex; flex-direction:column; gap:4px; align-items:flex-start; z-index:2; }
-.rv2-tag { display:inline-block; font:600 11px/1 Poppins,sans-serif; letter-spacing:.04em; text-transform:uppercase; padding:6px 9px; }
+.rv2-tag { display:inline-block; font:600 11.5px/1 Poppins,sans-serif; letter-spacing:.04em; text-transform:uppercase; padding:6px 9px; }
 .rv2-tag.red { background:var(--red); color:#fff; } .rv2-tag.ink { background:var(--ink); color:#fff; } .rv2-tag.white { background:#fff; color:var(--ink); }
 .rv2-count { position:absolute; right:10px; top:10px; z-index:2; background:rgba(0,0,0,.6); color:#fff; font-size:12px; padding:2px 7px; }
 .rv2-over { position:absolute; left:18px; right:18px; bottom:12px; color:#fff; z-index:2; }
@@ -60,10 +74,12 @@ add_shortcode( 'nemovitosti_real_v2', function ( $atts ) {
 .rv2-mkt .l { display:flex; justify-content:space-between; font-size:11.5px; color:var(--muted); margin-top:4px; }
 .rv2-mkt .t { font-size:13px; margin-bottom:6px; }
 .rv2-mkt .t strong { color:var(--ok); }
-.rv2-chips { height:28px; overflow:hidden; margin-bottom:14px; }
+.rv2-chips { height:64px; overflow:hidden; margin-bottom:12px; align-content:flex-start; }
 .rv2-chip { display:inline-block; font-size:12.5px; border:1px solid var(--line); padding:3px 8px; margin:0 6px 6px 0; background:#fff; white-space:nowrap; }
 .rv2-chip.sig { border-color:var(--ink-2); }
-.rv2-foot { display:flex; gap:8px; padding:0 18px 18px; margin-top:auto; }
+.rv2-foot { display:flex; padding:0 18px 18px; margin-top:auto; }
+.rv2-why { background:none; border:0; padding:0; margin-top:6px; font:600 12.5px "Nunito Sans",sans-serif; color:var(--muted); text-decoration:underline; text-underline-offset:2px; cursor:pointer; }
+.rv2-why:hover { color:var(--red); }
 .rv2-btn { display:inline-flex; align-items:center; justify-content:center; font:700 13px Poppins,sans-serif; padding:11px 14px; text-decoration:none !important; cursor:pointer; border:0; border-radius:0; line-height:1.2; }
 .rv2-btn.red { background:var(--red); color:#fff !important; flex:1; } .rv2-btn.red:hover { background:var(--red-dark); }
 .rv2-btn.line { background:#fff; color:var(--ink) !important; border:1px solid var(--ink); }
@@ -125,7 +141,8 @@ add_shortcode( 'nemovitosti_real_v2', function ( $atts ) {
   }
   function chips(l) {
     var out = [];
-    (l.signals || []).forEach(function (s) { if (s.code === "dlouho" || s.code === "znovu" || s.code === "prohlidka" || s.code === "vicekrat") out.push('<span class="rv2-chip sig">' + esc(s.label) + "</span>"); });
+    var SHORT = { prohlidka: "Video / 3D", znovu: "Znovu vložený" };
+    (l.signals || []).forEach(function (s) { if (s.code === "dlouho" || s.code === "znovu" || s.code === "prohlidka" || s.code === "vicekrat") out.push('<span class="rv2-chip sig">' + esc(SHORT[s.code] || s.label) + "</span>"); });
     if (l.ownership) out.push('<span class="rv2-chip">' + esc(l.ownership) + "</span>");
     (l.extras || []).forEach(function (e) { out.push('<span class="rv2-chip">' + esc(e) + "</span>"); });
     return out.slice(0, 4).join("");
@@ -133,17 +150,19 @@ add_shortcode( 'nemovitosti_real_v2', function ( $atts ) {
   function why(l) {
     var p = l.score_parts || {}, b = l.benchmark;
     var rows = [
-      ["Cena za m² pod srovnávací cenou (" + below(l) + " %)", Math.round(p.cena || 0) + " / 70"],
+      ["Cena za m² pod srovnávací cenou (" + below(l) + " %)", Math.round(p.cena || 0) + " / 55"],
+      ["Doba na trhu" + (l.days_on_market != null ? " (" + l.days_on_market + " dní)" : " (zatím neznámá, ostatní body přepočteny)"), Math.round(p.doba || 0) + " / 25"],
       ["Zlevnění" + (l.price_drop ? " (z " + kc(l.price_drop.from) + ")" : ""), Math.round(p.zlevneni || 0) + " / 15"],
       ["Přímo od majitele", (p.majitel || 0) + " / 5"],
-      ["Na trhu přes 90 dní" + (l.days_on_market != null ? " (" + l.days_on_market + " dní)" : ""), (p.doba || 0) + " / 5"],
       ["Znovu vložený inzerát", (p.znovu || 0) + " / 5"]
     ].map(function (r) { return "<tr><td>" + r[0] + "</td><td>" + r[1] + "</td></tr>"; }).join("");
     var pens = (l.penalties || []).map(function (x) { return '<tr><td>' + esc(x.label) + '</td><td class="neg">× ' + String(x.factor).replace(".", ",") + "</td></tr>"; }).join("");
     var alt = (l.alt_urls || []).length ? '<p class="alt">Stejná nemovitost je inzerovaná i jinde: ' + l.alt_urls.map(function (u, i) { return '<a href="' + esc(u) + '" target="_blank" rel="noopener nofollow">nabídka ' + (i + 2) + "</a>"; }).join(", ") + "</p>" : "";
     return "<h4>Proč je výhodný</h4><p>Srovnáváme s mediánem <b>" + kc(b.market_ppm2) + "/m²</b> u " + b.n + " inzerátů (" + esc(b.label) + "). " +
       "Po přepočtu na plochu " + num(l.area) + " m² (typicky " + b.typical_area + " m²) vychází srovnávací cena <b>" + kc(b.ppm2) + "/m²</b>, tahle nabídka má <b>" + kc(l.price_per_m2) + "/m²</b>.</p>" +
-      "<table>" + rows + pens + '<tr class="total"><td>Skóre výhodnosti</td><td>' + l.deal_score + " / 100</td></tr></table>" + alt;
+      "<table>" + rows + pens + "<tr><td>Body celkem</td><td>" + Math.round(p.body || 0) + "</td></tr>" +
+      '<tr class="total"><td>Skóre výhodnosti</td><td>' + l.deal_score + " / 100</td></tr></table>" +
+      "<p>Skóre ukazuje pořadí mezi všemi nabídkami na trhu: 60 a víc má 5 % nejvýhodnějších, 80 a víc 1 %.</p>" + alt;
   }
   function card(l) {
     var d = below(l), pos = Math.max(3, Math.min(97, 50 - d));
@@ -156,12 +175,12 @@ add_shortcode( 'nemovitosti_real_v2', function ( $atts ) {
       '<span class="rv2-tags">' + tags(l) + "</span>" +
       '<span class="rv2-over"><span class="p">' + kc(l.price) + '</span><br><span class="s">' + num(l.price_per_m2) + " Kč/m² · " + num(l.area) + " m²</span></span></a>" +
       '<div class="rv2-body"><div class="rv2-title" title="' + esc(short(l)) + '">' + esc(short(l)) + '</div><div class="rv2-loc">' + esc(l.locality) + "</div>" +
-      '<div class="rv2-score"><div class="n">' + l.deal_score + '<small>/100</small></div><div class="r"><b>' + rating(l.deal_score) + '</b><div class="rv2-segs">' + segs + "</div></div></div>" +
+      '<div class="rv2-score"><div class="n">' + l.deal_score + '<small>/100</small></div><div class="r"><b>' + rating(l.deal_score) + '</b><div class="rv2-segs">' + segs + '</div><button class="rv2-why" type="button" data-why>Proč je výhodný?</button></div></div>' +
       '<div class="rv2-mkt"><div class="t">' + (d > 0 ? "O <strong>" + d + " % levnější</strong> než srovnatelné nabídky" : "Cena odpovídá srovnatelným nabídkám") + "</div>" +
       '<div class="rv2-track"><span class="mid"></span><span class="mk" style="left:' + pos + '%"></span></div>' +
       '<div class="l"><span>levnější</span><span>trh ' + num(l.benchmark.ppm2) + " Kč/m²</span><span>dražší</span></div></div>" +
       '<div class="rv2-chips">' + chips(l) + "</div></div>" +
-      '<div class="rv2-foot"><a class="rv2-btn red" href="' + esc(l.url) + '" target="_blank" rel="noopener nofollow">Prohlédnout</a><button class="rv2-btn line" type="button" data-why>Proč je výhodný</button></div>' +
+      '<div class="rv2-foot"><a class="rv2-btn red" href="' + esc(l.url) + '" target="_blank" rel="noopener nofollow">Prohlédnout inzerát →</a></div>' +
       '<div class="rv2-more">' + why(l) + "</div></article>";
   }
 
@@ -189,7 +208,7 @@ add_shortcode( 'nemovitosti_real_v2', function ( $atts ) {
   grid.addEventListener("click", function (e) {
     var b = e.target.closest("[data-why]"); if (!b) return;
     var c = b.closest(".rv2-card"); c.classList.toggle("open");
-    b.textContent = c.classList.contains("open") ? "Skrýt" : "Proč je výhodný";
+    b.textContent = c.classList.contains("open") ? "Skrýt zdůvodnění" : "Proč je výhodný?";
   });
   more.addEventListener("click", function () { shown += PAGE; render(); });
   Object.keys(f).forEach(function (k) { f[k].addEventListener(k === "q" ? "input" : "change", apply); });

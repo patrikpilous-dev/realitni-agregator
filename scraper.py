@@ -54,7 +54,7 @@ MIN_SCRAPED_OK = 100
 REQUEST_INTERVAL = float(os.environ.get("SREALITY_INTERVAL", "1.2"))
 MAX_FAILS_IN_ROW = 40
 
-DETAILS_BUDGET = {"quick": 200, "full": 2500}   # detailů za běh
+DETAILS_BUDGET = {"quick": 200, "full": 4000}   # detailů za běh
 ARCHIVE_BUDGET = {"quick": 60,  "full": 300}    # ověření 404 za běh
 STALE_DAYS     = 14      # bez potvrzení déle než tohle jde inzerát z aktivních pryč
 MAX_FEED_SIZE  = 2000
@@ -842,13 +842,26 @@ def fmt_kc(n: int) -> str:
     return f"{n:,}".replace(",", " ") + " Kč"
 
 
+# Body za dobu na trhu: (dní, bodů), mezi body lineárně
+DOM_POINTS = [(0, 0), (30, 4), (60, 10), (90, 15), (180, 21), (365, 25)]
+
+
+def dom_points(dom: int | None) -> float:
+    if dom is None:
+        return 0.0
+    for (d0, p0), (d1, p1) in zip(DOM_POINTS, DOM_POINTS[1:]):
+        if dom <= d1:
+            return p0 + (p1 - p0) * (dom - d0) / (d1 - d0)
+    return float(DOM_POINTS[-1][1])
+
+
 def score_listing(l: dict, bench: dict, price_max: dict, relisted_price: dict) -> None:
     """
     Skóre výhodnosti 0–100:
-      cena pod srovnávací cenou  až 70 b. (40 % pod trhem = plný počet)
+      cena pod srovnávací cenou  až 55 b. (40 % pod trhem = plný počet)
+      doba na trhu               až 25 b. (prodávající, který dlouho neprodal, spíš povolí; viz DOM_POINTS)
       zlevnění                   až 15 b. (15 % a víc)
       přímo od majitele             5 b.
-      na trhu 90+ dní               5 b. (prostor k vyjednávání)
       znovu vložený inzerát         5 b.
     × jistota srovnání (vzorek, úroveň lokality) × koeficienty za nesrovnatelnou cenu.
     """
@@ -863,7 +876,7 @@ def score_listing(l: dict, bench: dict, price_max: dict, relisted_price: dict) -
         return
 
     signals, penalties = [], []
-    pts_price = max(0.0, min(discount / 0.40, 1.0)) * 70
+    pts_price = max(0.0, min(discount / 0.40, 1.0)) * 55
 
     # Zlevnění: maximum z naší historie, původní cena ze Sreality a cena předchozího inzerátu
     ref = max(price_max.get(l["id"], 0), l.get("price_old") or 0, relisted_price.get(l["id"], 0))
@@ -880,13 +893,11 @@ def score_listing(l: dict, bench: dict, price_max: dict, relisted_price: dict) -
         pts_private = 5
         signals.append({"code": "majitel", "label": "Přímo od majitele"})
 
+    # Doba na trhu jen z data vložení na Sreality (detail). Naše first_seen by u nové databáze bylo vždy dnes.
     dom = days_between(l.get("listed_since"), now)
-    if dom is None:
-        dom = days_between(l.get("first_seen"), now)
     l["days_on_market"] = dom
-    pts_dom = 0
-    if dom is not None and dom >= 90:
-        pts_dom = 5
+    pts_dom = dom_points(dom)
+    if dom is not None and dom >= 60:
         signals.append({"code": "dlouho", "label": f"Na trhu {dom} dní"})
     first_age = days_between(l.get("first_seen"), now)
     if first_age is not None and first_age <= 2 and (dom is None or dom <= 7):
@@ -920,13 +931,17 @@ def score_listing(l: dict, bench: dict, price_max: dict, relisted_price: dict) -
     if b and conf < 1.0:
         penalties.append({"code": "vzorek", "label": f"Srovnání: {b['label']} ({b['n']} inzerátů)", "factor": conf})
 
-    raw = (pts_price + pts_drop + pts_private + pts_dom + pts_relist) * conf * factor
+    raw = pts_price + pts_drop + pts_private + pts_dom + pts_relist
+    if dom is None:
+        # Bez data vložení se body přepočítají na stejné maximum, aby inzerát nebyl znevýhodněný ani zvýhodněný
+        raw *= 105 / (105 - DOM_POINTS[-1][1])
+    raw *= conf * factor
     l["raw_score"] = max(0.0, raw)
     l["deal_score"] = int(round(max(0.0, min(100.0, raw))))
     l["score_parts"] = {
         "body": round(max(0.0, raw), 1),
         "cena": round(pts_price, 1), "zlevneni": round(pts_drop, 1), "majitel": pts_private,
-        "doba": pts_dom, "znovu": pts_relist, "jistota": conf, "koeficient": round(factor, 2),
+        "doba": round(pts_dom, 1), "znovu": pts_relist, "jistota": conf, "koeficient": round(factor, 2),
     }
     l["signals"] = signals
     l["penalties"] = penalties
