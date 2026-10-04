@@ -1,0 +1,215 @@
+<?php
+/**
+ * Shortcode [nemovitosti_real_v2] — nové karty agregátoru (varianta C, testovací stránka).
+ * Code Snippets na max-reality.cz, rozsah global. Data: feed.json z repa (scraper verze 2).
+ * Stránka se shortcodem dostane noindex, dokud je to test.
+ */
+
+add_filter( 'wpseo_robots', function ( $robots ) {
+	global $post;
+	if ( is_singular() && $post && has_shortcode( $post->post_content, 'nemovitosti_real_v2' ) ) {
+		return 'noindex, follow';
+	}
+	return $robots;
+} );
+
+add_shortcode( 'nemovitosti_real_v2', function ( $atts ) {
+	$atts = shortcode_atts( array(
+		'feed' => 'https://raw.githubusercontent.com/patrikpilous-dev/realitni-agregator/refs/heads/main/feed.json',
+	), $atts );
+	$feed = esc_url( $atts['feed'] );
+
+	ob_start();
+	?>
+<div class="rv2" data-feed="<?php echo $feed; ?>">
+<style>
+.rv2 { --red:#c8102e; --red-dark:#9e0c24; --ink:#222; --ink-2:#2d2d2d; --muted:#6b6b6b; --line:#e0e0e0; --ok:#1d7a3a;
+  font-family:"Nunito Sans",sans-serif; color:var(--ink-2); }
+.rv2 * { box-sizing:border-box; }
+.rv2-bar { display:flex; flex-wrap:wrap; gap:10px; align-items:flex-end; margin:0 0 18px; }
+.rv2-bar label { display:flex; flex-direction:column; gap:4px; font:600 11px Poppins,sans-serif; text-transform:uppercase; letter-spacing:.05em; color:var(--muted); }
+.rv2-bar select, .rv2-bar input { font:14px "Nunito Sans",sans-serif; padding:8px 10px; border:1px solid #cfcfcf; border-radius:0; background:#fff; color:var(--ink); min-width:150px; height:40px; }
+.rv2-stat { font-size:14px; color:var(--muted); margin:0 0 16px; }
+.rv2-stat b { color:var(--ink); }
+.rv2-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:24px; align-items:start; }
+.rv2-card { background:#fff; border:1px solid var(--line); display:flex; flex-direction:column; }
+.rv2-photo { position:relative; aspect-ratio:3/2; background:#e9e9e9 center/cover no-repeat; display:block; }
+.rv2-photo::after { content:""; position:absolute; inset:45% 0 0 0; background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.78)); }
+.rv2-nophoto { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; color:#999; font-size:13px; }
+.rv2-tags { position:absolute; left:0; top:14px; display:flex; flex-direction:column; gap:4px; align-items:flex-start; z-index:2; }
+.rv2-tag { display:inline-block; font:600 11px/1 Poppins,sans-serif; letter-spacing:.04em; text-transform:uppercase; padding:6px 9px; }
+.rv2-tag.red { background:var(--red); color:#fff; } .rv2-tag.ink { background:var(--ink); color:#fff; } .rv2-tag.white { background:#fff; color:var(--ink); }
+.rv2-count { position:absolute; right:10px; top:10px; z-index:2; background:rgba(0,0,0,.6); color:#fff; font-size:12px; padding:2px 7px; }
+.rv2-over { position:absolute; left:18px; right:18px; bottom:12px; color:#fff; z-index:2; }
+.rv2-over .p { font:700 23px/1.15 Poppins,sans-serif; }
+.rv2-over .s { font-size:13px; opacity:.92; }
+.rv2-body { padding:14px 18px 0; display:flex; flex-direction:column; flex:1; }
+.rv2-title { font:600 15px/1.35 Poppins,sans-serif; color:var(--ink); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.rv2-loc { color:var(--muted); font-size:13.5px; line-height:1.4; height:2.8em; overflow:hidden; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; margin:2px 0 12px; }
+.rv2-score { display:flex; align-items:center; gap:12px; margin-bottom:12px; }
+.rv2-score .n { font:700 30px/1 Poppins,sans-serif; color:var(--ink); }
+.rv2-score .n small { font-size:13px; color:var(--muted); font-weight:500; }
+.rv2-score .r { flex:1; }
+.rv2-score .r b { display:block; font:600 12px Poppins,sans-serif; text-transform:uppercase; letter-spacing:.05em; color:var(--ink); margin-bottom:5px; }
+.rv2-segs { display:grid; grid-template-columns:repeat(10,1fr); gap:3px; }
+.rv2-segs i { height:6px; background:#e6e6e6; } .rv2-segs i.on { background:var(--red); }
+.rv2-mkt { margin:0 0 12px; }
+.rv2-track { position:relative; height:8px; background:linear-gradient(90deg,#1d7a3a 0%,#8bbf6a 35%,#e7e7e7 50%,#e9a3a3 70%,#c8102e 100%); }
+.rv2-track .mid { position:absolute; top:-3px; left:50%; width:1px; height:14px; background:#fff; }
+.rv2-track .mk { position:absolute; top:-5px; width:3px; height:18px; background:var(--ink); margin-left:-1px; }
+.rv2-mkt .l { display:flex; justify-content:space-between; font-size:11.5px; color:var(--muted); margin-top:4px; }
+.rv2-mkt .t { font-size:13px; margin-bottom:6px; }
+.rv2-mkt .t strong { color:var(--ok); }
+.rv2-chips { height:28px; overflow:hidden; margin-bottom:14px; }
+.rv2-chip { display:inline-block; font-size:12.5px; border:1px solid var(--line); padding:3px 8px; margin:0 6px 6px 0; background:#fff; white-space:nowrap; }
+.rv2-chip.sig { border-color:var(--ink-2); }
+.rv2-foot { display:flex; gap:8px; padding:0 18px 18px; margin-top:auto; }
+.rv2-btn { display:inline-flex; align-items:center; justify-content:center; font:700 13px Poppins,sans-serif; padding:11px 14px; text-decoration:none !important; cursor:pointer; border:0; border-radius:0; line-height:1.2; }
+.rv2-btn.red { background:var(--red); color:#fff !important; flex:1; } .rv2-btn.red:hover { background:var(--red-dark); }
+.rv2-btn.line { background:#fff; color:var(--ink) !important; border:1px solid var(--ink); }
+.rv2-more { display:none; border-top:1px solid var(--line); padding:16px 18px 18px; font-size:14px; background:#fcfcfc; }
+.rv2-card.open .rv2-more { display:block; }
+.rv2-more h4 { font:600 12.5px Poppins,sans-serif; margin:0 0 8px; color:var(--ink); text-transform:uppercase; letter-spacing:.04em; }
+.rv2-more p { margin:0 0 10px; color:var(--muted); font-size:13.5px; line-height:1.55; }
+.rv2-more table { width:100%; border-collapse:collapse; margin:0 0 12px; font-size:13.5px; }
+.rv2-more td { padding:5px 0; border-bottom:1px solid #eee; vertical-align:top; }
+.rv2-more td:last-child { text-align:right; font-weight:700; white-space:nowrap; padding-left:10px; }
+.rv2-more td.neg { color:var(--red); }
+.rv2-more tr.total td { border-bottom:0; border-top:2px solid var(--ink); color:var(--ink); padding-top:8px; }
+.rv2-more .alt a { color:var(--red); }
+.rv2-load { display:block; margin:28px auto 0; }
+.rv2-empty { padding:40px; text-align:center; color:var(--muted); border:1px dashed var(--line); }
+@media (max-width:600px) { .rv2-bar label, .rv2-bar select, .rv2-bar input { width:100%; } }
+</style>
+
+<div class="rv2-bar">
+  <label>Typ<select data-f="seg"><option value="">Vše</option><option value="byt">Byty</option><option value="dum">Domy</option><option value="rekreace">Chaty a chalupy</option></select></label>
+  <label>Kraj<select data-f="region"><option value="">Celá ČR</option></select></label>
+  <label>Město nebo část<input data-f="q" type="search" placeholder="např. Praha 5, Brno"></label>
+  <label>Max. cena<select data-f="max"><option value="">Bez omezení</option><option>2000000</option><option>3000000</option><option>5000000</option><option>8000000</option><option>12000000</option></select></label>
+  <label>Řadit<select data-f="sort"><option value="score">Nejvýhodnější</option><option value="new">Nejnovější</option><option value="drop">Největší zlevnění</option><option value="price">Nejlevnější</option></select></label>
+</div>
+<p class="rv2-stat"></p>
+<div class="rv2-grid"></div>
+<button class="rv2-btn line rv2-load" type="button" hidden>Načíst další</button>
+
+<script>
+(function () {
+  var root = (document.currentScript && document.currentScript.closest(".rv2")) || document.querySelector(".rv2");
+  var FEED = root.getAttribute("data-feed");
+  var PAGE = 24, shown = PAGE, all = [], list = [];
+  var grid = root.querySelector(".rv2-grid"), stat = root.querySelector(".rv2-stat"), more = root.querySelector(".rv2-load");
+  var f = {}; root.querySelectorAll("[data-f]").forEach(function (el) { f[el.getAttribute("data-f")] = el; });
+  f.max.querySelectorAll("option").forEach(function (o) { if (o.value) o.textContent = "do " + (o.value / 1e6) + " mil. Kč"; });
+
+  function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  function num(n) { return Math.round(n).toLocaleString("cs-CZ"); }
+  function kc(n) { return num(n) + " Kč"; }
+  function img(u) { return u + "?fl=res,800,600,3|shr,,20|webp,60"; }
+  function below(l) { return l.benchmark ? Math.round((1 - l.price_per_m2 / l.benchmark.ppm2) * 100) : 0; }
+  function rating(s) { return s >= 80 ? "Výborná nabídka" : s >= 60 ? "Velmi dobrá" : s >= 40 ? "Dobrá" : "Běžná cena"; }
+  function short(l) {
+    return l.title.replace(/^Prodej /, "").replace(/^bytu/, "Byt").replace(/^rodinného domu/, "Rodinný dům")
+      .replace(/^chaty/, "Chata").replace(/^chalupy/, "Chalupa").replace(/^vily/, "Vila").replace(/^vícegeneračního domu/, "Vícegenerační dům")
+      .replace(/^zemědělské usedlosti/, "Zemědělská usedlost").replace(/^památky/, "Památka");
+  }
+  function has(l, code) { return (l.signals || []).some(function (s) { return s.code === code; }); }
+
+  function tags(l) {
+    var t = [];
+    if (l._tip) t.push(["Tip dne", "red"]);
+    if (l.price_drop) t.push(["Zlevněno " + Math.round(l.price_drop.pct) + " %", "ink"]);
+    if (has(l, "nove")) t.push(["Nové", "white"]);
+    if (l.seller === "soukromy") t.push(["Od majitele", "white"]);
+    return t.slice(0, 3).map(function (x) { return '<span class="rv2-tag ' + x[1] + '">' + x[0] + "</span>"; }).join("");
+  }
+  function chips(l) {
+    var out = [];
+    (l.signals || []).forEach(function (s) { if (s.code === "dlouho" || s.code === "znovu" || s.code === "prohlidka" || s.code === "vicekrat") out.push('<span class="rv2-chip sig">' + esc(s.label) + "</span>"); });
+    if (l.ownership) out.push('<span class="rv2-chip">' + esc(l.ownership) + "</span>");
+    (l.extras || []).forEach(function (e) { out.push('<span class="rv2-chip">' + esc(e) + "</span>"); });
+    return out.slice(0, 4).join("");
+  }
+  function why(l) {
+    var p = l.score_parts || {}, b = l.benchmark;
+    var rows = [
+      ["Cena za m² pod srovnávací cenou (" + below(l) + " %)", Math.round(p.cena || 0) + " / 70"],
+      ["Zlevnění" + (l.price_drop ? " (z " + kc(l.price_drop.from) + ")" : ""), Math.round(p.zlevneni || 0) + " / 15"],
+      ["Přímo od majitele", (p.majitel || 0) + " / 5"],
+      ["Na trhu přes 90 dní" + (l.days_on_market != null ? " (" + l.days_on_market + " dní)" : ""), (p.doba || 0) + " / 5"],
+      ["Znovu vložený inzerát", (p.znovu || 0) + " / 5"]
+    ].map(function (r) { return "<tr><td>" + r[0] + "</td><td>" + r[1] + "</td></tr>"; }).join("");
+    var pens = (l.penalties || []).map(function (x) { return '<tr><td>' + esc(x.label) + '</td><td class="neg">× ' + String(x.factor).replace(".", ",") + "</td></tr>"; }).join("");
+    var alt = (l.alt_urls || []).length ? '<p class="alt">Stejná nemovitost je inzerovaná i jinde: ' + l.alt_urls.map(function (u, i) { return '<a href="' + esc(u) + '" target="_blank" rel="noopener nofollow">nabídka ' + (i + 2) + "</a>"; }).join(", ") + "</p>" : "";
+    return "<h4>Proč je výhodný</h4><p>Srovnáváme s mediánem <b>" + kc(b.market_ppm2) + "/m²</b> u " + b.n + " inzerátů (" + esc(b.label) + "). " +
+      "Po přepočtu na plochu " + num(l.area) + " m² (typicky " + b.typical_area + " m²) vychází srovnávací cena <b>" + kc(b.ppm2) + "/m²</b>, tahle nabídka má <b>" + kc(l.price_per_m2) + "/m²</b>.</p>" +
+      "<table>" + rows + pens + '<tr class="total"><td>Skóre výhodnosti</td><td>' + l.deal_score + " / 100</td></tr></table>" + alt;
+  }
+  function card(l) {
+    var d = below(l), pos = Math.max(3, Math.min(97, 50 - d));
+    var on = Math.round(l.deal_score / 10), segs = "";
+    for (var k = 0; k < 10; k++) segs += '<i class="' + (k < on ? "on" : "") + '"></i>';
+    var photo = l.images && l.images.length
+      ? '<a class="rv2-photo" href="' + esc(l.url) + '" target="_blank" rel="noopener nofollow" style="background-image:url(\'' + esc(img(l.images[0])) + '\')"><span class="rv2-count">' + (l.image_count || l.images.length) + ((l.image_count || 0) >= 6 ? "+" : "") + " fotek</span>"
+      : '<a class="rv2-photo" href="' + esc(l.url) + '" target="_blank" rel="noopener nofollow"><span class="rv2-nophoto">Fotka se načte při další aktualizaci</span>';
+    return '<article class="rv2-card">' + photo +
+      '<span class="rv2-tags">' + tags(l) + "</span>" +
+      '<span class="rv2-over"><span class="p">' + kc(l.price) + '</span><br><span class="s">' + num(l.price_per_m2) + " Kč/m² · " + num(l.area) + " m²</span></span></a>" +
+      '<div class="rv2-body"><div class="rv2-title" title="' + esc(short(l)) + '">' + esc(short(l)) + '</div><div class="rv2-loc">' + esc(l.locality) + "</div>" +
+      '<div class="rv2-score"><div class="n">' + l.deal_score + '<small>/100</small></div><div class="r"><b>' + rating(l.deal_score) + '</b><div class="rv2-segs">' + segs + "</div></div></div>" +
+      '<div class="rv2-mkt"><div class="t">' + (d > 0 ? "O <strong>" + d + " % levnější</strong> než srovnatelné nabídky" : "Cena odpovídá srovnatelným nabídkám") + "</div>" +
+      '<div class="rv2-track"><span class="mid"></span><span class="mk" style="left:' + pos + '%"></span></div>' +
+      '<div class="l"><span>levnější</span><span>trh ' + num(l.benchmark.ppm2) + " Kč/m²</span><span>dražší</span></div></div>" +
+      '<div class="rv2-chips">' + chips(l) + "</div></div>" +
+      '<div class="rv2-foot"><a class="rv2-btn red" href="' + esc(l.url) + '" target="_blank" rel="noopener nofollow">Prohlédnout</a><button class="rv2-btn line" type="button" data-why>Proč je výhodný</button></div>' +
+      '<div class="rv2-more">' + why(l) + "</div></article>";
+  }
+
+  function apply() {
+    var seg = f.seg.value, reg = f.region.value, q = f.q.value.trim().toLowerCase(), max = +f.max.value || 0, sort = f.sort.value;
+    list = all.filter(function (l) {
+      return (!seg || l.segment === seg) && (!reg || l.region === reg) && (!max || l.price <= max) &&
+        (!q || (l.locality + " " + l.locality_city).toLowerCase().indexOf(q) >= 0);
+    });
+    var by = {
+      score: function (a, b) { return b.deal_score - a.deal_score; },
+      "new": function (a, b) { return (b.first_seen || "").localeCompare(a.first_seen || ""); },
+      drop: function (a, b) { return ((b.price_drop || {}).pct || 0) - ((a.price_drop || {}).pct || 0); },
+      price: function (a, b) { return a.price - b.price; }
+    }[sort];
+    list.sort(by);
+    shown = PAGE; render();
+  }
+  function render() {
+    var good = list.filter(function (l) { return l.deal_score >= 60; }).length;
+    stat.innerHTML = "Zobrazeno <b>" + num(list.length) + "</b> nabídek, z toho <b>" + num(good) + "</b> se skóre 60 a víc.";
+    grid.innerHTML = list.length ? list.slice(0, shown).map(card).join("") : '<div class="rv2-empty">Žádná nabídka neodpovídá filtru.</div>';
+    more.hidden = shown >= list.length;
+  }
+  grid.addEventListener("click", function (e) {
+    var b = e.target.closest("[data-why]"); if (!b) return;
+    var c = b.closest(".rv2-card"); c.classList.toggle("open");
+    b.textContent = c.classList.contains("open") ? "Skrýt" : "Proč je výhodný";
+  });
+  more.addEventListener("click", function () { shown += PAGE; render(); });
+  Object.keys(f).forEach(function (k) { f[k].addEventListener(k === "q" ? "input" : "change", apply); });
+
+  stat.textContent = "Načítám nabídky…";
+  fetch(FEED, { cache: "no-cache" }).then(function (r) { return r.json(); }).then(function (d) {
+    all = (d.listings || []).filter(function (l) { return l.benchmark && l.deal_score != null; });
+    // Tip dne: nejlepší tři nabídky přidané za poslední 3 dny
+    var cut = new Date(Date.now() - 3 * 864e5).toISOString();
+    all.filter(function (l) { return (l.first_seen || "") >= cut; }).sort(function (a, b) { return b.deal_score - a.deal_score; })
+      .slice(0, 3).forEach(function (l) { l._tip = true; });
+    var regs = {}; all.forEach(function (l) { if (l.region) regs[l.region] = 1; });
+    Object.keys(regs).sort(function (a, b) { return a.localeCompare(b, "cs"); }).forEach(function (r) {
+      var o = document.createElement("option"); o.value = r; o.textContent = r; f.region.appendChild(o);
+    });
+    apply();
+  }).catch(function () { stat.textContent = "Nabídky se nepodařilo načíst."; });
+})();
+</script>
+</div>
+	<?php
+	return ob_get_clean();
+} );

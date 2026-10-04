@@ -1,30 +1,63 @@
 name: Scrape Sreality
 
+# Záložní provoz. Hlavní běh je na NUC (nuc/spust.ps1). Když běží NUC, má být tenhle
+# workflow vypnutý (gh workflow disable "Scrape Sreality"), jinak by data zapisovali dva.
+# Databáze se drží v cache Actions mezi běhy. V 0:00 UTC jde celý trh, jinak jen nové inzeráty.
+
 on:
   schedule:
     - cron: "0 */6 * * *"
   workflow_dispatch:
+    inputs:
+      mode:
+        description: "quick nebo full"
+        default: "quick"
 
 permissions:
   contents: write
 
+concurrency:
+  group: scrape
+  cancel-in-progress: false
+
 jobs:
   scrape:
     runs-on: ubuntu-latest
+    timeout-minutes: 300
 
     steps:
       - name: Checkout repozitáře
         uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Nastavení Pythonu
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
+      - name: Obnovení databáze
+        id: db
+        uses: actions/cache/restore@v4
+        with:
+          path: agregator.sqlite
+          key: agregator-db-${{ github.run_id }}
+          restore-keys: agregator-db-
+
       - name: Spuštění scraperu
-        run: python scraper.py
+        run: |
+          MODE="${{ github.event.inputs.mode }}"
+          if [ -z "$MODE" ]; then
+            if [ "$(date -u +%H)" = "00" ]; then MODE=full; else MODE=quick; fi
+          fi
+          # Bez uložené databáze by quick počítal srovnání jen z feedu (samé výhodné nabídky)
+          if [ -z "${{ steps.db.outputs.cache-matched-key }}" ]; then MODE=full; fi
+          python scraper.py --mode "$MODE" --db agregator.sqlite --out .
+
+      - name: Uložení databáze
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: agregator.sqlite
+          key: agregator-db-${{ github.run_id }}
 
       # Scraper končí s exit code 1, když zdroj nevrátí dost inzerátů.
       # Job pak spadne a tenhle krok se přeskočí — feed zůstane nedotčený.
@@ -32,7 +65,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add feed.json archived.json price_history.json
+          git add feed.json archived.json price_history.json market_stats.json
           git diff --staged --quiet || git commit -m "feed: aktualizace $(date -u +'%Y-%m-%d %H:%M') UTC"
           git pull --rebase origin main
           git push
