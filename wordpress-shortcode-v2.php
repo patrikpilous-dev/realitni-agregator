@@ -259,7 +259,7 @@ add_shortcode( 'nemovitosti_real_v2', function ( $atts ) {
     });
     return out;
   }
-  function introHtml(m, n60) {
+  function introHtml(m, n60, feed) {
     var cells = [], what = FIX.seg === "byt" ? "bytů" : FIX.seg === "dum" ? "domů" : "bytů a domů";
     if (m && !m.seg) {   // starší formát mesta.json (CDN GitHubu může chvíli držet předchozí verzi)
       m = { seg: { byt: { n: 0, n60: 0, median: m.byt }, dum: { n: 0, n60: 0, median: m.dum } }, _n: m.aktivnich };
@@ -271,6 +271,10 @@ add_shortcode( 'nemovitosti_real_v2', function ( $atts ) {
       if (m.seg.byt && m.seg.byt.median && FIX.seg !== "dum") cells.push([kc(m.seg.byt.median) + "/m²", "medián ceny bytů"]);
       if (m.seg.dum && m.seg.dum.median && FIX.seg !== "byt") cells.push([kc(m.seg.dum.median) + "/m²", "medián ceny domů"]);
       n60 = si.n60;
+    }
+    if (!m && feed && feed.total_active) {
+      cells.push([num(feed.total_active), "bytů a domů na prodej, každý den procházíme celý trh"]);
+      cells.push([num(feed.total_in_feed), "nejvýhodnějších nabídek na této stránce"]);
     }
     cells.push([num(n60), "nabídek se skóre 60 a víc"]);
     return cells.map(function (c) { return "<div><b>" + c[0] + "</b><span>" + c[1] + "</span></div>"; }).join("");
@@ -343,7 +347,7 @@ add_shortcode( 'nemovitosti_real_v2', function ( $atts ) {
     });
     apply();
     var n60 = cityInfo ? 0 : all.filter(function (l) { return fixedOk(l) && l.deal_score >= 60; }).length;
-    intro.innerHTML = introHtml(cityInfo, n60);
+    intro.innerHTML = introHtml(cityInfo, n60, d);
     intro.hidden = false;
   }).catch(function (e) { if (!all.length) stat.textContent = "Nabídky se nepodařilo načíst."; if (window.console) console.warn("rv2", e); });
   getJSON("market_stats.json").then(function (m) { renderChart(m.series || {}); }).catch(function () {});
