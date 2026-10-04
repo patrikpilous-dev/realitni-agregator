@@ -238,7 +238,7 @@ add_shortcode( 'nemovitosti_real_v2', function ( $atts ) {
   }
   function render() {
     var good = list.filter(function (l) { return l.deal_score >= 60; }).length;
-    stat.innerHTML = "Zobrazeno <b>" + num(list.length) + "</b> nabídek, z toho <b>" + num(good) + "</b> se skóre 60 a víc.";
+    stat.innerHTML = "Zobrazujeme <b>" + num(list.length) + "</b> nejvýhodnějších nabídek, z toho <b>" + num(good) + "</b> se skóre 60 a víc.";
     grid.innerHTML = list.length ? list.slice(0, shown).map(card).join("") : '<div class="rv2-empty">Žádná nabídka neodpovídá filtru.</div>';
     more.hidden = shown >= list.length;
   }
@@ -251,12 +251,22 @@ add_shortcode( 'nemovitosti_real_v2', function ( $atts ) {
   Object.keys(f).forEach(function (k) { f[k].addEventListener(k === "q" ? "input" : "change", apply); });
 
   // ── Statistika a graf ──────────────────────────────────────────────────────
+  function segInfo(m) {
+    // součet za typy, které stránka ukazuje (byty, domy nebo vše)
+    var out = { n: 0, n60: 0 };
+    Object.keys(m.seg || {}).forEach(function (k) {
+      if (!FIX.seg || FIX.seg === k) { out.n += m.seg[k].n; out.n60 += m.seg[k].n60; }
+    });
+    return out;
+  }
   function introHtml(m, n60) {
-    var cells = [];
+    var cells = [], what = FIX.seg === "byt" ? "bytů" : FIX.seg === "dum" ? "domů" : "bytů a domů";
     if (m) {
-      cells.push([num(m.aktivnich), "nabídek k prodeji, " + esc(FIX.city)]);
-      if (m.byt && FIX.seg !== "dum") cells.push([kc(m.byt) + "/m²", "medián ceny bytů"]);
-      if (m.dum && FIX.seg !== "byt") cells.push([kc(m.dum) + "/m²", "medián ceny domů"]);
+      var si = segInfo(m);
+      cells.push([num(si.n), what + " na prodej, " + esc(FIX.city)]);
+      if (m.seg.byt && m.seg.byt.median && FIX.seg !== "dum") cells.push([kc(m.seg.byt.median) + "/m²", "medián ceny bytů"]);
+      if (m.seg.dum && m.seg.dum.median && FIX.seg !== "byt") cells.push([kc(m.seg.dum.median) + "/m²", "medián ceny domů"]);
+      n60 = si.n60;
     }
     cells.push([num(n60), "nabídek se skóre 60 a víc"]);
     return cells.map(function (c) { return "<div><b>" + c[0] + "</b><span>" + c[1] + "</span></div>"; }).join("");
@@ -327,7 +337,7 @@ add_shortcode( 'nemovitosti_real_v2', function ( $atts ) {
       var o = document.createElement("option"); o.value = r; o.textContent = r; f.region.appendChild(o);
     });
     apply();
-    var n60 = cityInfo ? cityInfo.vyhodnych : all.filter(function (l) { return fixedOk(l) && l.deal_score >= 60; }).length;
+    var n60 = cityInfo ? 0 : all.filter(function (l) { return fixedOk(l) && l.deal_score >= 60; }).length;
     intro.innerHTML = introHtml(cityInfo, n60);
     intro.hidden = false;
   }).catch(function () { stat.textContent = "Nabídky se nepodařilo načíst."; });

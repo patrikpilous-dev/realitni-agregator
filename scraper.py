@@ -40,7 +40,9 @@ HISTORY_FILE = "price_history.json"   # denní mediány cen/m² per město (star
 STATS_FILE   = "market_stats.json"    # týdenní mediány pro grafy na stránkách měst
 CITIES_FILE  = "mesta.json"           # přehled měst: kraj, počet nabídek, mediány (úvod stránek měst)
 REGION_DIR   = "feed-kraje"           # nejvýhodnější nabídky po krajích pro stránky měst
-REGION_FEED_SIZE = 800
+REGION_FEED_SIZE = 600       # nejvýhodnějších v kraji
+REGION_CITY_TOP  = 150       # plus nejvýhodnějších z každého většího města kraje, aby stránky měst nebyly prázdné
+REGION_CITY_MIN  = 50        # větší město = aspoň tolik srovnatelných nabídek
 
 PAGE_SIZE        = 22     # inzerátů na stránku výpisu
 QUICK_PAGES      = 12     # quick režim: nejnovější stránky na kategorii
@@ -1066,27 +1068,41 @@ def write_region_feeds(scored: list[dict], out_dir: str) -> None:
             by_region[l["region"]].append(l)
     os.makedirs(os.path.join(out_dir, REGION_DIR), exist_ok=True)
     for region, items in by_region.items():
+        size = defaultdict(int)
+        for l in items:
+            size[l["city"]] += 1
+        chosen, per_city = [], defaultdict(int)
+        for i, l in enumerate(items):
+            per_city[l["city"]] += 1
+            big = size[l["city"]] >= REGION_CITY_MIN
+            if i < REGION_FEED_SIZE or (big and per_city[l["city"]] <= REGION_CITY_TOP):
+                chosen.append(l)
         write_json(os.path.join(out_dir, REGION_DIR, region_slug(region) + ".json"), {
             "updated": now_iso(), "region": region, "total": len(items),
-            "listings": [to_feed_item(l) for l in items[:REGION_FEED_SIZE]],
+            "listings": [to_feed_item(l) for l in chosen],
         })
 
 
 def write_cities(valid: list[dict], scored: list[dict], cstats: dict, out_dir: str) -> None:
-    """{město: {kraj, kraj_slug, aktivnich, vyhodnych (60+), byt, dum (medián Kč/m²)}}"""
+    """
+    {město: {kraj, kraj_slug, aktivnich, vyhodnych, seg: {byt|dum|rekreace: {n, n60, median}}}}
+    n = aktivní srovnatelné nabídky, n60 = se skóre 60+, median = Kč/m² (od 5 nabídek).
+    """
     info: dict[str, dict] = {}
     for l in valid:
         if not l["city"]:
             continue
         c = info.setdefault(l["city"], {"kraj": l["region"], "kraj_slug": region_slug(l["region"]),
-                                        "aktivnich": 0, "vyhodnych": 0})
+                                        "aktivnich": 0, "vyhodnych": 0, "seg": {}})
         c["aktivnich"] += 1
+        c["seg"].setdefault(l["seg"], {"n": 0, "n60": 0})["n"] += 1
     for l in scored:
         if l["city"] in info and l.get("deal_score", 0) >= 60:
             info[l["city"]]["vyhodnych"] += 1
+            info[l["city"]]["seg"][l["seg"]]["n60"] += 1
     for (level, city, seg, _), (med, n, _) in cstats.items():
-        if city in info and n >= 5:
-            info[city][seg] = med
+        if city in info and n >= 5 and seg in info[city]["seg"]:
+            info[city]["seg"][seg]["median"] = med
     write_json(os.path.join(out_dir, CITIES_FILE),
                {"updated": now_iso(), "mesta": {k: v for k, v in info.items() if v["aktivnich"] >= 3}})
 
