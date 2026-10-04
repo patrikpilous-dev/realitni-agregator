@@ -320,7 +320,8 @@ add_shortcode( 'nemovitosti_real_v2', function ( $atts ) {
     chart.querySelector(".rv2-svg").innerHTML = svgChart(lines);
     chart.hidden = false;
   }
-  function getJSON(path) { return fetch(BASE + path, { cache: "no-cache" }).then(function (r) { if (!r.ok) throw r.status; return r.json(); }); }
+  // Parametr t mění adresu každých 10 minut: CDN GitHubu jinak umí držet starou kopii i po aktualizaci dat
+  function getJSON(path) { return fetch(BASE + path + "?t=" + Math.floor(Date.now() / 6e5), { cache: "no-cache" }).then(function (r) { if (!r.ok) throw r.status; return r.json(); }); }
 
   stat.textContent = "Načítám nabídky…";
   var cityInfo = null;
