@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-04T03:34:11.980651+00:00",
+  "updated": "2026-10-04T11:43:17.605569+00:00",
   "total": 582,
   "listings": [
     {
@@ -13244,61 +13244,6 @@
       "sold_at": "2026-09-27T20:36:04.012402+00:00"
     },
     {
-      "id": "2600751948",
-      "title": "Prodej rodinného domu 117 m², pozemek 1002 m²",
-      "price": 5990000,
-      "area": 117.0,
-      "price_per_m2": 51197,
-      "score": 0,
-      "median_price_per_m2": null,
-      "disposition": "ostatní",
-      "disposition_group": "ostatní",
-      "locality": "Brtnice - Příseka, okres Jihlava",
-      "locality_city": "Brtnice",
-      "type": "dům",
-      "transaction": "prodej",
-      "ownership": "",
-      "building_type": "Cihlová",
-      "extras": [
-        "Parkování",
-        "Novostavba"
-      ],
-      "detail_fetched": true,
-      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/brtnice-priseka/2600751948",
-      "scraped_at": "2026-09-26T10:30:39.983903+00:00",
-      "listed_since": "2026-03-17",
-      "last_checked_at": "2026-09-28T12:21:33.090220+00:00",
-      "sold_at": "2026-09-28T12:21:33.090220+00:00"
-    },
-    {
-      "id": "3876839500",
-      "title": "Prodej rodinného domu 153 m², pozemek 857 m²",
-      "price": 8900000,
-      "area": 153.0,
-      "price_per_m2": 58170,
-      "score": 0,
-      "median_price_per_m2": null,
-      "disposition": "ostatní",
-      "disposition_group": "ostatní",
-      "locality": "Dětenice, okres Jičín",
-      "locality_city": "Dětenice",
-      "type": "dům",
-      "transaction": "prodej",
-      "ownership": "",
-      "building_type": "Cihlová",
-      "extras": [
-        "Garáž",
-        "Parkování",
-        "Sklep"
-      ],
-      "detail_fetched": true,
-      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/detenice-detenice/3876839500",
-      "scraped_at": "2026-09-26T10:30:39.983912+00:00",
-      "listed_since": "2026-07-13",
-      "last_checked_at": "2026-09-28T12:21:33.090220+00:00",
-      "sold_at": "2026-09-28T12:21:33.090220+00:00"
-    },
-    {
       "id": "2410422348",
       "title": "Prodej rodinného domu 96 m², pozemek 169 m²",
       "price": 1650000,
@@ -15724,6 +15669,56 @@
       "listed_since": "2025-12-29",
       "last_checked_at": "2026-10-04T03:24:31.056163+00:00",
       "sold_at": "2026-10-04T03:24:31.056163+00:00"
+    },
+    {
+      "id": "3476177740",
+      "title": "Prodej rodinného domu 471 m², pozemek 322 m²",
+      "price": 13364000,
+      "area": 471.0,
+      "price_per_m2": 28374,
+      "score": 45.1,
+      "median_price_per_m2": 51639,
+      "disposition": "ostatní",
+      "disposition_group": "ostatní",
+      "locality": "Havlíčkova, Jablonec nad Nisou",
+      "locality_city": "Jablonec nad Nisou",
+      "type": "dům",
+      "transaction": "prodej",
+      "ownership": "",
+      "building_type": "",
+      "extras": [],
+      "detail_fetched": false,
+      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/jablonec-nad-nisou-jablonec-nad-nisou-havlickova/3476177740",
+      "scraped_at": "2026-10-02T11:34:46.044485+00:00",
+      "last_checked_at": "2026-10-04T11:31:03.797811+00:00",
+      "sold_at": "2026-10-04T11:31:03.797811+00:00"
+    },
+    {
+      "id": "2121056332",
+      "title": "Prodej rodinného domu 140 m², pozemek 10000 m²",
+      "price": 6690000,
+      "area": 140.0,
+      "price_per_m2": 47786,
+      "score": 0,
+      "median_price_per_m2": null,
+      "disposition": "ostatní",
+      "disposition_group": "ostatní",
+      "locality": "Radonice, okres Chomutov",
+      "locality_city": "Radonice",
+      "type": "dům",
+      "transaction": "prodej",
+      "ownership": "",
+      "building_type": "Cihlová",
+      "extras": [
+        "Garáž",
+        "Parkování"
+      ],
+      "detail_fetched": true,
+      "url": "https://www.sreality.cz/detail/prodej/dum/rodinny/radonice/2121056332",
+      "scraped_at": "2026-10-02T11:34:46.044706+00:00",
+      "listed_since": "2026-08-19",
+      "last_checked_at": "2026-10-04T11:31:03.797811+00:00",
+      "sold_at": "2026-10-04T11:31:03.797811+00:00"
     }
   ]
 }
