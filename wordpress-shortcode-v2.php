@@ -74,8 +74,8 @@ add_shortcode( 'nemovitosti_real_v2', function ( $atts ) {
 .rv2-mkt .l { display:flex; justify-content:space-between; font-size:11.5px; color:var(--muted); margin-top:4px; }
 .rv2-mkt .t { font-size:13px; margin-bottom:6px; }
 .rv2-mkt .t strong { color:var(--ok); }
-.rv2-chips { height:64px; overflow:hidden; margin-bottom:12px; align-content:flex-start; }
-.rv2-chip { display:inline-block; font-size:12.5px; border:1px solid var(--line); padding:3px 8px; margin:0 6px 6px 0; background:#fff; white-space:nowrap; }
+.rv2-chips { display:flex; flex-wrap:wrap; align-content:flex-start; gap:6px; height:58px; overflow:hidden; margin-bottom:12px; }
+.rv2-chip { display:inline-block; font-size:12.5px; line-height:18px; border:1px solid var(--line); padding:3px 8px; margin:0; background:#fff; white-space:nowrap; }
 .rv2-chip.sig { border-color:var(--ink-2); }
 .rv2-foot { display:flex; padding:0 18px 18px; margin-top:auto; }
 .rv2-why { background:none; border:0; padding:0; margin-top:6px; font:600 12.5px "Nunito Sans",sans-serif; color:var(--muted); text-decoration:underline; text-underline-offset:2px; cursor:pointer; }
