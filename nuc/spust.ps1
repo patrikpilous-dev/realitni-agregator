@@ -41,7 +41,7 @@ try {
         exit $kod
     }
 
-    git add feed.json archived.json price_history.json market_stats.json
+    git add feed.json archived.json price_history.json market_stats.json mesta.json feed-kraje
     git diff --staged --quiet
     if ($LASTEXITCODE -ne 0) {
         git commit -q -m ("feed: {0} {1} (NUC)" -f $Mode, (Get-Date -Format "yyyy-MM-dd HH:mm"))

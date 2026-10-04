@@ -38,6 +38,9 @@ OUTPUT_FILE  = "feed.json"
 ARCHIVE_FILE = "archived.json"
 HISTORY_FILE = "price_history.json"   # denní mediány cen/m² per město (starý formát, čte ho web)
 STATS_FILE   = "market_stats.json"    # týdenní mediány pro grafy na stránkách měst
+CITIES_FILE  = "mesta.json"           # přehled měst: kraj, počet nabídek, mediány (úvod stránek měst)
+REGION_DIR   = "feed-kraje"           # nejvýhodnější nabídky po krajích pro stránky měst
+REGION_FEED_SIZE = 800
 
 PAGE_SIZE        = 22     # inzerátů na stránku výpisu
 QUICK_PAGES      = 12     # quick režim: nejnovější stránky na kategorii
@@ -842,27 +845,24 @@ def fmt_kc(n: int) -> str:
     return f"{n:,}".replace(",", " ") + " Kč"
 
 
-# Body za dobu na trhu: (dní, bodů), mezi body lineárně
-DOM_POINTS = [(0, 0), (30, 4), (60, 10), (90, 15), (180, 21), (365, 25)]
-
-
-def dom_points(dom: int | None) -> float:
-    if dom is None:
-        return 0.0
-    for (d0, p0), (d1, p1) in zip(DOM_POINTS, DOM_POINTS[1:]):
-        if dom <= d1:
-            return p0 + (p1 - p0) * (dom - d0) / (d1 - d0)
-    return float(DOM_POINTS[-1][1])
+# Doba na trhu sama výhodnost nedělá. Dlouho bez zlevnění = ležák (předražené nebo s vadou),
+# dlouho a zlevňuje = prodávající povoluje, čerstvá nabídka za dobrou cenu = rychle zmizí.
+MOTIVATED_DAYS, MOTIVATED_DROP, MOTIVATED_PTS = 60, 0.03, 10
+FRESH_DAYS, FRESH_PTS = 7, 5
+STALE_PENALTIES = [(240, 0.70), (120, 0.85)]   # (dní bez zlevnění, koeficient), od nejdelší
+SCORE_MAX = 115
 
 
 def score_listing(l: dict, bench: dict, price_max: dict, relisted_price: dict) -> None:
     """
     Skóre výhodnosti 0–100:
-      cena pod srovnávací cenou  až 55 b. (40 % pod trhem = plný počet)
-      doba na trhu               až 25 b. (prodávající, který dlouho neprodal, spíš povolí; viz DOM_POINTS)
+      cena pod srovnávací cenou  až 75 b. (10 % pod trhem 18 b., 20 % 34 b., 40 % 59 b.)
       zlevnění                   až 15 b. (15 % a víc)
+      prodávající povoluje         10 b. (na trhu 60+ dní a zlevněno aspoň o 3 %)
+      čerstvá nabídka               5 b. (na trhu nejvýš 7 dní)
       přímo od majitele             5 b.
       znovu vložený inzerát         5 b.
+    Ležák (120+ dní bez zlevnění) × 0,85, 240+ dní × 0,7.
     × jistota srovnání (vzorek, úroveň lokality) × koeficienty za nesrovnatelnou cenu.
     """
     now = datetime.now(timezone.utc)
@@ -876,7 +876,9 @@ def score_listing(l: dict, bench: dict, price_max: dict, relisted_price: dict) -
         return
 
     signals, penalties = [], []
-    pts_price = max(0.0, min(discount / 0.40, 1.0)) * 55
+    # Plynule rostoucí křivka bez stropu (do hranice podezřelé ceny), aby se špička neslila do stejných hodnot
+    d = max(0.0, min(discount, 1 - SUSPICIOUS_RATIO)) / (1 - SUSPICIOUS_RATIO)
+    pts_price = 75 * (1 - (1 - d) ** 1.6)
 
     # Zlevnění: maximum z naší historie, původní cena ze Sreality a cena předchozího inzerátu
     ref = max(price_max.get(l["id"], 0), l.get("price_old") or 0, relisted_price.get(l["id"], 0))
@@ -896,9 +898,14 @@ def score_listing(l: dict, bench: dict, price_max: dict, relisted_price: dict) -
     # Doba na trhu jen z data vložení na Sreality (detail). Naše first_seen by u nové databáze bylo vždy dnes.
     dom = days_between(l.get("listed_since"), now)
     l["days_on_market"] = dom
-    pts_dom = dom_points(dom)
-    if dom is not None and dom >= 60:
+    pts_motiv = pts_fresh = 0
+    if dom is not None and dom >= MOTIVATED_DAYS and drop >= MOTIVATED_DROP:
+        pts_motiv = MOTIVATED_PTS
+        signals.append({"code": "povoluje", "label": f"Prodávající zlevňuje (na trhu {dom} dní)"})
+    elif dom is not None and dom >= 60:
         signals.append({"code": "dlouho", "label": f"Na trhu {dom} dní"})
+    if dom is not None and dom <= FRESH_DAYS:
+        pts_fresh = FRESH_PTS
     first_age = days_between(l.get("first_seen"), now)
     if first_age is not None and first_age <= 2 and (dom is None or dom <= 7):
         signals.append({"code": "nove", "label": "Nové v nabídce"})
@@ -924,6 +931,12 @@ def score_listing(l: dict, bench: dict, price_max: dict, relisted_price: dict) -
     if discount > EXTREME_DISCOUNT:
         factor *= PENALTIES["extremni"][0]
         penalties.append({"code": "extremni", "label": PENALTIES["extremni"][1], "factor": PENALTIES["extremni"][0]})
+    if dom is not None and drop < 0.01:
+        for days, f in STALE_PENALTIES:
+            if dom >= days:
+                factor *= f
+                penalties.append({"code": "lezak", "label": f"Na trhu {dom} dní bez zlevnění", "factor": f})
+                break
     if not l.get("detail_at"):
         factor *= PENALTIES["bez_detailu"][0]
         penalties.append({"code": "bez_detailu", "label": PENALTIES["bez_detailu"][1], "factor": PENALTIES["bez_detailu"][0]})
@@ -931,38 +944,41 @@ def score_listing(l: dict, bench: dict, price_max: dict, relisted_price: dict) -
     if b and conf < 1.0:
         penalties.append({"code": "vzorek", "label": f"Srovnání: {b['label']} ({b['n']} inzerátů)", "factor": conf})
 
-    raw = pts_price + pts_drop + pts_private + pts_dom + pts_relist
+    raw = pts_price + pts_drop + pts_motiv + pts_fresh + pts_private + pts_relist
     if dom is None:
         # Bez data vložení se body přepočítají na stejné maximum, aby inzerát nebyl znevýhodněný ani zvýhodněný
-        raw *= 105 / (105 - DOM_POINTS[-1][1])
+        raw *= SCORE_MAX / (SCORE_MAX - MOTIVATED_PTS - FRESH_PTS)
     raw *= conf * factor
     l["raw_score"] = max(0.0, raw)
     l["deal_score"] = int(round(max(0.0, min(100.0, raw))))
     l["score_parts"] = {
         "body": round(max(0.0, raw), 1),
         "cena": round(pts_price, 1), "zlevneni": round(pts_drop, 1), "majitel": pts_private,
-        "doba": round(pts_dom, 1), "znovu": pts_relist, "jistota": conf, "koeficient": round(factor, 2),
+        "povoluje": pts_motiv, "cerstve": pts_fresh, "znovu": pts_relist, "jistota": conf, "koeficient": round(factor, 2),
     }
     l["signals"] = signals
     l["penalties"] = penalties
 
 
 def calibrate(listings: list[dict]) -> None:
-    """Převede body na skóre 0–100 podle pořadí v trhu (viz CALIBRATION)."""
-    raws = sorted(l["raw_score"] for l in listings)
-    if len(raws) < 200:
+    """Převede body na skóre 0–100 podle pořadí v trhu (viz CALIBRATION). Shodné body = shodné skóre."""
+    if len(listings) < 200:
         return
-    def at(q: float) -> float:
-        return raws[min(len(raws) - 1, int(q * (len(raws) - 1)))]
-    anchors = [(at(q), sc) for q, sc in CALIBRATION]
-    for l in listings:
-        r = l["raw_score"]
-        out = anchors[-1][1]
-        for (r0, s0), (r1, s1) in zip(anchors, anchors[1:]):
-            if r <= r1:
-                out = s0 if r1 <= r0 else s0 + (s1 - s0) * (r - r0) / (r1 - r0)
+    order = sorted(listings, key=lambda l: l["raw_score"])
+    n = len(order)
+    i = 0
+    while i < n:
+        j = i
+        while j + 1 < n and order[j + 1]["raw_score"] == order[i]["raw_score"]:
+            j += 1
+        q = ((i + j) / 2) / (n - 1)          # průměrné pořadí skupiny shodných bodů
+        for (q0, s0), (q1, s1) in zip(CALIBRATION, CALIBRATION[1:]):
+            if q <= q1:
+                score = s0 + (s1 - s0) * (q - q0) / (q1 - q0)
                 break
-        l["deal_score"] = int(round(max(0, min(100, out))))
+        for k in range(i, j + 1):
+            order[k]["deal_score"] = int(round(score))
+        i = j + 1
 
 
 def dedupe(listings: list[dict]) -> list[dict]:
@@ -1030,6 +1046,51 @@ def save_stats(con: sqlite3.Connection, bench: dict) -> None:
     con.commit()
 
 
+def city_stats(valid: list[dict]) -> dict[tuple, tuple[int, int, float]]:
+    """Mediány za celé město (Praha, Brno, ...) bez ohledu na městskou část, pro stránky měst a grafy."""
+    buckets: dict[tuple, list[int]] = defaultdict(list)
+    for l in valid:
+        if l["city"]:
+            buckets[("mesto", l["city"], l["seg"], "")].append(l["ppm2"])
+    return {k: (round(statistics.median(v)), len(v), 0) for k, v in buckets.items()}
+
+
+def region_slug(region: str) -> str:
+    return sub_slug(region) or "ostatni"
+
+
+def write_region_feeds(scored: list[dict], out_dir: str) -> None:
+    by_region: dict[str, list[dict]] = defaultdict(list)
+    for l in scored:                       # scored je seřazený od nejvýhodnějších
+        if l["region"]:
+            by_region[l["region"]].append(l)
+    os.makedirs(os.path.join(out_dir, REGION_DIR), exist_ok=True)
+    for region, items in by_region.items():
+        write_json(os.path.join(out_dir, REGION_DIR, region_slug(region) + ".json"), {
+            "updated": now_iso(), "region": region, "total": len(items),
+            "listings": [to_feed_item(l) for l in items[:REGION_FEED_SIZE]],
+        })
+
+
+def write_cities(valid: list[dict], scored: list[dict], cstats: dict, out_dir: str) -> None:
+    """{město: {kraj, kraj_slug, aktivnich, vyhodnych (60+), byt, dum (medián Kč/m²)}}"""
+    info: dict[str, dict] = {}
+    for l in valid:
+        if not l["city"]:
+            continue
+        c = info.setdefault(l["city"], {"kraj": l["region"], "kraj_slug": region_slug(l["region"]),
+                                        "aktivnich": 0, "vyhodnych": 0})
+        c["aktivnich"] += 1
+    for l in scored:
+        if l["city"] in info and l.get("deal_score", 0) >= 60:
+            info[l["city"]]["vyhodnych"] += 1
+    for (level, city, seg, _), (med, n, _) in cstats.items():
+        if city in info and n >= 5:
+            info[city][seg] = med
+    write_json(os.path.join(out_dir, CITIES_FILE),
+               {"updated": now_iso(), "mesta": {k: v for k, v in info.items() if v["aktivnich"] >= 3}})
+
+
 def write_price_history(con: sqlite3.Connection, out_dir: str) -> None:
     """Starý formát pro graf na /real/: { days: [ {date, cities: {město: {byty, domy, celkem}}} ] }"""
     path = os.path.join(out_dir, HISTORY_FILE)
@@ -1053,24 +1114,21 @@ def write_price_history(con: sqlite3.Connection, out_dir: str) -> None:
 
 def write_market_stats(con: sqlite3.Connection, out_dir: str) -> None:
     """
-    Týdenní mediány ceny/m² za 2 roky pro grafy na stránkách měst a filtrů.
-    series[klíč] = [[pondělí týdne, medián, počet], ...], klíč "úroveň|lokalita|segment|dispozice".
+    Denní mediány ceny/m² za posledních 180 dní pro grafy na stránkách měst a filtrů.
+    series["úroveň|klíč|segment|dispozice"] = [[datum, medián, počet], ...]
+    Jen město, kraj a ČR (dispozice jen za celou ČR), aby soubor zůstal malý.
+    Data jsou z celého trhu od 4. 10. 2026, starší historie (verze 1) se záměrně nepřebírá.
     """
-    since = (datetime.now(timezone.utc) - timedelta(days=730)).strftime("%Y-%m-%d")
+    since = (datetime.now(timezone.utc) - timedelta(days=180)).strftime("%Y-%m-%d")
     rows = con.execute(
-        "SELECT date, level, key, seg, dgroup, median, n FROM stats WHERE date>=? ORDER BY date", (since,)
+        """SELECT date, level, key, seg, dgroup, median, n FROM stats WHERE date>=?
+           AND level IN ('mesto','kraj','cr') AND (dgroup='' OR level='cr') ORDER BY date""", (since,)
     ).fetchall()
-    weekly: dict[str, dict[str, list]] = defaultdict(lambda: defaultdict(list))
+    series: dict[str, list] = defaultdict(list)
     for r in rows:
-        d = datetime.strptime(r["date"], "%Y-%m-%d")
-        week = (d - timedelta(days=d.weekday())).strftime("%Y-%m-%d")
-        weekly[f'{r["level"]}|{r["key"]}|{r["seg"]}|{r["dgroup"]}'][week].append((r["median"], r["n"]))
-    series = {}
-    for key, weeks in weekly.items():
-        pts = [[w, round(statistics.median(m for m, _ in v)), max(n for _, n in v)] for w, v in sorted(weeks.items())]
-        if pts and pts[-1][2] >= 5:
-            series[key] = pts
-    write_json(os.path.join(out_dir, STATS_FILE), {"updated": now_iso(), "series": series})
+        series[f'{r["level"]}|{r["key"]}|{r["seg"]}|{r["dgroup"]}'].append([r["date"], r["median"], r["n"]])
+    series = {k: v for k, v in series.items() if v[-1][2] >= 5}
+    write_json(os.path.join(out_dir, STATS_FILE), {"updated": now_iso(), "since": "2026-10-04", "series": series})
 
 
 # ── Hlavní funkce ──────────────────────────────────────────────────────────────
@@ -1143,7 +1201,8 @@ def main() -> None:
     active = [row_dict(r) for r in con.execute("SELECT * FROM listings WHERE status='active'")]
     valid = [l for l in active if is_valid(l)]
     bench = build_benchmarks(valid)
-    save_stats(con, bench)
+    cstats = city_stats(valid)
+    save_stats(con, {**bench, **cstats})
 
     price_max = {r[0]: r[1] for r in con.execute("SELECT id, MAX(price) FROM prices GROUP BY id")}
     relisted_price = {
@@ -1186,6 +1245,8 @@ def main() -> None:
         arch_items.append(item)
     write_json(os.path.join(args.out, ARCHIVE_FILE), {"updated": now_iso(), "total": len(arch_items), "listings": arch_items})
 
+    write_region_feeds(scored, args.out)
+    write_cities(valid, scored, cstats, args.out)
     write_price_history(con, args.out)
     write_market_stats(con, args.out)
     con.close()
