@@ -8,6 +8,9 @@
  *   [nemovitosti_real_v2 city="Brno"]            /real/brno/
  *   [nemovitosti_real_v2 type="byt" city="Brno"] /real/byty/brno/
  *   [nemovitosti_real_v2 disp="2+kk"]            /real/2-kk/
+ *   [nemovitosti_real_v2 type="byt" city="Brno" disp="2+1"]  /real/byty/brno/2-1/
+ *   [nemovitosti_real_v2 type="byt" city="Praha" district="Praha 4"]  /real/byty/praha/praha-4/
+ *   [nemovitosti_real_v2 type="byt" cheap="1"]   /real/levne-byty/ (nejnižší cena mezi nabídkami se skóre 40+)
  *
  * Server vypisuje texty, statistiky trhu, 12 nejvýhodnějších nabídek (stranky.json), schéma ItemList
  * a síť odkazů na celý hub. JavaScript pak načte celý výpis, filtry a graf. Filtry, které mají
@@ -15,9 +18,9 @@
  * Noindex má jen testovací stránka (ID 90620).
  */
 
-// Nastavení postranního panelu šablony WpResidence čitelné a zapisovatelné přes REST (stránky agregátoru bez sidebaru)
+// Nastavení postranního panelu šablony WpResidence a meta popis Yoastu u stránek čitelné a zapisovatelné přes REST
 add_action( 'rest_api_init', function () {
-	foreach ( array( 'sidebar_option', 'sidebar_select' ) as $mxr_klic ) {
+	foreach ( array( 'sidebar_option', 'sidebar_select', '_yoast_wpseo_metadesc' ) as $mxr_klic ) {
 		register_post_meta( 'page', $mxr_klic, array(
 			'type'          => 'string',
 			'single'        => true,
@@ -88,7 +91,17 @@ function mxr_agr_slug( $s ) {
 
 /** Cesta stránky pro kombinaci filtrů, nebo '' když taková stránka není. Stejnou logiku má JS (pageUrl). */
 function mxr_agr_path( $st ) {
+	$st   = array_merge( array( 'seg' => '', 'city' => '', 'disp' => '', 'extra' => '', 'own' => '', 'district' => '', 'cheap' => '' ), $st );
 	$typ  = array( 'byt' => 'byty', 'dum' => 'domy' );
+	if ( $st['cheap'] ) {
+		return 'real/levne-' . ( 'dum' === $st['seg'] ? 'domy' : 'byty' );
+	}
+	if ( $st['district'] ) {
+		return ( $st['disp'] || $st['extra'] || $st['own'] || 'dum' === $st['seg'] ) ? '' : 'real/byty/praha/' . mxr_agr_slug( $st['district'] );
+	}
+	if ( $st['city'] && $st['disp'] && ! $st['extra'] && ! $st['own'] && 'dum' !== $st['seg'] ) {
+		return 'real/byty/' . mxr_agr_slug( $st['city'] ) . '/' . mxr_agr_slug( $st['disp'] );
+	}
 	$dims = array_filter( array( $st['city'], $st['disp'], $st['extra'], $st['own'] ) );
 	if ( count( $dims ) > 1 ) {
 		return '';
@@ -171,6 +184,17 @@ function mxr_agr_cities() {
 		'Kopřivnice'         => array( 'info' => array( 44, 8, 'Moravskoslezském kraji', 23000, 7.0, 'Třinec' ), 'loc' => 'Kopřivnici', 'rent' => 180, 'near' => array( 'Frýdek-Místek', 'Nový Jičín', 'Třinec', 'Ostrava' ), 'infra' => array( 230, 'D48', null, 0, 10, 0, 2 ) ),
 		'Krnov'              => array( 'info' => array( 45, 9, 'Moravskoslezském kraji', 22000, 6.5, 'Cheb' ), 'loc' => 'Krnově', 'rent' => 165, 'near' => array( 'Opava', 'Ostrava', 'Nový Jičín' ), 'infra' => array( 275, '', null, 1, 8, 0, 2 ) ),
 		'Karlovy Vary'       => array( 'info' => array( 17, 1, 'Karlovarském kraji', 49000, 6.2, 'Cheb' ), 'loc' => 'Karlových Varech', 'rent' => 185, 'near' => array( 'Cheb', 'Sokolov', 'Most' ), 'infra' => array( 185, 'D6', null, 1, 15, 1, 6 ) ),
+		// Vlna 1 nových měst (rešerše 4. 10. 2026). Zatím jen 6. pád, texty o městě se doplní.
+		'Beroun' => array( 'loc' => 'Berouně' ), 'Litoměřice' => array( 'loc' => 'Litoměřicích' ), 'Blansko' => array( 'loc' => 'Blansku' ),
+		'Rakovník' => array( 'loc' => 'Rakovníku' ), 'Žďár nad Sázavou' => array( 'loc' => 'Žďáru nad Sázavou' ), 'Kutná Hora' => array( 'loc' => 'Kutné Hoře' ),
+		'Strakonice' => array( 'loc' => 'Strakonicích' ), 'Náchod' => array( 'loc' => 'Náchodě' ), 'Mělník' => array( 'loc' => 'Mělníku' ),
+		'Jičín' => array( 'loc' => 'Jičíně' ), 'Benešov' => array( 'loc' => 'Benešově' ), 'Louny' => array( 'loc' => 'Lounech' ),
+		'Orlová' => array( 'loc' => 'Orlové' ), 'Klatovy' => array( 'loc' => 'Klatovech' ), 'Chrudim' => array( 'loc' => 'Chrudimi' ),
+		'Nymburk' => array( 'loc' => 'Nymburce' ), 'Vyškov' => array( 'loc' => 'Vyškově' ), 'Jeseník' => array( 'loc' => 'Jeseníku' ),
+		'Valašské Meziříčí' => array( 'loc' => 'Valašském Meziříčí' ), 'Slaný' => array( 'loc' => 'Slaném' ), 'Bruntál' => array( 'loc' => 'Bruntále' ),
+		'Ústí nad Orlicí' => array( 'loc' => 'Ústí nad Orlicí' ), 'Poděbrady' => array( 'loc' => 'Poděbradech' ), 'Turnov' => array( 'loc' => 'Turnově' ),
+		'Domažlice' => array( 'loc' => 'Domažlicích' ), 'Rokycany' => array( 'loc' => 'Rokycanech' ), 'Svitavy' => array( 'loc' => 'Svitavách' ),
+		'Tachov' => array( 'loc' => 'Tachově' ), 'Havlíčkův Brod' => array( 'loc' => 'Havlíčkově Brodě' ), 'Ostrov' => array( 'loc' => 'Ostrově' ),
 	);
 }
 
@@ -187,11 +211,13 @@ function mxr_agr_last( $series, $key ) {
 }
 
 add_shortcode( 'nemovitosti_real_v2', function ( $atts ) {
-	$atts = shortcode_atts( array( 'city' => '', 'type' => '', 'disp' => '', 'extra' => '', 'own' => '' ), $atts );
+	$atts = shortcode_atts( array( 'city' => '', 'type' => '', 'disp' => '', 'extra' => '', 'own' => '', 'district' => '', 'cheap' => '' ), $atts );
 	$seg  = '';
 	if ( in_array( $atts['type'], array( 'byt', 'byty' ), true ) ) { $seg = 'byt'; }
 	if ( in_array( $atts['type'], array( 'dům', 'dum', 'domy' ), true ) ) { $seg = 'dum'; }
-	$st = array( 'seg' => $seg, 'city' => $atts['city'], 'disp' => $atts['disp'], 'extra' => $atts['extra'], 'own' => $atts['own'] );
+	$st = array( 'seg' => $seg, 'city' => $atts['city'], 'disp' => $atts['disp'], 'extra' => $atts['extra'], 'own' => $atts['own'],
+		'district' => $atts['district'], 'cheap' => $atts['cheap'] ? '1' : '' );
+	if ( $st['district'] ) { $st['city'] = 'Praha'; $st['seg'] = $seg = 'byt'; }
 
 	$cities  = mxr_agr_cities();
 	$pages   = mxr_agr_pages();
@@ -205,6 +231,10 @@ add_shortcode( 'nemovitosti_real_v2', function ( $atts ) {
 	$city = $st['city'];
 	$ci   = ( $city && isset( $cities[ $city ] ) ) ? $cities[ $city ] : null;
 	$loc  = $ci ? $ci['loc'] : $city;
+	$district = $st['district'];
+	$casti    = isset( $mesta['Praha']['casti'] ) ? $mesta['Praha']['casti'] : array();
+	$dm       = ( $district && isset( $casti[ $district ] ) ) ? $casti[ $district ] : null;
+	$dloc     = $district ? preg_replace( '/^Praha/u', 'Praze', $district ) : '';
 	$m    = ( $city && isset( $mesta[ $city ] ) ) ? $mesta[ $city ] : null;
 	$kraj = $m ? $m['kraj_slug'] : '';
 	$cz_byt = mxr_agr_last( $series, 'cr|CZ|byt|' );
@@ -223,8 +253,26 @@ add_shortcode( 'nemovitosti_real_v2', function ( $atts ) {
 
 	// ── Úvodní text ──────────────────────────────────────────────────────────
 	$intro = array();
-	if ( $city ) {
-		if ( $ci ) {
+	if ( $district ) {
+		$s = 'Byty na prodej v městské části ' . esc_html( $district ) . ', seřazené podle toho, jak výhodná je cena proti podobným bytům v okolí.';
+		if ( $dm ) {
+			$s .= ' Právě teď je jich v nabídce ' . mxr_agr_num( $dm['n'] ) . ' a medián nabídkové ceny je ' . mxr_agr_kc( $dm['median'] ) . ' za m²';
+			$pm = isset( $m['seg']['byt']['median'] ) ? $m['seg']['byt']['median'] : 0;
+			if ( $pm ) {
+				$d = round( ( $dm['median'] / $pm - 1 ) * 100 );
+				$s .= abs( $d ) < 3 ? ', zhruba jako průměr celé Prahy' : ', o ' . abs( $d ) . ' % ' . ( $d > 0 ? 'víc' : 'méně' ) . ' než medián celé Prahy';
+			}
+			$s .= '. Nabídek se skóre výhodnosti 60 a víc je ' . mxr_agr_num( $dm['n60'] ) . '.';
+		}
+		$intro[] = $s;
+	} elseif ( $st['cheap'] ) {
+		$intro[] = ( 'dum' === $seg ? 'Nejlevnější domy' : 'Nejlevnější byty' ) . ' na prodej z celé ČR. Vybíráme jen z nabídek se skóre výhodnosti aspoň 40, aby mezi nimi nebyly předražené ani zjevně chybné inzeráty, a řadíme je od nejnižší ceny.'
+			. ' Nízká cena často znamená menší město, horší stav nebo nutnou rekonstrukci, u každé nabídky proto ukazujeme i srovnání s cenou v okolí.';
+	} elseif ( $city ) {
+		if ( $st['disp'] ) {
+			$intro[] = 'Byty ' . esc_html( $st['disp'] ) . ' na prodej v ' . esc_html( $loc ) . ', seřazené podle toho, jak výhodná je cena proti podobným bytům ve městě.';
+		}
+		if ( $ci && isset( $ci['info'] ) ) {
 			list( $r_cz, $r_kraj, $kraj_loc, $pop, $hap, $hap_cmp ) = $ci['info'];
 			$s = '<strong>' . esc_html( $city ) . '</strong> je ' . $r_cz . '. největší město ČR';
 			if ( $r_kraj > 0 && $kraj_loc ) {
@@ -243,7 +291,7 @@ add_shortcode( 'nemovitosti_real_v2', function ( $atts ) {
 			foreach ( $m['seg'] as $k => $v ) {
 				if ( ! $seg || $seg === $k ) { $n += $v['n']; $n60 += $v['n60']; }
 			}
-			$s = 'Právě teď je v ' . esc_html( $loc ) . ' na prodej ' . mxr_agr_num( $n ) . ' ' . $what . '.';
+			$s = 'Celkem je teď v ' . esc_html( $loc ) . ' na prodej ' . mxr_agr_num( $n ) . ' ' . $what . '.';
 			$med_b = isset( $m['seg']['byt']['median'] ) ? $m['seg']['byt']['median'] : 0;
 			$med_d = isset( $m['seg']['dum']['median'] ) ? $m['seg']['dum']['median'] : 0;
 			if ( $med_b && 'dum' !== $seg ) {
@@ -294,7 +342,13 @@ add_shortcode( 'nemovitosti_real_v2', function ( $atts ) {
 	}
 
 	// ── 12 nejvýhodnějších nabídek ze serveru ────────────────────────────────
-	if ( $city ) {
+	if ( $district ) {
+		$key = 'k:' . $district . '|t:byt';
+	} elseif ( $st['cheap'] ) {
+		$key = 'levne:' . ( 'dum' === $seg ? 'dum' : 'byt' );
+	} elseif ( $city && $st['disp'] ) {
+		$key = 'c:' . $city . '|d:' . $st['disp'];
+	} elseif ( $city ) {
 		$key = 'c:' . $city . ( $seg ? '|t:' . $seg : '' );
 	} elseif ( $st['disp'] ) { $key = 'd:' . $st['disp'];
 	} elseif ( $st['extra'] ) { $key = 'e:' . $st['extra'];
@@ -326,7 +380,8 @@ add_shortcode( 'nemovitosti_real_v2', function ( $atts ) {
 	?>
 <div class="rv2" data-base="<?php echo esc_url( mxr_agr_base() ); ?>" data-kraj="<?php echo esc_attr( $kraj ); ?>"
   data-seg="<?php echo esc_attr( $seg ); ?>" data-city="<?php echo esc_attr( $city ); ?>" data-disp="<?php echo esc_attr( $st['disp'] ); ?>"
-  data-extra="<?php echo esc_attr( $st['extra'] ); ?>" data-own="<?php echo esc_attr( $st['own'] ); ?>">
+  data-extra="<?php echo esc_attr( $st['extra'] ); ?>" data-own="<?php echo esc_attr( $st['own'] ); ?>"
+  data-district="<?php echo esc_attr( $district ); ?>" data-cheap="<?php echo esc_attr( $st['cheap'] ); ?>">
 <style>
 .rv2 { --red:#c8102e; --red-dark:#9e0c24; --ink:#222; --ink-2:#2d2d2d; --muted:#6b6b6b; --line:#e0e0e0; --ok:#1d7a3a;
   font-family:"Nunito Sans",sans-serif; color:var(--ink-2); }
@@ -423,7 +478,11 @@ add_shortcode( 'nemovitosti_real_v2', function ( $atts ) {
 <?php
 // Dlaždice s čísly trhu
 $tiles = array();
-if ( $m ) {
+if ( $dm ) {
+	$tiles[] = array( mxr_agr_num( $dm['n'] ), 'bytů na prodej, ' . esc_html( $district ) );
+	$tiles[] = array( mxr_agr_kc( $dm['median'] ) . '/m²', 'medián ceny bytů' );
+	$tiles[] = array( mxr_agr_num( $dm['n60'] ), 'nabídek se skóre 60 a víc' );
+} elseif ( $m && ! $st['disp'] ) {
 	$n = 0; $n60 = 0;
 	foreach ( $m['seg'] as $k => $v ) { if ( ! $seg || $seg === $k ) { $n += $v['n']; $n60 += $v['n60']; } }
 	$tiles[] = array( mxr_agr_num( $n ), $what . ' na prodej, ' . esc_html( $city ) );
@@ -444,6 +503,12 @@ if ( $tiles ) {
 <div class="rv2-bar">
   <label>Typ<select data-f="seg"><?php echo $opt( array( 'byt', 'dum', 'rekreace' ), $seg, 'Byty i domy', array( 'byt' => 'Byty', 'dum' => 'Domy', 'rekreace' => 'Chaty a chalupy' ) ); ?></select></label>
   <label>Město<select data-f="city"><?php echo $opt( $page_cities, $city, 'Celá ČR' ); ?></select></label>
+  <?php if ( 'Praha' === $city ) : ?>
+  <label>Městská část<select data-f="district"><?php
+	$parts = array();
+	for ( $i = 1; $i <= 10; $i++ ) { $parts[] = 'Praha ' . $i; }
+	echo $opt( $parts, $district, 'Celá Praha' ); ?></select></label>
+  <?php endif; ?>
   <?php if ( $city ) : ?>
   <label>Část města<input data-f="q" type="search" placeholder="část města nebo ulice"></label>
   <?php else : ?>
@@ -454,7 +519,7 @@ if ( $tiles ) {
   <label>Vybavení<select data-f="extra"><?php echo $opt( $extras, $st['extra'], 'Jakékoli' ); ?></select></label>
   <label>Vlastnictví<select data-f="own"><?php echo $opt( $owns, $st['own'], 'Jakékoli' ); ?></select></label>
   <label>Max. cena<select data-f="max"><option value="">Bez omezení</option><option value="2000000">do 2 mil. Kč</option><option value="3000000">do 3 mil. Kč</option><option value="5000000">do 5 mil. Kč</option><option value="8000000">do 8 mil. Kč</option><option value="12000000">do 12 mil. Kč</option></select></label>
-  <label>Řadit<select data-f="sort"><option value="score">Nejvýhodnější</option><option value="new">Nejnovější</option><option value="drop">Největší zlevnění</option><option value="price">Nejlevnější</option></select></label>
+  <label>Řadit<select data-f="sort"><option value="score">Nejvýhodnější</option><option value="new">Nejnovější</option><option value="drop">Největší zlevnění</option><option value="price"<?php selected( $st['cheap'], '1' ); ?>>Nejlevnější</option></select></label>
 </div>
 <p class="rv2-stat"><?php echo $top ? 'Nejvýhodnější nabídky podle skóre. Celý výpis se načítá…' : 'Načítám nabídky…'; ?></p>
 
@@ -488,7 +553,7 @@ $seg_med = function ( $name ) use ( $mesta, $seg ) {
 	$s = 'dum' === $seg ? 'dum' : 'byt';
 	return isset( $mesta[ $name ]['seg'][ $s ]['median'] ) ? (int) $mesta[ $name ]['seg'][ $s ]['median'] : 0;
 };
-if ( $ci ) {
+if ( $ci && isset( $ci['near'] ) && ! $district ) {
 	// Srovnání okolních měst
 	$rows = array();
 	foreach ( array_merge( array( $city ), $ci['near'] ) as $nm ) {
@@ -534,7 +599,7 @@ if ( $ci ) {
 }
 // Vývoj cen (graf kreslí JS z market_stats.json)
 $ttl_what = 'byt' === $seg ? 'bytů' : ( 'dum' === $seg ? 'domů' : 'nemovitostí' );
-echo '<section class="rv2-sec rv2-chart"><h2>Vývoj cen ' . $ttl_what . ' ' . ( $city ? 'v ' . esc_html( $loc ) : 'v ČR' ) . '</h2>'
+echo '<section class="rv2-sec rv2-chart"><h2>Vývoj cen ' . $ttl_what . ' ' . ( $district ? 'v ' . esc_html( $dloc ) : ( $city ? 'v ' . esc_html( $loc ) : 'v ČR' ) ) . '</h2>'
 	. '<p>Medián nabídkové ceny za m² počítaný každý den z celé nabídky na Sreality. Data z celého trhu sbíráme od 4. 10. 2026, graf se den po dni prodlužuje.</p><div class="rv2-svg"></div></section>';
 ?>
 
@@ -545,13 +610,20 @@ echo '<section class="rv2-sec rv2-chart"><h2>Vývoj cen ' . $ttl_what . ' ' . ( 
 <nav class="rv2-hub" aria-label="Nabídky podle lokality a parametrů"><h2>Další nabídky na prodej</h2>
 <?php
 $li = function ( $label, $s ) use ( $st ) {
-	$u = mxr_agr_url( array_merge( array( 'seg' => '', 'city' => '', 'disp' => '', 'extra' => '', 'own' => '' ), $s ) );
+	$u = mxr_agr_url( $s );
 	if ( ! $u ) { return ''; }
-	$cur = mxr_agr_path( array_merge( array( 'seg' => '', 'city' => '', 'disp' => '', 'extra' => '', 'own' => '' ), $s ) ) === mxr_agr_path( $st );
+	$cur = mxr_agr_path( $s ) === mxr_agr_path( $st );
 	return $cur ? '<li class="cur">' . esc_html( $label ) . '</li>' : '<li><a href="' . esc_url( $u ) . '">' . esc_html( $label ) . '</a></li>';
 };
 if ( $city ) {
-	echo '<h3>' . esc_html( $city ) . '</h3><ul>' . $li( 'Nemovitosti ' . $city, array( 'city' => $city ) ) . $li( 'Byty ' . $city, array( 'city' => $city, 'seg' => 'byt' ) ) . $li( 'Domy ' . $city, array( 'city' => $city, 'seg' => 'dum' ) ) . '</ul>';
+	echo '<h3>' . esc_html( $city ) . '</h3><ul>' . $li( 'Nemovitosti ' . $city, array( 'city' => $city ) ) . $li( 'Byty ' . $city, array( 'city' => $city, 'seg' => 'byt' ) ) . $li( 'Domy ' . $city, array( 'city' => $city, 'seg' => 'dum' ) );
+	foreach ( $disps as $d ) { echo $li( 'Byty ' . $d . ' ' . $city, array( 'city' => $city, 'seg' => 'byt', 'disp' => $d ) ); }
+	echo '</ul>';
+}
+if ( ! $city || 'Praha' === $city ) {
+	echo '<h3>Byty v Praze podle městské části</h3><ul>';
+	for ( $i = 1; $i <= 10; $i++ ) { echo $li( 'Praha ' . $i, array( 'district' => 'Praha ' . $i ) ); }
+	echo '</ul>';
 }
 echo '<h3>' . ( 'byt' === $seg ? 'Byty podle města' : ( 'dum' === $seg ? 'Domy podle města' : 'Podle města' ) ) . '</h3><ul>';
 foreach ( $page_cities as $c ) { echo $li( $c, array( 'city' => $c, 'seg' => $seg ) ); }
@@ -559,7 +631,7 @@ echo '</ul><h3>Byty podle dispozice</h3><ul>';
 foreach ( $disps as $d ) { echo $li( 'Byty ' . $d, array( 'disp' => $d ) ); }
 echo '</ul><h3>Podle vybavení</h3><ul>';
 foreach ( $extras as $e ) { echo $li( $e, array( 'extra' => $e ) ); }
-echo '</ul><h3>Podle typu a vlastnictví</h3><ul>' . $li( 'Všechny nabídky', array() ) . $li( 'Byty', array( 'seg' => 'byt' ) ) . $li( 'Domy', array( 'seg' => 'dum' ) );
+echo '</ul><h3>Podle typu a vlastnictví</h3><ul>' . $li( 'Všechny nabídky', array() ) . $li( 'Byty', array( 'seg' => 'byt' ) ) . $li( 'Domy', array( 'seg' => 'dum' ) ) . $li( 'Levné byty', array( 'seg' => 'byt', 'cheap' => '1' ) ) . $li( 'Levné domy', array( 'seg' => 'dum', 'cheap' => '1' ) );
 foreach ( $owns as $o ) { echo $li( $o . ' vlastnictví', array( 'own' => $o ) ); }
 echo '</ul>';
 ?>
@@ -584,7 +656,8 @@ if ( $top ) {
 (function () {
   var root = (document.currentScript && document.currentScript.closest(".rv2")) || document.querySelector(".rv2");
   var BASE = root.dataset.base, KRAJ = root.dataset.kraj || "";
-  var INIT = { seg: root.dataset.seg || "", city: root.dataset.city || "", disp: root.dataset.disp || "", extra: root.dataset.extra || "", own: root.dataset.own || "" };
+  var INIT = { seg: root.dataset.seg || "", city: root.dataset.city || "", disp: root.dataset.disp || "", extra: root.dataset.extra || "", own: root.dataset.own || "",
+    district: root.dataset.district || "", cheap: root.dataset.cheap || "" };
   var PAGES = {}; try { PAGES = JSON.parse(root.querySelector(".rv2-pages").textContent); } catch (e) {}
   var chart = root.querySelector(".rv2-chart");
   var PAGE = 24, shown = PAGE, all = [], list = [];
@@ -596,6 +669,9 @@ if ( $top ) {
   function slug(s) { return s.replace(/\+/g, "-").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "").replace(/-+/g, "-"); }
   function pagePath(st) {
     var TYP = { byt: "byty", dum: "domy" };
+    if (st.cheap) return "real/levne-" + (st.seg === "dum" ? "domy" : "byty");
+    if (st.district) return (st.disp || st.extra || st.own || st.seg === "dum") ? "" : "real/byty/praha/" + slug(st.district);
+    if (st.city && st.disp && !st.extra && !st.own && st.seg !== "dum") return "real/byty/" + slug(st.city) + "/" + slug(st.disp);
     var dims = [st.city, st.disp, st.extra, st.own].filter(Boolean);
     if (dims.length > 1) return "";
     if (st.seg === "rekreace") return dims.length ? "" : "";
@@ -607,12 +683,15 @@ if ( $top ) {
     if (st.own) return "real/" + slug(st.own);
     return "real";
   }
-  function state() { return { seg: val("seg"), city: val("city"), disp: val("disp"), extra: val("extra"), own: val("own") }; }
+  function state() { return { seg: val("seg"), city: val("city"), disp: val("disp"), extra: val("extra"), own: val("own"), district: val("district"), cheap: INIT.cheap }; }
   // Změněný filtr určuje, kam vést: město na stránku města (s typem), dispozice, vybavení a vlastnictví
   // mimo město na svou celostátní stránku. Co stránku nemá, filtruje se na místě.
   function navigate(changed) {
     var st = state();
-    if (changed === "city") { st.disp = st.extra = st.own = ""; }
+    st.cheap = "";
+    if (changed === "city") { st.disp = st.extra = st.own = st.district = ""; }
+    if (changed === "district" && st.district) { st.city = "Praha"; st.seg = "byt"; st.disp = st.extra = st.own = ""; }
+    if (changed === "disp" && st.city && st.disp) { st.seg = "byt"; st.district = ""; }
     if (["disp", "extra", "own"].indexOf(changed) >= 0 && !st.city && st[changed]) {
       var keep = st[changed]; st.seg = st.disp = st.extra = st.own = ""; st[changed] = keep;
     }
@@ -693,6 +772,7 @@ if ( $top ) {
     var st = state(), reg = val("region"), q = val("q").trim().toLowerCase(), max = +val("max") || 0, sort = val("sort");
     list = all.filter(function (l) {
       return (!st.seg || l.segment === st.seg) && (!st.city || l.city === st.city) && (!st.disp || l.disposition === st.disp) &&
+        (!st.district || l.locality_city === st.district) && (!st.cheap || l.deal_score >= 40) &&
         (!st.extra || (l.extras || []).indexOf(st.extra) >= 0) && (!st.own || l.ownership === st.own) &&
         (!reg || l.region === reg) && (!max || l.price <= max) &&
         (!q || (l.locality + " " + l.locality_city).toLowerCase().indexOf(q) >= 0);
@@ -718,7 +798,7 @@ if ( $top ) {
     b.textContent = c.classList.contains("open") ? "Skrýt zdůvodnění" : "Proč je výhodný?";
   });
   more.addEventListener("click", function () { shown += PAGE; render(); });
-  ["seg", "city", "disp", "extra", "own"].forEach(function (k) { if (f[k]) f[k].addEventListener("change", function () { if (!navigate(k)) apply(); }); });
+  ["seg", "city", "disp", "extra", "own", "district"].forEach(function (k) { if (f[k]) f[k].addEventListener("change", function () { if (!navigate(k)) apply(); }); });
   ["region", "max", "sort"].forEach(function (k) { if (f[k]) f[k].addEventListener("change", apply); });
   if (f.q) f.q.addEventListener("input", apply);
 
@@ -754,7 +834,8 @@ if ( $top ) {
     var segs = INIT.seg ? [INIT.seg] : ["byt", "dum"], NAMES = { byt: "byty", dum: "domy" }, COLORS = { byt: "#c8102e", dum: "#222" };
     var lines = segs.map(function (sg) {
       var key;
-      if (INIT.city) key = "mesto|" + INIT.city + "|" + sg + "|";
+      if (INIT.district) key = "lokalita|" + INIT.district + "|byt|";
+      else if (INIT.city) key = "mesto|" + INIT.city + "|" + sg + "|";
       else if (INIT.disp && sg === "byt" && /^[0-9]/.test(INIT.disp)) key = "cr|CZ|byt|" + INIT.disp.charAt(0);
       else key = "cr|CZ|" + sg + "|";
       return { name: NAMES[sg], color: COLORS[sg], data: series[key] || [] };

@@ -50,7 +50,18 @@ PAGE_CITIES = {
     "Kolín", "Příbram", "Trutnov", "Cheb", "Uherské Hradiště", "Kopřivnice", "Krnov", "Břeclav", "Písek",
     "Nový Jičín", "Sokolov", "Hodonín", "Vsetín", "Kroměříž", "Šumperk", "Třinec", "Česká Lípa", "Tábor",
     "Jablonec nad Nisou",
+    # vlna 1 nových měst podle rešerše klíčových slov (4. 10. 2026)
+    "Karlovy Vary", "Beroun", "Litoměřice", "Blansko", "Rakovník", "Žďár nad Sázavou", "Kutná Hora", "Strakonice",
+    "Náchod", "Mělník", "Jičín", "Benešov", "Louny", "Orlová", "Klatovy", "Chrudim", "Nymburk", "Vyškov", "Jeseník",
+    "Valašské Meziříčí", "Slaný", "Bruntál", "Ústí nad Orlicí", "Poděbrady", "Turnov", "Domažlice", "Rokycany",
+    "Svitavy", "Tachov", "Havlíčkův Brod", "Ostrov",
 }
+# Stránky /real/byty/<mesto>/<dispozice>/ (rešerše 4. 10. 2026: hledanost aspoň 140 měsíčně)
+PAGE_CITY_DISP = {
+    ("Brno", "2+1"), ("Praha", "2+1"), ("Olomouc", "2+1"), ("Olomouc", "3+1"), ("Brno", "1+1"), ("Most", "3+1"),
+    ("Praha", "3+1"), ("Ostrava", "3+1"), ("Olomouc", "1+1"), ("Kladno", "2+1"), ("Teplice", "2+1"), ("Brno", "3+1"),
+}
+CHEAP_MIN_SCORE = 40     # „levné“ stránky: nejnižší cena, ale jen mezi nabídkami se skóre aspoň tolik
 REGION_FEED_SIZE = 600       # nejvýhodnějších v kraji
 REGION_CITY_TOP  = 150       # plus nejvýhodnějších z každého většího města kraje, aby stránky měst nebyly prázdné
 REGION_CITY_MIN  = 50        # větší město = aspoň tolik srovnatelných nabídek
@@ -1114,6 +1125,20 @@ def write_cities(valid: list[dict], scored: list[dict], cstats: dict, out_dir: s
     for (level, city, seg, _), (med, n, _) in cstats.items():
         if city in info and n >= 5 and seg in info[city]["seg"]:
             info[city]["seg"][seg]["median"] = med
+    # Městské části Prahy (Praha 1 až 10 a další), jen byty: počet, 60+, medián
+    casti: dict[str, dict] = {}
+    for l in valid:
+        if l["city"] == "Praha" and l["city_key"].startswith("Praha ") and l["seg"] == "byt":
+            casti.setdefault(l["city_key"], {"n": 0, "n60": 0, "_p": []})
+            casti[l["city_key"]]["n"] += 1
+            casti[l["city_key"]]["_p"].append(l["ppm2"])
+    for l in scored:
+        if l["city"] == "Praha" and l["city_key"] in casti and l["seg"] == "byt" and l.get("deal_score", 0) >= 60:
+            casti[l["city_key"]]["n60"] += 1
+    for k, v in casti.items():
+        v["median"] = round(statistics.median(v.pop("_p")))
+    if "Praha" in info:
+        info["Praha"]["casti"] = casti
     write_json(os.path.join(out_dir, CITIES_FILE),
                {"updated": now_iso(), "mesta": {k: v for k, v in info.items() if v["aktivnich"] >= 3}})
 
@@ -1149,6 +1174,12 @@ def write_pages(scored: list[dict], out_dir: str) -> None:
         if l["city"] in PAGE_CITIES:
             add("c:" + l["city"], l)
             add("c:" + l["city"] + "|t:" + typ, l)
+            if l["type"] == "byt" and (l["city"], l["disposition"]) in PAGE_CITY_DISP:
+                add("c:" + l["city"] + "|d:" + l["disposition"], l)
+        if l["city"] == "Praha" and l["city_key"].startswith("Praha ") and l["type"] == "byt":
+            add("k:" + l["city_key"] + "|t:byt", l)
+    for l in sorted((x for x in scored if x.get("deal_score", 0) >= CHEAP_MIN_SCORE), key=lambda x: x["price"]):
+        add("levne:" + ("byt" if l["type"] == "byt" else "dum"), l)
     write_json(os.path.join(out_dir, PAGES_FILE), {"updated": now_iso(), "pages": pages})
 
 
@@ -1183,7 +1214,8 @@ def write_market_stats(con: sqlite3.Connection, out_dir: str) -> None:
     since = (datetime.now(timezone.utc) - timedelta(days=180)).strftime("%Y-%m-%d")
     rows = con.execute(
         """SELECT date, level, key, seg, dgroup, median, n FROM stats WHERE date>=?
-           AND level IN ('mesto','kraj','cr') AND (dgroup='' OR level='cr') ORDER BY date""", (since,)
+           AND (level IN ('mesto','kraj','cr') OR (level='lokalita' AND key LIKE 'Praha %'))
+           AND (dgroup='' OR level='cr') ORDER BY date""", (since,)
     ).fetchall()
     series: dict[str, list] = defaultdict(list)
     for r in rows:
