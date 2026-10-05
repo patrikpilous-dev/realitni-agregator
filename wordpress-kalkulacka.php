@@ -163,8 +163,8 @@ add_shortcode( 'hypotecni_kalkulacka', function () {
 .hk th { font:600 12px Poppins,sans-serif; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); }
 .hk td.r, .hk th.r { text-align:right; font-variant-numeric:tabular-nums; }
 .hk tr.cur td { font-weight:700; color:var(--ink); background:var(--soft); }
-.hk-leadbox { background:#fff; margin:20px 0 0; padding:24px 26px; display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.2fr); gap:24px; border:2px solid var(--ink); }
-.hk-leadbox h2 { font:700 21px Poppins,sans-serif; color:var(--ink); margin:0 0 8px; }
+.hk-leadbox { background:#fff; margin:0 0 22px; padding:20px 22px; display:grid; grid-template-columns:1fr; gap:14px; border:2px solid var(--ink); }
+.hk-leadbox h2 { font:700 19px Poppins,sans-serif; color:var(--ink); margin:0 0 8px; }
 .hk-leadbox p { font-size:14.5px; margin:0 0 8px; }
 .hk-form { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
 .hk-form .full { grid-column:1/-1; }
@@ -204,18 +204,6 @@ add_shortcode( 'hypotecni_kalkulacka', function () {
       <div><b id="hk-int"></b><span>z toho úroky</span></div>
       <div><b id="hk-inc"></b><span>doporučený čistý příjem domácnosti</span></div>
     </div>
-    <div class="hk-facts"><div id="hk-ltv"></div><div id="hk-ins"></div></div>
-    <div class="hk-charts">
-      <div><svg id="hk-donut" viewBox="0 0 120 120" width="150" height="150" role="img" aria-label="Poměr jistiny a úroků"></svg>
-        <div class="hk-leg"><span><i style="background:#2d2d2d"></i>jistina</span><span><i style="background:#c8102e"></i>úroky</span></div></div>
-      <div><div class="lbl">Zůstatek úvěru a zaplacené úroky po letech</div><svg id="hk-amort" viewBox="0 0 520 180" width="100%" role="img" aria-label="Splácení po letech"></svg>
-        <div class="hk-leg"><span><i style="background:#2d2d2d"></i>zbývá doplatit</span><span><i style="background:#c8102e"></i>zaplacené úroky</span></div></div>
-    </div>
-    <h3 style="font:600 16px Poppins,sans-serif;color:var(--ink);margin:26px 0 6px">Co když se změní sazba</h3>
-    <div style="overflow-x:auto"><table><thead><tr><th>Sazba</th><th class="r">Splátka</th><th class="r">Rozdíl měsíčně</th><th class="r">Úroky celkem</th></tr></thead><tbody id="hk-whatif"></tbody></table></div>
-  </div>
-</div>
-
 <?php if ( $lead ) : ?>
 <div class="hk-leadbox" id="hk-lead">
   <div>
@@ -234,6 +222,18 @@ add_shortcode( 'hypotecni_kalkulacka', function () {
   </form>
 </div>
 <?php endif; ?>
+    <div class="hk-facts"><div id="hk-ltv"></div><div id="hk-ins"></div></div>
+    <div class="hk-charts">
+      <div><svg id="hk-donut" viewBox="0 0 120 120" width="150" height="150" role="img" aria-label="Poměr jistiny a úroků"></svg>
+        <div class="hk-leg"><span><i style="background:#2d2d2d"></i>jistina</span><span><i style="background:#c8102e"></i>úroky</span></div></div>
+      <div><div class="lbl">Zůstatek úvěru a zaplacené úroky po letech</div><svg id="hk-amort" viewBox="0 0 520 180" width="100%" role="img" aria-label="Splácení po letech"></svg>
+        <div class="hk-leg"><span><i style="background:#2d2d2d"></i>zbývá doplatit</span><span><i style="background:#c8102e"></i>zaplacené úroky</span></div></div>
+    </div>
+    <h3 style="font:600 16px Poppins,sans-serif;color:var(--ink);margin:26px 0 6px">Co když se změní sazba</h3>
+    <div style="overflow-x:auto"><table><thead><tr><th>Sazba</th><th class="r">Splátka</th><th class="r">Rozdíl měsíčně</th><th class="r">Úroky celkem</th></tr></thead><tbody id="hk-whatif"></tbody></table></div>
+  </div>
+</div>
+
 
 <div class="hk-homes-h"><h2 id="hk-homes-t">Nemovitosti, na které dosáhnete</h2><a id="hk-homes-a" class="rv2-btn line" href="<?php echo esc_url( $pages['real'] ); ?>">Všechny výhodné nabídky →</a></div>
 <p class="rv2-stat" id="hk-homes-s">Nejvýhodnější nabídky do 5,5 mil. Kč podle skóre výhodnosti.</p>
