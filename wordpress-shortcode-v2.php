@@ -38,6 +38,44 @@ add_filter( 'wpseo_robots', function ( $robots ) {
 	return $robots;
 } );
 
+// ── Čerstvost pro vyhledávače: data se mění každý den, i když se obsah stránky v administraci nemění ──
+// Sitemapa Yoastu: stránkám /real/ datum poslední aktualizace dat
+add_filter( 'wpseo_sitemap_entry', function ( $url, $type, $obj ) {
+	if ( 'post' === $type && isset( $url['loc'] ) && false !== strpos( $url['loc'], '/real/' ) ) {
+		$m = mxr_agr_json( 'mesta.json' );
+		if ( ! empty( $m['updated'] ) ) {
+			$url['mod'] = $m['updated'];
+		}
+	}
+	return $url;
+}, 10, 3 );
+// IndexNow (klíč ze snippetu MaxReality: IndexNow): jednou denně všechny stránky /real/
+add_action( 'init', function () {
+	if ( ! wp_next_scheduled( 'mxr_agr_indexnow' ) ) {
+		wp_schedule_event( strtotime( 'tomorrow 06:00' ), 'daily', 'mxr_agr_indexnow' );
+	}
+} );
+add_action( 'mxr_agr_indexnow', function () {
+	if ( ! defined( 'MXR_INDEXNOW_KLIC' ) ) {
+		return;
+	}
+	$urls = array_values( mxr_agr_pages() );
+	if ( ! $urls ) {
+		return;
+	}
+	wp_remote_post( 'https://api.indexnow.org/indexnow', array(
+		'timeout'  => 15,
+		'blocking' => false,
+		'headers'  => array( 'Content-Type' => 'application/json; charset=utf-8' ),
+		'body'     => wp_json_encode( array(
+			'host'        => wp_parse_url( home_url(), PHP_URL_HOST ),
+			'key'         => MXR_INDEXNOW_KLIC,
+			'keyLocation' => home_url( '/' . MXR_INDEXNOW_KLIC . '.txt' ),
+			'urlList'     => $urls,
+		) ),
+	) );
+} );
+
 function mxr_agr_base() {
 	return 'https://raw.githubusercontent.com/patrikpilous-dev/realitni-agregator/refs/heads/main/';
 }
