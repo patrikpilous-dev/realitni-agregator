@@ -5,8 +5,8 @@
  * Potřebuje snippet 15 (agregátor): mxr_agr_css(), mxr_agr_card(), mxr_agr_json(), mxr_agr_pages(), mxr_agr_top10().
  *
  * Kontakty z formuláře se ukládají jako soukromý typ obsahu „Leady“ (administrace, menu Leady) a chodí e-mailem
- * na adresu administrátora webu. Formulář se zobrazí jen když je v nastavení (option mxr_lead_config)
- * vyplněný provozovatel a partner a zapnuto 'on', na testovací stránce (ID 90620) vždy.
+ * na adresu administrátora webu. Formulář je zapnutý (option mxr_lead_config 'on' ho může vypnout). Dokud není
+ * v option vyplněný 'partner', souhlas mluví obecně o hypotečním specialistovi s registrací u ČNB.
  * Tipař podle zákona 257/2016 smí jen předat kontakt jmenovanému partnerovi se souhlasem klienta.
  */
 
@@ -36,7 +36,7 @@ add_action( 'manage_mxr_lead_posts_custom_column', function ( $col, $id ) {
 }, 10, 2 );
 
 function mxr_lead_config() {
-	return wp_parse_args( get_option( 'mxr_lead_config', array() ), array( 'on' => false, 'provozovatel' => '', 'partner' => '' ) );
+	return wp_parse_args( get_option( 'mxr_lead_config', array() ), array( 'on' => true, 'provozovatel' => '', 'partner' => '' ) );
 }
 
 function mxr_lead_enabled() {
@@ -44,7 +44,7 @@ function mxr_lead_enabled() {
 	if ( is_singular() && 90620 === (int) get_queried_object_id() ) {
 		return true;   // testovací stránka
 	}
-	return $c['on'] && $c['provozovatel'] && $c['partner'];
+	return (bool) $c['on'];
 }
 
 // ── Leady: příjem formuláře ──────────────────────────────────────────────────
@@ -129,8 +129,9 @@ add_shortcode( 'hypotecni_kalkulacka', function () {
 	foreach ( array_merge( $top10, $cities ) as $c ) { $city_urls[ $c ] = $pages[ 'real/' . mxr_agr_slug( $c ) ]; }
 	$lead  = mxr_lead_enabled();
 	$cfg   = mxr_lead_config();
-	$souhlas = 'Souhlasím, aby ' . ( $cfg['provozovatel'] ? $cfg['provozovatel'] : '[provozovatel webu]' ) . ' předal moje kontaktní údaje a zadání z kalkulačky hypotečnímu specialistovi '
-		. ( $cfg['partner'] ? $cfg['partner'] : '[partner]' ) . ', který mě kvůli nezávazné konzultaci kontaktuje. Souhlas mohu kdykoli odvolat.';
+	$souhlas = 'Souhlasím se zpracováním svých kontaktních údajů a zadání z kalkulačky provozovatelem webu max-reality.cz a s jejich předáním '
+		. ( $cfg['partner'] ? 'hypotečnímu specialistovi ' . $cfg['partner'] : 'hypotečnímu specialistovi s registrací u ČNB' )
+		. ', který mě kvůli nezávazné konzultaci kontaktuje. Souhlas mohu kdykoli odvolat.';
 
 	ob_start();
 	echo mxr_agr_css();
