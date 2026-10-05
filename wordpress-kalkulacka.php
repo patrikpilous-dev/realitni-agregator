@@ -190,7 +190,7 @@ add_shortcode( 'hypotecni_kalkulacka', function () {
     <div class="hk-f"><div class="lbl"><label for="hk-price">Cena nemovitosti</label><output id="hk-price-o"></output></div><input type="range" id="hk-price" min="1000000" max="20000000" step="100000" value="5500000"></div>
     <div class="hk-f"><div class="lbl"><label for="hk-own">Vlastní zdroje</label><output id="hk-own-o"></output></div><input type="range" id="hk-own" min="0" max="60" step="1" value="20"><div class="hk-hint" id="hk-own-h"></div></div>
     <div class="hk-f"><div class="lbl"><label for="hk-years">Doba splácení</label><output id="hk-years-o"></output></div><input type="range" id="hk-years" min="5" max="40" step="1" value="30"></div>
-    <div class="hk-f"><div class="lbl"><label for="hk-rate">Úroková sazba</label><output id="hk-rate-o"></output></div><input type="range" id="hk-rate" min="2" max="8" step="0.05" value="4.59"><div class="hk-hint">Orientační sazba, upravte ji podle nabídky banky.</div></div>
+    <div class="hk-f"><div class="lbl"><label for="hk-rate">Úroková sazba</label><output id="hk-rate-o"></output></div><input type="range" id="hk-rate" min="2" max="8" step="0.01" value="4.59"><div class="hk-hint">Orientační sazba, upravte ji podle nabídky banky.</div></div>
     <div class="hk-f"><div class="lbl"><label for="hk-age">Věk nejstaršího žadatele</label><output id="hk-age-o"></output></div><input type="range" id="hk-age" min="18" max="65" step="1" value="32"><div class="hk-hint">Do 36 let povoluje ČNB financovat až 90 % ceny.</div></div>
     <div class="hk-f"><label class="lbl" for="hk-city">Město</label><select id="hk-city"><?php echo $opt; ?></select><div class="hk-hint">Podle města vybereme nemovitosti pod kalkulačkou.</div></div>
   </form>
