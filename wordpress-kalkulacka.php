@@ -86,6 +86,10 @@ add_action( 'rest_api_init', function () {
 				'stranka' => esc_url_raw( isset( $p['stranka'] ) ? $p['stranka'] : '' ),
 				'souhlas_text' => sanitize_text_field( isset( $p['souhlas_text'] ) ? $p['souhlas_text'] : '' ),
 				'souhlas_cas' => current_time( 'mysql' ), 'partner' => $c['partner'],
+				'prijem' => (int) ( isset( $p['prijem'] ) ? $p['prijem'] : 0 ), 'typ_prijmu' => sanitize_key( isset( $p['typ'] ) ? $p['typ'] : '' ),
+				'jine_splatky' => (int) ( isset( $p['splatky'] ) ? $p['splatky'] : 0 ), 'zadatele' => (int) ( isset( $p['zadatele'] ) ? $p['zadatele'] : 0 ),
+				'deti' => (int) ( isset( $p['deti'] ) ? $p['deti'] : 0 ), 'ucel' => sanitize_key( isset( $p['ucel'] ) ? $p['ucel'] : '' ),
+				'zelena' => empty( $p['zelena'] ) ? 'ne' : 'ano',
 			);
 			foreach ( $meta as $k => $v ) {
 				update_post_meta( $id, $k, $v );
@@ -93,7 +97,9 @@ add_action( 'rest_api_init', function () {
 			set_transient( $key, $cnt + 1, HOUR_IN_SECONDS );
 			$body = "Nový kontakt z hypoteční kalkulačky\n\nJméno: $jmeno\nTelefon: $telefon\nE-mail: $email\n"
 				. 'Cena nemovitosti: ' . number_format( $meta['cena'], 0, ',', ' ' ) . " Kč\nÚvěr: " . number_format( $meta['uver'], 0, ',', ' ' ) . " Kč\n"
-				. "Doba: {$meta['doba']} let, sazba {$meta['sazba']} %, věk {$meta['vek']}, město {$meta['mesto']}\nPoznámka: {$meta['poznamka']}\n\n"
+				. "Doba: {$meta['doba']} let, sazba {$meta['sazba']} %, věk {$meta['vek']}, město {$meta['mesto']}\n"
+				. 'Čistý příjem domácnosti: ' . number_format( $meta['prijem'], 0, ',', ' ' ) . " Kč, typ příjmu {$meta['typ_prijmu']}, jiné splátky " . number_format( $meta['jine_splatky'], 0, ',', ' ' ) . " Kč\n"
+				. "Žadatelé {$meta['zadatele']}, děti {$meta['deti']}, účel {$meta['ucel']}, třída A nebo B {$meta['zelena']}\nPoznámka: {$meta['poznamka']}\n\n"
 				. 'Souhlas: ' . $meta['souhlas_text'] . "\n\nVšechny kontakty: " . admin_url( 'edit.php?post_type=mxr_lead' );
 			wp_mail( get_option( 'admin_email' ), 'Nový zájemce o hypotéku: ' . $jmeno, $body );
 			return array( 'ok' => true );
@@ -148,12 +154,22 @@ add_shortcode( 'hypotecni_kalkulacka', function () {
 .hk input[type=range] { width:100%; accent-color:var(--red); }
 .hk select, .hk input[type=text], .hk input[type=tel], .hk input[type=email], .hk textarea { width:100%; font:15px "Nunito Sans",sans-serif; padding:9px 10px; border:1px solid #d9d5d6; border-radius:0; background:#fff; color:var(--ink); }
 .hk-hint { font-size:12.5px; color:var(--muted); margin-top:4px; }
-.hk-pay { font:700 46px/1.05 Poppins,sans-serif; color:var(--ink); font-variant-numeric:tabular-nums; margin:4px 0 2px; }
+.hk-pay { font:700 60px/1 Poppins,sans-serif; color:var(--ink); font-variant-numeric:tabular-nums; margin:4px 0 2px; }
 .hk-sub { color:var(--muted); font-size:14px; }
 .hk-kpi { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; margin:24px 0 20px; }
 .hk-kpi b { display:block; font:700 19px Poppins,sans-serif; color:var(--ink); font-variant-numeric:tabular-nums; }
 .hk-kpi span { font-size:12.5px; color:var(--muted); }
 .hk-facts { display:grid; gap:8px; font-size:14.5px; background:var(--ground); padding:14px 16px; }
+.hk-sit { font:700 15px Poppins,sans-serif; color:var(--ink); margin:30px 0 14px; padding-top:22px; border-top:2px solid var(--ink); }
+.hk-row2 { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.hk-check { display:flex; gap:10px; align-items:center; font-size:14.5px; color:var(--ink-2); cursor:pointer; }
+.hk input[type=number] { width:100%; font:15px "Nunito Sans",sans-serif; padding:9px 10px; border:1px solid #d9d5d6; border-radius:0; background:#fff; color:var(--ink); }
+.hk-tips { margin-top:22px; }
+.hk-tips h3 { font:600 16px Poppins,sans-serif; color:var(--ink); margin:0 0 8px; }
+.hk-tips ul { margin:0; padding:0; list-style:none; display:grid; gap:10px; }
+.hk-tips li { font-size:14.5px; line-height:1.55; padding-left:18px; position:relative; }
+.hk-tips li::before { content:""; position:absolute; left:0; top:.55em; width:8px; height:8px; background:var(--red); }
+.hk-tips li.ok::before { background:var(--ok); }
 .hk-good { color:var(--ok); font-weight:700; } .hk-bad { color:var(--red); font-weight:700; }
 .hk-charts { display:grid; grid-template-columns:150px 1fr; gap:24px; margin-top:24px; align-items:start; }
 .hk-leg { display:flex; gap:16px; flex-wrap:wrap; font-size:12.5px; color:var(--muted); margin-top:6px; }
@@ -163,7 +179,7 @@ add_shortcode( 'hypotecni_kalkulacka', function () {
 .hk th { font:600 12px Poppins,sans-serif; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); }
 .hk td.r, .hk th.r { text-align:right; font-variant-numeric:tabular-nums; }
 .hk tr.cur td { font-weight:700; color:var(--ink); background:var(--soft); }
-.hk-leadbox { background:#fff; margin:0 0 22px; padding:20px 22px; display:grid; grid-template-columns:1fr; gap:14px; border:2px solid var(--ink); }
+.hk-leadbox { background:#fff; margin:26px 0 0; padding:20px 22px; display:grid; grid-template-columns:1fr; gap:14px; border:2px solid var(--ink); }
 .hk-leadbox h2 { font:700 19px Poppins,sans-serif; color:var(--ink); margin:0 0 8px; }
 .hk-leadbox p { font-size:14.5px; margin:0 0 8px; }
 .hk-form { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
@@ -180,7 +196,7 @@ add_shortcode( 'hypotecni_kalkulacka', function () {
 .hk-text p, .hk-text li { font-size:16px; line-height:1.7; color:#333; }
 .hk-text a { color:var(--red); }
 .hk-text .tbl { overflow-x:auto; margin:10px 0 14px; }
-@media (max-width:860px) { .hk-calc, .hk-charts, .hk-leadbox { grid-template-columns:1fr; } .hk-calc { padding:0; background:none; gap:12px; } .hk-pay { font-size:38px; } }
+@media (max-width:860px) { .hk-calc, .hk-charts, .hk-leadbox { grid-template-columns:1fr; } .hk-calc { padding:0; background:none; gap:12px; } .hk-pay { font-size:46px; } }
 @media (max-width:460px) { .hk-kpi, .hk-form { grid-template-columns:1fr; } }
 </style>
 
@@ -193,6 +209,19 @@ add_shortcode( 'hypotecni_kalkulacka', function () {
     <div class="hk-f"><div class="lbl"><label for="hk-years">Doba splácení</label><output id="hk-years-o"></output></div><input type="range" id="hk-years" min="5" max="40" step="1" value="30"></div>
     <div class="hk-f"><div class="lbl"><label for="hk-rate">Úroková sazba</label><output id="hk-rate-o"></output></div><input type="range" id="hk-rate" min="2" max="8" step="0.01" value="4.59"><div class="hk-hint">Orientační sazba, upravte ji podle nabídky banky.</div></div>
     <div class="hk-f"><div class="lbl"><label for="hk-age">Věk nejstaršího žadatele</label><output id="hk-age-o"></output></div><input type="range" id="hk-age" min="18" max="65" step="1" value="32"><div class="hk-hint">Do 36 let povoluje ČNB financovat až 90 % ceny.</div></div>
+    <div class="hk-sit">Vaše situace</div>
+    <div class="hk-f"><label class="lbl" for="hk-inc-in">Čistý měsíční příjem domácnosti</label><input type="number" id="hk-inc-in" value="60000" step="1000" min="0" inputmode="numeric"></div>
+    <div class="hk-f"><label class="lbl" for="hk-type">Typ příjmu</label><select id="hk-type">
+      <option value="neurcita">Zaměstnanec, smlouva na dobu neurčitou</option><option value="urcita">Zaměstnanec, smlouva na dobu určitou</option>
+      <option value="osvc_pausal">OSVČ, paušální výdaje</option><option value="osvc_skut">OSVČ, skutečné výdaje</option>
+      <option value="sro">Jednatel nebo společník s.r.o.</option><option value="rodicovska">Mateřská nebo rodičovská</option><option value="duchod">Důchod</option></select></div>
+    <div class="hk-f"><label class="lbl" for="hk-debt">Splátky jiných úvěrů a leasingů měsíčně</label><input type="number" id="hk-debt" value="0" step="500" min="0" inputmode="numeric"></div>
+    <div class="hk-row2">
+      <div class="hk-f"><label class="lbl" for="hk-apps">Žadatelé</label><select id="hk-apps"><option value="1">1 dospělý</option><option value="2" selected>2 dospělí</option></select></div>
+      <div class="hk-f"><label class="lbl" for="hk-kids">Děti</label><select id="hk-kids"><option>0</option><option selected>1</option><option>2</option><option>3</option><option>4</option></select></div>
+    </div>
+    <div class="hk-f"><label class="lbl" for="hk-purpose">Účel</label><select id="hk-purpose"><option value="bydleni">Vlastní bydlení</option><option value="investice">Investice, pronájem</option><option value="refi">Refinancování stávající hypotéky</option><option value="vystavba">Výstavba nebo rekonstrukce</option></select></div>
+    <div class="hk-f"><label class="hk-check"><input type="checkbox" id="hk-green"> Nemovitost má energetickou třídu A nebo B</label></div>
     <div class="hk-f"><label class="lbl" for="hk-city">Město</label><select id="hk-city"><?php echo $opt; ?></select><div class="hk-hint">Podle města vybereme nemovitosti pod kalkulačkou.</div></div>
   </form>
   <div class="hk-out">
@@ -204,6 +233,16 @@ add_shortcode( 'hypotecni_kalkulacka', function () {
       <div><b id="hk-int"></b><span>z toho úroky</span></div>
       <div><b id="hk-inc"></b><span>doporučený čistý příjem domácnosti</span></div>
     </div>
+    <div class="hk-facts"><div id="hk-ltv"></div><div id="hk-dsti"></div><div id="hk-ins"></div></div>
+    <div class="hk-tips"><h3>Tipy pro vaši hypotéku</h3><ul id="hk-tips"></ul></div>
+    <div class="hk-charts">
+      <div><svg id="hk-donut" viewBox="0 0 120 120" width="150" height="150" role="img" aria-label="Poměr jistiny a úroků"></svg>
+        <div class="hk-leg"><span><i style="background:#2d2d2d"></i>jistina</span><span><i style="background:#c8102e"></i>úroky</span></div></div>
+      <div><div class="lbl">Zůstatek úvěru a zaplacené úroky po letech</div><svg id="hk-amort" viewBox="0 0 520 180" width="100%" role="img" aria-label="Splácení po letech"></svg>
+        <div class="hk-leg"><span><i style="background:#2d2d2d"></i>zbývá doplatit</span><span><i style="background:#c8102e"></i>zaplacené úroky</span></div></div>
+    </div>
+    <h3 style="font:600 16px Poppins,sans-serif;color:var(--ink);margin:26px 0 6px">Co když se změní sazba</h3>
+    <div style="overflow-x:auto"><table><thead><tr><th>Sazba</th><th class="r">Splátka</th><th class="r">Rozdíl měsíčně</th><th class="r">Úroky celkem</th></tr></thead><tbody id="hk-whatif"></tbody></table></div>
 <?php if ( $lead ) : ?>
 <div class="hk-leadbox" id="hk-lead">
   <div>
@@ -222,15 +261,6 @@ add_shortcode( 'hypotecni_kalkulacka', function () {
   </form>
 </div>
 <?php endif; ?>
-    <div class="hk-facts"><div id="hk-ltv"></div><div id="hk-ins"></div></div>
-    <div class="hk-charts">
-      <div><svg id="hk-donut" viewBox="0 0 120 120" width="150" height="150" role="img" aria-label="Poměr jistiny a úroků"></svg>
-        <div class="hk-leg"><span><i style="background:#2d2d2d"></i>jistina</span><span><i style="background:#c8102e"></i>úroky</span></div></div>
-      <div><div class="lbl">Zůstatek úvěru a zaplacené úroky po letech</div><svg id="hk-amort" viewBox="0 0 520 180" width="100%" role="img" aria-label="Splácení po letech"></svg>
-        <div class="hk-leg"><span><i style="background:#2d2d2d"></i>zbývá doplatit</span><span><i style="background:#c8102e"></i>zaplacené úroky</span></div></div>
-    </div>
-    <h3 style="font:600 16px Poppins,sans-serif;color:var(--ink);margin:26px 0 6px">Co když se změní sazba</h3>
-    <div style="overflow-x:auto"><table><thead><tr><th>Sazba</th><th class="r">Splátka</th><th class="r">Rozdíl měsíčně</th><th class="r">Úroky celkem</th></tr></thead><tbody id="hk-whatif"></tbody></table></div>
   </div>
 </div>
 
@@ -310,7 +340,9 @@ echo '<script type="application/ld+json">' . wp_json_encode( array( '@context' =
   var S = {};
 
   function calc() {
-    S = { price: +$("hk-price").value, own: +$("hk-own").value, years: +$("hk-years").value, rate: +$("hk-rate").value, age: +$("hk-age").value, city: $("hk-city").value };
+    S = { price: +$("hk-price").value, own: +$("hk-own").value, years: +$("hk-years").value, rate: +$("hk-rate").value, age: +$("hk-age").value, city: $("hk-city").value,
+      inc: +$("hk-inc-in").value || 0, type: $("hk-type").value, debt: +$("hk-debt").value || 0, apps: +$("hk-apps").value, kids: +$("hk-kids").value,
+      purpose: $("hk-purpose").value, green: $("hk-green").checked };
     var own = S.price * S.own / 100, loan = S.price - own, p = pay(loan, S.rate, S.years), total = p * S.years * 12, interest = total - loan;
     S.loan = loan;
     $("hk-price-o").textContent = kc(S.price); $("hk-own-o").textContent = S.own + " %"; $("hk-own-h").textContent = kc(own) + " z vlastních peněz";
@@ -336,7 +368,40 @@ echo '<script type="application/ld+json">' . wp_json_encode( array( '@context' =
       var rr = Math.max(0.5, S.rate + d), pp = pay(loan, rr, S.years);
       return "<tr" + (d === 0 ? ' class="cur"' : "") + "><td>" + rr.toLocaleString("cs-CZ", { maximumFractionDigits: 2 }) + " %" + (d === 0 ? ", vaše sazba" : "") + '</td><td class="r">' + kc(pp) + '</td><td class="r">' + (d === 0 ? "" : (pp > p ? "+" : "") + kc(pp - p)) + '</td><td class="r">' + kc(pp * S.years * 12 - loan) + "</td></tr>";
     }).join("");
+    tips(p, loan, ltv, limit);
     homesSoon();
+  }
+
+  // ── Tipy podle situace ──
+  // Životní minimum pro rok 2026 orientačně: první dospělý 4 860 Kč, další dospělý 4 040 Kč, dítě 3 050 Kč. Banky počítají s rezervou nad ním.
+  function tips(p, loan, ltv, limit) {
+    var out = [], inc = S.inc, need = S.apps === 1 ? 4860 : 4860 + 4040, minimum = need + S.kids * 3050;
+    var dsti = inc ? (p + S.debt) / inc * 100 : 0, rest = inc - p - S.debt;
+    var effInc = inc * ({ osvc_pausal: 0.8, rodicovska: 0.5, urcita: 0.9 }[S.type] || 1);
+    var maxPay = Math.max(0, effInc * 0.45 - S.debt), r = S.rate / 100 / 12, n = S.years * 12;
+    var maxLoan = r ? maxPay * (1 - Math.pow(1 + r, -n)) / r : maxPay * n;
+    $("hk-dsti").innerHTML = inc ? "Splátky tvoří <b>" + Math.round(dsti) + " % příjmu</b>, " +
+      (dsti <= 40 ? '<span class="hk-good">banky to obvykle přijmou</span>.' : dsti <= 50 ? "je to na hraně, kterou banky ještě připouštějí." : '<span class="hk-bad">to je nad hranicí, kterou banky obvykle přijmou</span>.') : "Zadejte příjem a ukážeme, jestli splátku banky přijmou.";
+    if (inc) {
+      if (dsti > 45) out.push(["", "Se zadaným příjmem vám banka nejspíš půjčí kolem <b>" + kc(maxLoan) + "</b>. Pomůže delší splatnost, víc vlastních peněz, nebo levnější nemovitost do zhruba " + kc(maxLoan + S.price * S.own / 100) + "."]);
+      else out.push(["ok", "Podle příjmu byste mohli dosáhnout až na úvěr kolem <b>" + kc(maxLoan) + "</b>, máte tedy rezervu."]);
+      if (rest < minimum * 1.5) out.push(["", "Po zaplacení splátek vám zbude " + kc(rest) + ", to je málo nad životním minimem domácnosti (" + kc(minimum) + "). Banky chtějí rezervu, počítejte s nižším úvěrem nebo s dalším žadatelem."]);
+    }
+    if (S.debt > 0) out.push(["", "Splátky jiných úvěrů snižují hypotéku, kterou dostanete. Když je před žádostí doplatíte nebo převedete do hypotéky, vyjde vám i lepší sazba."]);
+    if (S.type === "osvc_pausal") out.push(["", "U OSVČ s paušálními výdaji počítají banky příjem z daňového přiznání, obvykle jen jeho část. Připravte si přiznání za poslední 2 roky, některé banky berou v úvahu i obrat."]);
+    if (S.type === "osvc_skut") out.push(["", "U OSVČ se skutečnými výdaji vychází banka ze základu daně, který bývá nízký. Pomůže víc vlastních zdrojů nebo spolužadatel se zaměstnaneckým příjmem."]);
+    if (S.type === "sro") out.push(["", "Jednatelům s.r.o. počítá banka příjem z mzdy a podílu na zisku podle přiznání firmy. Hodí se mít účetní závěrky za poslední 2 roky."]);
+    if (S.type === "urcita") out.push(["", "Se smlouvou na dobu určitou půjčí většina bank, pokud trvá aspoň 3 až 6 měsíců a byla už jednou prodloužena. Doložte i předchozí smlouvy."]);
+    if (S.type === "rodicovska") out.push(["", "Rodičovský příspěvek banky započítají jen omezeně. Hypotéku obvykle získáte s příjmem druhého žadatele, nebo po návratu do práce."]);
+    if (S.type === "duchod") out.push(["", "S důchodem je hlavní omezení věk. Splatnost obvykle končí v 70 letech, kratší splatnost ale znamená vyšší splátku."]);
+    if (S.age + S.years > 70) out.push(["", "Splatnost by skončila ve " + (S.age + S.years) + " letech. Většina bank chce splacení do 70 let, zkuste splatnost nejvýš " + Math.max(5, 70 - S.age) + " let, nebo přidejte mladšího spolužadatele."]);
+    if (ltv <= 70) out.push(["ok", "Úvěr do 70 % ceny vám u většiny bank vyjde levněji, sazba bývá o 0,1 až 0,3 procentního bodu nižší."]);
+    else if (ltv > 80 && ltv <= limit) out.push(["", "Úvěr nad 80 % ceny dostanete do 36 let, sazba ale bývá vyšší. Když dáte vlastní zdroje alespoň na 20 %, ušetříte."]);
+    if (S.purpose === "investice") out.push(["", "Na investiční byt půjčují banky obvykle nejvýš 70 % ceny a se sazbou vyšší o 0,2 až 0,5 procentního bodu. Budoucí nájem některé banky započítají do příjmu."]);
+    if (S.purpose === "refi") out.push(["", "Refinancovat můžete bez poplatku k výročí fixace. Nabídky ostatních bank si zjistěte aspoň 3 měsíce předem."]);
+    if (S.purpose === "vystavba") out.push(["", "U výstavby a rekonstrukce čerpáte peníze postupně podle faktur a do dočerpání platíte úroky jen z vyčerpané částky. Počítejte s rozpočtem stavby a stavebním povolením."]);
+    if (S.green) out.push(["ok", "Na nemovitost v energetické třídě A nebo B nabízí řada bank zelenou hypotéku se sazbou nižší o 0,1 až 0,3 procentního bodu."]);
+    $("hk-tips").innerHTML = out.map(function (t) { return '<li class="' + t[0] + '">' + t[1] + "</li>"; }).join("");
   }
 
   // ── Nemovitosti z feedu, stejné karty jako v kategoriích ──
@@ -375,7 +440,7 @@ echo '<script type="application/ld+json">' . wp_json_encode( array( '@context' =
       $("hk-homes").innerHTML = nine.map(card).join("");
     }).catch(function () {});
   }
-  ["hk-price", "hk-own", "hk-years", "hk-rate", "hk-age", "hk-city"].forEach(function (id) { $(id).addEventListener("input", calc); });
+  ["hk-price", "hk-own", "hk-years", "hk-rate", "hk-age", "hk-city", "hk-inc-in", "hk-type", "hk-debt", "hk-apps", "hk-kids", "hk-purpose", "hk-green"].forEach(function (id) { $(id).addEventListener("input", calc); $(id).addEventListener("change", calc); });
 
   // ── Formulář ──
   var lf = $("hk-lf"), opened = Date.now();
@@ -387,7 +452,8 @@ echo '<script type="application/ld+json">' . wp_json_encode( array( '@context' =
     fetch("/wp-json/mxr/v1/lead", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({
       jmeno: $("hk-l-jmeno").value, telefon: $("hk-l-tel").value, email: $("hk-l-mail").value, poznamka: $("hk-l-pozn").value,
       web: $("hk-l-web").value, souhlas: true, souhlas_text: $("hk-l-souhlas-t").textContent, t: opened,
-      cena: S.price, uver: S.loan, doba: S.years, sazba: S.rate, vek: S.age, mesto: S.city, stranka: location.href
+      cena: S.price, uver: S.loan, doba: S.years, sazba: S.rate, vek: S.age, mesto: S.city, stranka: location.href,
+      prijem: S.inc, typ: S.type, splatky: S.debt, zadatele: S.apps, deti: S.kids, ucel: S.purpose, zelena: S.green
     }) }).then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); }).then(function (x) {
       if (x.ok) { lf.innerHTML = '<p class="hk-msg full">Děkujeme, kontakt jsme předali. Specialista se vám ozve obvykle do jednoho pracovního dne.</p>'; }
       else { msg.textContent = (x.j && x.j.message) || "Odeslání se nepovedlo, zkuste to prosím znovu."; btn.disabled = false; }
