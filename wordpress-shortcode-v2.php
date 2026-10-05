@@ -35,6 +35,17 @@ add_filter( 'wpseo_robots', function ( $robots ) {
 	if ( is_singular() && $post && 90620 === (int) $post->ID ) {
 		return 'noindex, follow';
 	}
+	// Byty s vybavením ve městě: do indexu až od 5 nabídek (vybavení se doplňuje z detailů postupně)
+	if ( is_singular( 'page' ) && $post && preg_match( '/\[nemovitosti_real_v2([^\]]*)\]/', $post->post_content, $mm ) ) {
+		$a = shortcode_parse_atts( $mm[1] );
+		if ( ! empty( $a['extra'] ) && ! empty( $a['city'] ) ) {
+			$m = mxr_agr_json( 'mesta.json' );
+			$n = isset( $m['mesta'][ $a['city'] ]['vybaveni_byt'][ $a['extra'] ] ) ? (int) $m['mesta'][ $a['city'] ]['vybaveni_byt'][ $a['extra'] ] : 0;
+			if ( $n < 5 ) {
+				return 'noindex, follow';
+			}
+		}
+	}
 	return $robots;
 } );
 

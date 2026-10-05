@@ -96,7 +96,7 @@ MIN_SCRAPED_OK = 100
 REQUEST_INTERVAL = float(os.environ.get("SREALITY_INTERVAL", "1.2"))
 MAX_FAILS_IN_ROW = 40
 
-DETAILS_BUDGET = {"quick": 200, "full": 4000}   # detailů za běh
+DETAILS_BUDGET = {"quick": 500, "full": 4000}   # detailů za běh
 ARCHIVE_BUDGET = {"quick": 60,  "full": 300}    # ověření 404 za běh
 STALE_DAYS     = 14      # bez potvrzení déle než tohle jde inzerát z aktivních pryč
 MAX_FEED_SIZE  = 2000
