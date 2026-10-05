@@ -55,11 +55,26 @@ PAGE_CITIES = {
     "Náchod", "Mělník", "Jičín", "Benešov", "Louny", "Orlová", "Klatovy", "Chrudim", "Nymburk", "Vyškov", "Jeseník",
     "Valašské Meziříčí", "Slaný", "Bruntál", "Ústí nad Orlicí", "Poděbrady", "Turnov", "Domažlice", "Rokycany",
     "Svitavy", "Tachov", "Havlíčkův Brod", "Ostrov",
+    # vlna 2 (5. 10. 2026)
+    "Otrokovice", "Roudnice nad Labem", "Český Krumlov", "Pelhřimov", "Kadaň", "Rychnov nad Kněžnou", "Prachatice",
+    "Vlašim", "Brandýs nad Labem-Stará Boleslav", "Uherský Brod", "Žatec", "Jaroměř", "Jindřichův Hradec", "Lysá nad Labem",
 }
+# 10 největších měst: kombinace s vybavením bytů a pořadí ve filtru na webu
+TOP_CITIES = ["Praha", "Brno", "Ostrava", "Plzeň", "Liberec", "Olomouc", "České Budějovice", "Hradec Králové",
+              "Pardubice", "Ústí nad Labem"]
+BYT_EXTRAS = ["Balkón", "Terasa", "Lodžie", "Garáž", "Parkování", "Sklep", "Výtah", "Zařízeno", "Částečně zařízeno", "Novostavba"]
+CENY_CITIES = ["Praha", "Brno", "Ostrava", "Plzeň"]   # cenová vrstva /real/<mesto>/ceny/ (hledanost „ceny bytů <město>“)
+CENY_FILE = "ceny.json"
 # Stránky /real/byty/<mesto>/<dispozice>/ (rešerše 4. 10. 2026: hledanost aspoň 140 měsíčně)
 PAGE_CITY_DISP = {
     ("Brno", "2+1"), ("Praha", "2+1"), ("Olomouc", "2+1"), ("Olomouc", "3+1"), ("Brno", "1+1"), ("Most", "3+1"),
     ("Praha", "3+1"), ("Ostrava", "3+1"), ("Olomouc", "1+1"), ("Kladno", "2+1"), ("Teplice", "2+1"), ("Brno", "3+1"),
+    # vlna 2: hledanost 50 až 110 měsíčně
+    ("České Budějovice", "2+1"), ("České Budějovice", "3+1"), ("Olomouc", "1+kk"), ("Olomouc", "2+kk"), ("Ostrava", "2+1"),
+    ("Praha", "3+kk"), ("Jihlava", "2+1"), ("Karviná", "2+1"), ("Most", "2+1"), ("Olomouc", "3+kk"), ("Plzeň", "1+1"),
+    ("Kladno", "3+1"), ("Opava", "2+1"), ("Plzeň", "2+1"), ("Plzeň", "3+1"), ("Praha", "2+kk"), ("Liberec", "2+1"),
+    ("Opava", "3+1"), ("Chomutov", "3+1"), ("Jihlava", "3+1"), ("Liberec", "3+1"), ("Most", "1+1"), ("Praha", "1+1"),
+    ("Karviná", "3+1"), ("Ostrava", "1+1"), ("Pardubice", "1+1"), ("Brno", "2+kk"), ("Pardubice", "2+1"), ("Praha", "1+kk"),
 }
 CHEAP_MIN_SCORE = 40     # „levné“ stránky: nejnižší cena, ale jen mezi nabídkami se skóre aspoň tolik
 REGION_FEED_SIZE = 600       # nejvýhodnějších v kraji
@@ -1139,6 +1154,13 @@ def write_cities(valid: list[dict], scored: list[dict], cstats: dict, out_dir: s
         v["median"] = round(statistics.median(v.pop("_p")))
     if "Praha" in info:
         info["Praha"]["casti"] = casti
+    # Počet bytů s daným vybavením (jen z inzerátů se staženým detailem) u 10 největších měst
+    for l in valid:
+        if l["seg"] == "byt" and l["city"] in TOP_CITIES and l["city"] in info:
+            ex = info[l["city"]].setdefault("vybaveni_byt", {})
+            for e in l["extras"]:
+                if e in BYT_EXTRAS:
+                    ex[e] = ex.get(e, 0) + 1
     write_json(os.path.join(out_dir, CITIES_FILE),
                {"updated": now_iso(), "mesta": {k: v for k, v in info.items() if v["aktivnich"] >= 3}})
 
@@ -1178,9 +1200,67 @@ def write_pages(scored: list[dict], out_dir: str) -> None:
                 add("c:" + l["city"] + "|d:" + l["disposition"], l)
         if l["city"] == "Praha" and l["city_key"].startswith("Praha ") and l["type"] == "byt":
             add("k:" + l["city_key"] + "|t:byt", l)
+        if l["type"] == "byt":
+            for e in l["extras"]:
+                if e in BYT_EXTRAS:
+                    add("t:byt|e:" + e, l)
+                    if l["city"] in TOP_CITIES:
+                        add("c:" + l["city"] + "|t:byt|e:" + e, l)
     for l in sorted((x for x in scored if x.get("deal_score", 0) >= CHEAP_MIN_SCORE), key=lambda x: x["price"]):
         add("levne:" + ("byt" if l["type"] == "byt" else "dum"), l)
     write_json(os.path.join(out_dir, PAGES_FILE), {"updated": now_iso(), "pages": pages})
+
+
+def city_part(l: dict) -> str:
+    """Část města pro cenovou vrstvu: v Praze městská část (Praha 4), jinde čtvrť z lokality („… Brno-město - Řečkovice“)."""
+    if l["city"] == "Praha":
+        return l["city_key"] if l["city_key"].startswith("Praha ") else ""
+    loc = l.get("locality") or ""
+    return loc.rsplit(" - ", 1)[1].strip() if " - " in loc else ""
+
+
+def write_ceny(valid: list[dict], out_dir: str) -> None:
+    """
+    Data pro cenové stránky /real/<mesto>/ceny/: mediány bytů podle dispozice, části města, velikosti,
+    rozložení celkových cen a srovnání s domy. Jen z aktivních srovnatelných nabídek.
+    """
+    def med(xs):
+        return round(statistics.median(xs)) if xs else None
+
+    out = {}
+    for city in CENY_CITIES:
+        byty = [l for l in valid if l["city"] == city and l["seg"] == "byt"]
+        domy = [l for l in valid if l["city"] == city and l["seg"] == "dum"]
+        if len(byty) < 20:
+            continue
+        disp = []
+        for d in ["1+kk", "1+1", "2+kk", "2+1", "3+kk", "3+1", "4+kk", "4+1", "5+kk", "5+1"]:
+            xs = [l for l in byty if l["disposition"] == d]
+            if len(xs) >= 5:
+                disp.append({"d": d, "n": len(xs), "ppm2": med([l["ppm2"] for l in xs]), "price": med([l["price"] for l in xs]),
+                             "area": med([l["area"] for l in xs])})
+        parts: dict[str, list] = defaultdict(list)
+        for l in byty:
+            p = city_part(l)
+            if p:
+                parts[p].append(l["ppm2"])
+        parts_out = sorted(({"name": k, "n": len(v), "ppm2": med(v)} for k, v in parts.items() if len(v) >= 8),
+                           key=lambda x: -x["ppm2"])
+        bounds = [0, 2e6, 3e6, 4e6, 5e6, 6e6, 8e6, 10e6, 15e6, 1e12]
+        hist = [{"from": int(a), "to": int(b) if b < 1e12 else None, "n": sum(1 for l in byty if a <= l["price"] < b)}
+                for a, b in zip(bounds, bounds[1:])]
+        sizes = [(0, 40, "do 40 m²"), (40, 60, "40 až 60 m²"), (60, 80, "60 až 80 m²"), (80, 100, "80 až 100 m²"), (100, 1e9, "nad 100 m²")]
+        size_out = []
+        for a, b, label in sizes:
+            xs = [l["ppm2"] for l in byty if a <= l["area"] < b]
+            if len(xs) >= 5:
+                size_out.append({"label": label, "n": len(xs), "ppm2": med(xs)})
+        out[city] = {
+            "byt": {"n": len(byty), "ppm2": med([l["ppm2"] for l in byty]), "price": med([l["price"] for l in byty]),
+                    "area": med([l["area"] for l in byty]), "disp": disp, "parts": parts_out, "hist": hist, "size": size_out},
+            "dum": {"n": len(domy), "ppm2": med([l["ppm2"] for l in domy]), "price": med([l["price"] for l in domy])} if len(domy) >= 5 else None,
+        }
+    write_json(os.path.join(out_dir, CENY_FILE), {"updated": now_iso(), "mesta": out})
 
 
 def write_price_history(con: sqlite3.Connection, out_dir: str) -> None:
@@ -1340,6 +1420,7 @@ def main() -> None:
 
     write_region_feeds(scored, args.out)
     write_pages(scored, args.out)
+    write_ceny(valid, args.out)
     write_cities(valid, scored, cstats, args.out)
     write_price_history(con, args.out)
     write_market_stats(con, args.out)
