@@ -395,7 +395,12 @@ function mxr_agr_card( $l ) {
 	$on  = (int) round( $l['s'] / 10 );
 	$sg  = '';
 	for ( $k = 0; $k < 10; $k++ ) { $sg .= '<i class="' . ( $k < $on ? 'on' : '' ) . '"></i>'; }
-	$title = preg_replace( array( '/^Prodej bytu/u', '/^Prodej rodinného domu/u', '/^Prodej /u' ), array( 'Byt', 'Rodinný dům', '' ), $l['t'] );
+	$title = preg_replace(
+		array( '/^Prodej bytu/u', '/^Prodej rodinného domu/u', '/^Prodej vícegeneračního domu/u', '/^Prodej chaty/u', '/^Prodej chalupy/u',
+			'/^Prodej vily/u', '/^Prodej zemědělské usedlosti/u', '/^Prodej památky/u', '/^Prodej /u' ),
+		array( 'Byt', 'Rodinný dům', 'Vícegenerační dům', 'Chata', 'Chalupa', 'Vila', 'Zemědělská usedlost', 'Památka', '' ),
+		$l['t']
+	);
 	$rating = $l['s'] >= 80 ? 'Výborná nabídka' : ( $l['s'] >= 60 ? 'Velmi dobrá' : ( $l['s'] >= 40 ? 'Dobrá' : 'Běžná cena' ) );
 	$img = $l['i'] ? ' style="background-image:url(\'' . esc_url( $l['i'] . '?fl=res,800,600,3|shr,,20|webp,60' ) . '\')"' : '';
 	return '<article class="rv2-card"><a class="rv2-photo" href="' . esc_url( $l['u'] ) . '" target="_blank" rel="noopener nofollow"' . $img . '>'
