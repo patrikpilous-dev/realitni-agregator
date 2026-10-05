@@ -20,7 +20,7 @@
 
 // Nastavení postranního panelu šablony WpResidence a meta popis Yoastu u stránek čitelné a zapisovatelné přes REST
 add_action( 'rest_api_init', function () {
-	foreach ( array( 'sidebar_option', 'sidebar_select', '_yoast_wpseo_metadesc' ) as $mxr_klic ) {
+	foreach ( array( 'sidebar_option', 'sidebar_select', '_yoast_wpseo_metadesc', '_yoast_wpseo_title' ) as $mxr_klic ) {
 		register_post_meta( 'page', $mxr_klic, array(
 			'type'          => 'string',
 			'single'        => true,
@@ -341,7 +341,7 @@ add_shortcode( 'nemovitosti_real_v2', function ( $atts ) {
 				$s .= '.';
 			}
 			if ( $med_d && 'byt' !== $seg ) {
-				$s .= ' U domů je to ' . mxr_agr_kc( $med_d ) . ' za m².';
+				$s .= ( 'dum' === $seg || ! $med_b ? ' Medián nabídkové ceny domů je ' : ' U domů je to ' ) . mxr_agr_kc( $med_d ) . ' za m².';
 			}
 			$s .= ' Nabídek se skóre výhodnosti 60 a víc, tedy mezi 5 % nejvýhodnějšími na trhu, je ' . mxr_agr_num( $n60 ) . '.';
 			$intro[] = $s;
