@@ -5,7 +5,8 @@
  * Potřebuje snippet 15 (agregátor): mxr_agr_css(), mxr_agr_card(), mxr_agr_json(), mxr_agr_pages(), mxr_agr_top10().
  *
  * Kontakty z formuláře se ukládají jako soukromý typ obsahu „Leady“ (administrace, menu Leady) a chodí e-mailem
- * na adresu administrátora webu. Formulář je zapnutý (option mxr_lead_config 'on' ho může vypnout). Dokud není
+ * na adresu administrátora webu. Formulář je od 6. 10. 2026 vypnutý (option mxr_lead_config 'on' ho zapne), v bloku je jen odkaz
+ * na Hyponamíru přes eHUB, který platí jen za kontakt vyplněný u nich. Dokud není
  * v option vyplněný 'partner', souhlas mluví obecně o hypotečním specialistovi s registrací u ČNB.
  * Tipař podle zákona 257/2016 smí jen předat kontakt jmenovanému partnerovi se souhlasem klienta.
  */
@@ -36,7 +37,7 @@ add_action( 'manage_mxr_lead_posts_custom_column', function ( $col, $id ) {
 }, 10, 2 );
 
 function mxr_lead_config() {
-	return wp_parse_args( get_option( 'mxr_lead_config', array() ), array( 'on' => true, 'provozovatel' => '', 'partner' => '' ) );
+	return wp_parse_args( get_option( 'mxr_lead_config', array() ), array( 'on' => false, 'provozovatel' => '', 'partner' => '' ) );
 }
 
 function mxr_lead_enabled() {
@@ -163,6 +164,8 @@ add_shortcode( 'hypotecni_kalkulacka', function () {
 .hk-aff { display:flex; flex-wrap:wrap; align-items:center; gap:8px 14px; margin:12px 0; padding:12px 14px; background:var(--ground); }
 .hk-aff span { font:600 14px Poppins,sans-serif; color:var(--ink); }
 .hk-aff small { flex-basis:100%; font-size:12px; color:var(--muted); }
+.hk-cta-btn { font-size:16px; padding:15px 22px; margin:6px 0 4px; }
+.hk-cta-note { font-size:12.5px; color:var(--muted); margin:8px 0 0; }
 .hk-sit { font:700 15px Poppins,sans-serif; color:var(--ink); margin:30px 0 14px; padding-top:22px; border-top:2px solid var(--ink); }
 .hk-row2 { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
 .hk-check { display:flex; gap:10px; align-items:center; font-size:14.5px; color:var(--ink-2); cursor:pointer; }
@@ -246,14 +249,14 @@ add_shortcode( 'hypotecni_kalkulacka', function () {
     </div>
     <h3 style="font:600 16px Poppins,sans-serif;color:var(--ink);margin:26px 0 6px">Co když se změní sazba</h3>
     <div style="overflow-x:auto"><table><thead><tr><th>Sazba</th><th class="r">Splátka</th><th class="r">Rozdíl měsíčně</th><th class="r">Úroky celkem</th></tr></thead><tbody id="hk-whatif"></tbody></table></div>
-<?php if ( $lead ) : ?>
-<div class="hk-leadbox" id="hk-lead">
+<div class="hk-leadbox hk-cta" id="hk-lead">
   <div>
     <h2>Chcete vědět, kolik vám banky reálně nabídnou?</h2>
-    <p>Nechte nám kontakt a hypoteční specialista vám zdarma a nezávazně porovná nabídky bank pro vaši situaci. Zadání z kalkulačky mu pošleme, nemusíte nic vyplňovat znovu.</p>
-    <div class="hk-aff"><span>Raději hned online?</span><a class="rv2-btn line" href="https://ehub.cz/system/scripts/click.php?a_aid=07b7380d&amp;a_bid=d25e45d9" target="_blank" rel="sponsored nofollow noopener">Porovnat nabídky na Hyponamíru.cz →</a><small>Odkaz partnera. Hyponamíru.cz je hypoteční specialista, srovnání bank je zdarma.</small></div>
-    <p style="color:var(--muted);font-size:13px">Sami úvěry neposkytujeme ani nezprostředkováváme, kontakt předáme jen se souhlasem specialistovi s registrací u ČNB.</p>
+    <p>Hypoteční specialista Hyponamíru.cz porovná nabídky bank pro vaši situaci, zdarma a nezávazně, celé online.</p>
+    <a class="rv2-btn red hk-cta-btn" href="https://ehub.cz/system/scripts/click.php?a_aid=07b7380d&amp;a_bid=d25e45d9" target="_blank" rel="sponsored nofollow noopener">Porovnat nabídky bank na Hyponamíru.cz →</a>
+    <p class="hk-cta-note">Odkaz partnera. Sami úvěry neposkytujeme ani nezprostředkováváme.</p>
   </div>
+<?php if ( $lead ) : ?>
   <form class="hk-form" id="hk-lf" novalidate>
     <div><label for="hk-l-jmeno">Jméno</label><input type="text" id="hk-l-jmeno" autocomplete="name" required></div>
     <div><label for="hk-l-tel">Telefon</label><input type="tel" id="hk-l-tel" autocomplete="tel"></div>
@@ -263,8 +266,8 @@ add_shortcode( 'hypotecni_kalkulacka', function () {
     <label class="chk full"><input type="checkbox" id="hk-l-souhlas"><span id="hk-l-souhlas-t"><?php echo esc_html( $souhlas ); ?> Více v <a href="<?php echo esc_url( home_url( '/zasady-ochrany/' ) ); ?>">zásadách ochrany osobních údajů</a>.</span></label>
     <div class="full"><button class="rv2-btn red" type="submit" id="hk-l-btn">Chci nezávaznou konzultaci</button> <span class="hk-msg" id="hk-l-msg" role="status"></span></div>
   </form>
-</div>
 <?php endif; ?>
+</div>
   </div>
 </div>
 
