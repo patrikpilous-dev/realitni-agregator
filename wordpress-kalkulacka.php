@@ -160,6 +160,9 @@ add_shortcode( 'hypotecni_kalkulacka', function () {
 .hk-kpi b { display:block; font:700 19px Poppins,sans-serif; color:var(--ink); font-variant-numeric:tabular-nums; }
 .hk-kpi span { font-size:12.5px; color:var(--muted); }
 .hk-facts { display:grid; gap:8px; font-size:14.5px; background:var(--ground); padding:14px 16px; }
+.hk-aff { display:flex; flex-wrap:wrap; align-items:center; gap:8px 14px; margin:12px 0; padding:12px 14px; background:var(--ground); }
+.hk-aff span { font:600 14px Poppins,sans-serif; color:var(--ink); }
+.hk-aff small { flex-basis:100%; font-size:12px; color:var(--muted); }
 .hk-sit { font:700 15px Poppins,sans-serif; color:var(--ink); margin:30px 0 14px; padding-top:22px; border-top:2px solid var(--ink); }
 .hk-row2 { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
 .hk-check { display:flex; gap:10px; align-items:center; font-size:14.5px; color:var(--ink-2); cursor:pointer; }
@@ -248,6 +251,7 @@ add_shortcode( 'hypotecni_kalkulacka', function () {
   <div>
     <h2>Chcete vědět, kolik vám banky reálně nabídnou?</h2>
     <p>Nechte nám kontakt a hypoteční specialista vám zdarma a nezávazně porovná nabídky bank pro vaši situaci. Zadání z kalkulačky mu pošleme, nemusíte nic vyplňovat znovu.</p>
+    <div class="hk-aff"><span>Raději hned online?</span><a class="rv2-btn line" href="https://ehub.cz/system/scripts/click.php?a_aid=07b7380d&amp;a_bid=d25e45d9" target="_blank" rel="sponsored nofollow noopener">Porovnat nabídky na Hyponamíru.cz →</a><small>Odkaz partnera. Hyponamíru.cz je hypoteční specialista, srovnání bank je zdarma.</small></div>
     <p style="color:var(--muted);font-size:13px">Sami úvěry neposkytujeme ani nezprostředkováváme, kontakt předáme jen se souhlasem specialistovi s registrací u ČNB.</p>
   </div>
   <form class="hk-form" id="hk-lf" novalidate>
