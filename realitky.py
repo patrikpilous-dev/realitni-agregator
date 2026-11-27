@@ -178,6 +178,8 @@ def write_realitky(con, valid: list[dict], scored: list[dict], out_dir: str) -> 
             "realitek": len(out),
             "aktivnich_rk": sum(1 for x in valid if x.get("is_rk")),
             "zlevneno_podil": round(100 * sum(all_drop) / len(all_drop)) if all_drop else None,
+            "prohlidka_podil": round(100 * sum(1 for x in valid if x.get("is_rk") and x.get("has_tour"))
+                                     / max(1, sum(1 for x in valid if x.get("is_rk")))),
             "doba_median": {k[0]: round(v) for k, v in market_dom.items() if k[1] == ""},
         },
         "realitky": out,
