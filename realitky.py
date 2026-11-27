@@ -155,18 +155,20 @@ def write_realitky(con, valid: list[dict], scored: list[dict], out_dir: str) -> 
             "doba_index": _r(_med(idx), 2),
             "znovu_vlozeno_podil": _share([bool(x.get("relisted_from")) for x in both]),
             "prohlidka_podil": _share([bool(x.get("has_tour")) for x in act]),
-            "exkluzivni_podil": _share(excl),
+            # exkluzivita je jen u inzerátů s dotaženým detailem, proto větší vzorek
+            "exkluzivni_podil": _share(excl) if sum(1 for e in excl if e is not None) >= 20 else None,
         }
         out[seo] = rec
         for city, n in cc.items():
             cities[city].append([seo, cc_act.get(city, 0), n])
 
-    mesta = {}
+    mesta, mesta_pocet = {}, {}
     for city, rows in cities.items():
         rows = [r for r in rows if r[2] >= 2]
         if len(rows) >= CITY_MIN_AGENCIES:
             rows.sort(key=lambda r: (r[2], r[1]), reverse=True)
             mesta[city] = rows[:CITY_TOP]
+            mesta_pocet[city] = len(rows)   # skutečný počet realitek, žebříček je oříznutý na CITY_TOP
 
     all_drop = [dropped(x["id"], x["price"], x.get("price_old")) >= 0.01 for x in valid if x.get("is_rk")]
     data = {
@@ -180,6 +182,7 @@ def write_realitky(con, valid: list[dict], scored: list[dict], out_dir: str) -> 
         },
         "realitky": out,
         "mesta": mesta,
+        "mesta_pocet": mesta_pocet,
     }
     path = os.path.join(out_dir, OUT_FILE)
     with open(path, "w", encoding="utf-8") as f:
