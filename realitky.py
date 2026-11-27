@@ -118,7 +118,7 @@ def write_realitky(con, valid: list[dict], scored: list[dict], out_dir: str) -> 
             "AND (status='active' OR gone_at>=?) GROUP BY premise", (cutoff,)):
         brokers[r[0]] = r[1]
 
-    out, cities = {}, defaultdict(list)
+    out, cities, kraje, mesto_kraj = {}, defaultdict(list), defaultdict(list), {}
     for seo, d in ag.items():
         act, sl = d["act"], d["sold"]
         if len(act) + len(sl) < MIN_LISTINGS:
@@ -162,6 +162,13 @@ def write_realitky(con, valid: list[dict], scored: list[dict], out_dir: str) -> 
         out[seo] = rec
         for city, n in cc.items():
             cities[city].append([seo, cc_act.get(city, 0), n])
+        kc = Counter(x["region"] for x in both if x.get("region"))
+        kc_act = Counter(x["region"] for x in act if x.get("region"))
+        for kraj, n in kc.items():
+            kraje[kraj].append([seo, kc_act.get(kraj, 0), n])
+        for x in both:
+            if x.get("city") and x.get("region"):
+                mesto_kraj.setdefault(x["city"], Counter())[x["region"]] += 1
 
     mesta, mesta_pocet = {}, {}
     for city, rows in cities.items():
@@ -170,6 +177,16 @@ def write_realitky(con, valid: list[dict], scored: list[dict], out_dir: str) -> 
             rows.sort(key=lambda r: (r[2], r[1]), reverse=True)
             mesta[city] = rows[:CITY_TOP]
             mesta_pocet[city] = len(rows)   # skutečný počet realitek, žebříček je oříznutý na CITY_TOP
+
+    # Kraje: žebříček jako u měst (od 2 nabídek realitky v kraji), město -> nejčastější kraj
+    kraje_out, kraje_pocet = {}, {}
+    for kraj, rows in kraje.items():
+        rows = [r for r in rows if r[2] >= 2]
+        if len(rows) >= CITY_MIN_AGENCIES:
+            rows.sort(key=lambda r: (r[2], r[1]), reverse=True)
+            kraje_out[kraj] = rows[:60]
+            kraje_pocet[kraj] = len(rows)
+    mesto_kraj = {m: c.most_common(1)[0][0] for m, c in mesto_kraj.items() if m in mesta}
 
     all_drop = [dropped(x["id"], x["price"], x.get("price_old")) >= 0.01 for x in valid if x.get("is_rk")]
     data = {
@@ -186,6 +203,9 @@ def write_realitky(con, valid: list[dict], scored: list[dict], out_dir: str) -> 
         "realitky": out,
         "mesta": mesta,
         "mesta_pocet": mesta_pocet,
+        "kraje": kraje_out,
+        "kraje_pocet": kraje_pocet,
+        "mesto_kraj": mesto_kraj,
     }
     path = os.path.join(out_dir, OUT_FILE)
     with open(path, "w", encoding="utf-8") as f:
