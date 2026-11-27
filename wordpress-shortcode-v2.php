@@ -388,6 +388,24 @@ function mxr_agr_css() {
 	return ob_get_clean();
 }
 
+/**
+ * Odkaz na profil realitky v kartě (27. 11. 2026). Realitku zná stranky.json (klíč r), profil a název
+ * přehled realitek ze snippetu 38 (mxr_rk_data). Bez profilu nic, ať nevznikají odkazy na 404.
+ */
+function mxr_agr_card_realitka( $l ) {
+	if ( empty( $l['r'] ) || ! function_exists( 'mxr_rk_data' ) ) {
+		return '';
+	}
+	$d = mxr_rk_data();
+	if ( empty( $d['realitky'][ $l['r'] ] ) ) {
+		return '';
+	}
+	$r = $d['realitky'][ $l['r'] ];
+	$n = mxr_rk_nazev( $l['r'], $r );
+	$h = ( ! empty( $r['recenze']['n'] ) && null !== $r['recenze']['skore'] ) ? ' · ★ ' . number_format( $r['recenze']['skore'], 1, ',', '' ) : '';
+	return '<div class="rv2-rk" style="margin-top:10px;font-size:14px;color:#555">Nabízí <a href="' . esc_url( mxr_rk_url( $l['r'] ) ) . '" style="color:#c8102e;font-weight:600">' . esc_html( $n ) . '</a>' . $h . '</div>';
+}
+
 /** Karta nabídky vykreslená na serveru z malého záznamu ve stranky.json. */
 function mxr_agr_card( $l ) {
 	$d   = (int) $l['d'];
@@ -409,7 +427,8 @@ function mxr_agr_card( $l ) {
 		. '<div class="rv2-score"><div class="n">' . (int) $l['s'] . '<small>/100</small></div><div class="r"><b>' . $rating . '</b><div class="rv2-segs">' . $sg . '</div></div></div>'
 		. '<div class="rv2-mkt"><div class="t">' . ( $d > 0 ? 'O <strong>' . $d . ' % levnější</strong> než srovnatelné nabídky' : 'Cena odpovídá srovnatelným nabídkám' ) . '</div>'
 		. '<div class="rv2-track"><span class="mid"></span><span class="mk" style="left:' . $pos . '%"></span></div>'
-		. '<div class="l"><span>levnější</span><span>trh ' . mxr_agr_num( $l['b'] ) . ' Kč/m²</span><span>dražší</span></div></div><div class="rv2-chips"></div></div>'
+		. '<div class="l"><span>levnější</span><span>trh ' . mxr_agr_num( $l['b'] ) . ' Kč/m²</span><span>dražší</span></div></div><div class="rv2-chips"></div>'
+		. mxr_agr_card_realitka( $l ) . '</div>'
 		. '<div class="rv2-foot"><a class="rv2-btn red" href="' . esc_url( $l['u'] ) . '" target="_blank" rel="noopener nofollow">Prohlédnout inzerát →</a></div></article>';
 }
 

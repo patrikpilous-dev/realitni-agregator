@@ -1289,6 +1289,7 @@ def write_pages(scored: list[dict], out_dir: str) -> None:
             "l": l["locality"], "u": l["url"], "i": l["images"][0] if l["images"] else "",
             "s": l.get("deal_score", 0), "d": round(max(0.0, l.get("discount", 0.0))),
             "b": (l.get("benchmark") or {}).get("ppm2"),
+            "r": (l.get("premise") or "") if l.get("is_rk") else "",   # realitka, odkaz na /realitni/<r>/
         }
     pages: dict[str, list] = defaultdict(list)
 
