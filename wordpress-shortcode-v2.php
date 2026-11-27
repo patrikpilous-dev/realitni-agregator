@@ -403,7 +403,10 @@ function mxr_agr_card_realitka( $l ) {
 	$r = $d['realitky'][ $l['r'] ];
 	$n = mxr_rk_nazev( $l['r'], $r );
 	$h = ( ! empty( $r['recenze']['n'] ) && null !== $r['recenze']['skore'] ) ? ' · ★ ' . number_format( $r['recenze']['skore'], 1, ',', '' ) : '';
-	return '<div class="rv2-rk" style="margin-top:10px;font-size:14px;color:#555">Nabízí <a href="' . esc_url( mxr_rk_url( $l['r'] ) ) . '" style="color:#c8102e;font-weight:600">' . esc_html( $n ) . '</a>' . $h . '</div>';
+	// varianta B (Patrik 27. 11. 2026): malé logo bez rámečku, název jako odkaz na profil, hodnocení
+	$logo = function_exists( 'mxr_rk_logo' ) ? mxr_rk_logo( $l['r'] ) : '';
+	$img  = $logo ? '<img src="' . esc_url( $logo ) . '" alt="' . esc_attr( 'Logo ' . $n ) . '" width="28" height="28" loading="lazy" decoding="async" style="width:28px;height:28px;object-fit:contain;flex:0 0 auto;border:0">' : '';
+	return '<div class="rv2-rk" style="display:flex;align-items:center;gap:8px;margin:0 0 12px;font-size:13.5px;color:#555;min-height:28px">' . $img . '<span>Nabízí <a href="' . esc_url( mxr_rk_url( $l['r'] ) ) . '" style="color:#c8102e;font-weight:600;text-decoration:none">' . esc_html( $n ) . '</a>' . $h . '</span></div>';
 }
 
 /** Karta nabídky vykreslená na serveru z malého záznamu ve stranky.json. */
@@ -423,12 +426,11 @@ function mxr_agr_card( $l ) {
 	$img = $l['i'] ? ' style="background-image:url(\'' . esc_url( $l['i'] . '?fl=res,800,600,3|shr,,20|webp,60' ) . '\')"' : '';
 	return '<article class="rv2-card"><a class="rv2-photo" href="' . esc_url( $l['u'] ) . '" target="_blank" rel="noopener nofollow"' . $img . '>'
 		. '<span class="rv2-over"><span class="p">' . mxr_agr_kc( $l['p'] ) . '</span><br><span class="s">' . mxr_agr_num( $l['m'] ) . ' Kč/m² · ' . mxr_agr_num( $l['a'] ) . ' m²</span></span></a>'
-		. '<div class="rv2-body"><h3 class="rv2-title">' . esc_html( $title ) . '</h3><div class="rv2-loc">' . esc_html( $l['l'] ) . '</div>'
+		. '<div class="rv2-body"><h3 class="rv2-title">' . esc_html( $title ) . '</h3><div class="rv2-loc">' . esc_html( $l['l'] ) . '</div>' . mxr_agr_card_realitka( $l )
 		. '<div class="rv2-score"><div class="n">' . (int) $l['s'] . '<small>/100</small></div><div class="r"><b>' . $rating . '</b><div class="rv2-segs">' . $sg . '</div></div></div>'
 		. '<div class="rv2-mkt"><div class="t">' . ( $d > 0 ? 'O <strong>' . $d . ' % levnější</strong> než srovnatelné nabídky' : 'Cena odpovídá srovnatelným nabídkám' ) . '</div>'
 		. '<div class="rv2-track"><span class="mid"></span><span class="mk" style="left:' . $pos . '%"></span></div>'
-		. '<div class="l"><span>levnější</span><span>trh ' . mxr_agr_num( $l['b'] ) . ' Kč/m²</span><span>dražší</span></div></div><div class="rv2-chips"></div>'
-		. mxr_agr_card_realitka( $l ) . '</div>'
+		. '<div class="l"><span>levnější</span><span>trh ' . mxr_agr_num( $l['b'] ) . ' Kč/m²</span><span>dražší</span></div></div><div class="rv2-chips"></div></div>'
 		. '<div class="rv2-foot"><a class="rv2-btn red" href="' . esc_url( $l['u'] ) . '" target="_blank" rel="noopener nofollow">Prohlédnout inzerát →</a></div></article>';
 }
 
