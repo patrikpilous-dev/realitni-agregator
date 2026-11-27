@@ -97,6 +97,7 @@ REQUEST_INTERVAL = float(os.environ.get("SREALITY_INTERVAL", "1.2"))
 MAX_FAILS_IN_ROW = 40
 
 DETAILS_BUDGET = {"quick": 500, "full": 4000}   # detailů za běh
+SELLER_BUDGET  = {"quick": 200, "full": 1500}   # starší detaily znovu kvůli realitce a makléři (realitky.py)
 ARCHIVE_BUDGET = {"quick": 60,  "full": 300}    # ověření 404 za běh
 STALE_DAYS     = 14      # bez potvrzení déle než tohle jde inzerát z aktivních pryč
 MAX_FEED_SIZE  = 2000
@@ -427,6 +428,7 @@ def parse_estate(result: dict, cat_main: int, cat_type: int) -> dict | None:
         "images":      json.dumps(image_urls(result)),
         "premise":     ((result.get("premise") or {}).get("seoName") or "") if result.get("premise") else "",
         "is_rk":       1 if (result.get("premise") or result.get("premiseId")) else 0,
+        "premise_id":  result.get("premiseId") if isinstance(result.get("premiseId"), int) else None,
         "has_tour":    1 if (result.get("hasMatterport") or result.get("hasVideo")) else 0,
         "discount_flag": 1 if result.get("discountShow") else 0,
         "fingerprint": "|".join([
@@ -456,6 +458,14 @@ CREATE TABLE IF NOT EXISTS listings (
 );
 CREATE INDEX IF NOT EXISTS ix_status ON listings(status);
 CREATE INDEX IF NOT EXISTS ix_fp ON listings(fingerprint);
+CREATE TABLE IF NOT EXISTS agencies (
+    id INTEGER PRIMARY KEY, seo TEXT, name TEXT, ico INTEGER, firmy_id INTEGER, web TEXT,
+    city TEXT, district TEXT, review_count INTEGER, review_score REAL, logo TEXT, updated TEXT
+);
+CREATE TABLE IF NOT EXISTS brokers (
+    id INTEGER PRIMARY KEY, agency_id INTEGER, name TEXT, email TEXT, phone TEXT,
+    review_count INTEGER, review_score REAL, updated TEXT
+);
 CREATE TABLE IF NOT EXISTS prices (
     id TEXT, date TEXT, price INTEGER, PRIMARY KEY (id, date)
 );
@@ -471,7 +481,7 @@ CREATE TABLE IF NOT EXISTS runs (
 LISTING_FIELDS = [
     "seg", "type", "sub", "title", "price", "area", "disposition", "dgroup", "city_key", "city",
     "district", "region", "locality", "lat", "lon", "url", "images", "premise", "is_rk",
-    "has_tour", "discount_flag", "fingerprint",
+    "has_tour", "discount_flag", "fingerprint", "premise_id",
 ]
 
 
@@ -483,10 +493,23 @@ def today() -> str:
     return datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
 
+# Sloupce přidané po založení databáze (27. 11. 2026, realitky a makléři)
+MIGRATIONS = [
+    ("listings", "premise_id", "INTEGER"), ("listings", "broker_id", "INTEGER"),
+    ("listings", "exclusive", "INTEGER"), ("listings", "seller_at", "TEXT"),
+]
+
+
 def open_db(path: str) -> sqlite3.Connection:
     con = sqlite3.connect(path)
     con.row_factory = sqlite3.Row
     con.executescript(SCHEMA)
+    for table, col, typ in MIGRATIONS:
+        cols = {r[1] for r in con.execute(f"PRAGMA table_info({table})")}
+        if col not in cols:
+            con.execute(f"ALTER TABLE {table} ADD COLUMN {col} {typ}")
+    con.execute("CREATE INDEX IF NOT EXISTS ix_premise ON listings(premise_id)")
+    con.commit()
     return con
 
 
@@ -724,6 +747,52 @@ def apply_detail(con: sqlite3.Connection, row: sqlite3.Row, data: dict) -> None:
             price_old, is_share, is_auction, is_rental, now_iso(), row["id"],
         ),
     )
+    apply_seller(con, row["id"], data)
+
+
+def _int(v):
+    return v if isinstance(v, int) and not isinstance(v, bool) else None
+
+
+def apply_seller(con: sqlite3.Connection, listing_id: str, data: dict) -> None:
+    """Realitka a makléř z detailu. Kontakty makléře zůstávají jen v databázi, na web nejdou."""
+    ts = now_iso()
+    prem = data.get("premise") or {}
+    agency_id = _int(prem.get("id"))
+    if agency_id:
+        loc = prem.get("locality") or {}
+        score = prem.get("reviewScore")
+        con.execute(
+            """INSERT INTO agencies (id, seo, name, ico, firmy_id, web, city, district, review_count, review_score, logo, updated)
+               VALUES (?,?,?,?,?,?,?,?,?,?,?,?)
+               ON CONFLICT(id) DO UPDATE SET seo=excluded.seo, name=excluded.name, ico=excluded.ico,
+               firmy_id=excluded.firmy_id, web=excluded.web, city=excluded.city, district=excluded.district,
+               review_count=excluded.review_count, review_score=excluded.review_score, logo=excluded.logo,
+               updated=excluded.updated""",
+            (agency_id, prem.get("seoName") or "", (prem.get("name") or "").strip(), _int(prem.get("ico")),
+             _int(prem.get("companySubjectId")), prem.get("webUrl") or "", loc.get("city") or "",
+             loc.get("district") or "", _int(prem.get("reviewCount")),
+             score if isinstance(score, (int, float)) else None, prem.get("logo") or "", ts),
+        )
+    seller = data.get("seller") or {}
+    broker_id = _int(seller.get("id")) if agency_id else None   # makléř jen u realitky, ne u soukromníka
+    if broker_id:
+        phones = [p.get("phone") for p in (seller.get("phones") or []) if isinstance(p, dict) and p.get("phone")]
+        rating = seller.get("rating")
+        con.execute(
+            """INSERT INTO brokers (id, agency_id, name, email, phone, review_count, review_score, updated)
+               VALUES (?,?,?,?,?,?,?,?)
+               ON CONFLICT(id) DO UPDATE SET agency_id=excluded.agency_id, name=excluded.name, email=excluded.email,
+               phone=excluded.phone, review_count=excluded.review_count, review_score=excluded.review_score,
+               updated=excluded.updated""",
+            (broker_id, agency_id, (seller.get("name") or "").strip(), seller.get("email") or "",
+             phones[0] if phones else "", _int(seller.get("reviewCount")),
+             rating if isinstance(rating, (int, float)) else None, ts),
+        )
+    con.execute(
+        "UPDATE listings SET premise_id=COALESCE(?, premise_id), broker_id=?, exclusive=?, seller_at=? WHERE id=?",
+        (agency_id, broker_id, 1 if data.get("isExclusively") else 0, ts, listing_id),
+    )
 
 
 def enrich_details(con: sqlite3.Connection, budget: int, prelim: dict[str, float]) -> None:
@@ -738,6 +807,43 @@ def enrich_details(con: sqlite3.Connection, budget: int, prelim: dict[str, float
     rows.sort(key=lambda r: prelim.get(r["id"], 0), reverse=True)
     batch = rows[:budget]
     print(f"\nDetaily: stahuji {len(batch)} z {len(rows)} chybejicich...")
+    done = gone = 0
+    for i, row in enumerate(batch, 1):
+        state, data = fetch_detail(row["url"])
+        if state == "ok":
+            apply_detail(con, row, data)
+            done += 1
+        elif state == "gone":
+            con.execute("UPDATE listings SET status='sold', gone_at=?, last_checked_at=? WHERE id=?",
+                        (now_iso(), now_iso(), row["id"]))
+            gone += 1
+        if i % 100 == 0:
+            con.commit()
+    con.commit()
+    print(f"  >> Dotazeno: {done}, mezitim pryc: {gone}")
+
+
+def enrich_sellers(con: sqlite3.Connection, budget: int) -> None:
+    """
+    Inzeráty s detailem staženým před 27. 11. 2026 nemají realitku a makléře. Dotahují se postupně,
+    nejdřív jeden inzerát z každé realitky, o které ještě nic nevíme, pak zbytek.
+    """
+    rows = con.execute(
+        """SELECT l.*, (a.id IS NULL) AS unknown FROM listings l
+           LEFT JOIN agencies a ON a.id = l.premise_id
+           WHERE l.status='active' AND l.is_rk=1 AND l.detail_at IS NOT NULL AND l.seller_at IS NULL
+           ORDER BY unknown DESC, l.premise_id""",
+    ).fetchall()
+    if not rows or budget <= 0:
+        print(f"\nRealitky a makleri: chybi {len(rows)}")
+        return
+    first, rest, known = [], [], set()
+    for r in rows:
+        key = r["premise_id"] or r["premise"]
+        (first if (r["unknown"] and key not in known) else rest).append(r)
+        known.add(key)
+    batch = (first + rest)[:budget]
+    print(f"\nRealitky a makleri: stahuji {len(batch)} z {len(rows)} chybejicich...")
     done = gone = 0
     for i, row in enumerate(batch, 1):
         state, data = fetch_detail(row["url"])
@@ -1312,6 +1418,7 @@ def main() -> None:
     ap.add_argument("--db", default="agregator.sqlite")
     ap.add_argument("--out", default=".")
     ap.add_argument("--details", type=int, default=None, help="kolik detailů stáhnout (přepíše výchozí)")
+    ap.add_argument("--sellers", type=int, default=None, help="kolik starších detailů dotáhnout kvůli realitce a makléři")
     ap.add_argument("--offline", action="store_true", help="nic nestahovat, jen přepočítat skóre a výstupy z databáze")
     args = ap.parse_args()
 
@@ -1364,6 +1471,7 @@ def main() -> None:
             prelim[l["id"]] = (1 - l["ppm2"] / b["ppm2"]) if b else 0
         enrich_details(con, args.details if args.details is not None else DETAILS_BUDGET[args.mode], prelim)
         update_archive(con, seen, args.mode, complete, ARCHIVE_BUDGET[args.mode])
+        enrich_sellers(con, args.sellers if args.sellers is not None else SELLER_BUDGET[args.mode])
     except StopIteration:
         pass
     except SourceDown as e:
@@ -1424,6 +1532,11 @@ def main() -> None:
     write_cities(valid, scored, cstats, args.out)
     write_price_history(con, args.out)
     write_market_stats(con, args.out)
+    try:
+        import realitky   # přehled realitek (max-reality.cz/realitni-kancelare/), chyba nesmí shodit feed
+        realitky.write_realitky(con, valid, scored, args.out)
+    except Exception as e:   # noqa: BLE001
+        print(f"[VAROVANI] realitky.json se nepodarilo zapsat: {e!r}")
     con.close()
 
     print(f"\nAktivnich: {len(active)}, vyrazeno nesmyslnych: {len(active) - len(valid)}, podezrelych cen: {len(suspicious)}")
