@@ -140,6 +140,7 @@ def write_realitky(con, valid: list[dict], scored: list[dict], out_dir: str) -> 
             "nazev": a.get("name") or None,
             "ico": a.get("ico"),
             "web": a.get("web") or None,
+            "logo": a.get("logo") or None,
             "sidlo": a.get("city") or None,
             "recenze": {"n": a.get("review_count"), "skore": a.get("review_score")} if a.get("review_count") else None,
             "makleru": brokers.get(seo) or None,

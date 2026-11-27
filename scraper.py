@@ -429,6 +429,7 @@ def parse_estate(result: dict, cat_main: int, cat_type: int) -> dict | None:
         "premise":     ((result.get("premise") or {}).get("seoName") or "") if result.get("premise") else "",
         "is_rk":       1 if (result.get("premise") or result.get("premiseId")) else 0,
         "premise_id":  result.get("premiseId") if isinstance(result.get("premiseId"), int) else None,
+        "premise_logo": result.get("premiseLogo") if isinstance(result.get("premiseLogo"), str) else "",
         "has_tour":    1 if (result.get("hasMatterport") or result.get("hasVideo")) else 0,
         "discount_flag": 1 if result.get("discountShow") else 0,
         "fingerprint": "|".join([
@@ -636,6 +637,12 @@ def crawl_path(con: sqlite3.Connection, path: str, cat_main: int, cat_type: int,
             rec = parse_estate(r, cat_main, cat_type)
             if rec and rec["sub"] not in EXCLUDED_SUBS:
                 upsert(con, rec, ts)
+                if rec.get("premise_id") and rec.get("premise_logo"):
+                    # logo realitky z výpisu (realitky.py, max-reality.cz/realitni/), jméno doplní detail
+                    con.execute(
+                        """INSERT INTO agencies (id, seo, logo, updated) VALUES (?,?,?,?)
+                           ON CONFLICT(id) DO UPDATE SET logo=excluded.logo""",
+                        (rec["premise_id"], rec["premise"], rec["premise_logo"], ts))
                 seen.add(rec["id"])
         got += len(results)
         if page % 50 == 0:
@@ -767,7 +774,7 @@ def apply_seller(con: sqlite3.Connection, listing_id: str, data: dict) -> None:
                VALUES (?,?,?,?,?,?,?,?,?,?,?,?)
                ON CONFLICT(id) DO UPDATE SET seo=excluded.seo, name=excluded.name, ico=excluded.ico,
                firmy_id=excluded.firmy_id, web=excluded.web, city=excluded.city, district=excluded.district,
-               review_count=excluded.review_count, review_score=excluded.review_score, logo=excluded.logo,
+               review_count=excluded.review_count, review_score=excluded.review_score, logo=COALESCE(NULLIF(excluded.logo, ''), agencies.logo),
                updated=excluded.updated""",
             (agency_id, prem.get("seoName") or "", (prem.get("name") or "").strip(), _int(prem.get("ico")),
              _int(prem.get("companySubjectId")), prem.get("webUrl") or "", loc.get("city") or "",
