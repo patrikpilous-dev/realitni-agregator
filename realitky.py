@@ -78,8 +78,10 @@ def write_realitky(con, valid: list[dict], scored: list[dict], out_dir: str) -> 
         """SELECT id, seg, city, region, premise, listed_since, first_seen, gone_at, price, price_old,
                   relisted_from, has_tour, exclusive, broker_id
            FROM listings WHERE status='sold' AND is_rk=1 AND premise<>'' AND gone_at>=?""", (cutoff,))]
+    # Jen s datem vložení z detailu. first_seen začíná u starších inzerátů až založením databáze (4. 10. 2026)
+    # a dobu by zkracoval.
     for s in sold:
-        s["dom"] = _days(s["listed_since"] or s["first_seen"], s["gone_at"])
+        s["dom"] = _days(s["listed_since"], s["gone_at"]) if s["listed_since"] else None
 
     # Doba na trhu do stažení, medián trhu po segmentu a kraji (pro index rychlosti)
     mk = defaultdict(list)

@@ -2,7 +2,7 @@ name: Scrape Sreality
 
 # Záložní provoz. Hlavní běh je na NUC (nuc/spust.ps1). Když běží NUC, má být tenhle
 # workflow vypnutý (gh workflow disable "Scrape Sreality"), jinak by data zapisovali dva.
-# Databáze se drží v cache Actions mezi běhy. V 0:00 UTC jde celý trh, jinak jen nové inzeráty.
+# Databáze se drží v cache Actions mezi běhy. Do 3:00 UTC jde celý trh, jinak jen nové inzeráty.
 
 on:
   schedule:
@@ -46,7 +46,8 @@ jobs:
         run: |
           MODE="${{ github.event.inputs.mode }}"
           if [ -z "$MODE" ]; then
-            if [ "$(date -u +%H)" = "00" ]; then MODE=full; else MODE=quick; fi
+            # Plánované běhy GitHub zpožďuje až o 2 hodiny, full proto kdykoli do 3:00 UTC (oprava 27. 11. 2026)
+            if [ "$((10#$(date -u +%H)))" -lt 3 ]; then MODE=full; else MODE=quick; fi
           fi
           # Bez uložené databáze by quick počítal srovnání jen z feedu (samé výhodné nabídky)
           if [ -z "${{ steps.db.outputs.cache-matched-key }}" ]; then MODE=full; fi
